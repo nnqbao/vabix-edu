@@ -4682,3 +4682,40 @@ section[id],
     opacity: 1;
   }
 }
+
+/* BMDO landing — gallery ảnh lớp chạy ngang */
+.bmdo-marquee {
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+}
+
+.bmdo-marquee-track {
+  display: flex;
+  width: max-content;
+  animation: bmdo-marquee var(--bmdo-marquee-duration, 60s) linear infinite;
+}
+
+.bmdo-marquee-track[data-reverse] {
+  animation-direction: reverse;
+}
+
+.bmdo-marquee:hover .bmdo-marquee-track {
+  animation-play-state: paused;
+}
+
+@keyframes bmdo-marquee {
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bmdo-marquee {
+    overflow-x: auto;
+  }
+
+  .bmdo-marquee-track {
+    animation: none;
+  }
+}

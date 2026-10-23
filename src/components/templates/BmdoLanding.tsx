@@ -1,4 +1,5 @@
-import { bmdoK4 as k } from "@/content/bmdoK4";
+import Image from "next/image";
+import { bmdoClassPhotos, bmdoK4 as k } from "@/content/bmdoK4";
 import { LeadForm } from "@/components/forms/LeadForm";
 import { Breadcrumb } from "@/components/ui/Misc";
 import { Button } from "@/components/ui/Button";
@@ -14,18 +15,18 @@ function BizCarRing({ className = "", dark = false }: { className?: string; dark
     const a = ((i * 30 - 90) * Math.PI) / 180;
     return { n: i + 1, x: 200 + 150 * Math.cos(a), y: 200 + 150 * Math.sin(a), gold: i % 3 === 0 };
   });
-  const line = dark ? "rgba(228,184,98,0.35)" : "rgba(22,60,62,0.16)";
+  const line = dark ? "rgba(228,184,98,0.3)" : "rgba(22,60,62,0.16)";
   return (
     <svg viewBox="0 0 400 400" className={className} role="img" aria-label="Mô hình BizCar — 12 miền quản trị">
       <circle cx="200" cy="200" r="190" fill="none" stroke={line} />
-      <circle cx="200" cy="200" r="150" fill="none" stroke={dark ? "rgba(222,164,67,0.6)" : "rgba(222,164,67,0.55)"} strokeWidth="1.5" />
-      <circle cx="200" cy="200" r="104" fill="none" stroke={line} />
-      <circle cx="200" cy="200" r="62" fill="#163c3e" stroke="#dea443" strokeWidth="2" />
+      <circle cx="200" cy="200" r="150" fill="none" stroke="rgba(222,164,67,0.6)" strokeWidth="1.5" />
+      <circle cx="200" cy="200" r="104" fill="none" stroke={line} strokeDasharray="2 6" />
+      <circle cx="200" cy="200" r="62" fill={dark ? "#214f51" : "#163c3e"} stroke="#dea443" strokeWidth="2" />
       <text x="200" y="194" textAnchor="middle" fill="#dea443" fontSize="26" fontWeight="700">BIZ</text>
       <text x="200" y="224" textAnchor="middle" fill="#fcfbf8" fontSize="26" fontWeight="700">CAR</text>
       {nodes.map((p) => (
         <g key={p.n}>
-          <circle cx={p.x} cy={p.y} r="15" fill={p.gold ? "#dea443" : "#163c3e"} stroke={dark ? "rgba(252,251,248,0.25)" : "#fcfbf8"} strokeWidth="2" />
+          <circle cx={p.x} cy={p.y} r="15" fill={p.gold ? "#dea443" : dark ? "#214f51" : "#163c3e"} stroke={dark ? "rgba(228,184,98,0.45)" : "#fcfbf8"} strokeWidth="1.5" />
           <text x={p.x} y={p.y + 4.5} textAnchor="middle" fill={p.gold ? "#163c3e" : "#fcfbf8"} fontSize="12" fontWeight="700">
             {p.n}
           </text>
@@ -35,9 +36,9 @@ function BizCarRing({ className = "", dark = false }: { className?: string; dark
   );
 }
 
-function Heading({ eyebrow, title, gold, light = false }: { eyebrow: string; title: string; gold: string; light?: boolean }) {
+function Heading({ eyebrow, title, gold, light = false, center = false }: { eyebrow: string; title: string; gold: string; light?: boolean; center?: boolean }) {
   return (
-    <div className="max-w-3xl">
+    <div className={center ? "mx-auto max-w-3xl text-center" : "max-w-3xl"}>
       <p className="eyebrow">{eyebrow}</p>
       <h2 className={`mt-3 text-balance text-[1.9rem] font-semibold leading-[1.15] tracking-[-0.02em] sm:text-[2.6rem] ${light ? "text-vabix-warm" : "text-vabix-deep-teal"}`}>
         {title} <span className="text-vabix-gold">{gold}</span>
@@ -46,7 +47,35 @@ function Heading({ eyebrow, title, gold, light = false }: { eyebrow: string; tit
   );
 }
 
+function ClassGallery() {
+  // Lặp ảnh đủ dài để dải chạy liền mạch, rồi nhân đôi để vòng lặp -50% khớp đúng.
+  const base = Array.from({ length: Math.max(2, Math.ceil(8 / bmdoClassPhotos.length)) }, () => bmdoClassPhotos).flat();
+  const rows = [base, [...base].reverse()];
+  return (
+    <div className="space-y-4">
+      {rows.map((row, r) => (
+        <div key={r} className="bmdo-marquee">
+          <ul className="bmdo-marquee-track" data-reverse={r ? "" : undefined} style={{ ["--bmdo-marquee-duration" as string]: `${row.length * 7}s` }}>
+            {[...row, ...row].map((photo, i) => (
+              <li key={i} className="mr-4 shrink-0" aria-hidden={i >= row.length || undefined}>
+                <figure className="relative h-48 w-72 overflow-hidden rounded-[18px] sm:h-60 sm:w-[23rem]">
+                  <Image src={photo.src} alt={i >= row.length ? "" : photo.alt} fill unoptimized loading="eager" sizes="368px" className="object-cover" />
+                </figure>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  );
+}
+
 export function BmdoLanding() {
+  const facts = [
+    { label: "Khai giảng", value: k.enrol.opening },
+    { label: "Lịch học", value: k.enrol.schedule },
+    { label: "Địa điểm", value: k.enrol.venue },
+  ];
   return (
     <>
       {/* Hero */}
@@ -54,10 +83,9 @@ export function BmdoLanding() {
         <div
           aria-hidden="true"
           className="pointer-events-none absolute inset-0"
-          style={{ background: "radial-gradient(ellipse 60% 70% at 85% 30%, rgba(222,164,67,0.16), transparent 65%)" }}
+          style={{ background: "radial-gradient(ellipse 55% 70% at 78% 45%, rgba(222,164,67,0.14), transparent 65%)" }}
         />
-        <BizCarRing dark className="pointer-events-none absolute -right-40 top-24 hidden w-[44rem] opacity-15 lg:block" />
-        <Container className="relative grid gap-12 pb-16 pt-10 sm:pb-20 lg:grid-cols-[minmax(0,1.35fr)_minmax(0,1fr)] lg:items-center lg:gap-16">
+        <Container className="relative grid gap-10 pb-14 pt-8 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)] lg:items-center lg:gap-14 lg:pb-20">
           <div>
             <Breadcrumb
               light
@@ -67,16 +95,18 @@ export function BmdoLanding() {
                 { name: "BMDO" },
               ]}
             />
-            <p className="mt-8 text-xs font-semibold uppercase tracking-[0.22em] text-vabix-soft-gold">
-              BMDO / {k.cohort} · {k.eyebrow}
+            <p className="mt-10 inline-flex items-center gap-2 rounded-full border border-vabix-gold/45 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-vabix-soft-gold">
+              <span className="h-1.5 w-1.5 rounded-full bg-vabix-gold" aria-hidden="true" />
+              {k.cohort} · Khai giảng {k.enrol.opening}
             </p>
-            <span aria-hidden="true" className="mt-5 block h-px w-24 bg-vabix-gold" />
-            <h1 className="mt-6 text-balance font-semibold uppercase leading-[1.05] tracking-[-0.01em]">
-              <span className="block text-[2.6rem] text-vabix-warm sm:text-6xl">{k.titleLead}</span>
-              <span className="mt-4 block text-xl normal-case leading-snug text-vabix-gold sm:text-[1.9rem]">{k.titleGold}</span>
+            <h1 className="mt-6">
+              <span className="block text-[4.5rem] font-bold leading-none tracking-[0.04em] text-vabix-warm sm:text-[7rem]">BMDO</span>
+              <span className="mt-5 block text-balance text-2xl font-semibold leading-snug text-vabix-gold sm:text-[2.1rem]">{k.titleGold}</span>
             </h1>
-            <p className="mt-6 max-w-xl text-base text-white/75 sm:text-lg">{k.promise}</p>
-            <p className="mt-2 text-sm font-medium tracking-wide text-vabix-soft-gold">{k.motto}</p>
+            <p className="mt-5 max-w-xl text-base leading-relaxed text-white/75 sm:text-lg">
+              {k.eyebrow}. {k.promise}
+            </p>
+            <p className="mt-3 text-sm font-medium tracking-wide text-vabix-soft-gold">{k.motto}</p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Button href="#dang-ky">Đăng ký giữ chỗ →</Button>
               <Button href={hotlineHref} variant="outline" className="border-white/40 text-white">
@@ -84,112 +114,131 @@ export function BmdoLanding() {
               </Button>
             </div>
           </div>
-
-          <div className="rounded-[26px] border border-vabix-gold/35 bg-white/[0.04] p-6 backdrop-blur-sm sm:p-8">
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-vabix-soft-gold">Dự kiến khai giảng</p>
-            <p className="mt-2 text-4xl font-semibold text-vabix-warm">{k.enrol.opening}</p>
-            <dl className="mt-6 space-y-4 border-t border-white/10 pt-6 text-sm">
-              <div>
-                <dt className="text-xs uppercase tracking-[0.16em] text-white/55">Lịch học</dt>
-                <dd className="mt-1 text-white/90">{k.enrol.schedule}</dd>
-              </div>
-              <div>
-                <dt className="text-xs uppercase tracking-[0.16em] text-white/55">Địa điểm</dt>
-                <dd className="mt-1 text-white/90">{k.enrol.venue}</dd>
-              </div>
-              <div>
-                <dt className="text-xs uppercase tracking-[0.16em] text-white/55">Học phí ưu đãi</dt>
-                <dd className="mt-1 flex flex-wrap items-baseline gap-x-3">
-                  <span className="text-3xl font-semibold text-vabix-gold">{k.enrol.price}</span>
-                  <span className="text-white/50 line-through">{k.enrol.listPrice}</span>
-                </dd>
-                <dd className="mt-2 inline-block rounded-full border border-vabix-gold/45 px-3 py-1 text-xs font-semibold uppercase tracking-[0.12em] text-vabix-soft-gold">
-                  {k.enrol.discount}
-                </dd>
-              </div>
-            </dl>
+          <div className="relative mx-auto w-full max-w-[30rem]">
+            <BizCarRing dark className="w-full" />
+            <ul className="mt-4 grid grid-cols-3 gap-2">
+              {k.stats.map((s) => (
+                <li key={s.value} className="rounded-2xl border border-white/10 bg-vabix-deep-teal/85 px-3 py-3 text-center backdrop-blur">
+                  <p className="text-lg font-semibold uppercase text-vabix-gold sm:text-xl">{s.value}</p>
+                  <p className="mt-0.5 text-[11px] leading-tight text-white/65 sm:text-xs">{s.label}</p>
+                </li>
+              ))}
+            </ul>
           </div>
         </Container>
-        <Container className="relative pb-14">
-          <ul className="grid overflow-hidden rounded-[22px] border border-white/10 bg-white/[0.05] sm:grid-cols-3">
-            {k.stats.map((s, i) => (
-              <li key={s.value} className={`px-6 py-5 ${i ? "border-t border-white/10 sm:border-l sm:border-t-0" : ""}`}>
-                <p className="text-2xl font-semibold uppercase text-vabix-gold">{s.value}</p>
-                <p className="mt-1 text-sm text-white/70">{s.label}</p>
-              </li>
+      </section>
+
+      {/* Thanh thông tin khoá */}
+      <section className="relative z-10 bg-vabix-warm">
+        <Container>
+          <div className="-mt-px grid gap-px overflow-hidden rounded-b-[22px] bg-vabix-deep-teal/10 shadow-[0_18px_40px_rgba(22,60,62,0.12)] md:grid-cols-[repeat(3,minmax(0,1fr))_minmax(0,1.25fr)]">
+            {facts.map((f) => (
+              <div key={f.label} className="bg-white px-6 py-5">
+                <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-vabix-muted">{f.label}</p>
+                <p className="mt-1.5 font-semibold text-vabix-deep-teal">{f.value}</p>
+              </div>
             ))}
-          </ul>
+            <div className="flex flex-wrap items-center justify-between gap-4 bg-vabix-ivory px-6 py-5">
+              <div>
+                <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-vabix-muted">
+                  Học phí ưu đãi · <span className="line-through">{k.enrol.listPrice}</span>
+                </p>
+                <p className="mt-1 text-2xl font-semibold text-vabix-deep-teal">
+                  {k.enrol.price} <span className="ml-1 align-middle text-xs font-semibold uppercase tracking-[0.12em] text-vabix-gold">−50%</span>
+                </p>
+              </div>
+              <Button href="#dang-ky" variant="teal">
+                Giữ chỗ
+              </Button>
+            </div>
+          </div>
         </Container>
       </section>
 
       {/* Tổng quan */}
       <section className="bg-vabix-warm py-16 sm:py-24">
-        <Container>
-          <Heading eyebrow="Tổng quan chương trình" title={k.overview.title} gold={k.overview.titleGold} />
-          <p className="mt-6 max-w-3xl text-lg leading-relaxed text-vabix-muted">{k.overview.body}</p>
-          <div className="mt-10 rounded-[22px] bg-vabix-deep-teal p-6 text-vabix-warm sm:p-8">
+        <Container className="grid gap-10 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)] lg:gap-16">
+          <div>
+            <Heading eyebrow="Tổng quan chương trình" title={k.overview.title} gold={k.overview.titleGold} />
+            <p className="mt-6 text-lg leading-relaxed text-vabix-muted">{k.overview.body}</p>
+          </div>
+          <div className="self-end rounded-[22px] bg-vabix-deep-teal p-7 text-vabix-warm sm:p-9">
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-vabix-gold">Phương pháp tiếp cận</p>
-            <p className="mt-3 max-w-4xl text-lg leading-relaxed">{k.overview.approach}</p>
+            <p className="mt-3 text-lg leading-relaxed">{k.overview.approach}</p>
+            <p className="mt-6 border-t border-white/10 pt-5 text-sm leading-relaxed text-white/70">
+              <span className="font-semibold text-vabix-soft-gold">Nguyên tắc: </span>
+              {k.overview.principle}
+            </p>
           </div>
-          <p className="mt-14 text-sm font-semibold uppercase tracking-[0.16em] text-vabix-deep-teal">12 miền quản trị / Một bản thiết kế</p>
-          <div className="mt-6 grid items-center gap-10 lg:grid-cols-2">
-            <BizCarRing className="mx-auto w-full max-w-md" />
-            <ol className="space-y-6">
-              {k.overview.steps.map((s, i) => (
-                <li key={s.title} className="flex gap-4">
-                  <span className={`grid h-10 w-10 shrink-0 place-items-center rounded-full text-sm font-bold ${i % 2 ? "bg-vabix-deep-teal text-vabix-warm" : "bg-vabix-gold text-vabix-deep-teal"}`}>
-                    {i + 1}
-                  </span>
-                  <div>
-                    <p className="font-semibold uppercase tracking-wide text-vabix-deep-teal">{s.title}</p>
-                    <p className="mt-1 text-vabix-muted">{s.body}</p>
-                  </div>
-                </li>
-              ))}
-            </ol>
-          </div>
-          <p className="mt-10 rounded-[18px] bg-vabix-ivory p-5 text-vabix-ink sm:p-6">
-            <span className="font-semibold text-vabix-deep-teal">Nguyên tắc: </span>
-            {k.overview.principle}
-          </p>
+        </Container>
+        <Container className="mt-14">
+          <p className="text-sm font-semibold uppercase tracking-[0.16em] text-vabix-deep-teal">12 miền quản trị / Một bản thiết kế</p>
+          <ol className="mt-6 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
+            {k.overview.steps.map((s, i) => (
+              <li key={s.title} className="relative rounded-[20px] border border-vabix-deep-teal/10 bg-white p-5 sm:p-6">
+                <span className="text-3xl sm:text-4xl font-semibold text-vabix-gold/80">{String(i + 1).padStart(2, "0")}</span>
+                <p className="mt-4 font-semibold uppercase tracking-wide text-vabix-deep-teal">{s.title}</p>
+                <p className="mt-1.5 text-vabix-muted">{s.body}</p>
+              </li>
+            ))}
+          </ol>
         </Container>
       </section>
 
-      {/* Lộ trình 12 ngày */}
-      <section className="bg-vabix-ivory py-16 sm:py-24" id="lo-trinh">
+      {/* Hình ảnh lớp học */}
+      <section className="overflow-hidden bg-vabix-ivory py-16 sm:py-24" aria-labelledby="bmdo-gallery">
         <Container>
-          <Heading eyebrow="Lộ trình 12 ngày học" title="Bốn chặng," gold="mười hai miền quản trị." />
-          <p className="mt-6 max-w-3xl text-lg text-vabix-muted">
-            Mỗi ngày học gắn với một bộ phận của Chiếc Xe Doanh Nghiệp và kết thúc bằng một thiết kế đầu ra cụ thể cho doanh nghiệp của học viên.
+          <div className="flex flex-wrap items-end justify-between gap-6">
+            <div id="bmdo-gallery">
+              <Heading eyebrow="Hình ảnh lớp học" title="Không khí" gold="thao trường BMDO." />
+            </div>
+            <p className="max-w-md text-vabix-muted">Doanh chủ và CEO cùng thực hành, phản biện và hoàn thiện thiết kế trên chính doanh nghiệp của mình.</p>
+          </div>
+        </Container>
+        <div className="mt-10">
+          <ClassGallery />
+        </div>
+      </section>
+
+      {/* Lộ trình 12 ngày */}
+      <section className="bg-vabix-warm py-16 sm:py-24" id="lo-trinh">
+        <Container>
+          <Heading center eyebrow="Lộ trình 12 ngày học" title="Bốn chặng," gold="mười hai miền quản trị." />
+          <p className="mx-auto mt-5 max-w-2xl text-center text-lg text-vabix-muted">
+            Mỗi ngày học gắn với một bộ phận của Chiếc Xe Doanh Nghiệp và kết thúc bằng một thiết kế đầu ra cụ thể.
           </p>
-          <div className="mt-12 space-y-14">
+          <div className="mt-12 grid gap-6 lg:grid-cols-2">
             {k.phases.map((phase) => (
-              <div key={phase.number} className="grid gap-6 lg:grid-cols-[17rem_minmax(0,1fr)] lg:gap-10">
-                <div className="lg:sticky lg:top-28 lg:self-start">
+              <article key={phase.number} className="overflow-hidden rounded-[24px] border border-vabix-deep-teal/10 bg-white">
+                <header className="relative bg-vabix-deep-teal px-7 py-6 text-vabix-warm">
+                  <span aria-hidden="true" className="absolute right-6 top-3 text-6xl font-bold text-white/[0.06]">
+                    {phase.number}
+                  </span>
                   <p className="text-xs font-semibold uppercase tracking-[0.2em] text-vabix-gold">
-                    {phase.number} / {phase.label}
+                    Chặng {phase.number} · {phase.label}
                   </p>
-                  <h3 className="mt-2 text-2xl font-semibold text-vabix-deep-teal">{phase.title}</h3>
-                  <p className="mt-2 text-sm font-semibold uppercase tracking-[0.14em] text-vabix-muted">{phase.days} / 12</p>
-                  <p className="mt-3 text-vabix-muted">{phase.lead}</p>
-                </div>
-                <div className="grid gap-4 md:grid-cols-3">
+                  <h3 className="mt-2 text-2xl font-semibold">{phase.title}</h3>
+                  <p className="mt-1 text-sm text-white/70">
+                    {phase.days} · {phase.lead}
+                  </p>
+                </header>
+                <ol className="divide-y divide-vabix-deep-teal/10">
                   {phase.sessions.map((d) => (
-                    <article key={d.day} className="flex flex-col rounded-[20px] border border-vabix-deep-teal/10 bg-white p-6">
-                      <p className="text-3xl font-semibold text-vabix-gold">{d.day}</p>
-                      <h4 className="mt-3 text-lg font-semibold leading-snug text-vabix-deep-teal">{d.title}</h4>
-                      <p className="mt-1 text-xs font-semibold uppercase tracking-[0.14em] text-vabix-muted">{d.part}</p>
-                      <p className="mt-4 text-[15px] leading-relaxed text-vabix-ink">{d.body}</p>
-                      <div className="mt-auto pt-5">
-                        <p className="rounded-xl bg-vabix-ivory p-4 text-sm leading-relaxed text-vabix-ink">
-                          <span className="block text-[11px] font-semibold uppercase tracking-[0.16em] text-vabix-gold">Thiết kế đầu ra</span>
-                          <span className="mt-1 block">{d.output}</span>
+                    <li key={d.day} className="grid grid-cols-[3rem_minmax(0,1fr)] gap-4 px-7 py-5">
+                      <span className="text-2xl font-semibold text-vabix-gold">{d.day}</span>
+                      <div>
+                        <h4 className="font-semibold text-vabix-deep-teal">{d.title}</h4>
+                        <p className="mt-0.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-vabix-muted">{d.part}</p>
+                        <p className="mt-1.5 text-[15px] leading-relaxed text-vabix-ink">{d.body}</p>
+                        <p className="mt-2 text-sm leading-relaxed text-vabix-muted">
+                          <span className="font-semibold text-vabix-gold">Đầu ra → </span>
+                          {d.output}
                         </p>
                       </div>
-                    </article>
+                    </li>
                   ))}
-                </div>
-              </div>
+                </ol>
+              </article>
             ))}
           </div>
         </Container>
@@ -198,47 +247,58 @@ export function BmdoLanding() {
       {/* Phương pháp */}
       <section className="bg-vabix-deep-teal py-16 text-vabix-warm sm:py-24">
         <Container>
-          <Heading light eyebrow="Phương pháp học và hỗ trợ" title={k.method.title} gold={k.method.titleGold} />
-          <p className="mt-6 max-w-3xl text-lg leading-relaxed text-white/75">{k.method.body}</p>
-          <p className="mt-12 text-sm font-semibold uppercase tracking-[0.16em] text-vabix-gold">Chu trình thực hành APPLIER</p>
-          <ol className="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-7">
+          <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:items-end">
+            <Heading light eyebrow="Phương pháp học và hỗ trợ" title={k.method.title} gold={k.method.titleGold} />
+            <p className="text-lg leading-relaxed text-white/75">{k.method.body}</p>
+          </div>
+
+          <p className="mt-14 text-sm font-semibold uppercase tracking-[0.16em] text-vabix-gold">Chu trình thực hành APPLIER</p>
+          <ol className="relative mt-8 grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-4 lg:grid-cols-7">
+            <span aria-hidden="true" className="absolute left-6 right-6 top-6 hidden h-px bg-vabix-gold/35 lg:block" />
             {k.method.applier.map((s, i) => (
-              <li key={s.title} className="rounded-[18px] border border-white/10 bg-white/[0.04] p-5">
-                <p className="text-sm font-semibold text-vabix-gold">{String(i + 1).padStart(2, "0")}</p>
-                <p className="mt-2 font-semibold uppercase tracking-wide">{s.title}</p>
+              <li key={s.title} className="relative">
+                <span className="relative grid h-12 w-12 place-items-center rounded-full border border-vabix-gold bg-vabix-deep-teal text-sm font-semibold text-vabix-gold">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <p className="mt-4 font-semibold uppercase tracking-wide">{s.title}</p>
                 <p className="mt-1 text-sm text-white/70">{s.body}</p>
               </li>
             ))}
           </ol>
 
-          <p className="mt-14 text-sm font-semibold uppercase tracking-[0.16em] text-vabix-gold">Một ngày học / 300 phút thực hành có hướng dẫn</p>
-          <div className="mt-5 flex overflow-hidden rounded-full border border-white/10 text-xs font-semibold sm:text-sm">
-            {k.method.day.map((b, i) => (
-              <div
-                key={b.label}
-                style={{ flexGrow: b.minutes }}
-                className={`basis-0 px-2 py-3 text-center ${b.label === "MyBizCar" ? "bg-vabix-gold text-vabix-deep-teal" : i % 2 ? "bg-white/10" : "bg-white/[0.04]"}`}
-              >
-                {b.minutes}’
+          <div className="mt-16 grid gap-10 lg:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)]">
+            <div>
+              <p className="text-sm font-semibold uppercase tracking-[0.16em] text-vabix-gold">Một ngày học · 300 phút thực hành có hướng dẫn</p>
+              <div className="mt-5 flex overflow-hidden rounded-full border border-white/10 text-xs font-semibold sm:text-sm">
+                {k.method.day.map((b, i) => (
+                  <div
+                    key={b.label}
+                    style={{ flexGrow: b.minutes }}
+                    className={`basis-0 px-2 py-3 text-center ${b.label === "MyBizCar" ? "bg-vabix-gold text-vabix-deep-teal" : i % 2 ? "bg-white/10" : "bg-white/[0.04]"}`}
+                  >
+                    {b.minutes}’
+                  </div>
+                ))}
               </div>
-            ))}
-          </div>
-          <ul className="mt-3 flex flex-wrap gap-x-5 gap-y-1 text-sm text-white/70">
-            {k.method.day.map((b) => (
-              <li key={b.label}>
-                <span className="font-semibold text-vabix-soft-gold">{b.minutes}’</span> {b.label}
-              </li>
-            ))}
-          </ul>
-
-          <p className="mt-14 text-sm font-semibold uppercase tracking-[0.16em] text-vabix-gold">Ba lớp hỗ trợ cho việc ứng dụng</p>
-          <div className="mt-5 grid gap-4 md:grid-cols-3">
-            {k.method.support.map((s) => (
-              <div key={s.title} className="rounded-[20px] border border-vabix-gold/30 p-6">
-                <p className="text-xl font-semibold uppercase text-vabix-gold">{s.title}</p>
-                <p className="mt-2 text-white/75">{s.body}</p>
-              </div>
-            ))}
+              <ul className="mt-3 flex flex-wrap gap-x-5 gap-y-1 text-sm text-white/70">
+                {k.method.day.map((b) => (
+                  <li key={b.label}>
+                    <span className="font-semibold text-vabix-soft-gold">{b.minutes}’</span> {b.label}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <p className="text-sm font-semibold uppercase tracking-[0.16em] text-vabix-gold">Ba lớp hỗ trợ cho việc ứng dụng</p>
+              <ul className="mt-5 divide-y divide-white/10 rounded-[20px] border border-vabix-gold/30">
+                {k.method.support.map((s) => (
+                  <li key={s.title} className="flex items-baseline justify-between gap-4 px-5 py-4">
+                    <span className="font-semibold uppercase text-vabix-gold">{s.title}</span>
+                    <span className="text-right text-sm text-white/75">{s.body}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </Container>
       </section>
@@ -248,14 +308,13 @@ export function BmdoLanding() {
         <Container>
           <Heading eyebrow="Kết quả mang về" title={k.outcomes.title} gold={k.outcomes.titleGold} />
           <p className="mt-6 max-w-3xl text-lg text-vabix-muted">{k.outcomes.body}</p>
-          <div className="mt-10 grid gap-4 sm:grid-cols-2">
+          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {k.outcomes.items.map((o, i) => (
-              <article key={o.title} className="flex gap-5 rounded-[20px] border border-vabix-deep-teal/10 bg-white p-6">
-                <p className="text-3xl font-semibold text-vabix-gold">{String(i + 1).padStart(2, "0")}</p>
-                <div>
-                  <h3 className="font-semibold uppercase tracking-wide text-vabix-deep-teal">{o.title}</h3>
-                  <p className="mt-2 text-vabix-muted">{o.body}</p>
-                </div>
+              <article key={o.title} className="rounded-[20px] border border-vabix-deep-teal/10 bg-white p-6 shadow-[0_10px_30px_rgba(22,60,62,0.06)]">
+                <span aria-hidden="true" className="block h-1 w-10 rounded-full bg-vabix-gold" />
+                <p className="mt-5 text-3xl font-semibold text-vabix-gold">{String(i + 1).padStart(2, "0")}</p>
+                <h3 className="mt-4 font-semibold uppercase tracking-wide text-vabix-deep-teal">{o.title}</h3>
+                <p className="mt-2 text-vabix-muted">{o.body}</p>
               </article>
             ))}
           </div>
@@ -266,8 +325,7 @@ export function BmdoLanding() {
       <section id="dang-ky" className="scroll-mt-24 bg-vabix-deep-teal py-16 text-vabix-warm sm:py-24">
         <Container className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)] lg:gap-16">
           <div>
-            <span aria-hidden="true" className="block h-px w-full bg-vabix-gold/50" />
-            <p className="mt-8 text-xs font-semibold uppercase tracking-[0.22em] text-vabix-gold">BMDO / {k.cohort}</p>
+            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-vabix-gold">BMDO / {k.cohort}</p>
             <h2 className="mt-3 text-3xl font-semibold uppercase sm:text-4xl">Đăng ký tham gia</h2>
             <p className="mt-3 font-semibold uppercase tracking-wide text-vabix-gold">Dự kiến khai giảng {k.enrol.opening}</p>
             <dl className="mt-8 space-y-5">

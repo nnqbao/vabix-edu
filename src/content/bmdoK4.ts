@@ -196,3 +196,10 @@ export const bmdoK4 = {
     note: "Học viên chuẩn bị máy tính, một bài toán ưu tiên và dữ liệu quản trị cơ bản. Thông tin kỳ học có thể được cập nhật khi Ban tổ chức xác nhận.",
   },
 } as const;
+
+// Ảnh lớp học cho gallery chạy ngang trên landing BMDO. Thêm ảnh lớp thật vào đây (đặt file trong public/images).
+export const bmdoClassPhotos = [
+  { src: "/images/about/dao-tao-thuc-chien.jpg", alt: "Học viên thảo luận cùng giảng viên trong buổi đào tạo thực chiến" },
+  { src: "/images/hero/sihub-workshop.jpg", alt: "Lớp học tại SIHUB — Đồng hành cùng startup & SME" },
+  { src: "/images/about/vnpt-session.jpg", alt: "Buổi đào tạo nâng cao năng lực thực chiến cho đội ngũ kinh doanh" },
+] as const;

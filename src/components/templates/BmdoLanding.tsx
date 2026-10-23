@@ -10,23 +10,88 @@ import { paths } from "@/lib/paths";
 const hotline = siteConfig.contact.hotline;
 const hotlineHref = siteConfig.contact.hotlineHref;
 
-function BizCarRing({ className = "", dark = false }: { className?: string; dark?: boolean }) {
+const RING_R = 150;
+const RING_C = 2 * Math.PI * RING_R;
+const COMET_SECONDS = 12;
+const COMET_SEGMENTS = [0.12, 0.22, 0.38, 0.6, 1];
+const COMET_SEG = 28;
+
+function BizCarRing({ className = "" }: { className?: string }) {
   const nodes = Array.from({ length: 12 }, (_, i) => {
     const a = ((i * 30 - 90) * Math.PI) / 180;
-    return { n: i + 1, x: 200 + 150 * Math.cos(a), y: 200 + 150 * Math.sin(a), gold: i % 3 === 0 };
+    // Thời điểm đầu vệt sáng chạm nút i — nút loé sáng đúng lúc đó (delay âm để chạy ổn định ngay khi tải).
+    const reach = ((((i * RING_C) / 12 - COMET_SEG * COMET_SEGMENTS.length) / RING_C) * COMET_SECONDS + COMET_SECONDS) % COMET_SECONDS;
+    return { n: i + 1, x: 200 + RING_R * Math.cos(a), y: 200 + RING_R * Math.sin(a), gold: i % 3 === 0, delay: reach - COMET_SECONDS };
   });
-  const line = dark ? "rgba(228,184,98,0.3)" : "rgba(22,60,62,0.16)";
+  const ticks = Array.from({ length: 60 }, (_, i) => {
+    const a = (i * 6 * Math.PI) / 180;
+    const inner = i % 5 === 0 ? 181 : 185;
+    return { x1: 200 + inner * Math.cos(a), y1: 200 + inner * Math.sin(a), x2: 200 + 190 * Math.cos(a), y2: 200 + 190 * Math.sin(a), major: i % 5 === 0 };
+  });
   return (
-    <svg viewBox="0 0 400 400" className={className} role="img" aria-label="Mô hình BizCar — 12 miền quản trị">
-      <circle cx="200" cy="200" r="190" fill="none" stroke={line} />
-      <circle cx="200" cy="200" r="150" fill="none" stroke="rgba(222,164,67,0.6)" strokeWidth="1.5" />
-      <circle cx="200" cy="200" r="104" fill="none" stroke={line} strokeDasharray="2 6" />
-      <circle cx="200" cy="200" r="62" fill={dark ? "#214f51" : "#163c3e"} stroke="#dea443" strokeWidth="2" />
+    <svg viewBox="0 0 400 400" className={`bmdo-ring ${className}`} role="img" aria-label="Mô hình BizCar — 12 miền quản trị">
+      <defs>
+        <radialGradient id="bmdo-ring-core" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stopColor="#dea443" stopOpacity="0.38" />
+          <stop offset="100%" stopColor="#dea443" stopOpacity="0" />
+        </radialGradient>
+        <filter id="bmdo-ring-glow" x="-50%" y="-50%" width="200%" height="200%">
+          <feGaussianBlur stdDeviation="3" result="b" />
+          <feMerge>
+            <feMergeNode in="b" />
+            <feMergeNode in="SourceGraphic" />
+          </feMerge>
+        </filter>
+      </defs>
+
+      <g className="bmdo-ring-orbit">
+        <circle cx="200" cy="200" r="190" fill="none" stroke="rgba(228,184,98,0.22)" />
+        {ticks.map((t, i) => (
+          <line key={i} x1={t.x1} y1={t.y1} x2={t.x2} y2={t.y2} stroke="#e4b862" strokeOpacity={t.major ? 0.45 : 0.18} strokeWidth="1" />
+        ))}
+        <circle cx="200" cy="10" r="3.5" fill="#e4b862" filter="url(#bmdo-ring-glow)" />
+      </g>
+
+      <circle className="bmdo-ring-breathe" cx="200" cy="200" r="100" fill="url(#bmdo-ring-core)" />
+      <circle className="bmdo-ring-spin-rev" cx="200" cy="200" r="104" fill="none" stroke="rgba(228,184,98,0.32)" strokeDasharray="2 6" />
+
+      <circle cx="200" cy="200" r={RING_R} fill="none" stroke="rgba(222,164,67,0.45)" strokeWidth="1.5" />
+      <g transform="rotate(-90 200 200)" filter="url(#bmdo-ring-glow)">
+        {COMET_SEGMENTS.map((opacity, k) => (
+          <circle
+            key={k}
+            className="bmdo-ring-comet"
+            cx="200"
+            cy="200"
+            r={RING_R}
+            fill="none"
+            stroke="#f4d7a6"
+            strokeOpacity={opacity}
+            strokeWidth={2 + k * 0.5}
+            strokeLinecap="round"
+            strokeDasharray={`${COMET_SEG} ${RING_C - COMET_SEG}`}
+            style={{ ["--bmdo-comet-from" as string]: `${-k * COMET_SEG}`, ["--bmdo-comet-to" as string]: `${-k * COMET_SEG - RING_C}` }}
+          />
+        ))}
+      </g>
+
+      <circle cx="200" cy="200" r="62" fill="#214f51" stroke="#dea443" strokeWidth="2" />
       <text x="200" y="194" textAnchor="middle" fill="#dea443" fontSize="26" fontWeight="700">BIZ</text>
       <text x="200" y="224" textAnchor="middle" fill="#fcfbf8" fontSize="26" fontWeight="700">CAR</text>
+
       {nodes.map((p) => (
         <g key={p.n}>
-          <circle cx={p.x} cy={p.y} r="15" fill={p.gold ? "#dea443" : dark ? "#214f51" : "#163c3e"} stroke={dark ? "rgba(228,184,98,0.45)" : "#fcfbf8"} strokeWidth="1.5" />
+          <circle className="bmdo-ring-halo" cx={p.x} cy={p.y} r="15" fill="none" stroke="#f4d7a6" strokeWidth="1.5" style={{ animationDelay: `${p.delay.toFixed(2)}s` }} />
+          <circle
+            className="bmdo-ring-node"
+            cx={p.x}
+            cy={p.y}
+            r="15"
+            fill={p.gold ? "#dea443" : "#214f51"}
+            stroke="rgba(228,184,98,0.45)"
+            strokeWidth="1.5"
+            style={{ animationDelay: `${p.delay.toFixed(2)}s` }}
+          />
           <text x={p.x} y={p.y + 4.5} textAnchor="middle" fill={p.gold ? "#163c3e" : "#fcfbf8"} fontSize="12" fontWeight="700">
             {p.n}
           </text>
@@ -117,7 +182,7 @@ export function BmdoLanding() {
             </div>
           </div>
           <div className="relative mx-auto w-full max-w-[30rem]">
-            <BizCarRing dark className="w-full" />
+            <BizCarRing className="w-full" />
             <ul className="mt-4 grid grid-cols-3 gap-2">
               {k.stats.map((s) => (
                 <li key={s.value} className="rounded-2xl border border-white/10 bg-vabix-deep-teal/85 px-3 py-3 text-center backdrop-blur">

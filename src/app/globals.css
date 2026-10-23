@@ -4719,3 +4719,120 @@ section[id],
     animation: none;
   }
 }
+
+/* BMDO landing — vòng BizCar chuyển động ở hero */
+.bmdo-ring {
+  animation: bmdo-ring-enter 1.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.bmdo-ring-orbit,
+.bmdo-ring-spin-rev {
+  transform-box: view-box;
+  transform-origin: 200px 200px;
+}
+
+.bmdo-ring-orbit {
+  animation: bmdo-ring-spin 48s linear infinite;
+}
+
+.bmdo-ring-spin-rev {
+  animation: bmdo-ring-spin 90s linear infinite reverse;
+}
+
+.bmdo-ring-breathe {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: bmdo-ring-breathe 5s ease-in-out infinite;
+}
+
+.bmdo-ring-comet {
+  animation: bmdo-ring-comet 12s linear infinite;
+}
+
+.bmdo-ring-halo {
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: bmdo-ring-halo 12s ease-out infinite;
+}
+
+.bmdo-ring-node {
+  animation: bmdo-ring-node 12s ease-out infinite;
+}
+
+@keyframes bmdo-ring-enter {
+  from {
+    opacity: 0;
+    transform: scale(0.94) rotate(-8deg);
+  }
+}
+
+@keyframes bmdo-ring-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes bmdo-ring-breathe {
+  0%,
+  100% {
+    opacity: 0.55;
+    transform: scale(0.9);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.12);
+  }
+}
+
+@keyframes bmdo-ring-comet {
+  from {
+    stroke-dashoffset: var(--bmdo-comet-from);
+  }
+  to {
+    stroke-dashoffset: var(--bmdo-comet-to);
+  }
+}
+
+@keyframes bmdo-ring-halo {
+  0% {
+    opacity: 0.9;
+    transform: scale(1);
+  }
+  14% {
+    opacity: 0;
+    transform: scale(2.3);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(2.3);
+  }
+}
+
+@keyframes bmdo-ring-node {
+  0% {
+    stroke: #f4d7a6;
+    stroke-width: 3;
+  }
+  12%,
+  100% {
+    stroke: rgba(228, 184, 98, 0.45);
+    stroke-width: 1.5;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bmdo-ring,
+  .bmdo-ring-orbit,
+  .bmdo-ring-spin-rev,
+  .bmdo-ring-breathe,
+  .bmdo-ring-node {
+    animation: none;
+  }
+
+  .bmdo-ring-comet,
+  .bmdo-ring-halo {
+    animation: none;
+    opacity: 0;
+  }
+}

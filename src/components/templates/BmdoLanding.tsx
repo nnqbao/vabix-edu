@@ -2,6 +2,7 @@ import Image from "next/image";
 import { bmdoClassPhotos, bmdoK4 as k } from "@/content/bmdoK4";
 import { LeadForm } from "@/components/forms/LeadForm";
 import { BmdoTvc } from "@/components/templates/BmdoTvc";
+import { RevealOnView } from "@/components/templates/RevealOnView";
 import { Breadcrumb } from "@/components/ui/Misc";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Section";
@@ -442,61 +443,80 @@ export function BmdoLanding() {
       </section>
 
       {/* Phương pháp */}
-      <section className="bg-vabix-deep-teal py-16 text-vabix-warm sm:py-24">
-        <Container>
-          <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:items-end">
-            <Heading light eyebrow="Phương pháp học và hỗ trợ" title={k.method.title} gold={k.method.titleGold} />
-            <p className="text-lg leading-relaxed text-white/75">{k.method.body}</p>
-          </div>
-
-          <p className="mt-14 text-sm font-semibold uppercase tracking-[0.16em] text-vabix-gold">Chu trình thực hành APPLIER</p>
-          <ol className="relative mt-8 grid grid-cols-2 gap-x-4 gap-y-6 sm:grid-cols-4 sm:gap-y-8 lg:grid-cols-7">
-            <span aria-hidden="true" className="absolute left-6 right-6 top-6 hidden h-px bg-vabix-gold/35 lg:block" />
-            {k.method.applier.map((s, i) => (
-              <li key={s.title} className="relative">
-                <span className="relative grid h-12 w-12 place-items-center rounded-full border border-vabix-gold bg-vabix-deep-teal text-sm font-semibold text-vabix-gold">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                <p className="mt-4 font-semibold uppercase tracking-wide">{s.title}</p>
-                <p className="mt-1 text-sm text-white/70">{s.body}</p>
-              </li>
-            ))}
-          </ol>
-
-          <div className="mt-16 grid gap-10 lg:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)]">
-            <div>
-              <p className="text-sm font-semibold uppercase tracking-[0.16em] text-vabix-gold">Một ngày học · 300 phút thực hành có hướng dẫn</p>
-              <div className="mt-5 flex overflow-hidden rounded-full border border-white/10 text-xs font-semibold sm:text-sm">
-                {k.method.day.map((b, i) => (
-                  <div
-                    key={b.label}
-                    style={{ flexGrow: b.minutes }}
-                    className={`basis-0 px-2 py-3 text-center ${b.label === "MyBizCar" ? "bg-vabix-gold text-vabix-deep-teal" : i % 2 ? "bg-white/10" : "bg-white/[0.04]"}`}
-                  >
-                    {b.minutes}’
-                  </div>
-                ))}
+      <section className="relative overflow-hidden bg-vabix-deep-teal py-16 text-vabix-warm sm:py-24">
+        <HeroBackdrop />
+        <Container className="relative">
+          <RevealOnView className="bmdo-method">
+            <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:items-end">
+              <div className="bmdo-rv">
+                <Heading light eyebrow="Phương pháp học và hỗ trợ" title={k.method.title} gold={k.method.titleGold} />
               </div>
-              <ul className="mt-3 flex flex-wrap gap-x-5 gap-y-1 text-sm text-white/70">
-                {k.method.day.map((b) => (
-                  <li key={b.label}>
-                    <span className="font-semibold text-vabix-soft-gold">{b.minutes}’</span> {b.label}
-                  </li>
-                ))}
-              </ul>
+              <p className="bmdo-rv text-lg leading-relaxed text-white/75" style={{ ["--rv-i" as string]: 1 }}>
+                {k.method.body}
+              </p>
             </div>
-            <div>
-              <p className="text-sm font-semibold uppercase tracking-[0.16em] text-vabix-gold">Ba lớp hỗ trợ cho việc ứng dụng</p>
-              <ul className="mt-5 divide-y divide-white/10 rounded-[20px] border border-vabix-gold/30">
-                {k.method.support.map((s) => (
-                  <li key={s.title} className="flex flex-col gap-1 px-5 py-4 sm:flex-row sm:items-baseline sm:justify-between sm:gap-4">
-                    <span className="font-semibold uppercase text-vabix-gold">{s.title}</span>
-                    <span className="text-sm text-white/75 sm:text-right">{s.body}</span>
-                  </li>
-                ))}
-              </ul>
+
+            <p className="bmdo-rv mt-14 text-sm font-semibold uppercase tracking-[0.16em] text-vabix-gold" style={{ ["--rv-i" as string]: 2 }}>
+              Chu trình thực hành APPLIER
+            </p>
+            <ol className="relative mt-8 grid grid-cols-2 gap-x-4 gap-y-6 sm:grid-cols-4 sm:gap-y-8 lg:grid-cols-7">
+              <span aria-hidden="true" className="bmdo-applier-line absolute left-6 right-6 top-6 hidden h-px bg-vabix-gold/35 lg:block" />
+              {k.method.applier.map((s, i) => (
+                <li key={s.title} className="bmdo-rv relative" style={{ ["--rv-i" as string]: 3 + i }}>
+                  <span
+                    className="bmdo-applier-dot relative grid h-12 w-12 place-items-center rounded-full border border-vabix-gold bg-vabix-deep-teal text-sm font-semibold text-vabix-gold"
+                    style={{ animationDelay: `${i}s` }}
+                  >
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <p className="mt-4 font-semibold uppercase tracking-wide">{s.title}</p>
+                  <p className="mt-1 text-sm text-white/70">{s.body}</p>
+                </li>
+              ))}
+            </ol>
+
+            <div className="mt-16 grid gap-10 lg:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)]">
+              <div className="bmdo-rv" style={{ ["--rv-i" as string]: 10 }}>
+                <p className="text-sm font-semibold uppercase tracking-[0.16em] text-vabix-gold">Một ngày học · 300 phút thực hành có hướng dẫn</p>
+                <div className="mt-5 flex overflow-hidden rounded-full border border-white/10 text-xs font-semibold sm:text-sm">
+                  {k.method.day.map((b, i) => (
+                    <div
+                      key={b.label}
+                      style={{ flexGrow: b.minutes, ["--rv-i" as string]: 11 + i }}
+                      className={`bmdo-day-seg basis-0 px-2 py-3 text-center ${b.label === "MyBizCar" ? "bmdo-day-seg-hot bg-vabix-gold text-vabix-deep-teal" : i % 2 ? "bg-white/10" : "bg-white/[0.04]"}`}
+                    >
+                      {b.minutes}’
+                    </div>
+                  ))}
+                </div>
+                <ul className="mt-3 flex flex-wrap gap-x-5 gap-y-1 text-sm text-white/70">
+                  {k.method.day.map((b) => (
+                    <li key={b.label}>
+                      <span className="font-semibold text-vabix-soft-gold">{b.minutes}’</span> {b.label}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className="bmdo-rv" style={{ ["--rv-i" as string]: 12 }}>
+                <p className="text-sm font-semibold uppercase tracking-[0.16em] text-vabix-gold">Ba lớp hỗ trợ cho việc ứng dụng</p>
+                <ul className="mt-5 divide-y divide-white/10 overflow-hidden rounded-[20px] border border-vabix-gold/30 bg-vabix-deep-teal/40 backdrop-blur-sm">
+                  {k.method.support.map((s, i) => (
+                    <li
+                      key={s.title}
+                      className="bmdo-rv bmdo-support-row flex flex-col gap-1 px-5 py-4 sm:flex-row sm:items-baseline sm:justify-between sm:gap-4"
+                      style={{ ["--rv-i" as string]: 13 + i }}
+                    >
+                      <span className="flex items-center gap-2.5 font-semibold uppercase text-vabix-gold">
+                        <span aria-hidden="true" className="bmdo-support-dot h-1.5 w-1.5 rounded-full bg-vabix-gold" style={{ animationDelay: `${i * 0.8}s` }} />
+                        {s.title}
+                      </span>
+                      <span className="text-sm text-white/75 sm:text-right">{s.body}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
-          </div>
+          </RevealOnView>
         </Container>
       </section>
 

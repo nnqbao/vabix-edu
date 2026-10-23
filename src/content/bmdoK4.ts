@@ -197,9 +197,30 @@ export const bmdoK4 = {
   },
 } as const;
 
-// Ảnh lớp học cho gallery chạy ngang trên landing BMDO. Thêm ảnh lớp thật vào đây (đặt file trong public/images).
+// Ảnh lớp học cho gallery chạy ngang trên landing BMDO (public/images/bmdo/lop). Nửa đầu là hàng trên, nửa sau là hàng dưới.
 export const bmdoClassPhotos = [
-  { src: "/images/about/dao-tao-thuc-chien.jpg", alt: "Học viên thảo luận cùng giảng viên trong buổi đào tạo thực chiến" },
-  { src: "/images/hero/sihub-workshop.jpg", alt: "Lớp học tại SIHUB — Đồng hành cùng startup & SME" },
-  { src: "/images/about/vnpt-session.jpg", alt: "Buổi đào tạo nâng cao năng lực thực chiến cho đội ngũ kinh doanh" },
+  { src: "/images/bmdo/lop/bmdo-lop-01.jpg", alt: "Ảnh tập thể học viên BMDO trên sân khấu khai giảng" },
+  { src: "/images/bmdo/lop/bmdo-lop-02.jpg", alt: "Học viên thực hành nhóm trên bản thiết kế" },
+  { src: "/images/bmdo/lop/bmdo-lop-03.jpg", alt: "Lớp BMDO tại không gian SIHUB" },
+  { src: "/images/bmdo/lop/bmdo-lop-04.jpg", alt: "Giảng viên chia sẻ mô hình BizCar" },
+  { src: "/images/bmdo/lop/bmdo-lop-05.jpg", alt: "Học viên cùng phân tích trên bản thiết kế doanh nghiệp" },
+  { src: "/images/bmdo/lop/bmdo-lop-06.jpg", alt: "Ảnh tập thể lớp BMDO" },
+  { src: "/images/bmdo/lop/bmdo-lop-07.jpg", alt: "Học viên làm việc tại lớp" },
+  { src: "/images/bmdo/lop/bmdo-lop-08.jpg", alt: "Nhóm học viên thảo luận phương án" },
+  { src: "/images/bmdo/lop/bmdo-lop-09.jpg", alt: "Khách mời và học viên tại lễ khai giảng BMDO" },
+  { src: "/images/bmdo/lop/bmdo-lop-10.jpg", alt: "Giảng viên dẫn dắt buổi học BMDO" },
+  { src: "/images/bmdo/lop/bmdo-lop-11.jpg", alt: "Học viên trình bày phương án cùng nhóm" },
+  { src: "/images/bmdo/lop/bmdo-lop-12.jpg", alt: "Học viên BMDO trong buổi giao lưu cuối khoá" },
+  { src: "/images/bmdo/lop/bmdo-lop-13.jpg", alt: "Ảnh tập thể học viên BMDO tại sân khấu chương trình CEO" },
+  { src: "/images/bmdo/lop/bmdo-lop-14.jpg", alt: "Học viên trao đổi bên bàn thực hành" },
+  { src: "/images/bmdo/lop/bmdo-lop-15.jpg", alt: "Không khí lớp học BMDO tại SIHUB" },
+  { src: "/images/bmdo/lop/bmdo-lop-16.jpg", alt: "Học viên theo dõi bài giảng" },
+  { src: "/images/bmdo/lop/bmdo-lop-17.jpg", alt: "Học viên trao đổi trong giờ nghỉ" },
+  { src: "/images/bmdo/lop/bmdo-lop-18.jpg", alt: "Ảnh tập thể lớp BMDO cuối buổi" },
+  { src: "/images/bmdo/lop/bmdo-lop-19.jpg", alt: "Học viên chăm chú làm bài thực hành" },
+  { src: "/images/bmdo/lop/bmdo-lop-20.jpg", alt: "Lớp BMDO trong buổi giao lưu" },
+  { src: "/images/bmdo/lop/bmdo-lop-21.jpg", alt: "Giảng viên trao đổi cùng học viên" },
+  { src: "/images/bmdo/lop/bmdo-lop-22.jpg", alt: "Học viên tham dự buổi học" },
+  { src: "/images/bmdo/lop/bmdo-lop-23.jpg", alt: "Ảnh tập thể học viên BMDO" },
+  { src: "/images/bmdo/lop/bmdo-lop-24.jpg", alt: "Học viên BMDO trong chuyến dã ngoại" },
 ] as const;

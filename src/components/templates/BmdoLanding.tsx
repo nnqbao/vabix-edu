@@ -252,10 +252,12 @@ export function BmdoLanding() {
             <p className="mt-5 max-w-xl text-base leading-relaxed text-white/75 sm:text-lg">
               {k.eyebrow}. {k.promise}
             </p>
-            <p className="mt-3 text-sm font-medium tracking-wide text-vabix-soft-gold">{k.motto}</p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Button href="#dang-ky">Đăng ký giữ chỗ →</Button>
-              <Button href={hotlineHref} variant="outline" className="border-white/40 text-white">
+            <p className="mt-3 text-balance text-sm font-medium tracking-wide text-vabix-soft-gold">{k.motto}</p>
+            <div className="mt-8 grid gap-3 sm:flex sm:flex-wrap">
+              <Button href="#dang-ky" className="w-full sm:w-auto">
+                Đăng ký giữ chỗ →
+              </Button>
+              <Button href={hotlineHref} variant="outline" className="w-full border-white/40 text-white sm:w-auto">
                 Gọi tư vấn {hotline}
               </Button>
             </div>
@@ -265,7 +267,7 @@ export function BmdoLanding() {
             {/* Điện thoại: nhãn trên vòng quá nhỏ nên ẩn đi và liệt kê 12 miền ở đây. */}
             <ol className="mt-3 grid grid-cols-3 gap-1.5 sm:hidden">
               {k.domains.map((d, i) => (
-                <li key={d} className="flex items-center gap-1.5 rounded-full border border-vabix-gold/25 bg-white/[0.04] px-2 py-1 text-[11px] text-vabix-soft-gold">
+                <li key={d} className="flex items-center gap-1.5 rounded-full border border-vabix-gold/25 bg-white/[0.04] px-2 py-1.5 text-[12px] text-vabix-soft-gold">
                   <span className="font-semibold text-vabix-gold">{i + 1}</span>
                   <span className="truncate">{d}</span>
                 </li>
@@ -279,7 +281,7 @@ export function BmdoLanding() {
                   style={{ ["--bmdo-stat-i" as string]: i }}
                 >
                   <p className="text-lg font-semibold uppercase leading-tight text-vabix-gold sm:text-xl">{s.value}</p>
-                  <p className="mt-1 text-balance text-[11px] leading-snug text-white/65 sm:text-xs">{s.label}</p>
+                  <p className="mt-1 text-balance text-[12px] leading-snug text-white/70 sm:text-xs">{s.label}</p>
                 </li>
               ))}
             </ul>
@@ -290,9 +292,12 @@ export function BmdoLanding() {
       {/* Thanh thông tin khoá */}
       <section className="relative z-10 bg-vabix-warm">
         <Container>
-          <div className="-mt-px grid gap-px overflow-hidden rounded-b-[22px] bg-vabix-deep-teal/10 shadow-[0_18px_40px_rgba(22,60,62,0.12)] sm:grid-cols-2 lg:grid-cols-4">
-            {facts.map((f) => (
-              <div key={f.label} className="flex min-h-[8.5rem] flex-col items-center justify-center bg-white px-6 py-6 text-center">
+          <div className="-mt-px grid gap-px overflow-hidden rounded-b-[22px] bg-vabix-deep-teal/10 shadow-[0_18px_40px_rgba(22,60,62,0.12)] grid-cols-2 lg:grid-cols-4">
+            {facts.map((f, i) => (
+              <div
+                key={f.label}
+                className={`flex min-h-[7rem] flex-col items-center justify-center bg-white px-4 py-5 text-center sm:min-h-[8.5rem] sm:px-6 sm:py-6 ${i === 2 ? "col-span-2 sm:col-span-1" : ""}`}
+              >
                 <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-vabix-muted">{f.label}</p>
                 <span aria-hidden="true" className="mt-2.5 block h-px w-8 bg-vabix-gold/60" />
                 <p className="mt-2.5 max-w-[16rem] text-balance text-[17px] font-semibold leading-snug text-vabix-deep-teal">
@@ -304,7 +309,7 @@ export function BmdoLanding() {
                 </p>
               </div>
             ))}
-            <div className="flex min-h-[8.5rem] flex-col items-center justify-center bg-vabix-ivory px-6 py-6 text-center">
+            <div className="col-span-2 flex min-h-[7rem] flex-col items-center justify-center bg-vabix-ivory px-4 py-5 text-center sm:col-span-1 sm:min-h-[8.5rem] sm:px-6 sm:py-6">
               <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-vabix-muted">Học phí ưu đãi</p>
               <p className="mt-2 flex items-baseline justify-center gap-2">
                 <span className="text-2xl font-semibold text-vabix-deep-teal">{k.enrol.price}</span>
@@ -392,10 +397,16 @@ export function BmdoLanding() {
           <p className="mx-auto mt-5 max-w-2xl text-center text-lg text-vabix-muted">
             Mỗi ngày học gắn với một bộ phận của Chiếc Xe Doanh Nghiệp và kết thúc bằng một thiết kế đầu ra cụ thể.
           </p>
-          <div className="mt-12 grid gap-6 lg:grid-cols-2">
+          <p className="mt-8 text-center text-sm font-medium text-vabix-muted md:hidden" aria-hidden="true">
+            Vuốt ngang để xem 4 chặng →
+          </p>
+          <div className="-mx-4 mt-4 flex scroll-px-4 snap-x snap-mandatory items-start gap-4 overflow-x-auto px-4 pb-4 [scrollbar-width:none] md:mx-0 md:mt-12 md:grid md:grid-cols-2 md:gap-6 md:overflow-visible md:px-0 md:pb-0 [&::-webkit-scrollbar]:hidden">
             {k.phases.map((phase) => (
-              <article key={phase.number} className="overflow-hidden rounded-[24px] border border-vabix-deep-teal/10 bg-white">
-                <header className="relative bg-vabix-deep-teal px-7 py-6 text-vabix-warm">
+              <article
+                key={phase.number}
+                className="w-[88%] shrink-0 snap-start overflow-hidden rounded-[24px] border border-vabix-deep-teal/10 bg-white md:w-auto"
+              >
+                <header className="relative bg-vabix-deep-teal px-5 py-5 text-vabix-warm sm:px-7 sm:py-6">
                   <span aria-hidden="true" className="absolute right-6 top-3 text-6xl font-bold text-white/[0.06]">
                     {phase.number}
                   </span>
@@ -409,7 +420,7 @@ export function BmdoLanding() {
                 </header>
                 <ol className="divide-y divide-vabix-deep-teal/10">
                   {phase.sessions.map((d) => (
-                    <li key={d.day} className="grid grid-cols-[3rem_minmax(0,1fr)] gap-4 px-7 py-5">
+                    <li key={d.day} className="grid grid-cols-[2.25rem_minmax(0,1fr)] gap-3 px-5 py-4 sm:grid-cols-[3rem_minmax(0,1fr)] sm:gap-4 sm:px-7 sm:py-5">
                       <span className="text-2xl font-semibold text-vabix-gold">{d.day}</span>
                       <div>
                         <h4 className="font-semibold text-vabix-deep-teal">{d.title}</h4>
@@ -438,7 +449,7 @@ export function BmdoLanding() {
           </div>
 
           <p className="mt-14 text-sm font-semibold uppercase tracking-[0.16em] text-vabix-gold">Chu trình thực hành APPLIER</p>
-          <ol className="relative mt-8 grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-4 lg:grid-cols-7">
+          <ol className="relative mt-8 grid grid-cols-2 gap-x-4 gap-y-6 sm:grid-cols-4 sm:gap-y-8 lg:grid-cols-7">
             <span aria-hidden="true" className="absolute left-6 right-6 top-6 hidden h-px bg-vabix-gold/35 lg:block" />
             {k.method.applier.map((s, i) => (
               <li key={s.title} className="relative">
@@ -477,9 +488,9 @@ export function BmdoLanding() {
               <p className="text-sm font-semibold uppercase tracking-[0.16em] text-vabix-gold">Ba lớp hỗ trợ cho việc ứng dụng</p>
               <ul className="mt-5 divide-y divide-white/10 rounded-[20px] border border-vabix-gold/30">
                 {k.method.support.map((s) => (
-                  <li key={s.title} className="flex items-baseline justify-between gap-4 px-5 py-4">
+                  <li key={s.title} className="flex flex-col gap-1 px-5 py-4 sm:flex-row sm:items-baseline sm:justify-between sm:gap-4">
                     <span className="font-semibold uppercase text-vabix-gold">{s.title}</span>
-                    <span className="text-right text-sm text-white/75">{s.body}</span>
+                    <span className="text-sm text-white/75 sm:text-right">{s.body}</span>
                   </li>
                 ))}
               </ul>
@@ -495,7 +506,7 @@ export function BmdoLanding() {
           <p className="mt-6 max-w-3xl text-lg text-vabix-muted">{k.outcomes.body}</p>
           <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {k.outcomes.items.map((o, i) => (
-              <article key={o.title} className="rounded-[20px] border border-vabix-deep-teal/10 bg-white p-6 shadow-[0_10px_30px_rgba(22,60,62,0.06)]">
+              <article key={o.title} className="rounded-[20px] border border-vabix-deep-teal/10 bg-white p-5 shadow-[0_10px_30px_rgba(22,60,62,0.06)] sm:p-6">
                 <span aria-hidden="true" className="block h-1 w-10 rounded-full bg-vabix-gold" />
                 <p className="mt-5 text-3xl font-semibold text-vabix-gold">{String(i + 1).padStart(2, "0")}</p>
                 <h3 className="mt-4 font-semibold uppercase tracking-wide text-vabix-deep-teal">{o.title}</h3>
@@ -541,7 +552,7 @@ export function BmdoLanding() {
             </div>
             <p className="mt-8 text-sm leading-relaxed text-white/60">{k.enrol.note}</p>
           </div>
-          <div className="rounded-[22px] bg-white p-6 text-vabix-ink sm:p-8">
+          <div className="bmdo-form rounded-[22px] bg-white p-5 text-vabix-ink sm:p-8">
             <LeadForm type="bmdo" program="bmdo" title="Đăng ký giữ chỗ BMDO Khoá 04" />
           </div>
         </Container>

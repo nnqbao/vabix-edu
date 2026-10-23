@@ -166,7 +166,7 @@ const HERO_SPARKS = [
   { left: 95, size: 2, delay: 1, duration: 21 },
 ];
 
-function HeroBackdrop() {
+export function HeroBackdrop() {
   return (
     <div aria-hidden="true" className="bmdo-hero-bg pointer-events-none absolute inset-0 overflow-hidden">
       <span className="bmdo-hero-blob bmdo-hero-blob-a" />
@@ -185,7 +185,7 @@ function HeroBackdrop() {
   );
 }
 
-function Heading({ eyebrow, title, gold, light = false, center = false }: { eyebrow: string; title: string; gold: string; light?: boolean; center?: boolean }) {
+export function Heading({ eyebrow, title, gold, light = false, center = false }: { eyebrow: string; title: string; gold: string; light?: boolean; center?: boolean }) {
   return (
     <div className={center ? "mx-auto max-w-3xl text-center" : "max-w-3xl"}>
       <p className="eyebrow">{eyebrow}</p>

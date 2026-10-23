@@ -5547,3 +5547,82 @@ section[id],
     animation: none;
   }
 }
+
+/* BABOSORA landing — phễu dòng chảy doanh thu */
+.babo-funnel {
+  animation: bmdo-ring-enter 1.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.babo-band {
+  animation: babo-band 3.6s ease-in-out infinite;
+}
+
+@keyframes babo-band {
+  0%,
+  100% {
+    stroke: rgba(228, 184, 98, 0.45);
+    filter: none;
+  }
+  20% {
+    stroke: #f4d7a6;
+    filter: drop-shadow(0 0 8px rgba(222, 164, 67, 0.55));
+  }
+  40% {
+    stroke: rgba(228, 184, 98, 0.45);
+    filter: none;
+  }
+}
+
+.babo-drop {
+  opacity: 0;
+  transform-box: fill-box;
+  animation-name: babo-drop;
+  animation-timing-function: cubic-bezier(0.45, 0, 0.55, 1);
+  animation-iteration-count: infinite;
+}
+
+@keyframes babo-drop {
+  0% {
+    opacity: 0;
+    transform: translateY(0);
+  }
+  12% {
+    opacity: 0.9;
+  }
+  80% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(300px);
+  }
+}
+
+.babo-loop {
+  animation: babo-loop 2.2s linear infinite;
+}
+
+@keyframes babo-loop {
+  to {
+    stroke-dashoffset: -22;
+  }
+}
+
+.babo-ra-glow {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: bmdo-ring-breathe 3.6s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .babo-funnel,
+  .babo-band,
+  .babo-loop,
+  .babo-ra-glow {
+    animation: none;
+  }
+
+  .babo-drop {
+    display: none;
+  }
+}

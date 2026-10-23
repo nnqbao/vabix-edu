@@ -5,6 +5,7 @@ import { publishedProgram, publishedPrograms } from "@/platform/cms/catalog";
 import { topicCategories } from "@/content/training";
 import { bmdoLanding } from "@/content/bmdo";
 import { BmdoLanding } from "@/components/templates/BmdoLanding";
+import { BabosoraLanding } from "@/components/templates/BabosoraLanding";
 import { PageHero } from "@/components/layout/PageHero";
 import { Container, SectionHeading } from "@/components/ui/Section";
 import { CTASection } from "@/components/sections/CTASection";
@@ -27,6 +28,13 @@ export function programStaticParams() {
 export async function programMetadata(slug: string): Promise<Metadata> {
   const p = publishedProgram(slug);
   if (!p) return {};
+  if (slug === "babosora") {
+    return createMetadata({
+      title: "BABOSORA — Vận hành và gia tốc dòng chảy doanh thu",
+      description: "Chương trình thực chiến 02 ngày cho doanh chủ, CEO và đội ngũ kinh doanh: B2A × BABOSORA, săn cơ hội NAP × CAP, hỏi chốt ASKING và sáu trục gia tốc doanh thu BRUCCS.",
+      path: paths.program(p.slug),
+    });
+  }
   if (slug === "bmdo") {
     return createMetadata({
       title: "BMDO Khoá 04 — Thiết kế và vận hành doanh nghiệp toàn diện",
@@ -55,6 +63,7 @@ export async function ProgramDetail({ slug }: { slug: string }) {
   const p = publishedProgram(slug);
   if (!p) notFound();
   if (slug === "bmdo") return <BmdoLanding />;
+  if (slug === "babosora") return <BabosoraLanding />;
   const groupLabel = programGroups.find((g) => g.id === p.group)?.label;
   const topics = (p.topicCategories ?? []).map((id) => topicCategories.find((t) => t.id === id)?.label).filter(Boolean);
   const related = publishedPrograms().filter((x) => (p.relatedPrograms ?? []).includes(x.slug));

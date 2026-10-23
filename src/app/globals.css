@@ -4959,7 +4959,8 @@ section[id],
 .bmdo-hero-vignette {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(22, 60, 62, 0.35), transparent 22%, transparent 80%, rgba(22, 60, 62, 0.5));
+  /* Hai mép nhạt dần về màu nền đặc để nối liền với các khối nền xanh liền kề. */
+  background: linear-gradient(180deg, #163c3e, rgba(22, 60, 62, 0) 20%, rgba(22, 60, 62, 0) 78%, #163c3e);
 }
 
 @keyframes bmdo-hero-drift-a {
@@ -5238,5 +5239,160 @@ section[id],
 @media (max-width: 639px) {
   .bmdo-form button[type="submit"] {
     width: 100%;
+  }
+}
+
+/* BMDO landing — khung video TVC: viền sáng chạy quanh, quầng sáng, nẹp góc */
+@property --bmdo-tvc-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+.bmdo-tvc-border {
+  z-index: 1;
+  background: conic-gradient(
+    from var(--bmdo-tvc-angle),
+    rgba(228, 184, 98, 0.18) 0deg,
+    rgba(228, 184, 98, 0.18) 230deg,
+    rgba(244, 215, 166, 0.95) 300deg,
+    #dea443 325deg,
+    rgba(228, 184, 98, 0.18) 360deg
+  );
+  box-shadow:
+    0 30px 80px rgba(0, 0, 0, 0.45),
+    0 0 0 1px rgba(228, 184, 98, 0.08);
+  animation: bmdo-tvc-spin 9s linear infinite;
+}
+
+/* Quầng sáng nhoè chạy theo dải sáng của viền. */
+.bmdo-tvc-border::before {
+  content: "";
+  position: absolute;
+  inset: -3px;
+  z-index: -1;
+  border-radius: inherit;
+  background: conic-gradient(from var(--bmdo-tvc-angle), transparent 0deg, transparent 260deg, rgba(244, 215, 166, 0.9) 305deg, rgba(222, 164, 67, 0.8) 325deg, transparent 360deg);
+  filter: blur(16px);
+  opacity: 0.7;
+  animation: bmdo-tvc-spin 9s linear infinite;
+}
+
+.bmdo-tvc-glow {
+  position: absolute;
+  inset: -10% -8%;
+  z-index: 0;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(222, 164, 67, 0.3), rgba(222, 164, 67, 0.08) 60%, transparent);
+  filter: blur(40px);
+  pointer-events: none;
+  animation: bmdo-tvc-glow 6s ease-in-out infinite;
+}
+
+.bmdo-tvc-corner {
+  position: absolute;
+  z-index: 1;
+  width: 34px;
+  height: 34px;
+  border-color: rgba(228, 184, 98, 0.7);
+  border-style: solid;
+  border-width: 0;
+  pointer-events: none;
+  animation: bmdo-tvc-corner 6s ease-in-out infinite;
+}
+
+.bmdo-tvc-corner-tl {
+  top: -14px;
+  left: -14px;
+  border-top-width: 1.5px;
+  border-left-width: 1.5px;
+  border-top-left-radius: 10px;
+}
+
+.bmdo-tvc-corner-tr {
+  top: -14px;
+  right: -14px;
+  border-top-width: 1.5px;
+  border-right-width: 1.5px;
+  border-top-right-radius: 10px;
+}
+
+.bmdo-tvc-corner-bl {
+  bottom: -14px;
+  left: -14px;
+  border-bottom-width: 1.5px;
+  border-left-width: 1.5px;
+  border-bottom-left-radius: 10px;
+}
+
+.bmdo-tvc-corner-br {
+  right: -14px;
+  bottom: -14px;
+  border-right-width: 1.5px;
+  border-bottom-width: 1.5px;
+  border-bottom-right-radius: 10px;
+}
+
+@keyframes bmdo-tvc-spin {
+  to {
+    --bmdo-tvc-angle: 360deg;
+  }
+}
+
+@keyframes bmdo-tvc-glow {
+  0%,
+  100% {
+    opacity: 0.65;
+    transform: scale(0.97);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.03);
+  }
+}
+
+@keyframes bmdo-tvc-corner {
+  0%,
+  100% {
+    opacity: 0.55;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 639px) {
+  .bmdo-tvc-corner {
+    width: 24px;
+    height: 24px;
+  }
+
+  .bmdo-tvc-corner-tl,
+  .bmdo-tvc-corner-tr {
+    top: -10px;
+  }
+
+  .bmdo-tvc-corner-bl,
+  .bmdo-tvc-corner-br {
+    bottom: -10px;
+  }
+
+  .bmdo-tvc-corner-tl,
+  .bmdo-tvc-corner-bl {
+    left: -10px;
+  }
+
+  .bmdo-tvc-corner-tr,
+  .bmdo-tvc-corner-br {
+    right: -10px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bmdo-tvc-border,
+  .bmdo-tvc-border::before,
+  .bmdo-tvc-glow,
+  .bmdo-tvc-corner {
+    animation: none;
   }
 }

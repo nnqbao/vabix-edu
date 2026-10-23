@@ -233,24 +233,31 @@ export function BmdoLanding() {
       {/* Thanh thông tin khoá */}
       <section className="relative z-10 bg-vabix-warm">
         <Container>
-          <div className="-mt-px grid gap-px overflow-hidden rounded-b-[22px] bg-vabix-deep-teal/10 shadow-[0_18px_40px_rgba(22,60,62,0.12)] md:grid-cols-[repeat(3,minmax(0,1fr))_minmax(0,1.25fr)]">
+          <div className="-mt-px grid gap-px overflow-hidden rounded-b-[22px] bg-vabix-deep-teal/10 shadow-[0_18px_40px_rgba(22,60,62,0.12)] sm:grid-cols-2 lg:grid-cols-4">
             {facts.map((f) => (
-              <div key={f.label} className="bg-white px-6 py-5">
+              <div key={f.label} className="flex min-h-[8.5rem] flex-col items-center justify-center bg-white px-6 py-6 text-center">
                 <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-vabix-muted">{f.label}</p>
-                <p className="mt-1.5 font-semibold text-vabix-deep-teal">{f.value}</p>
+                <span aria-hidden="true" className="mt-2.5 block h-px w-8 bg-vabix-gold/60" />
+                <p className="mt-2.5 max-w-[16rem] text-balance text-[17px] font-semibold leading-snug text-vabix-deep-teal">
+                  {f.value.split(" • ").map((line) => (
+                    <span key={line} className="block">
+                      {line}
+                    </span>
+                  ))}
+                </p>
               </div>
             ))}
-            <div className="flex flex-wrap items-center justify-between gap-4 bg-vabix-ivory px-6 py-5">
-              <div>
-                <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-vabix-muted">
-                  Học phí ưu đãi · <span className="line-through">{k.enrol.listPrice}</span>
-                </p>
-                <p className="mt-1 text-2xl font-semibold text-vabix-deep-teal">
-                  {k.enrol.price} <span className="ml-1 align-middle text-xs font-semibold uppercase tracking-[0.12em] text-vabix-gold">−50%</span>
-                </p>
-              </div>
-              <Button href="#dang-ky" variant="teal">
-                Giữ chỗ
+            <div className="flex min-h-[8.5rem] flex-col items-center justify-center bg-vabix-ivory px-6 py-6 text-center">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-vabix-muted">Học phí ưu đãi</p>
+              <p className="mt-2 flex items-baseline justify-center gap-2">
+                <span className="text-2xl font-semibold text-vabix-deep-teal">{k.enrol.price}</span>
+                <span className="rounded-full bg-vabix-gold/15 px-2 py-0.5 text-[11px] font-semibold text-vabix-gold">−50%</span>
+              </p>
+              <p className="mt-0.5 text-xs text-vabix-muted">
+                Giá niêm yết <span className="line-through">{k.enrol.listPrice}</span>
+              </p>
+              <Button href="#dang-ky" variant="teal" className="mt-3 min-h-10 px-6 py-2">
+                Giữ chỗ →
               </Button>
             </div>
           </div>

@@ -1,6 +1,6 @@
 export const bmdoLanding = {
   keyStatement: "Doanh nghiệp là nơi thực hành. MyBizCar là hồ sơ thiết kế. Bằng chứng là căn cứ đánh giá kết quả.",
-  cadence: "Gợi ý nhịp học: 15 tuần, 2 buổi trong cùng một ngày mỗi tuần.",
+  cadence: "Nhịp học: 12 ngày, Thứ Bảy hằng tuần, mỗi ngày 300 phút thực hành có hướng dẫn.",
   sections: [
     {
       id: "problem",
@@ -15,7 +15,7 @@ export const bmdoLanding = {
     {
       id: "curriculum",
       title: "Nội dung",
-      body: "Ba mươi buổi thực hành gắn với 12 khối BizCar, ưu tiên KAROT, thiết kế phương án và đưa vào thực tế để kiểm chứng.",
+      body: "Mười hai ngày học thực hành gắn với 12 khối BizCar, ưu tiên KAROT, thiết kế phương án và đưa vào thực tế để kiểm chứng.",
     },
     {
       id: "applier",

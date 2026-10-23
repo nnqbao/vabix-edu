@@ -23,7 +23,7 @@ const homePrograms = [
     title: "Thao trường Quản trị Doanh nghiệp Toàn diện",
     support: "Theo mô hình The BizCar (BMDO)",
     body: "Giúp doanh chủ nhìn doanh nghiệp như một hệ thống, nhận diện điểm nghẽn và thực hành thiết kế giải pháp ngay trên bài toán doanh nghiệp thật.",
-    meta: ["30 buổi thực chiến", "12 miền quản trị", "Học để thiết kế", "Rèn để vận hành"],
+    meta: ["60 giờ thực chiến", "12 miền quản trị", "Học để thiết kế", "Rèn để vận hành"],
     cta: "Khám phá BMDO",
     image: "/images/programs/bmdo-poster.webp",
     imagePosition: "10% 28%",

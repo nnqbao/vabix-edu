@@ -71,7 +71,7 @@ export default async function MethodPage({ params }: { params: Promise<{ slug: s
         <section>
           <SectionHeading title="Chương trình BMDO, MBM và công cụ MyBizCar" />
           <p className="measure mt-4 text-vabix-muted">
-            BizCar là mô hình. BMDO là thao trường 30 buổi đào tạo thực hành. MBM là chương trình 12 tháng làm chủ mô hình. 3W là chuẩn thành công WOW–WELL–WIN. MyBizCar là công cụ đánh giá trên 12 khối.
+            BizCar là mô hình. BMDO là thao trường 12 ngày (60 giờ) đào tạo thực hành. MBM là chương trình 12 tháng làm chủ mô hình. 3W là chuẩn thành công WOW–WELL–WIN. MyBizCar là công cụ đánh giá trên 12 khối.
           </p>
           <div className="mt-4 flex flex-wrap gap-3">
             <Link href="/dao-tao/bmdo" className="border border-vabix-deep-teal/15 px-4 py-2 text-sm font-semibold text-vabix-deep-teal">BMDO</Link>

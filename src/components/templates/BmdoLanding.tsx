@@ -101,6 +101,41 @@ function BizCarRing({ className = "" }: { className?: string }) {
   );
 }
 
+// Hạt sáng cố định vị trí (không random) để server và client render giống nhau.
+const HERO_SPARKS = [
+  { left: 6, size: 3, delay: 0, duration: 16 },
+  { left: 14, size: 2, delay: 5, duration: 19 },
+  { left: 23, size: 2.5, delay: 9, duration: 17 },
+  { left: 31, size: 2, delay: 2, duration: 21 },
+  { left: 42, size: 3, delay: 12, duration: 18 },
+  { left: 51, size: 2, delay: 7, duration: 20 },
+  { left: 58, size: 2.5, delay: 14, duration: 16 },
+  { left: 66, size: 2, delay: 3, duration: 22 },
+  { left: 74, size: 3, delay: 10, duration: 18 },
+  { left: 82, size: 2, delay: 6, duration: 19 },
+  { left: 89, size: 2.5, delay: 13, duration: 17 },
+  { left: 95, size: 2, delay: 1, duration: 21 },
+];
+
+function HeroBackdrop() {
+  return (
+    <div aria-hidden="true" className="bmdo-hero-bg pointer-events-none absolute inset-0 overflow-hidden">
+      <span className="bmdo-hero-blob bmdo-hero-blob-a" />
+      <span className="bmdo-hero-blob bmdo-hero-blob-b" />
+      <span className="bmdo-hero-blob bmdo-hero-blob-c" />
+      <span className="bmdo-hero-grid" />
+      {HERO_SPARKS.map((p, i) => (
+        <span
+          key={i}
+          className="bmdo-hero-spark"
+          style={{ left: `${p.left}%`, width: p.size, height: p.size, animationDelay: `-${p.delay}s`, animationDuration: `${p.duration}s` }}
+        />
+      ))}
+      <span className="bmdo-hero-vignette" />
+    </div>
+  );
+}
+
 function Heading({ eyebrow, title, gold, light = false, center = false }: { eyebrow: string; title: string; gold: string; light?: boolean; center?: boolean }) {
   return (
     <div className={center ? "mx-auto max-w-3xl text-center" : "max-w-3xl"}>
@@ -147,11 +182,7 @@ export function BmdoLanding() {
     <>
       {/* Hero */}
       <section className="relative overflow-hidden bg-vabix-deep-teal pt-28 text-vabix-warm sm:pt-32">
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-0"
-          style={{ background: "radial-gradient(ellipse 55% 70% at 78% 45%, rgba(222,164,67,0.14), transparent 65%)" }}
-        />
+        <HeroBackdrop />
         <Container className="relative grid gap-10 pb-14 pt-8 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)] lg:items-center lg:gap-14 lg:pb-20">
           <div>
             <Breadcrumb

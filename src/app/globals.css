@@ -4897,3 +4897,128 @@ section[id],
     transform: none;
   }
 }
+
+/* BMDO landing — nền hero chuyển động nhẹ */
+.bmdo-hero-blob {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(70px);
+  will-change: transform;
+}
+
+.bmdo-hero-blob-a {
+  top: 8%;
+  right: 6%;
+  width: 34rem;
+  height: 34rem;
+  background: radial-gradient(circle, rgba(222, 164, 67, 0.22), transparent 68%);
+  animation: bmdo-hero-drift-a 22s ease-in-out infinite alternate;
+}
+
+.bmdo-hero-blob-b {
+  bottom: -14rem;
+  left: -8rem;
+  width: 38rem;
+  height: 38rem;
+  background: radial-gradient(circle, rgba(64, 140, 130, 0.35), transparent 70%);
+  animation: bmdo-hero-drift-b 28s ease-in-out infinite alternate;
+}
+
+.bmdo-hero-blob-c {
+  top: -10rem;
+  left: 30%;
+  width: 26rem;
+  height: 26rem;
+  background: radial-gradient(circle, rgba(244, 215, 166, 0.12), transparent 70%);
+  animation: bmdo-hero-drift-c 34s ease-in-out infinite alternate;
+}
+
+.bmdo-hero-grid {
+  position: absolute;
+  inset: -40px;
+  background-image: radial-gradient(rgba(228, 184, 98, 0.22) 1px, transparent 1.2px);
+  background-size: 34px 34px;
+  -webkit-mask-image: radial-gradient(ellipse 75% 70% at 60% 45%, #000 15%, transparent 75%);
+  mask-image: radial-gradient(ellipse 75% 70% at 60% 45%, #000 15%, transparent 75%);
+  opacity: 0.55;
+  animation: bmdo-hero-grid 40s linear infinite;
+}
+
+.bmdo-hero-spark {
+  position: absolute;
+  bottom: -10px;
+  border-radius: 9999px;
+  background: #f4d7a6;
+  box-shadow: 0 0 8px 2px rgba(244, 215, 166, 0.45);
+  opacity: 0;
+  animation-name: bmdo-hero-spark;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.bmdo-hero-vignette {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(22, 60, 62, 0.35), transparent 22%, transparent 80%, rgba(22, 60, 62, 0.5));
+}
+
+@keyframes bmdo-hero-drift-a {
+  from {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  to {
+    transform: translate3d(-9rem, 5rem, 0) scale(1.15);
+  }
+}
+
+@keyframes bmdo-hero-drift-b {
+  from {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  to {
+    transform: translate3d(12rem, -6rem, 0) scale(1.1);
+  }
+}
+
+@keyframes bmdo-hero-drift-c {
+  from {
+    transform: translate3d(0, 0, 0) scale(0.9);
+  }
+  to {
+    transform: translate3d(-6rem, 8rem, 0) scale(1.2);
+  }
+}
+
+@keyframes bmdo-hero-grid {
+  to {
+    transform: translate3d(34px, 34px, 0);
+  }
+}
+
+@keyframes bmdo-hero-spark {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 0, 0);
+  }
+  12% {
+    opacity: 0.75;
+  }
+  80% {
+    opacity: 0.35;
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(14px, -78vh, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bmdo-hero-blob,
+  .bmdo-hero-grid {
+    animation: none;
+  }
+
+  .bmdo-hero-spark {
+    display: none;
+  }
+}

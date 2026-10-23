@@ -29,7 +29,7 @@ export async function programMetadata(slug: string): Promise<Metadata> {
   if (!p) return {};
   if (slug === "bmdo") {
     return createMetadata({
-      title: "BMDO Khoá 04 — Giám đốc điều hành: Thiết kế và vận hành doanh nghiệp toàn diện",
+      title: "BMDO Khoá 04 — Thiết kế và vận hành doanh nghiệp toàn diện",
       description: "Chương trình 60 giờ, 12 ngày Thứ Bảy dành cho doanh chủ & CEO: thiết kế 12 miền quản trị theo mô hình BizCar trên MyBizCar. Khai giảng dự kiến 05.12.2026 tại SIHUB, TP.HCM.",
       path: paths.program(p.slug),
     });

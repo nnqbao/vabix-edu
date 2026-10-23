@@ -48,14 +48,16 @@ function Heading({ eyebrow, title, gold, light = false, center = false }: { eyeb
 }
 
 function ClassGallery() {
-  // Lặp ảnh đủ dài để dải chạy liền mạch, rồi nhân đôi để vòng lặp -50% khớp đúng.
-  const base = Array.from({ length: Math.max(2, Math.ceil(8 / bmdoClassPhotos.length)) }, () => bmdoClassPhotos).flat();
-  const rows = [base, [...base].reverse()];
+  // Chia ảnh thành hai hàng; hàng ngắn thì lặp cho đủ dài, rồi nhân đôi để vòng lặp -50% khớp đúng.
+  const half = Math.ceil(bmdoClassPhotos.length / 2);
+  const rows = [bmdoClassPhotos.slice(0, half), bmdoClassPhotos.slice(half)]
+    .filter((row) => row.length)
+    .map((row) => Array.from({ length: Math.ceil(8 / row.length) }, () => row).flat());
   return (
     <div className="space-y-4">
       {rows.map((row, r) => (
         <div key={r} className="bmdo-marquee">
-          <ul className="bmdo-marquee-track" data-reverse={r ? "" : undefined} style={{ ["--bmdo-marquee-duration" as string]: `${row.length * 7}s` }}>
+          <ul className="bmdo-marquee-track" data-reverse={r ? "" : undefined} style={{ ["--bmdo-marquee-duration" as string]: `${row.length * 6}s` }}>
             {[...row, ...row].map((photo, i) => (
               <li key={i} className="mr-4 shrink-0" aria-hidden={i >= row.length || undefined}>
                 <figure className="relative h-48 w-72 overflow-hidden rounded-[18px] sm:h-60 sm:w-[23rem]">

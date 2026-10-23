@@ -184,10 +184,14 @@ export function BmdoLanding() {
           <div className="relative mx-auto w-full max-w-[30rem]">
             <BizCarRing className="w-full" />
             <ul className="mt-4 grid grid-cols-3 gap-2">
-              {k.stats.map((s) => (
-                <li key={s.value} className="rounded-2xl border border-white/10 bg-vabix-deep-teal/85 px-3 py-3 text-center backdrop-blur">
-                  <p className="text-lg font-semibold uppercase text-vabix-gold sm:text-xl">{s.value}</p>
-                  <p className="mt-0.5 text-[11px] leading-tight text-white/65 sm:text-xs">{s.label}</p>
+              {k.stats.map((s, i) => (
+                <li
+                  key={s.value}
+                  className="bmdo-stat flex min-h-[5.5rem] flex-col items-center justify-center rounded-2xl border border-vabix-gold/20 bg-vabix-deep-teal/85 px-3 py-3 text-center backdrop-blur"
+                  style={{ ["--bmdo-stat-i" as string]: i }}
+                >
+                  <p className="text-lg font-semibold uppercase leading-tight text-vabix-gold sm:text-xl">{s.value}</p>
+                  <p className="mt-1 text-balance text-[11px] leading-snug text-white/65 sm:text-xs">{s.label}</p>
                 </li>
               ))}
             </ul>

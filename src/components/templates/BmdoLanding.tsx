@@ -15,26 +15,52 @@ const RING_C = 2 * Math.PI * RING_R;
 const COMET_SECONDS = 12;
 const COMET_SEGMENTS = [0.12, 0.22, 0.38, 0.6, 1];
 const COMET_SEG = 28;
+// Nhãn tên miền chạy trên elip rộng hơn ở hai bên (nhãn nằm ngang cần nhiều chỗ hơn theo chiều ngang).
+// Phải khớp với @keyframes bmdo-ring-label trong globals.css.
+const LABEL_RX = 234;
+const LABEL_RY = 188;
+const WHEEL_SECONDS = 120;
 
 function BizCarRing({ className = "" }: { className?: string }) {
   const nodes = Array.from({ length: 12 }, (_, i) => {
     const a = ((i * 30 - 90) * Math.PI) / 180;
     // Thời điểm đầu vệt sáng chạm nút i — nút loé sáng đúng lúc đó (delay âm để chạy ổn định ngay khi tải).
     const reach = ((((i * RING_C) / 12 - COMET_SEG * COMET_SEGMENTS.length) / RING_C) * COMET_SECONDS + COMET_SECONDS) % COMET_SECONDS;
-    return { n: i + 1, x: 200 + RING_R * Math.cos(a), y: 200 + RING_R * Math.sin(a), gold: i % 3 === 0, delay: reach - COMET_SECONDS };
+    const label = k.domains[i];
+    return {
+      n: i + 1,
+      label,
+      labelW: Math.round(label.length * 7.1 + 18),
+      lx: 200 + LABEL_RX * Math.cos(a),
+      ly: 200 + LABEL_RY * Math.sin(a),
+      labelDelay: -(i / 12) * WHEEL_SECONDS,
+      x: 200 + RING_R * Math.cos(a),
+      y: 200 + RING_R * Math.sin(a),
+      gold: i % 3 === 0,
+      delay: reach - COMET_SECONDS,
+    };
   });
   const ticks = Array.from({ length: 60 }, (_, i) => {
     const a = (i * 6 * Math.PI) / 180;
     const inner = i % 5 === 0 ? 181 : 185;
     return { x1: 200 + inner * Math.cos(a), y1: 200 + inner * Math.sin(a), x2: 200 + 190 * Math.cos(a), y2: 200 + 190 * Math.sin(a), major: i % 5 === 0 };
   });
+  const logo = { x: 128, y: 119.5, w: 144, h: 161 };
   return (
-    <svg viewBox="0 0 400 400" className={`bmdo-ring ${className}`} role="img" aria-label="Mô hình BizCar — 12 miền quản trị">
+    <svg viewBox="-94 0 588 400" className={`bmdo-ring ${className}`} role="img" aria-label={`Mô hình BizCar — 12 miền quản trị: ${k.domains.join(", ")}`}>
       <defs>
         <radialGradient id="bmdo-ring-core" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stopColor="#dea443" stopOpacity="0.38" />
+          <stop offset="0%" stopColor="#dea443" stopOpacity="0.4" />
           <stop offset="100%" stopColor="#dea443" stopOpacity="0" />
         </radialGradient>
+        <linearGradient id="bmdo-ring-sheen" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0" stopColor="#fff" stopOpacity="0" />
+          <stop offset="0.5" stopColor="#fff8e6" stopOpacity="0.75" />
+          <stop offset="1" stopColor="#fff" stopOpacity="0" />
+        </linearGradient>
+        <mask id="bmdo-ring-logo-mask" maskUnits="userSpaceOnUse" maskContentUnits="userSpaceOnUse" style={{ maskType: "alpha" }}>
+          <image href="/images/bmdo/bizcar-logo.webp" x={logo.x} y={logo.y} width={logo.w} height={logo.h} />
+        </mask>
         <filter id="bmdo-ring-glow" x="-50%" y="-50%" width="200%" height="200%">
           <feGaussianBlur stdDeviation="3" result="b" />
           <feMerge>
@@ -52,48 +78,69 @@ function BizCarRing({ className = "" }: { className?: string }) {
         <circle cx="200" cy="10" r="3.5" fill="#e4b862" filter="url(#bmdo-ring-glow)" />
       </g>
 
-      <circle className="bmdo-ring-breathe" cx="200" cy="200" r="100" fill="url(#bmdo-ring-core)" />
+      <circle className="bmdo-ring-breathe" cx="200" cy="200" r="112" fill="url(#bmdo-ring-core)" />
       <circle className="bmdo-ring-spin-rev" cx="200" cy="200" r="104" fill="none" stroke="rgba(228,184,98,0.32)" strokeDasharray="2 6" />
 
-      <circle cx="200" cy="200" r={RING_R} fill="none" stroke="rgba(222,164,67,0.45)" strokeWidth="1.5" />
-      <g transform="rotate(-90 200 200)" filter="url(#bmdo-ring-glow)">
-        {COMET_SEGMENTS.map((opacity, k) => (
-          <circle
-            key={k}
-            className="bmdo-ring-comet"
-            cx="200"
-            cy="200"
-            r={RING_R}
-            fill="none"
-            stroke="#f4d7a6"
-            strokeOpacity={opacity}
-            strokeWidth={2 + k * 0.5}
-            strokeLinecap="round"
-            strokeDasharray={`${COMET_SEG} ${RING_C - COMET_SEG}`}
-            style={{ ["--bmdo-comet-from" as string]: `${-k * COMET_SEG}`, ["--bmdo-comet-to" as string]: `${-k * COMET_SEG - RING_C}` }}
-          />
+      {/* Logo BizCar ở tâm: bồng bềnh nhẹ, có vệt sáng lướt qua (cắt theo hình logo). */}
+      <g className="bmdo-ring-logo">
+        <image href="/images/bmdo/bizcar-logo.webp" x={logo.x} y={logo.y} width={logo.w} height={logo.h} />
+        <g mask="url(#bmdo-ring-logo-mask)">
+          <rect className="bmdo-ring-logo-sheen" x={logo.x - 60} y={logo.y} width="60" height={logo.h} fill="url(#bmdo-ring-sheen)" />
+        </g>
+      </g>
+
+      {/* Vòng 12 miền xoay chậm; vệt sáng chạy cùng vòng nên nút vẫn loé đúng lúc. Tên miền luôn đứng thẳng. */}
+      <g className="bmdo-ring-wheel">
+        <circle cx="200" cy="200" r={RING_R} fill="none" stroke="rgba(222,164,67,0.45)" strokeWidth="1.5" />
+        <g transform="rotate(-90 200 200)" filter="url(#bmdo-ring-glow)">
+          {COMET_SEGMENTS.map((opacity, i) => (
+            <circle
+              key={i}
+              className="bmdo-ring-comet"
+              cx="200"
+              cy="200"
+              r={RING_R}
+              fill="none"
+              stroke="#f4d7a6"
+              strokeOpacity={opacity}
+              strokeWidth={2 + i * 0.5}
+              strokeLinecap="round"
+              strokeDasharray={`${COMET_SEG} ${RING_C - COMET_SEG}`}
+              style={{ ["--bmdo-comet-from" as string]: `${-i * COMET_SEG}`, ["--bmdo-comet-to" as string]: `${-i * COMET_SEG - RING_C}` }}
+            />
+          ))}
+        </g>
+        {nodes.map((p) => (
+          <g key={p.n} className="bmdo-ring-upright" style={{ transformOrigin: `${p.x.toFixed(2)}px ${p.y.toFixed(2)}px` }}>
+            <circle className="bmdo-ring-halo" cx={p.x} cy={p.y} r="15" fill="none" stroke="#f4d7a6" strokeWidth="1.5" style={{ animationDelay: `${p.delay.toFixed(2)}s` }} />
+            <circle
+              className="bmdo-ring-node"
+              cx={p.x}
+              cy={p.y}
+              r="15"
+              fill={p.gold ? "#dea443" : "#214f51"}
+              stroke="rgba(228,184,98,0.45)"
+              strokeWidth="1.5"
+              style={{ animationDelay: `${p.delay.toFixed(2)}s` }}
+            />
+            <text x={p.x} y={p.y + 4.5} textAnchor="middle" fill={p.gold ? "#163c3e" : "#fcfbf8"} fontSize="12" fontWeight="700">
+              {p.n}
+            </text>
+          </g>
         ))}
       </g>
 
-      <circle cx="200" cy="200" r="62" fill="#214f51" stroke="#dea443" strokeWidth="2" />
-      <text x="200" y="194" textAnchor="middle" fill="#dea443" fontSize="26" fontWeight="700">BIZ</text>
-      <text x="200" y="224" textAnchor="middle" fill="#fcfbf8" fontSize="26" fontWeight="700">CAR</text>
-
+      {/* Tên 12 miền: chạy theo elip cùng nhịp với vòng xoay, luôn nằm ngang và nằm ngoài nút. */}
       {nodes.map((p) => (
-        <g key={p.n}>
-          <circle className="bmdo-ring-halo" cx={p.x} cy={p.y} r="15" fill="none" stroke="#f4d7a6" strokeWidth="1.5" style={{ animationDelay: `${p.delay.toFixed(2)}s` }} />
-          <circle
-            className="bmdo-ring-node"
-            cx={p.x}
-            cy={p.y}
-            r="15"
-            fill={p.gold ? "#dea443" : "#214f51"}
-            stroke="rgba(228,184,98,0.45)"
-            strokeWidth="1.5"
-            style={{ animationDelay: `${p.delay.toFixed(2)}s` }}
-          />
-          <text x={p.x} y={p.y + 4.5} textAnchor="middle" fill={p.gold ? "#163c3e" : "#fcfbf8"} fontSize="12" fontWeight="700">
-            {p.n}
+        <g
+          key={`label-${p.n}`}
+          className="bmdo-ring-label"
+          transform={`translate(${p.lx.toFixed(2)} ${p.ly.toFixed(2)})`}
+          style={{ animationDelay: `${p.labelDelay.toFixed(2)}s` }}
+        >
+          <rect x={-p.labelW / 2} y="-10.5" width={p.labelW} height="21" rx="10.5" fill="rgba(22,60,62,0.9)" stroke="rgba(228,184,98,0.4)" strokeWidth="0.75" />
+          <text y="4.4" textAnchor="middle" fill="#f4d7a6" fontSize="12.5" fontWeight="600">
+            {p.label}
           </text>
         </g>
       ))}
@@ -183,7 +230,7 @@ export function BmdoLanding() {
       {/* Hero */}
       <section className="relative overflow-hidden bg-vabix-deep-teal pt-28 text-vabix-warm sm:pt-32">
         <HeroBackdrop />
-        <Container className="relative grid gap-10 pb-14 pt-8 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)] lg:items-center lg:gap-14 lg:pb-20">
+        <Container className="relative grid gap-10 pb-14 pt-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.12fr)] lg:items-center lg:gap-10 lg:pb-20">
           <div>
             <Breadcrumb
               light
@@ -212,8 +259,17 @@ export function BmdoLanding() {
               </Button>
             </div>
           </div>
-          <div className="relative mx-auto w-full max-w-[30rem]">
+          <div className="relative mx-auto w-full max-w-[38rem]">
             <BizCarRing className="w-full" />
+            {/* Điện thoại: nhãn trên vòng quá nhỏ nên ẩn đi và liệt kê 12 miền ở đây. */}
+            <ol className="mt-3 grid grid-cols-3 gap-1.5 sm:hidden">
+              {k.domains.map((d, i) => (
+                <li key={d} className="flex items-center gap-1.5 rounded-full border border-vabix-gold/25 bg-white/[0.04] px-2 py-1 text-[11px] text-vabix-soft-gold">
+                  <span className="font-semibold text-vabix-gold">{i + 1}</span>
+                  <span className="truncate">{d}</span>
+                </li>
+              ))}
+            </ol>
             <ul className="mt-4 grid grid-cols-3 gap-2">
               {k.stats.map((s, i) => (
                 <li

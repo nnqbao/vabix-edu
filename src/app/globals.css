@@ -5022,3 +5022,207 @@ section[id],
     display: none;
   }
 }
+
+/* BMDO landing — logo BizCar ở tâm và vòng 12 miền xoay */
+.bmdo-ring-wheel {
+  transform-box: view-box;
+  transform-origin: 200px 200px;
+  animation: bmdo-ring-spin 120s linear infinite;
+}
+
+.bmdo-ring-upright {
+  transform-box: view-box;
+  animation: bmdo-ring-spin 120s linear infinite reverse;
+}
+
+.bmdo-ring:hover .bmdo-ring-wheel,
+.bmdo-ring:hover .bmdo-ring-upright {
+  animation-play-state: paused;
+}
+
+.bmdo-ring-logo {
+  animation: bmdo-ring-logo-float 6s ease-in-out infinite;
+  filter: drop-shadow(0 0 10px rgba(222, 164, 67, 0.35));
+}
+
+.bmdo-ring-logo-sheen {
+  animation: bmdo-ring-logo-sheen 6s ease-in-out infinite;
+  animation-delay: 1.5s;
+}
+
+@keyframes bmdo-ring-logo-float {
+  0%,
+  100% {
+    transform: translateY(0);
+    filter: drop-shadow(0 0 8px rgba(222, 164, 67, 0.28));
+  }
+  50% {
+    transform: translateY(-4px);
+    filter: drop-shadow(0 0 16px rgba(222, 164, 67, 0.5));
+  }
+}
+
+@keyframes bmdo-ring-logo-sheen {
+  0% {
+    transform: translateX(0);
+  }
+  35%,
+  100% {
+    transform: translateX(204px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bmdo-ring-wheel,
+  .bmdo-ring-upright,
+  .bmdo-ring-logo,
+  .bmdo-ring-logo-sheen {
+    animation: none;
+  }
+
+  .bmdo-ring-logo-sheen {
+    display: none;
+  }
+}
+
+/* BMDO landing — tên 12 miền chạy theo elip (rx 234, ry 188, tâm 200,200), khớp LABEL_RX/LABEL_RY */
+.bmdo-ring-label {
+  animation: bmdo-ring-label 120s linear infinite;
+}
+
+.bmdo-ring:hover .bmdo-ring-label {
+  animation-play-state: paused;
+}
+
+@keyframes bmdo-ring-label {
+  0% {
+    transform: translate(200.00px, 12.00px);
+  }
+  2.778% {
+    transform: translate(240.63px, 14.86px);
+  }
+  5.556% {
+    transform: translate(280.03px, 23.34px);
+  }
+  8.333% {
+    transform: translate(317.00px, 37.19px);
+  }
+  11.11% {
+    transform: translate(350.41px, 55.98px);
+  }
+  13.89% {
+    transform: translate(379.25px, 79.16px);
+  }
+  16.67% {
+    transform: translate(402.65px, 106.00px);
+  }
+  19.44% {
+    transform: translate(419.89px, 135.70px);
+  }
+  22.22% {
+    transform: translate(430.45px, 167.35px);
+  }
+  25% {
+    transform: translate(434.00px, 200.00px);
+  }
+  27.78% {
+    transform: translate(430.45px, 232.65px);
+  }
+  30.56% {
+    transform: translate(419.89px, 264.30px);
+  }
+  33.33% {
+    transform: translate(402.65px, 294.00px);
+  }
+  36.11% {
+    transform: translate(379.25px, 320.84px);
+  }
+  38.89% {
+    transform: translate(350.41px, 344.02px);
+  }
+  41.67% {
+    transform: translate(317.00px, 362.81px);
+  }
+  44.44% {
+    transform: translate(280.03px, 376.66px);
+  }
+  47.22% {
+    transform: translate(240.63px, 385.14px);
+  }
+  50% {
+    transform: translate(200.00px, 388.00px);
+  }
+  52.78% {
+    transform: translate(159.37px, 385.14px);
+  }
+  55.56% {
+    transform: translate(119.97px, 376.66px);
+  }
+  58.33% {
+    transform: translate(83.00px, 362.81px);
+  }
+  61.11% {
+    transform: translate(49.59px, 344.02px);
+  }
+  63.89% {
+    transform: translate(20.75px, 320.84px);
+  }
+  66.67% {
+    transform: translate(-2.65px, 294.00px);
+  }
+  69.44% {
+    transform: translate(-19.89px, 264.30px);
+  }
+  72.22% {
+    transform: translate(-30.45px, 232.65px);
+  }
+  75% {
+    transform: translate(-34.00px, 200.00px);
+  }
+  77.78% {
+    transform: translate(-30.45px, 167.35px);
+  }
+  80.56% {
+    transform: translate(-19.89px, 135.70px);
+  }
+  83.33% {
+    transform: translate(-2.65px, 106.00px);
+  }
+  86.11% {
+    transform: translate(20.75px, 79.16px);
+  }
+  88.89% {
+    transform: translate(49.59px, 55.98px);
+  }
+  91.67% {
+    transform: translate(83.00px, 37.19px);
+  }
+  94.44% {
+    transform: translate(119.97px, 23.34px);
+  }
+  97.22% {
+    transform: translate(159.37px, 14.86px);
+  }
+  100% {
+    transform: translate(200.00px, 12.00px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bmdo-ring-label {
+    animation: none;
+  }
+}
+
+/* Điện thoại: ẩn nhãn trên vòng (đã có danh sách bên dưới) và phóng sơ đồ cho vừa chiều ngang. */
+@media (max-width: 639px) {
+  .bmdo-ring-label {
+    display: none;
+  }
+
+  .bmdo-ring {
+    width: 148%;
+    max-width: none;
+    margin-left: -24%;
+  }
+}

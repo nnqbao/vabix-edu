@@ -6,6 +6,8 @@ export const bmdoK4 = {
   titleGold: "Thiết kế và vận hành doanh nghiệp toàn diện",
   motto: "Học nhanh – Hiểu sâu – Áp dụng thực tiễn – Tạo hiệu quả",
   promise: "Một hành trình thiết kế lại cách doanh nghiệp vận hành.",
+  // Tên ngắn 12 miền quản trị BizCar, theo thứ tự 12 ngày học của K4 — hiển thị trên vòng BizCar ở hero.
+  domains: ["Chiến lược", "Môi trường", "Giá trị", "Thị trường", "Thương hiệu", "Tổ chức", "Nhân lực", "Tài chính", "Vận hành", "Lãnh đạo", "Văn hóa", "Nguồn lực lõi"],
   stats: [
     { value: "60 giờ", label: "Đào tạo thực chiến" },
     { value: "12 ngày", label: "Thứ Bảy hằng tuần" },

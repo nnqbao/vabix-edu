@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { bmdoClassPhotos, bmdoK4 as k } from "@/content/bmdoK4";
 import { LeadForm } from "@/components/forms/LeadForm";
+import { BmdoTvc } from "@/components/templates/BmdoTvc";
 import { Breadcrumb } from "@/components/ui/Misc";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Section";
@@ -316,6 +317,25 @@ export function BmdoLanding() {
                 Giữ chỗ →
               </Button>
             </div>
+          </div>
+        </Container>
+      </section>
+
+      {/* Phim giới thiệu (TVC) */}
+      <section className="bg-vabix-warm pt-16 sm:pt-20" aria-labelledby="bmdo-tvc">
+        <Container>
+          <div className="mx-auto max-w-2xl text-center">
+            <p className="eyebrow">Phim giới thiệu</p>
+            <h2 id="bmdo-tvc" className="mt-3 text-balance text-[1.9rem] font-semibold leading-[1.15] tracking-[-0.02em] text-vabix-deep-teal sm:text-[2.4rem]">
+              BMDO Khoá 04 <span className="text-vabix-gold">trong 60 giây.</span>
+            </h2>
+          </div>
+          <div className="mt-8 sm:mt-10">
+            <BmdoTvc
+              title="Phim giới thiệu BMDO Khoá 04"
+              landscape={{ src: "/videos/bmdo/bmdo-k4-tvc-16x9.mp4", poster: "/videos/bmdo/bmdo-k4-tvc-16x9-poster.jpg" }}
+              portrait={{ src: "/videos/bmdo/bmdo-k4-tvc-9x16.mp4", poster: "/videos/bmdo/bmdo-k4-tvc-9x16-poster.jpg" }}
+            />
           </div>
         </Container>
       </section>

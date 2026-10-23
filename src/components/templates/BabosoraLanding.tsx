@@ -3,6 +3,7 @@ import Link from "next/link";
 import { babosora as b } from "@/content/babosora";
 import { bmdoK4 } from "@/content/bmdoK4";
 import { LeadForm } from "@/components/forms/LeadForm";
+import { BmdoTvc } from "@/components/templates/BmdoTvc";
 import { Breadcrumb } from "@/components/ui/Misc";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Section";
@@ -148,6 +149,26 @@ export function BabosoraLanding() {
                 </li>
               ))}
             </ul>
+          </div>
+        </Container>
+      </section>
+
+      {/* Phim giới thiệu (TVC) */}
+      <section className="relative overflow-hidden bg-vabix-deep-teal pb-20 pt-4 sm:pb-24" aria-labelledby="babo-tvc">
+        <HeroBackdrop />
+        <Container className="relative">
+          <div className="mx-auto max-w-2xl text-center">
+            <p className="eyebrow">Phim giới thiệu</p>
+            <h2 id="babo-tvc" className="mt-3 text-balance text-[1.9rem] font-semibold leading-[1.15] tracking-[-0.02em] text-vabix-warm sm:text-[2.4rem]">
+              BABOSORA <span className="text-vabix-gold">trong một phút.</span>
+            </h2>
+          </div>
+          <div className="mt-8 sm:mt-10">
+            <BmdoTvc
+              title="Phim giới thiệu BABOSORA"
+              landscape={{ src: "/videos/babosora/babosora-tvc-16x9.mp4", poster: "/videos/babosora/babosora-tvc-16x9-poster.jpg" }}
+              portrait={{ src: "/videos/babosora/babosora-tvc-9x16.mp4", poster: "/videos/babosora/babosora-tvc-9x16-poster.jpg" }}
+            />
           </div>
         </Container>
       </section>

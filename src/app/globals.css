@@ -5518,3 +5518,32 @@ section[id],
     animation: none;
   }
 }
+
+/* BMDO landing — khẩu hiệu dưới tiêu đề hero: vệt sáng vàng lướt qua chữ */
+.bmdo-slogan-text {
+  color: #fcfbf8;
+  background: linear-gradient(110deg, #fcfbf8 0%, #fcfbf8 40%, #f4d7a6 50%, #fcfbf8 60%, #fcfbf8 100%);
+  background-size: 250% 100%;
+  background-position: 100% 0;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: bmdo-slogan-shine 7s ease-in-out infinite;
+  animation-delay: 1.5s;
+}
+
+@keyframes bmdo-slogan-shine {
+  0% {
+    background-position: 100% 0;
+  }
+  30%,
+  100% {
+    background-position: 0% 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bmdo-slogan-text {
+    animation: none;
+  }
+}

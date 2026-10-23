@@ -290,9 +290,9 @@ export function BmdoLanding() {
       </section>
 
       {/* Thanh thông tin khoá */}
-      <section className="relative z-10 bg-vabix-warm">
+      <section className="relative z-10 bg-vabix-deep-teal">
         <Container>
-          <div className="-mt-px grid gap-px overflow-hidden rounded-b-[22px] bg-vabix-deep-teal/10 shadow-[0_18px_40px_rgba(22,60,62,0.12)] grid-cols-2 lg:grid-cols-4">
+          <div className="grid grid-cols-2 gap-px overflow-hidden rounded-[22px] bg-vabix-deep-teal/10 shadow-[0_24px_60px_rgba(0,0,0,0.3)] lg:grid-cols-4">
             {facts.map((f, i) => (
               <div
                 key={f.label}
@@ -327,11 +327,12 @@ export function BmdoLanding() {
       </section>
 
       {/* Phim giới thiệu (TVC) */}
-      <section className="bg-vabix-warm pt-16 sm:pt-20" aria-labelledby="bmdo-tvc">
-        <Container>
+      <section className="relative overflow-hidden bg-vabix-deep-teal pb-20 pt-16 sm:pb-24 sm:pt-20" aria-labelledby="bmdo-tvc">
+        <HeroBackdrop />
+        <Container className="relative">
           <div className="mx-auto max-w-2xl text-center">
             <p className="eyebrow">Phim giới thiệu</p>
-            <h2 id="bmdo-tvc" className="mt-3 text-balance text-[1.9rem] font-semibold leading-[1.15] tracking-[-0.02em] text-vabix-deep-teal sm:text-[2.4rem]">
+            <h2 id="bmdo-tvc" className="mt-3 text-balance text-[1.9rem] font-semibold leading-[1.15] tracking-[-0.02em] text-vabix-warm sm:text-[2.4rem]">
               BMDO Khoá 04 <span className="text-vabix-gold">trong 60 giây.</span>
             </h2>
           </div>

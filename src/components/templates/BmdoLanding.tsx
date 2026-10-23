@@ -250,7 +250,19 @@ export function BmdoLanding() {
               <span className="block text-[4.5rem] font-bold leading-none tracking-[0.04em] text-vabix-warm sm:text-[7rem]">BMDO</span>
               <span className="mt-5 block text-balance text-2xl font-semibold leading-snug text-vabix-gold sm:text-[2.1rem]">{k.titleGold}</span>
             </h1>
-            <p className="mt-5 max-w-xl text-base leading-relaxed text-white/75 sm:text-lg">
+            <p className="mt-6 border-l-2 border-vabix-gold/80 pl-4">
+              <span className="block text-xs font-semibold uppercase tracking-[0.24em] text-vabix-gold sm:text-sm">{k.slogan.lead}</span>
+              <span className="bmdo-slogan mt-1.5 flex flex-col gap-1 text-base font-semibold uppercase tracking-[0.1em] sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-3 sm:text-lg">
+                {k.slogan.points.map((pt, i) => (
+                  <span key={pt} className="inline-flex items-center gap-3">
+                    <span aria-hidden="true" className={`h-1.5 w-1.5 rotate-45 bg-vabix-gold ${i === 0 ? "sm:hidden" : ""}`} />
+                    <span className="bmdo-slogan-text">{pt}</span>
+                    {i < k.slogan.points.length - 1 ? <span className="sr-only">,</span> : null}
+                  </span>
+                ))}
+              </span>
+            </p>
+            <p className="mt-6 max-w-xl text-base leading-relaxed text-white/75 sm:text-lg">
               {k.eyebrow}. {k.promise}
             </p>
             <p className="mt-3 text-balance text-sm font-medium tracking-wide text-vabix-soft-gold">{k.motto}</p>

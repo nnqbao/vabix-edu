@@ -122,6 +122,7 @@ export const primaryNav: NavItem[] = [
         children: [
           { label: "Lịch học / lớp đang mở", href: "/dao-tao/lich", description: "Các lớp và lịch đào tạo hiện có." },
           { label: "BMDO", href: "/dao-tao/bmdo", description: "Thao trường thiết kế và vận hành doanh nghiệp toàn diện." },
+          { label: "BABOSORA", href: "/dao-tao/babosora", description: "Vận hành và gia tốc dòng chảy doanh thu — 02 ngày thực chiến." },
           { label: "MBM", href: "/dao-tao/mbm", description: "Mastery of the BizCar Model — chương trình chuyên sâu." },
         ],
       },
@@ -186,6 +187,7 @@ export const footerColumns: { title: string; href: string; links: { label: strin
       { label: "Chương trình lãnh đạo", href: "/dao-tao#doanh-chu" },
       { label: "Đào tạo theo yêu cầu", href: "/dao-tao/theo-yeu-cau-doanh-nghiep" },
       { label: "BMDO", href: "/dao-tao/bmdo" },
+      { label: "BABOSORA", href: "/dao-tao/babosora" },
       { label: "MBM", href: "/dao-tao/mbm" },
       { label: "Lịch học / lớp đang mở", href: "/dao-tao/lich" },
     ],

@@ -5226,3 +5226,17 @@ section[id],
     margin-left: -24%;
   }
 }
+
+/* BMDO landing — form đăng ký dễ bấm trên điện thoại */
+.bmdo-form input[type="checkbox"] {
+  width: 1.15rem;
+  height: 1.15rem;
+  flex-shrink: 0;
+  accent-color: var(--color-vabix-deep-teal);
+}
+
+@media (max-width: 639px) {
+  .bmdo-form button[type="submit"] {
+    width: 100%;
+  }
+}

@@ -37,8 +37,8 @@ export const programs: TrainingProgram[] = [
       "Hướng đến hồ sơ thiết kế doanh nghiệp hoàn thiện hơn trên chính doanh nghiệp của học viên.",
       "Kết quả cải tiến được đo lường / kiểm chứng — không cam kết tăng doanh thu hay lợi nhuận.",
     ],
-    duration: "30 buổi × 3 giờ · 90 giờ học trực tiếp",
-    durationNote: "Gợi ý nhịp học: 15 tuần, 2 buổi trong cùng một ngày mỗi tuần.",
+    duration: "60 giờ · 12 ngày học trực tiếp",
+    durationNote: "Học vào Thứ Bảy hằng tuần; mỗi ngày học gồm 300 phút thực hành có hướng dẫn.",
     format: "Học trực tiếp, thực hành trên doanh nghiệp của học viên",
     featured: true,
     registrationOpen: true,
@@ -46,7 +46,7 @@ export const programs: TrainingProgram[] = [
     relatedPrograms: ["quan-tri-chien-luoc-digai", "thao-truong-khoi-nghiep", "lanh-dao-tinh-thuc"],
     relatedModels: ["bizcar", "applier", "3w", "mais", "karot", "mybizcar"],
     seoDescription:
-      "BMDO — thao trường thiết kế và vận hành doanh nghiệp toàn diện: 30 buổi × 3 giờ, 90 giờ học trực tiếp trên nền BizCar, APPLIER và MyBizCar.",
+      "BMDO — thao trường thiết kế và vận hành doanh nghiệp toàn diện: 60 giờ, 12 ngày học trực tiếp vào Thứ Bảy trên nền BizCar, APPLIER và MyBizCar.",
   },
   {
     id: "quan-tri-chien-luoc-digai",

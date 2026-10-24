@@ -2,7 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { babosora as babosoraVi } from "@/content/babosora";
 import { babosora as babosoraEn, type Widen } from "@/content/en/babosora";
-import { bmdoK4 } from "@/content/bmdoK4";
+import { bmdoK4 as bmdoK4Vi } from "@/content/bmdoK4";
+import { bmdoK4 as bmdoK4En } from "@/content/en/bmdoK4";
 import { LeadForm } from "@/components/forms/LeadForm";
 import { BmdoTvc } from "@/components/templates/BmdoTvc";
 import { Breadcrumb } from "@/components/ui/Misc";
@@ -97,6 +98,7 @@ function RevenueFunnel({ b, en, className = "" }: { b: Content; en: boolean; cla
 
 export async function BabosoraLanding() {
   const en = (await getLocale()) === "en";
+  const bmdoK4 = en ? bmdoK4En : bmdoK4Vi;
   const b: Content = en ? babosoraEn : babosoraVi;
   return (
     <>

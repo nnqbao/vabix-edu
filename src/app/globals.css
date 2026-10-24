@@ -6164,3 +6164,38 @@ section[id],
     display: none;
   }
 }
+
+/* Trang sách — bìa sách nổi khối, nghiêng nhẹ khi rê chuột */
+.book-cover {
+  box-shadow:
+    inset 4px 0 6px -3px rgba(255, 255, 255, 0.35),
+    -1px 0 0 rgba(0, 0, 0, 0.2),
+    0 18px 30px -10px rgba(22, 60, 62, 0.45),
+    0 6px 12px rgba(22, 60, 62, 0.18);
+  transform: perspective(900px) rotateY(0deg);
+  transform-origin: left center;
+  transition:
+    transform 500ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 500ms ease;
+}
+
+.group:hover .book-cover,
+.book-shelf:hover .book-cover {
+  transform: perspective(900px) rotateY(-14deg) translateY(-6px);
+  box-shadow:
+    inset 4px 0 6px -3px rgba(255, 255, 255, 0.35),
+    10px 0 0 -4px rgba(228, 184, 98, 0.55),
+    0 28px 44px -12px rgba(22, 60, 62, 0.55),
+    0 8px 16px rgba(22, 60, 62, 0.2);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .book-cover {
+    transition: none;
+  }
+
+  .group:hover .book-cover,
+  .book-shelf:hover .book-cover {
+    transform: none;
+  }
+}

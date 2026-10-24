@@ -1,4 +1,6 @@
-import { pillars, supportingLayers } from "@/content/pillars";
+import * as pillarsVi from "@/content/pillars";
+import * as pillarsEn from "@/content/en/pillars";
+import { getLocale } from "@/i18n/server";
 import { PageHero } from "@/components/layout/PageHero";
 import { Container, SectionHeading } from "@/components/ui/Section";
 import { CTASection } from "@/components/sections/CTASection";
@@ -6,21 +8,31 @@ import { createMetadata } from "@/lib/seo";
 import { Button } from "@/components/ui/Button";
 import Link from "next/link";
 
-export const metadata = createMetadata({
-  title: "Giải pháp 3T",
-  description:
-    "Ba mũi nhọn VABIX: Đào tạo & huấn luyện, Tư vấn chuyển đổi doanh nghiệp, Trustworking — kết nối kinh doanh dựa trên niềm tin.",
-  path: "/giai-phap",
-});
+export async function generateMetadata() {
+  const en = (await getLocale()) === "en";
+  return createMetadata({
+    title: en ? "3T Solutions" : "Giải pháp 3T",
+    description: en
+      ? "The three VABIX spearheads: Training & Coaching, Business Transformation Consulting and Trustworking — business connections built on trust."
+      : "Ba mũi nhọn VABIX: Đào tạo & huấn luyện, Tư vấn chuyển đổi doanh nghiệp, Trustworking — kết nối kinh doanh dựa trên niềm tin.",
+    path: en ? "/en/giai-phap" : "/giai-phap",
+  });
+}
 
-export default function SolutionsPage() {
+export default async function SolutionsPage() {
+  const en = (await getLocale()) === "en";
+  const { pillars, supportingLayers } = en ? pillarsEn : pillarsVi;
   return (
     <>
       <PageHero
-        eyebrow="Giải pháp"
-        title="Ba mũi nhọn chiến lược 3T"
-        description="Training & Coaching. Transformation. Trustworking. Sản phẩm tri thức và nhân lực là lớp hỗ trợ xuyên suốt — không phải trụ cột thứ tư."
-        crumbs={[{ name: "Trang chủ", href: "/" }, { name: "Giải pháp" }]}
+        eyebrow={en ? "Solutions" : "Giải pháp"}
+        title={en ? "The three strategic 3T spearheads" : "Ba mũi nhọn chiến lược 3T"}
+        description={
+          en
+            ? "Training & Coaching. Transformation. Trustworking. Knowledge products and workforce services form a supporting layer across all three — not a fourth pillar."
+            : "Training & Coaching. Transformation. Trustworking. Sản phẩm tri thức và nhân lực là lớp hỗ trợ xuyên suốt — không phải trụ cột thứ tư."
+        }
+        crumbs={[{ name: en ? "Home" : "Trang chủ", href: "/" }, { name: en ? "Solutions" : "Giải pháp" }]}
       />
       <Container className="grid gap-6 py-16 lg:grid-cols-3">
         {pillars.map((p) => (
@@ -48,7 +60,10 @@ export default function SolutionsPage() {
       </Container>
       <section className="bg-vabix-ivory py-16">
         <Container>
-          <SectionHeading title="Lớp năng lực hỗ trợ" description="Xuyên suốt hệ sinh thái, không ngang hàng 3T." />
+          <SectionHeading
+            title={en ? "Supporting capability layer" : "Lớp năng lực hỗ trợ"}
+            description={en ? "Running across the ecosystem, not on a par with the 3T." : "Xuyên suốt hệ sinh thái, không ngang hàng 3T."}
+          />
           <div className="mt-8 grid gap-4 md:grid-cols-3">
             {supportingLayers.map((l) => (
               <Link key={l.href} href={l.href} className="bg-white p-6 hover:border-vabix-gold border border-transparent">
@@ -59,7 +74,14 @@ export default function SolutionsPage() {
           </div>
         </Container>
       </section>
-      <CTASection title="Chọn điểm bắt đầu từ bài toán của bạn." description="Không bắt buộc đi tuần tự 3T. Trao đổi nhu cầu để xác định mũi nhọn phù hợp." />
+      <CTASection
+        title={en ? "Choose your starting point from your own challenge." : "Chọn điểm bắt đầu từ bài toán của bạn."}
+        description={
+          en
+            ? "There is no need to go through the 3T in order. Share your needs and we will identify the right spearhead."
+            : "Không bắt buộc đi tuần tự 3T. Trao đổi nhu cầu để xác định mũi nhọn phù hợp."
+        }
+      />
     </>
   );
 }

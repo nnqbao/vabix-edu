@@ -170,6 +170,10 @@ export type Book = {
   slug: string;
   title: string;
   summary: string;
+  /** Bìa sách (public/images/books); sách có bìa được trưng bày trong tủ sách của tác giả. */
+  cover?: string;
+  author?: string;
+  publisher?: string;
 };
 
 export type Village = {

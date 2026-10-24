@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { bmdoClassPhotos, bmdoK4 as k } from "@/content/bmdoK4";
+import { bmdoClassPhotos, bmdoGraduates as grad, bmdoK4 as k } from "@/content/bmdoK4";
 import { LeadForm } from "@/components/forms/LeadForm";
 import { BmdoTvc } from "@/components/templates/BmdoTvc";
 import { RevealOnView } from "@/components/templates/RevealOnView";
@@ -548,6 +548,82 @@ export function BmdoLanding() {
             ))}
           </div>
         </Container>
+      </section>
+
+      {/* Vinh danh học viên tốt nghiệp */}
+      <section className="bmdo-grad relative overflow-hidden py-16 sm:py-24" aria-labelledby="bmdo-grad-title">
+        <Container className="relative">
+          <RevealOnView>
+            <div className="grid gap-6 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)] lg:items-end">
+              <div className="bmdo-rv">
+                <p className="eyebrow">Lễ tốt nghiệp & vinh danh</p>
+                <h2 id="bmdo-grad-title" className="mt-3 text-balance text-[1.9rem] font-semibold leading-[1.15] tracking-[-0.02em] text-vabix-deep-teal sm:text-[2.6rem]">
+                  Vinh danh những doanh chủ <span className="text-vabix-gold">đã đi trọn hành trình.</span>
+                </h2>
+              </div>
+              <p className="bmdo-rv text-lg leading-relaxed text-vabix-muted" style={{ ["--rv-i" as string]: 1 }}>
+                Mỗi tấm chứng nhận là một bản thiết kế quản trị đã được hoàn thiện, phản biện và mang về triển khai trên chính doanh nghiệp của học viên.
+              </p>
+            </div>
+
+            <div className="mt-10 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4 lg:grid-rows-2">
+              <figure className="bmdo-rv bmdo-grad-tile col-span-2 aspect-[4/3] lg:row-span-2 lg:aspect-auto" style={{ ["--rv-i" as string]: 2 }}>
+                <Image src={grad.featured[0].src} alt={grad.featured[0].alt} fill unoptimized sizes="(max-width: 1023px) 100vw, 50vw" className="bmdo-grad-img object-cover" />
+                <figcaption className="bmdo-grad-caption">
+                  <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-vabix-soft-gold">Graduation ceremony</span>
+                  <span className="mt-1 block text-lg font-semibold sm:text-xl">Lễ tốt nghiệp & vinh danh học viên</span>
+                </figcaption>
+              </figure>
+              <figure className="bmdo-rv bmdo-grad-tile aspect-[4/3]" style={{ ["--rv-i" as string]: 3 }}>
+                <video
+                  className="absolute inset-0 h-full w-full object-cover"
+                  src={grad.clip.src}
+                  poster={grad.clip.poster}
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  preload="metadata"
+                  aria-label="Khoảnh khắc lễ tốt nghiệp"
+                />
+                <span className="bmdo-grad-live" aria-hidden="true">
+                  <span className="h-1.5 w-1.5 rounded-full bg-vabix-gold" />
+                  Khoảnh khắc
+                </span>
+              </figure>
+              {grad.featured.slice(1).map((ph, i) => (
+                <figure key={ph.src} className="bmdo-rv bmdo-grad-tile aspect-[4/3]" style={{ ["--rv-i" as string]: 4 + i }}>
+                  <Image src={ph.src} alt={ph.alt} fill unoptimized sizes="(max-width: 1023px) 50vw, 25vw" className="bmdo-grad-img object-cover" />
+                </figure>
+              ))}
+            </div>
+          </RevealOnView>
+        </Container>
+
+        <div className="relative mt-12 sm:mt-14">
+          <p className="mb-5 text-center text-xs font-semibold uppercase tracking-[0.24em] text-vabix-gold">Bức tường vinh danh</p>
+          <div className="space-y-4">
+            {[grad.wall.slice(0, Math.ceil(grad.wall.length / 2)), grad.wall.slice(Math.ceil(grad.wall.length / 2))].map((row, r) => (
+              <div key={r} className="bmdo-marquee">
+                <ul className="bmdo-marquee-track" data-reverse={r ? "" : undefined} style={{ ["--bmdo-marquee-duration" as string]: `${row.length * 7}s` }}>
+                  {[...row, ...row].map((ph, i) => (
+                    <li key={i} className="bmdo-honor mr-4 shrink-0" aria-hidden={i >= row.length || undefined}>
+                      <Image
+                        src={ph.src}
+                        alt={i >= row.length ? "" : "Học viên nhận chứng nhận tốt nghiệp"}
+                        width={ph.w}
+                        height={ph.h}
+                        unoptimized
+                        loading="eager"
+                        className="h-56 w-auto rounded-[14px] object-cover sm:h-72"
+                      />
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
       </section>
 
       {/* Video các khoá trước */}

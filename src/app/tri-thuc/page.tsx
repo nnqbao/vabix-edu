@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Section";
 import { HeroBackdrop } from "@/components/templates/BmdoLanding";
 import { RevealOnView } from "@/components/templates/RevealOnView";
+import { BookshelfModal } from "@/components/templates/BookshelfModal";
 import { createMetadata } from "@/lib/seo";
 import { paths } from "@/lib/paths";
 
@@ -17,14 +18,6 @@ export const metadata = createMetadata({
   description: "Sách, học liệu số, nhân lực mở, nhân lực số và dịch vụ hỗ trợ của VABIX.",
   path: paths.knowledge,
 });
-
-const SECTIONS = [
-  { id: "sach", label: "Sách" },
-  { id: "hoc-lieu", label: "Học liệu & biểu mẫu" },
-  { id: "nhan-luc-mo", label: "Nhân lực mở" },
-  { id: "nhan-luc-so", label: "Nhân lực số" },
-  { id: "dich-vu-ho-tro", label: "Dịch vụ hỗ trợ" },
-];
 
 const LEARNING_COPY: Record<string, string> = {
   "bieu-mau": "Biểu mẫu đánh giá hiện trạng, xác định vấn đề, thiết kế giải pháp, lập kế hoạch và theo dõi cải tiến.",
@@ -45,6 +38,10 @@ function Title({ eyebrow, title, gold, light = false }: { eyebrow: string; title
 export default function KnowledgeEcosystemPage() {
   const learning = knowledgeProductCategories.filter((c) => c.id === "hoc-lieu" || c.id === "bieu-mau");
   const fan = [founderBooks[0], founderBooks[2], founderBooks[5]];
+  const shelf = [
+    ...founderBooks.map((b) => ({ slug: b.slug, title: b.title, cover: b.cover, tag: "Amazon" })),
+    ...books.filter((b) => b.cover).map((b) => ({ slug: b.slug, title: b.title, cover: b.cover!, tag: "Tiếng Việt" })),
+  ];
   const WORKFORCE = [
     {
       id: "nhan-luc-mo",
@@ -81,21 +78,15 @@ export default function KnowledgeEcosystemPage() {
             <p className="mt-5 max-w-xl text-lg leading-relaxed text-white/75">
               Sách, học liệu, nhân lực mở, nhân lực số và dịch vụ hỗ trợ — lớp năng lực xuyên suốt 3T.
             </p>
-            <nav aria-label="Các phần trên trang" className="mt-8">
-              <ul className="flex flex-wrap gap-2">
-                {SECTIONS.map((s, i) => (
-                  <li key={s.id}>
-                    <a
-                      href={`#${s.id}`}
-                      className="inline-flex items-center gap-2 rounded-full border border-white/20 px-3.5 py-1.5 text-sm text-white/85 transition-colors hover:border-vabix-gold hover:text-vabix-gold"
-                    >
-                      <span className="text-xs font-semibold text-vabix-gold">{String(i + 1).padStart(2, "0")}</span>
-                      {s.label}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </nav>
+            <div className="mt-8 grid gap-3 sm:flex sm:flex-wrap">
+              <BookshelfModal
+                books={shelf}
+                className="inline-flex min-h-11 w-full items-center justify-center gap-2 bg-vabix-gold px-5 py-2.5 text-[15px] font-semibold tracking-wide text-vabix-deep-teal transition-colors hover:bg-vabix-soft-gold sm:w-auto"
+              />
+              <Button href="/tri-thuc/sach" variant="outline" className="w-full border-white/40 text-white sm:w-auto">
+                Xem tủ sách đầy đủ
+              </Button>
+            </div>
           </div>
           <Link href="/tri-thuc/sach" className="kn-fan relative mx-auto hidden h-80 w-full max-w-[26rem] sm:block" aria-label="Tủ sách của Founder Nguyễn Chí Thành">
             <span aria-hidden="true" className="absolute inset-[-8%] rounded-full bg-[radial-gradient(closest-side,rgba(222,164,67,0.3),transparent)] blur-2xl" />

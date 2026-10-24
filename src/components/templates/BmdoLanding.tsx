@@ -550,6 +550,29 @@ export function BmdoLanding() {
         </Container>
       </section>
 
+      {/* Video các khoá trước */}
+      <section className="relative overflow-hidden bg-vabix-deep-teal pb-8 pt-16 text-vabix-warm sm:pt-24" aria-labelledby="bmdo-recap">
+        <HeroBackdrop />
+        <Container className="relative">
+          <div className="mx-auto max-w-2xl text-center">
+            <p className="eyebrow">Nhìn lại các khoá BMDO</p>
+            <h2 id="bmdo-recap" className="mt-3 text-balance text-[1.9rem] font-semibold leading-[1.15] tracking-[-0.02em] sm:text-[2.4rem]">
+              Những khoá học đã diễn ra, <span className="text-vabix-gold">những bản thiết kế đã thành hình.</span>
+            </h2>
+            <p className="mt-4 text-lg leading-relaxed text-white/75">
+              Doanh chủ và CEO cùng thực hành trên bài toán thật của doanh nghiệp mình, phản biện đa chiều và mang về bản thiết kế quản trị.
+            </p>
+          </div>
+          <div className="mx-auto mt-8 max-w-5xl sm:mt-10">
+            <BmdoTvc
+              title="Video các khoá BMDO đã tổ chức"
+              landscape={{ src: "/videos/bmdo/bmdo-cac-khoa-720p.mp4", poster: "/videos/bmdo/bmdo-cac-khoa-poster.jpg" }}
+              small={{ src: "/videos/bmdo/bmdo-cac-khoa-360p.mp4", poster: "/videos/bmdo/bmdo-cac-khoa-poster.jpg" }}
+            />
+          </div>
+        </Container>
+      </section>
+
       {/* Đăng ký */}
       <section id="dang-ky" className="scroll-mt-24 bg-vabix-deep-teal py-16 text-vabix-warm sm:py-24">
         <Container className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)] lg:gap-16">

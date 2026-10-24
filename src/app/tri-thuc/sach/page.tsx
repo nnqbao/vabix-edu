@@ -18,6 +18,8 @@ export const metadata = createMetadata({
 });
 
 export default function BooksPage() {
+  const vnPublished = books.filter((b) => b.cover);
+  const vnOther = books.filter((b) => !b.cover);
   return (
     <>
       {/* Hero tác giả */}
@@ -57,7 +59,7 @@ export default function BooksPage() {
               </div>
             </div>
             <p className="relative mt-4 text-center text-sm font-semibold tracking-wide text-white/70">
-              <span className="text-vabix-gold">{founderBooks.length}</span> tựa sách quốc tế · Phát hành trên Amazon
+              <span className="text-vabix-gold">{founderBooks.length}</span> tựa sách quốc tế · <span className="text-vabix-gold">{books.filter((b) => b.cover).length}</span> sách tiếng Việt
             </p>
           </div>
         </Container>
@@ -122,10 +124,40 @@ export default function BooksPage() {
       {/* Sách tiếng Việt */}
       <section className="bg-vabix-ivory py-16 sm:py-20">
         <Container>
-          <p className="eyebrow">Ấn phẩm tiếng Việt</p>
-          <h2 className="mt-3 text-[1.9rem] font-semibold tracking-[-0.02em] text-vabix-deep-teal sm:text-[2.2rem]">Sách & công trình tri thức tiếng Việt</h2>
-          <div className="mt-8 grid gap-4 md:grid-cols-2">
-            {books.map((b) => (
+          <p className="eyebrow">Sách tiếng Việt · Đã xuất bản</p>
+          <h2 className="mt-3 text-balance text-[1.9rem] font-semibold tracking-[-0.02em] text-vabix-deep-teal sm:text-[2.2rem]">
+            Sách của {author.name} <span className="text-vabix-gold">tại Việt Nam.</span>
+          </h2>
+          <div className="mt-10 grid gap-6 md:grid-cols-2">
+            {vnPublished.map((b) => (
+              <article key={b.slug} className="group grid grid-cols-[8.5rem_minmax(0,1fr)] gap-6 rounded-[24px] border border-vabix-deep-teal/10 bg-white p-5 transition-[border-color,box-shadow] hover:border-vabix-gold/60 hover:shadow-[0_18px_40px_rgba(22,60,62,0.1)] sm:grid-cols-[10rem_minmax(0,1fr)] sm:p-6">
+                <Link href={`/tri-thuc/sach/${b.slug}`} className="block">
+                  <Image src={b.cover!} alt={`Bìa sách ${b.title}`} width={826} height={1166} unoptimized className="book-cover aspect-[7/10] w-full rounded-[5px] object-cover" />
+                </Link>
+                <div className="flex flex-col">
+                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-vabix-gold">{b.publisher}</p>
+                  <h3 className="mt-2 text-balance text-lg font-semibold leading-snug text-vabix-deep-teal sm:text-xl">
+                    <Link href={`/tri-thuc/sach/${b.slug}`} className="hover:text-vabix-gold">
+                      {b.title}
+                    </Link>
+                  </h3>
+                  <p className="mt-1 text-sm text-vabix-muted">{b.author}</p>
+                  <p className="mt-3 text-[15px] leading-relaxed text-vabix-ink">{b.summary}</p>
+                  <div className="mt-auto flex flex-wrap gap-x-4 gap-y-2 pt-4 text-sm font-semibold">
+                    <Link href={paths.contact} className="text-vabix-deep-teal hover:text-vabix-gold">
+                      Liên hệ đặt sách →
+                    </Link>
+                    <Link href={`/tri-thuc/sach/${b.slug}`} className="text-vabix-muted hover:text-vabix-gold">
+                      Giới thiệu sách
+                    </Link>
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+          <p className="mt-12 text-xs font-semibold uppercase tracking-[0.2em] text-vabix-muted">Công trình tri thức khác</p>
+          <div className="mt-4 grid gap-4 md:grid-cols-2">
+            {vnOther.map((b) => (
               <Link
                 key={b.slug}
                 href={`/tri-thuc/sach/${b.slug}`}

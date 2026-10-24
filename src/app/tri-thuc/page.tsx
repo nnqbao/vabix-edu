@@ -135,7 +135,7 @@ export default function KnowledgeEcosystemPage() {
               </div>
             </div>
             <RevealOnView>
-              <ul className="grid grid-cols-3 gap-4 sm:grid-cols-6">
+              <ul className="grid grid-cols-4 gap-4 lg:grid-cols-8">
                 {founderBooks.map((b, i) => (
                   <li key={b.slug} className="bmdo-rv" style={{ ["--rv-i" as string]: i }}>
                     <Link href={`/tri-thuc/sach/${b.slug}`} className="group block">
@@ -147,13 +147,24 @@ export default function KnowledgeEcosystemPage() {
                     </a>
                   </li>
                 ))}
+                {books
+                  .filter((b) => b.cover)
+                  .map((b, i) => (
+                    <li key={b.slug} className="bmdo-rv" style={{ ["--rv-i" as string]: founderBooks.length + i }}>
+                      <Link href={`/tri-thuc/sach/${b.slug}`} className="group block">
+                        <Image src={b.cover!} alt={`Bìa sách ${b.title}`} width={826} height={1166} unoptimized className="book-cover aspect-[7/10] w-full rounded-[5px] object-cover" />
+                        <p className="mt-2.5 line-clamp-2 text-[13px] font-semibold leading-snug text-vabix-deep-teal group-hover:text-vabix-gold">{b.title}</p>
+                      </Link>
+                      <span className="mt-1 inline-block text-xs font-semibold text-vabix-muted">Tiếng Việt</span>
+                    </li>
+                  ))}
               </ul>
             </RevealOnView>
           </div>
 
-          <p className="mt-10 text-xs font-semibold uppercase tracking-[0.2em] text-vabix-muted">Ấn phẩm tiếng Việt</p>
+          <p className="mt-10 text-xs font-semibold uppercase tracking-[0.2em] text-vabix-muted">Công trình tri thức khác</p>
           <ul className="mt-4 grid gap-3 md:grid-cols-2">
-            {books.map((b) => (
+            {books.filter((b) => !b.cover).map((b) => (
               <li key={b.slug}>
                 <Link href={`/tri-thuc/sach/${b.slug}`} className="group flex h-full gap-4 rounded-[18px] border border-vabix-deep-teal/10 bg-white p-5 transition-[border-color,box-shadow] hover:border-vabix-gold/60 hover:shadow-[0_12px_28px_rgba(22,60,62,0.08)]">
                   <span aria-hidden="true" className="mt-1 h-10 w-1 shrink-0 rounded-full bg-vabix-gold" />

@@ -127,6 +127,78 @@ export default async function BookPage({ params }: { params: Promise<{ slug: str
 
   const b = books.find((x) => x.slug === slug);
   if (!b) notFound();
+  if (b.cover) {
+    const others = books.filter((x) => x.cover && x.slug !== b.slug);
+    return (
+      <>
+        <section className="relative overflow-hidden bg-vabix-deep-teal pt-28 text-vabix-warm sm:pt-32">
+          <HeroBackdrop />
+          <Container className="relative grid gap-12 pb-16 pt-8 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:items-center lg:gap-16 lg:pb-20">
+            <div className="relative order-2 mx-auto w-full max-w-[20rem] lg:order-1">
+              <span aria-hidden="true" className="absolute inset-[-14%] rounded-full bg-[radial-gradient(closest-side,rgba(222,164,67,0.35),transparent)] blur-2xl" />
+              <Image src={b.cover} alt={`Bìa sách ${b.title}`} width={826} height={1166} unoptimized priority className="book-cover relative w-full rounded-[8px]" />
+            </div>
+            <div className="order-1 lg:order-2">
+              <Breadcrumb
+                light
+                items={[
+                  { name: "Trang chủ", href: paths.home },
+                  { name: "Sách", href: "/tri-thuc/sach" },
+                  { name: b.title },
+                ]}
+              />
+              <p className="mt-8 text-xs font-semibold uppercase tracking-[0.22em] text-vabix-soft-gold">
+                {b.author} · {b.publisher}
+              </p>
+              <h1 className="mt-4 text-balance text-[2.1rem] font-semibold leading-[1.12] tracking-[-0.02em] sm:text-[3rem]">{b.title}</h1>
+              <p className="mt-6 max-w-xl text-lg leading-relaxed text-white/80">{b.summary}</p>
+              <div className="mt-8 grid gap-3 sm:flex sm:flex-wrap">
+                <Button href={paths.contact} className="w-full sm:w-auto">
+                  Liên hệ đặt sách →
+                </Button>
+                <Button href="/tri-thuc/sach" variant="outline" className="w-full border-white/40 text-white sm:w-auto">
+                  Xem tủ sách của tác giả
+                </Button>
+              </div>
+            </div>
+          </Container>
+        </section>
+        <section className="bg-vabix-warm py-16 sm:py-20">
+          <Container className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.4fr)] lg:items-center">
+            <div className="flex items-center gap-5">
+              <Image src={author.portrait} alt={author.name} width={160} height={160} unoptimized className="h-24 w-24 rounded-full border-2 border-vabix-gold/60 object-cover object-top" />
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-vabix-gold">Về tác giả</p>
+                <p className="mt-1 text-xl font-semibold text-vabix-deep-teal">{author.name}</p>
+                <p className="text-sm text-vabix-muted">{author.role}</p>
+              </div>
+            </div>
+            <blockquote className="rounded-[22px] border border-vabix-gold/35 bg-vabix-ivory px-6 py-6 text-lg italic leading-relaxed text-vabix-deep-teal sm:px-8">“{author.quote}”</blockquote>
+          </Container>
+        </section>
+        <section className="bg-vabix-ivory py-16 sm:py-20">
+          <Container>
+            <div className="flex flex-wrap items-end justify-between gap-4">
+              <h2 className="text-[1.9rem] font-semibold tracking-[-0.02em] text-vabix-deep-teal">Sách khác của tác giả</h2>
+              <Link href="/tri-thuc/sach" className="text-sm font-semibold text-vabix-deep-teal hover:text-vabix-gold">
+                Xem cả tủ sách →
+              </Link>
+            </div>
+            <ul className="mt-8 grid grid-cols-2 gap-6 sm:grid-cols-4 lg:grid-cols-7">
+              {[...others.map((o) => ({ slug: o.slug, title: o.title, cover: o.cover! })), ...founderBooks].map((o) => (
+                <li key={o.slug}>
+                  <Link href={`/tri-thuc/sach/${o.slug}`} className="group block">
+                    <Image src={o.cover} alt={`Bìa sách ${o.title}`} width={460} height={660} unoptimized className="book-cover aspect-[7/10] w-full rounded-[6px] object-cover" />
+                    <p className="mt-3 line-clamp-2 text-sm font-semibold text-vabix-deep-teal group-hover:text-vabix-gold">{o.title}</p>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </Container>
+        </section>
+      </>
+    );
+  }
   return (
     <>
       <PageHero title={b.title} description={b.summary} crumbs={[{ name: "Trang chủ", href: "/" }, { name: "Sách", href: "/tri-thuc/sach" }, { name: b.title }]} />

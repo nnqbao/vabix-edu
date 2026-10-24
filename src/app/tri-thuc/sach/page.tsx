@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Section";
 import { HeroBackdrop } from "@/components/templates/BmdoLanding";
 import { RevealOnView } from "@/components/templates/RevealOnView";
+import { BookshelfModal } from "@/components/templates/BookshelfModal";
 import { createMetadata } from "@/lib/seo";
 import { paths } from "@/lib/paths";
 
@@ -20,6 +21,10 @@ export const metadata = createMetadata({
 export default function BooksPage() {
   const vnPublished = books.filter((b) => b.cover);
   const vnOther = books.filter((b) => !b.cover);
+  const shelf = [
+    ...founderBooks.map((b) => ({ slug: b.slug, title: b.title, cover: b.cover, tag: "Amazon" })),
+    ...vnPublished.map((b) => ({ slug: b.slug, title: b.title, cover: b.cover!, tag: "Tiếng Việt" })),
+  ];
   return (
     <>
       {/* Hero tác giả */}
@@ -41,8 +46,12 @@ export default function BooksPage() {
               <p className="mt-2 text-sm italic text-white/55">“{author.quoteEn}”</p>
             </blockquote>
             <div className="mt-8 grid gap-3 sm:flex sm:flex-wrap">
-              <Button href="#bo-sach" className="w-full sm:w-auto">
-                Xem bộ sách →
+              <BookshelfModal
+                books={shelf}
+                className="inline-flex min-h-11 w-full items-center justify-center gap-2 bg-vabix-gold px-5 py-2.5 text-[15px] font-semibold tracking-wide text-vabix-deep-teal transition-colors hover:bg-vabix-soft-gold sm:w-auto"
+              />
+              <Button href="#bo-sach" variant="outline" className="w-full border-white/40 text-white sm:w-auto">
+                Xem bộ sách
               </Button>
               <Button href={amazonAuthorSearch} variant="outline" className="w-full border-white/40 text-white sm:w-auto">
                 Tìm sách trên Amazon ↗

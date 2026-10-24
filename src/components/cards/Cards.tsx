@@ -25,23 +25,38 @@ export function ExpertCard({ expert }: { expert: Expert }) {
 }
 
 export function CaseStudyCard({ item }: { item: CaseStudy }) {
+  const title = item.headline ?? item.industry;
   return (
-    <article className="flex h-full flex-col border border-vabix-deep-teal/10 bg-white">
+    <article className="cs-card group relative flex h-full flex-col overflow-hidden rounded-[24px] border border-vabix-deep-teal/10 bg-white shadow-[0_12px_32px_rgba(22,60,62,0.06)] transition-[transform,box-shadow,border-color] duration-500 hover:-translate-y-1.5 hover:border-vabix-gold/50 hover:shadow-[0_22px_48px_rgba(22,60,62,0.14)]">
       <div className="relative aspect-[16/10] overflow-hidden bg-vabix-deep-teal">
         {item.coverImage ? (
-          <Image src={item.coverImage} alt={`${item.organization} — ${item.industry}`} fill className="object-cover opacity-80" sizes="(max-width: 768px) 100vw, 33vw" />
+          <Image
+            src={item.coverImage}
+            alt={`${item.organization} — ${title}`}
+            fill
+            unoptimized
+            className="object-cover transition-transform duration-700 group-hover:scale-105"
+            sizes="(max-width: 768px) 100vw, 33vw"
+          />
         ) : null}
+        <span aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-vabix-deep-teal/70 via-transparent to-transparent" />
+        <span className="absolute left-4 top-4 rounded-full border border-vabix-gold/50 bg-vabix-deep-teal/80 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-vabix-soft-gold backdrop-blur">
+          {item.organization}
+        </span>
+        <span className="absolute bottom-3 left-4 right-4 text-xs font-medium text-white/90">{item.industry}</span>
       </div>
       <div className="flex flex-1 flex-col p-6">
-        <p className="eyebrow">{item.organization}</p>
-        <h3 className="mt-2 text-lg font-semibold text-vabix-deep-teal">{item.industry}</h3>
-        <p className="mt-3 line-clamp-3 text-sm text-vabix-muted">{item.challenge}</p>
-        <p className="mt-3 text-sm text-vabix-ink">
-          <span className="font-semibold">Kết quả: </span>
-          {item.results}
+        <h3 className="text-balance text-lg font-semibold leading-snug text-vabix-deep-teal">{title}</h3>
+        <p className="mt-3 line-clamp-3 text-sm leading-relaxed text-vabix-muted">{item.summary ?? item.challenge}</p>
+        <p className="mt-4 rounded-xl bg-vabix-ivory p-4 text-sm leading-relaxed text-vabix-ink">
+          <span className="block text-[11px] font-semibold uppercase tracking-[0.16em] text-vabix-gold">Kết quả</span>
+          <span className="mt-1 line-clamp-3 block">{item.resultSummary ?? item.results}</span>
         </p>
-        <Link href={`/tri-thuc/case-study/${item.slug}`} className="mt-auto inline-flex items-center gap-2 pt-5 text-sm font-semibold text-vabix-deep-teal">
-          Xem case study <ArrowIcon />
+        <Link
+          href={`/tri-thuc/case-study/${item.slug}`}
+          className="mt-auto inline-flex items-center gap-2 pt-5 text-sm font-semibold text-vabix-deep-teal after:absolute after:inset-0 after:content-[''] group-hover:text-vabix-gold"
+        >
+          Xem case study <ArrowIcon className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
         </Link>
       </div>
     </article>

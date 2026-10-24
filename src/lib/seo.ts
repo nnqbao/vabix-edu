@@ -23,17 +23,20 @@ export function createMetadata({
   type?: "website" | "article";
 }): Metadata {
   const url = absUrl(path);
+  const en = path === "/en" || path.startsWith("/en/");
+  const viPath = en ? path.slice(3) || "/" : path;
   const fullTitle = title.includes("VABIX") ? title : `${title} | VABIX`;
   return {
     title: fullTitle,
     description,
-    alternates: { canonical: url },
+    alternates: { canonical: url, languages: { vi: absUrl(viPath), en: absUrl(viPath === "/" ? "/en" : `/en${viPath}`) } },
     openGraph: {
       title: fullTitle,
       description,
       url,
       siteName: siteConfig.siteName,
-      locale: siteConfig.locale,
+      locale: en ? "en_US" : siteConfig.locale,
+      alternateLocale: en ? siteConfig.locale : "en_US",
       type,
       images: [{ url: absUrl(image), alt: siteConfig.siteName }],
     },

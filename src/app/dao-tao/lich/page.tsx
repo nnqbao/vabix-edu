@@ -15,7 +15,7 @@ export async function generateMetadata() {
     description: en
       ? "VABIX classes and training events. Start dates are shown only once confirmed."
       : "Các lớp và sự kiện đào tạo VABIX. Lịch khai giảng chỉ hiển thị khi đã được xác nhận.",
-    path: paths.programSchedule,
+    path: en ? `/en${paths.programSchedule}` : paths.programSchedule,
   });
 }
 

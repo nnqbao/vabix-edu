@@ -40,7 +40,7 @@ export async function programMetadata(slug: string): Promise<Metadata> {
       description: en
         ? "A 4-session programme applying AI to work, processes and business operations: C.L.E.A.R, AI Workflow Canvas, Human Gate, use case pilot. Coached by expert Trần Anh Vũ."
         : "Chương trình 04 buổi ứng dụng AI vào công việc, quy trình và vận hành doanh nghiệp: C.L.E.A.R, AI Workflow Canvas, Human Gate, use case pilot. Huấn luyện bởi chuyên gia Trần Anh Vũ.",
-      path: paths.program(p.slug),
+      path: `${en ? "/en" : ""}${paths.program(p.slug)}`,
     });
   }
   if (slug === "babosora") {
@@ -49,7 +49,7 @@ export async function programMetadata(slug: string): Promise<Metadata> {
       description: en
         ? "A hands-on 2-day programme for business owners, CEOs and sales teams: B2A × BABOSORA, NAP × CAP opportunity hunting, ASKING closing and the six BRUCCS revenue acceleration levers."
         : "Chương trình thực chiến 02 ngày cho doanh chủ, CEO và đội ngũ kinh doanh: B2A × BABOSORA, săn cơ hội NAP × CAP, hỏi chốt ASKING và sáu trục gia tốc doanh thu BRUCCS.",
-      path: paths.program(p.slug),
+      path: `${en ? "/en" : ""}${paths.program(p.slug)}`,
     });
   }
   if (slug === "bmdo") {
@@ -58,10 +58,10 @@ export async function programMetadata(slug: string): Promise<Metadata> {
       description: en
         ? "A 60-hour programme over 12 Saturdays for business owners & CEOs: designing 12 management domains with the BizCar model on MyBizCar. Expected to start on 05.12.2026 at SIHUB, Ho Chi Minh City."
         : "Chương trình 60 giờ, 12 ngày Thứ Bảy dành cho doanh chủ & CEO: thiết kế 12 miền quản trị theo mô hình BizCar trên MyBizCar. Khai giảng dự kiến 05.12.2026 tại SIHUB, TP.HCM.",
-      path: paths.program(p.slug),
+      path: `${en ? "/en" : ""}${paths.program(p.slug)}`,
     });
   }
-  return createMetadata({ title: p.title, description: p.seoDescription, path: paths.program(p.slug) });
+  return createMetadata({ title: p.title, description: p.seoDescription, path: `${en ? "/en" : ""}${paths.program(p.slug)}` });
 }
 
 function Block({ title, items }: { title: string; items?: string[] }) {

@@ -22,7 +22,7 @@ export async function generateMetadata() {
     description: en
       ? "Learn to see clearly. Design to make it work. Implement to deliver results. Training & Coaching for business owners, CEOs, managers and teams."
       : "Học để nhìn rõ. Thiết kế để làm được. Triển khai để tạo kết quả. Training & Coaching cho doanh chủ, CEO, quản lý và đội ngũ.",
-    path: paths.training,
+    path: en ? `/en${paths.training}` : paths.training,
   });
 }
 

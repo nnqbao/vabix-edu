@@ -232,3 +232,40 @@ export const bmdoClassPhotos = [
   { src: "/images/bmdo/lop/bmdo-lop-23.jpg", alt: "Ảnh tập thể học viên BMDO" },
   { src: "/images/bmdo/lop/bmdo-lop-24.jpg", alt: "Học viên BMDO trong chuyến dã ngoại" },
 ] as const;
+
+// Lễ tốt nghiệp & vinh danh học viên (public/images/bmdo/tot-nghiep). Ảnh nổi bật lớn trước, rồi bức tường vinh danh.
+export const bmdoGraduates = {
+  featured: [
+    { src: "/images/bmdo/tot-nghiep/noi-bat-01.jpg", w: 1400, h: 1050, alt: "Ảnh tập thể học viên tại lễ tốt nghiệp và vinh danh" },
+    { src: "/images/bmdo/tot-nghiep/noi-bat-02.jpg", w: 900, h: 675, alt: "Các học viên nữ chụp ảnh kỷ niệm trên sân khấu lễ tốt nghiệp" },
+    { src: "/images/bmdo/tot-nghiep/noi-bat-03.jpg", w: 900, h: 506, alt: "Học viên nhận hoa và chứng nhận tốt nghiệp" },
+    { src: "/images/bmdo/tot-nghiep/noi-bat-04.jpg", w: 900, h: 506, alt: "Học viên cầm chứng nhận tốt nghiệp trên sân khấu" },
+  ],
+  clip: { src: "/videos/bmdo/bmdo-tot-nghiep-clip.mp4", poster: "/videos/bmdo/bmdo-tot-nghiep-clip-poster.jpg" },
+  wall: [
+    { src: "/images/bmdo/tot-nghiep/vinh-danh-01.jpg", w: 480, h: 640 },
+    { src: "/images/bmdo/tot-nghiep/vinh-danh-02.jpg", w: 480, h: 640 },
+    { src: "/images/bmdo/tot-nghiep/vinh-danh-03.jpg", w: 640, h: 360 },
+    { src: "/images/bmdo/tot-nghiep/vinh-danh-04.jpg", w: 480, h: 640 },
+    { src: "/images/bmdo/tot-nghiep/vinh-danh-05.jpg", w: 480, h: 640 },
+    { src: "/images/bmdo/tot-nghiep/vinh-danh-06.jpg", w: 480, h: 640 },
+    { src: "/images/bmdo/tot-nghiep/vinh-danh-07.jpg", w: 640, h: 360 },
+    { src: "/images/bmdo/tot-nghiep/vinh-danh-08.jpg", w: 480, h: 640 },
+    { src: "/images/bmdo/tot-nghiep/vinh-danh-09.jpg", w: 480, h: 640 },
+    { src: "/images/bmdo/tot-nghiep/vinh-danh-10.jpg", w: 640, h: 360 },
+    { src: "/images/bmdo/tot-nghiep/vinh-danh-11.jpg", w: 480, h: 640 },
+    { src: "/images/bmdo/tot-nghiep/vinh-danh-12.jpg", w: 480, h: 640 },
+    { src: "/images/bmdo/tot-nghiep/vinh-danh-13.jpg", w: 640, h: 360 },
+    { src: "/images/bmdo/tot-nghiep/vinh-danh-14.jpg", w: 480, h: 640 },
+    { src: "/images/bmdo/tot-nghiep/vinh-danh-15.jpg", w: 480, h: 640 },
+    { src: "/images/bmdo/tot-nghiep/vinh-danh-16.jpg", w: 480, h: 640 },
+    { src: "/images/bmdo/tot-nghiep/vinh-danh-17.jpg", w: 480, h: 640 },
+    { src: "/images/bmdo/tot-nghiep/vinh-danh-18.jpg", w: 480, h: 640 },
+    { src: "/images/bmdo/tot-nghiep/vinh-danh-19.jpg", w: 480, h: 640 },
+    { src: "/images/bmdo/tot-nghiep/vinh-danh-20.jpg", w: 480, h: 640 },
+    { src: "/images/bmdo/tot-nghiep/vinh-danh-21.jpg", w: 480, h: 640 },
+    { src: "/images/bmdo/tot-nghiep/vinh-danh-22.jpg", w: 480, h: 640 },
+    { src: "/images/bmdo/tot-nghiep/vinh-danh-23.jpg", w: 480, h: 640 },
+    { src: "/images/bmdo/tot-nghiep/vinh-danh-24.jpg", w: 480, h: 640 },
+  ],
+} as const;

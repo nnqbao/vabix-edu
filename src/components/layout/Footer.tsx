@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { siteConfig } from "@/lib/siteConfig";
 import { chrome, footerFor } from "@/i18n/nav";
 import { getLocale } from "@/i18n/server";
@@ -113,6 +114,22 @@ export async function Footer() {
           <p>
             © {year} {siteConfig.legalName}. {ui.tagline}
           </p>
+          <a
+            href="https://vscgroup.vn"
+            target="_blank"
+            rel="noopener"
+            className="group inline-flex items-center gap-2 text-white/55 transition-colors hover:text-white sm:order-last"
+            aria-label={locale === "en" ? "Designed and developed by VSC GROUP — vscgroup.vn" : "Được thiết kế và phát triển bởi VSC GROUP — vscgroup.vn"}
+          >
+            <span>{locale === "en" ? "Designed & developed by" : "Được thiết kế và phát triển bởi"}</span>
+            <Image
+              src="/brand/vsc-group-white.png"
+              alt="VSC GROUP"
+              width={240}
+              height={176}
+              className="h-6 w-auto opacity-70 transition-opacity group-hover:opacity-100"
+            />
+          </a>
           <div className="flex flex-wrap gap-3.5">
             <Link href={withLocale("/chinh-sach-quyen-rieng-tu", locale)} className="hover:text-white">
               {ui.privacy}

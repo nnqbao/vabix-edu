@@ -27,6 +27,18 @@ const SECTIONS = [
   { id: "dich-vu-ho-tro", label: "Dịch vụ hỗ trợ" },
 ];
 
+// Cẩm nang gom theo nhóm nhu cầu để dễ tìm.
+const HANDBOOK_GROUPS = [
+  { label: "Gia đình", title: "Tài chính & trải nghiệm", slugs: ["quan-ly-tai-chinh-ca-nhan", "cam-nang-du-lich"] },
+  { label: "Tiêu dùng", title: "Thực phẩm an toàn", slugs: ["cam-nang-ve-gao", "mua-san-pham-sach"] },
+  { label: "Doanh nghiệp & công trình", title: "Thiết bị, vật liệu, nội thất", slugs: ["lua-chon-thiet-bi-truyen-thong", "cam-nang-ve-gach", "lua-chon-noi-that"] },
+];
+
+const LEARNING_COPY: Record<string, string> = {
+  "bieu-mau": "Biểu mẫu đánh giá hiện trạng, xác định vấn đề, thiết kế giải pháp, lập kế hoạch và theo dõi cải tiến.",
+  "hoc-lieu": "Tài liệu, video và bài giảng trực tuyến đi kèm các chương trình đào tạo của VABIX.",
+};
+
 function Title({ eyebrow, title, gold, light = false }: { eyebrow: string; title: string; gold?: string; light?: boolean }) {
   return (
     <div>
@@ -41,6 +53,26 @@ function Title({ eyebrow, title, gold, light = false }: { eyebrow: string; title
 export default function KnowledgeEcosystemPage() {
   const learning = knowledgeProductCategories.filter((c) => c.id === "hoc-lieu" || c.id === "bieu-mau");
   const fan = [founderBooks[0], founderBooks[2], founderBooks[5]];
+  const WORKFORCE = [
+    {
+      id: "nhan-luc-mo",
+      n: "04",
+      title: workforce.openTalent.title,
+      tagline: workforce.openTalent.tagline,
+      summary: "Kết nối doanh nghiệp với chuyên gia, nhân sự dự án và đội ngũ linh hoạt — giao việc theo mục tiêu, nghiệm thu theo kết quả và theo dõi chất lượng.",
+      items: ["Kết nối chuyên gia", "Nhân sự theo dự án", "Đội ngũ linh hoạt", "Giao việc theo kết quả đầu ra", "Theo dõi chất lượng công việc"],
+      note: "Bổ sung năng lực đúng lúc, không thay thế đội ngũ nòng cốt của doanh nghiệp.",
+    },
+    {
+      id: "nhan-luc-so",
+      n: "05",
+      title: workforce.digitalTalent.title,
+      tagline: workforce.digitalTalent.tagline,
+      summary: "Thiết kế, triển khai và vận hành trợ lý AI, AI Agent và tự động hóa quy trình — có con người phê duyệt, phân quyền dữ liệu và giám sát.",
+      items: ["Trợ lý AI", "AI Agent", "Tự động hóa quy trình", "Con người phê duyệt", "Phân quyền dữ liệu", "Giám sát vận hành"],
+      note: workforce.digitalTalent.principles[0],
+    },
+  ];
 
   return (
     <>
@@ -144,39 +176,63 @@ export default function KnowledgeEcosystemPage() {
         </Container>
       </section>
 
-      {/* 02 Cẩm nang + 03 Học liệu */}
-      <section className="bg-vabix-ivory py-16 sm:py-20">
-        <Container className="grid gap-12 lg:grid-cols-[minmax(0,1.6fr)_minmax(0,1fr)] lg:gap-14">
-          <div id="cam-nang" className="scroll-mt-24">
-            <Title eyebrow="02 · Cẩm nang" title="Cẩm nang chọn lựa" gold="theo từng chuyên đề." />
-            <ul className="mt-8 grid gap-3 sm:grid-cols-2">
-              {handbooks.map((h, i) => (
-                <li key={h.slug}>
-                  <Link href={`/tri-thuc/cam-nang/${h.slug}`} className="group flex h-full items-start gap-4 rounded-[18px] border border-vabix-deep-teal/10 bg-white p-5 transition-[border-color,box-shadow,transform] duration-300 hover:-translate-y-0.5 hover:border-vabix-gold/60 hover:shadow-[0_12px_28px_rgba(22,60,62,0.08)]">
-                    <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-vabix-deep-teal text-xs font-semibold text-vabix-gold">{String(i + 1).padStart(2, "0")}</span>
-                    <span>
-                      <span className="block font-semibold leading-snug text-vabix-deep-teal group-hover:text-vabix-gold">{h.title}</span>
-                      <span className="mt-1 block text-sm leading-relaxed text-vabix-muted">{h.summary}</span>
-                    </span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
+      {/* 02 Cẩm nang */}
+      <section id="cam-nang" className="scroll-mt-24 bg-vabix-ivory py-16 sm:py-20">
+        <Container>
+          <div className="flex flex-wrap items-end justify-between gap-6">
+            <Title eyebrow="02 · Cẩm nang" title="Cẩm nang Làng VABIX —" gold="chọn đúng, dùng an tâm." />
+            <p className="max-w-md text-vabix-muted">Hướng dẫn lựa chọn sản phẩm, dịch vụ do các làng ngành và nhà cung cấp trong mạng lưới VABIX biên soạn.</p>
           </div>
-          <div id="hoc-lieu" className="scroll-mt-24">
-            <Title eyebrow="03 · Học liệu & biểu mẫu" title="Công cụ" gold="để học và làm." />
-            <ul className="mt-8 space-y-3">
-              {learning.map((c) => (
-                <li key={c.id}>
-                  <Link href={c.href} className="group block rounded-[20px] bg-vabix-deep-teal p-6 text-vabix-warm transition-transform duration-300 hover:-translate-y-0.5">
-                    <p className="text-lg font-semibold group-hover:text-vabix-gold">{c.title}</p>
-                    <p className="mt-2 text-sm leading-relaxed text-white/70">{c.summary}</p>
-                    <span className="mt-4 inline-block text-sm font-semibold text-vabix-soft-gold">Tìm hiểu →</span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
+          <div className="mt-10 grid gap-5 md:grid-cols-3">
+            {HANDBOOK_GROUPS.map((g) => (
+              <article key={g.title} className="flex flex-col rounded-[22px] border border-vabix-deep-teal/10 bg-white p-6">
+                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-vabix-gold">{g.label}</p>
+                <h3 className="mt-2 text-lg font-semibold text-vabix-deep-teal">{g.title}</h3>
+                <ul className="mt-4 divide-y divide-vabix-deep-teal/10">
+                  {g.slugs.map((slug) => {
+                    const h = handbooks.find((x) => x.slug === slug);
+                    if (!h) return null;
+                    return (
+                      <li key={slug}>
+                        <Link href={`/tri-thuc/cam-nang/${h.slug}`} className="group flex items-start justify-between gap-3 py-3.5">
+                          <span>
+                            <span className="block font-semibold leading-snug text-vabix-deep-teal group-hover:text-vabix-gold">{h.title}</span>
+                            <span className="mt-1 block text-sm leading-relaxed text-vabix-muted">{h.summary}</span>
+                          </span>
+                          <span aria-hidden="true" className="mt-0.5 text-vabix-gold transition-transform group-hover:translate-x-1">
+                            →
+                          </span>
+                        </Link>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </article>
+            ))}
           </div>
+        </Container>
+      </section>
+
+      {/* 03 Học liệu & biểu mẫu */}
+      <section id="hoc-lieu" className="scroll-mt-24 bg-vabix-warm py-16 sm:py-20">
+        <Container className="grid gap-8 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.6fr)] lg:items-center lg:gap-14">
+          <div>
+            <Title eyebrow="03 · Học liệu & biểu mẫu" title="Công cụ để học và làm" gold="— sắp ra mắt." />
+            <p className="mt-4 text-vabix-muted">Bộ công cụ đi kèm các chương trình đào tạo của VABIX đang được hoàn thiện. Đăng ký để nhận thông báo khi mở.</p>
+          </div>
+          <ul className="grid gap-4 sm:grid-cols-2">
+            {learning.map((c) => (
+              <li key={c.id}>
+                <Link href={c.href} className="group relative block h-full overflow-hidden rounded-[22px] bg-vabix-deep-teal p-6 text-vabix-warm transition-transform duration-300 hover:-translate-y-0.5">
+                  <span aria-hidden="true" className="absolute -right-10 -top-10 h-32 w-32 rounded-full bg-[radial-gradient(closest-side,rgba(222,164,67,0.3),transparent)]" />
+                  <span className="relative inline-block rounded-full border border-vabix-gold/50 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-vabix-soft-gold">Sắp ra mắt</span>
+                  <p className="relative mt-4 text-lg font-semibold group-hover:text-vabix-gold">{c.title}</p>
+                  <p className="relative mt-2 text-sm leading-relaxed text-white/70">{LEARNING_COPY[c.id] ?? c.summary}</p>
+                  <span className="relative mt-4 inline-block text-sm font-semibold text-vabix-soft-gold">Nhận thông báo →</span>
+                </Link>
+              </li>
+            ))}
+          </ul>
         </Container>
       </section>
 
@@ -184,33 +240,30 @@ export default function KnowledgeEcosystemPage() {
       <section className="relative overflow-hidden bg-vabix-deep-teal py-16 text-vabix-warm sm:py-20">
         <HeroBackdrop />
         <Container className="relative">
-          <Title light eyebrow="04 – 05 · Nhân lực" title="Lớp năng lực hỗ trợ" gold="xuyên suốt hệ sinh thái." />
-          <p className="mt-4 max-w-2xl text-white/70">{workforce.positioning}</p>
+          <div className="flex flex-wrap items-end justify-between gap-6">
+            <Title light eyebrow="04 – 05 · Nhân lực" title="Đúng người, đúng công cụ" gold="cho từng dự án." />
+            <p className="max-w-md text-white/70">Khi doanh nghiệp cần thêm năng lực mà chưa cần tuyển dụng cố định: chuyên gia theo dự án và trợ lý AI có kiểm soát.</p>
+          </div>
           <div className="mt-10 grid gap-5 lg:grid-cols-2">
-            {[
-              { id: "nhan-luc-mo", n: "04", data: workforce.openTalent, extra: [] as readonly string[] },
-              { id: "nhan-luc-so", n: "05", data: workforce.digitalTalent, extra: workforce.digitalTalent.principles },
-            ].map(({ id, n, data, extra }) => (
-              <article key={id} id={id} className="scroll-mt-24 rounded-[24px] border border-vabix-gold/30 bg-white/[0.04] p-6 backdrop-blur-sm sm:p-8">
+            {WORKFORCE.map((w) => (
+              <article key={w.id} id={w.id} className="flex scroll-mt-24 flex-col rounded-[24px] border border-vabix-gold/30 bg-white/[0.04] p-6 backdrop-blur-sm sm:p-8">
                 <p className="text-xs font-semibold uppercase tracking-[0.2em] text-vabix-gold">
-                  {n} · {data.title}
+                  {w.n} · {w.title}
                 </p>
-                <h3 className="mt-3 text-balance text-xl font-semibold sm:text-2xl">{data.tagline}</h3>
-                <p className="mt-3 leading-relaxed text-white/75">{data.summary}</p>
-                <ul className="mt-5 flex flex-wrap gap-2">
-                  {data.services.map((x) => (
-                    <li key={x} className="rounded-full border border-white/15 px-3 py-1 text-sm text-white/85">
-                      {x.replace(/\.$/, "")}
+                <h3 className="mt-3 text-balance text-xl font-semibold sm:text-2xl">{w.tagline}</h3>
+                <p className="mt-3 leading-relaxed text-white/75">{w.summary}</p>
+                <ul className="mt-5 grid gap-2.5 sm:grid-cols-2">
+                  {w.items.map((x) => (
+                    <li key={x} className="flex items-start gap-2.5 text-sm text-white/85">
+                      <span aria-hidden="true" className="mt-1.5 h-1.5 w-1.5 shrink-0 rotate-45 bg-vabix-gold" />
+                      {x}
                     </li>
                   ))}
                 </ul>
-                {extra.length ? (
-                  <ul className="mt-5 space-y-1.5 border-t border-white/10 pt-4 text-sm text-white/65">
-                    {extra.map((x) => (
-                      <li key={x}>{x}</li>
-                    ))}
-                  </ul>
-                ) : null}
+                <p className="mt-6 border-t border-white/10 pt-4 text-sm italic text-white/65">{w.note}</p>
+                <Link href="/nhan-luc-mo-nhan-luc-so" className="mt-auto inline-block pt-5 text-sm font-semibold text-vabix-soft-gold hover:text-vabix-gold">
+                  Tìm hiểu {w.title.toLowerCase()} →
+                </Link>
               </article>
             ))}
           </div>

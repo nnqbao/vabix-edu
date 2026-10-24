@@ -6473,3 +6473,39 @@ section[id],
     transition: none;
   }
 }
+
+/* AI WorkLab — sơ đồ Work → Workflow */
+.wl-flow-dash {
+  animation: babo-loop 1.6s linear infinite;
+}
+
+.wl-flow-node {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: wl-node 6s ease-in-out infinite;
+  animation-delay: calc(var(--i, 0) * 1.5s);
+}
+
+@keyframes wl-node {
+  0%,
+  100% {
+    filter: none;
+  }
+  12% {
+    filter: drop-shadow(0 0 10px rgba(222, 164, 67, 0.75));
+  }
+  25% {
+    filter: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wl-flow-dash,
+  .wl-flow-node {
+    animation: none;
+  }
+
+  .wl-flow-dot {
+    display: none;
+  }
+}

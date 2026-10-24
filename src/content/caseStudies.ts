@@ -39,7 +39,7 @@ export const caseStudies: CaseStudy[] = [
       role: "Hồ sơ năng lực",
     },
     coverImage: "/images/case-studies/vnpt/vnpt-01.jpg",
-    gallery: [1, 2, 3, 4, 5, 6, 7, 8].map((n) => `/images/case-studies/vnpt/vnpt-0${n}.jpg`).concat("/images/covers/vnpt.jpg"),
+    gallery: [1, 2, 3, 4, 5, 6, 7, 8].map((n) => `/images/case-studies/vnpt/vnpt-0${n}.jpg`),
     galleryAlts: [
       "Học viên VNPT tại lớp huấn luyện thực chiến",
       "VNPT TP.HCM — chương trình “Chiến binh xanh”",
@@ -49,7 +49,6 @@ export const caseStudies: CaseStudy[] = [
       "VNPT Cà Mau ra quân bán hàng & chăm sóc khách hàng tại địa bàn Phước Long",
       "Lớp đào tạo thực chiến địa bàn VNPT Hải Phòng 2026",
       "VNPT Cà Mau ra quân tại điểm cung cấp dịch vụ Hòa Bình",
-      "Infographic: hơn 15 năm VABIX đồng hành cùng VNPT",
     ],
     relatedExperts: ["nguyen-chi-thanh"],
     lesson:

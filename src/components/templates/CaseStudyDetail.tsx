@@ -247,7 +247,10 @@ export function CaseStudyDetail({ c }: { c: CaseStudy }) {
               {gallery.map((src, i) => {
                 const alt = c.galleryAlts?.[c.gallery.indexOf(src)] ?? `${c.organization} — hình ảnh ${i + 1}`;
                 return (
-                <figure key={src} className={`bmdo-grad-tile ${i === 0 ? "col-span-2 aspect-[4/3] lg:row-span-2 lg:aspect-auto" : "aspect-[4/3]"}`}>
+                <figure key={src} className={`bmdo-grad-tile ${i === 0 ? "col-span-2 aspect-[4/3] lg:row-span-2 lg:aspect-auto" : "aspect-[4/3]"} ${
+                    // Lưới 3 cột: ảnh đầu chiếm 4 ô; nếu hàng cuối còn 2 ảnh thì ảnh cuối trải 2 ô cho kín lưới.
+                    i > 0 && i === gallery.length - 1 && (gallery.length + 3) % 3 === 2 ? "lg:col-span-2 lg:aspect-[8/3]" : ""
+                  }`}>
                   <span {...zoomAttrs(1 + i, src, alt)} className="bmdo-zoomable">
                     <Image src={src} alt={alt} fill unoptimized sizes="(max-width: 1023px) 50vw, 33vw" className="object-cover transition-transform duration-700 hover:scale-105" />
                   </span>

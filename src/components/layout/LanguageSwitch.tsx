@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { localeFromPathname, switchLocalePath, type Locale } from "@/i18n/locale";
 
@@ -17,10 +16,12 @@ export function LanguageSwitch({ inverted }: { inverted?: boolean }) {
   );
 }
 
+// Dùng thẻ <a> thường (tải lại cả trang) thay vì <Link>: chuyển trang "mềm" của Next dùng lại dữ liệu
+// trang đã lưu (cùng route sau khi middleware rewrite /en), nên lần bấm đầu nội dung chưa đổi ngôn ngữ.
 function FlagLink({ code, label, current, href, inverted }: { code: Locale; label: string; current: Locale; href: string; inverted?: boolean }) {
   const on = current === code;
   return (
-    <Link
+    <a
       href={href}
       hrefLang={code}
       aria-current={on ? "true" : undefined}
@@ -31,7 +32,7 @@ function FlagLink({ code, label, current, href, inverted }: { code: Locale; labe
       }`}
     >
       {code === "vi" ? <FlagVN /> : <FlagGB />}
-    </Link>
+    </a>
   );
 }
 

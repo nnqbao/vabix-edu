@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
-import { aiWorklab as w } from "@/content/aiWorklab";
+import { aiWorklab as aiWorklabVi } from "@/content/aiWorklab";
+import { aiWorklab as aiWorklabEn } from "@/content/en/aiWorklab";
+import type { Widen } from "@/content/en/babosora";
 import { publishedExperts } from "@/platform/cms/catalog";
 import { LeadForm } from "@/components/forms/LeadForm";
 import { Breadcrumb } from "@/components/ui/Misc";
@@ -10,12 +12,15 @@ import { HeroBackdrop, Heading } from "@/components/templates/BmdoLanding";
 import { RevealOnView } from "@/components/templates/RevealOnView";
 import { siteConfig } from "@/lib/siteConfig";
 import { paths } from "@/lib/paths";
+import { getLocale } from "@/i18n/server";
 
 const hotline = siteConfig.contact.hotline;
 const hotlineHref = siteConfig.contact.hotlineHref;
 
 // Sơ đồ "Work → Workflow": 4 bước D4 nối bằng đường dẫn có hạt sáng chạy.
-function D4Flow({ className = "" }: { className?: string }) {
+type Content = Widen<typeof aiWorklabVi>;
+
+function D4Flow({ w, en, className = "" }: { w: Content; en: boolean; className?: string }) {
   const nodes = [
     { x: 70, y: 300 },
     { x: 170, y: 190 },
@@ -24,7 +29,7 @@ function D4Flow({ className = "" }: { className?: string }) {
   ];
   const d = "M70 300 C 110 240, 130 200, 170 190 S 250 260, 290 250 S 360 150, 390 120";
   return (
-    <svg viewBox="0 0 460 380" className={`wl-flow ${className}`} role="img" aria-label="Lộ trình D4: Decode → Delegate → Design → Deploy">
+    <svg viewBox="0 0 460 380" className={`wl-flow ${className}`} role="img" aria-label={en ? "D4 pathway: Decode → Delegate → Design → Deploy" : "Lộ trình D4: Decode → Delegate → Design → Deploy"}>
       <defs>
         <linearGradient id="wl-path" x1="0" y1="1" x2="1" y2="0">
           <stop offset="0" stopColor="#e4b862" stopOpacity="0.25" />
@@ -59,8 +64,11 @@ function D4Flow({ className = "" }: { className?: string }) {
   );
 }
 
-export function AiWorklabLanding() {
-  const expert = publishedExperts().find((e) => e.slug === w.expertSlug);
+export async function AiWorklabLanding() {
+  const locale = await getLocale();
+  const en = locale === "en";
+  const w: Content = en ? aiWorklabEn : aiWorklabVi;
+  const expert = publishedExperts(locale).find((e) => e.slug === w.expertSlug);
   return (
     <>
       {/* Hero */}
@@ -71,8 +79,8 @@ export function AiWorklabLanding() {
             <Breadcrumb
               light
               items={[
-                { name: "Trang chủ", href: paths.home },
-                { name: "Đào tạo & huấn luyện", href: paths.training },
+                { name: en ? "Home" : "Trang chủ", href: paths.home },
+                { name: en ? "Training & coaching" : "Đào tạo & huấn luyện", href: paths.training },
                 { name: "AI WorkLab" },
               ]}
             />
@@ -90,22 +98,22 @@ export function AiWorklabLanding() {
               <Link href={`/mang-luoi/chuyen-gia/${expert.slug}`} className="group mt-7 inline-flex items-center gap-3 rounded-full border border-white/15 bg-white/[0.05] py-1.5 pl-1.5 pr-5 transition-colors hover:border-vabix-gold/60">
                 <Image src={expert.portrait} alt={expert.name} width={96} height={96} unoptimized className="h-11 w-11 rounded-full object-cover object-top" />
                 <span>
-                  <span className="block text-[11px] font-semibold uppercase tracking-[0.18em] text-vabix-soft-gold">Chuyên gia huấn luyện</span>
+                  <span className="block text-[11px] font-semibold uppercase tracking-[0.18em] text-vabix-soft-gold">{en ? "Lead trainer" : "Chuyên gia huấn luyện"}</span>
                   <span className="block font-semibold group-hover:text-vabix-gold">{expert.name}</span>
                 </span>
               </Link>
             ) : null}
             <div className="mt-8 grid gap-3 sm:flex sm:flex-wrap">
               <Button href="#dang-ky" className="w-full sm:w-auto">
-                Đăng ký tư vấn chương trình →
+                {en ? "Request a programme consultation →" : "Đăng ký tư vấn chương trình →"}
               </Button>
               <Button href={hotlineHref} variant="outline" className="w-full border-white/40 text-white sm:w-auto">
-                Gọi {hotline}
+                {en ? "Call" : "Gọi"} {hotline}
               </Button>
             </div>
           </div>
           <div className="relative mx-auto w-full max-w-[30rem]">
-            <D4Flow className="w-full" />
+            <D4Flow w={w} en={en} className="w-full" />
             <ul className="mt-4 grid grid-cols-3 gap-2">
               {w.stats.map((s, i) => (
                 <li
@@ -128,12 +136,12 @@ export function AiWorklabLanding() {
           <RevealOnView>
             <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] lg:gap-14">
               <div className="bmdo-rv">
-                <Heading eyebrow="01 · Tổng quan" title={w.overview.title} gold={w.overview.titleGold} />
+                <Heading eyebrow={en ? "01 · Overview" : "01 · Tổng quan"} title={w.overview.title} gold={w.overview.titleGold} />
                 <p className="mt-5 text-lg font-medium text-vabix-deep-teal">{w.overview.lead}</p>
                 <p className="mt-4 leading-relaxed text-vabix-muted">{w.overview.body}</p>
               </div>
               <div className="bmdo-rv space-y-4" style={{ ["--rv-i" as string]: 1 }}>
-                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-vabix-gold">Đối tượng phù hợp</p>
+                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-vabix-gold">{en ? "Who it is for" : "Đối tượng phù hợp"}</p>
                 <ul className="grid gap-3 sm:grid-cols-3">
                   {w.overview.audience.map((a) => (
                     <li key={a.title} className="rounded-[18px] border border-vabix-deep-teal/10 bg-white p-5">
@@ -153,7 +161,7 @@ export function AiWorklabLanding() {
               </div>
             </div>
             <div className="bmdo-rv mt-12 rounded-[24px] bg-vabix-deep-teal p-6 text-vabix-warm sm:p-8" style={{ ["--rv-i" as string]: 2 }}>
-              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-vabix-gold">Kết quả kỳ vọng sau chương trình</p>
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-vabix-gold">{en ? "Expected outcomes after the programme" : "Kết quả kỳ vọng sau chương trình"}</p>
               <ul className="mt-5 grid gap-x-8 gap-y-3 md:grid-cols-2">
                 {w.overview.outcomes.map((o) => (
                   <li key={o} className="flex gap-3 leading-relaxed text-white/85">
@@ -173,7 +181,7 @@ export function AiWorklabLanding() {
         <Container className="relative">
           <RevealOnView>
             <div className="bmdo-rv">
-              <Heading light eyebrow="02 · Kiến trúc chương trình" title="D4 AI Work Transformation" gold="— từ biết dùng AI đến thiết kế cách làm việc với AI" />
+              <Heading light eyebrow={en ? "02 · Programme architecture" : "02 · Kiến trúc chương trình"} title="D4 AI Work Transformation" gold={en ? "— from using AI to designing how you work with AI" : "— từ biết dùng AI đến thiết kế cách làm việc với AI"} />
             </div>
             <ol className="relative mt-12 grid grid-cols-2 gap-x-4 gap-y-8 md:grid-cols-4">
               <span aria-hidden="true" className="bmdo-applier-line absolute left-[12%] right-[12%] top-7 hidden h-px md:block" />
@@ -190,7 +198,7 @@ export function AiWorklabLanding() {
 
             <div className="mt-16 grid gap-10 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)]">
               <div className="bmdo-rv" style={{ ["--rv-i" as string]: 5 }}>
-                <p className="text-sm font-semibold uppercase tracking-[0.16em] text-vabix-gold">Phương pháp học · 70% thực hành</p>
+                <p className="text-sm font-semibold uppercase tracking-[0.16em] text-vabix-gold">{en ? "Learning method · 70% practice" : "Phương pháp học · 70% thực hành"}</p>
                 <div className="mt-5 flex overflow-hidden rounded-full border border-white/10 text-xs font-semibold sm:text-sm">
                   {w.method.map((m) => (
                     <div
@@ -214,7 +222,7 @@ export function AiWorklabLanding() {
                 </ul>
               </div>
               <div className="bmdo-rv" style={{ ["--rv-i" as string]: 6 }}>
-                <p className="text-sm font-semibold uppercase tracking-[0.16em] text-vabix-gold">Nguyên tắc thiết kế</p>
+                <p className="text-sm font-semibold uppercase tracking-[0.16em] text-vabix-gold">{en ? "Design principles" : "Nguyên tắc thiết kế"}</p>
                 <ul className="mt-5 divide-y divide-white/10 overflow-hidden rounded-[20px] border border-vabix-gold/30 bg-vabix-deep-teal/40">
                   {w.principles.map((p) => (
                     <li key={p.k} className="bmdo-support-row px-5 py-3.5">
@@ -233,7 +241,7 @@ export function AiWorklabLanding() {
       <section className="bg-vabix-ivory py-16 sm:py-20">
         <Container className="grid gap-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.3fr)] lg:items-center lg:gap-14">
           <div>
-            <Heading eyebrow="03 · Trước khóa học" title="AI Work Diagnostic" gold="— học trên việc thật" />
+            <Heading eyebrow={en ? "03 · Before the programme" : "03 · Trước khóa học"} title="AI Work Diagnostic" gold={en ? "— learning on real work" : "— học trên việc thật"} />
             <p className="mt-5 leading-relaxed text-vabix-muted">{w.diagnostic.lead}</p>
             <p className="mt-4 rounded-[16px] border-l-2 border-vabix-gold bg-white px-5 py-4 text-sm leading-relaxed text-vabix-ink">{w.diagnostic.note}</p>
           </div>
@@ -247,7 +255,7 @@ export function AiWorklabLanding() {
               ))}
             </ul>
             <p className="mt-4 rounded-[18px] bg-vabix-deep-teal px-5 py-4 text-sm leading-relaxed text-white/85">
-              <span className="font-semibold text-vabix-gold">Đầu ra: </span>
+              <span className="font-semibold text-vabix-gold">{en ? "Output: " : "Đầu ra: "}</span>
               {w.diagnostic.output}
             </p>
           </div>
@@ -257,13 +265,13 @@ export function AiWorklabLanding() {
       {/* 4 buổi */}
       <section className="bg-vabix-warm py-16 sm:py-24" id="noi-dung">
         <Container>
-          <Heading center eyebrow="04 · Nội dung" title="04 buổi × 03 giờ," gold="mỗi buổi một sản phẩm mang về" />
+          <Heading center eyebrow={en ? "04 · Content" : "04 · Nội dung"} title={en ? "4 sessions × 3 hours," : "04 buổi × 03 giờ,"} gold={en ? "a deliverable from every session" : "mỗi buổi một sản phẩm mang về"} />
           <div className="mt-12 space-y-6">
             {w.sessions.map((s) => (
               <article key={s.no} className="overflow-hidden rounded-[26px] border border-vabix-deep-teal/10 bg-white lg:grid lg:grid-cols-[minmax(0,1.25fr)_minmax(0,1fr)]">
                 <div className="p-6 sm:p-8">
                   <p className="text-xs font-semibold uppercase tracking-[0.2em] text-vabix-gold">
-                    Buổi {s.no} · {s.code}
+                    {en ? "Session" : "Buổi"} {s.no} · {s.code}
                   </p>
                   <h3 className="mt-2 text-2xl font-semibold text-vabix-deep-teal sm:text-[1.7rem]">{s.title}</h3>
                   <p className="mt-2 text-vabix-muted">{s.goal}</p>
@@ -276,7 +284,7 @@ export function AiWorklabLanding() {
                     ))}
                   </ol>
                   <p className="mt-6 rounded-xl bg-vabix-ivory p-4 text-sm leading-relaxed text-vabix-ink">
-                    <span className="block text-[11px] font-semibold uppercase tracking-[0.16em] text-vabix-gold">Output buổi {s.no}</span>
+                    <span className="block text-[11px] font-semibold uppercase tracking-[0.16em] text-vabix-gold">{en ? `Session ${s.no} output` : `Output buổi ${s.no}`}</span>
                     <span className="mt-1 block">{s.output}</span>
                   </p>
                 </div>
@@ -284,7 +292,7 @@ export function AiWorklabLanding() {
                   <span aria-hidden="true" className="absolute -right-6 -top-8 text-[8rem] font-bold leading-none text-white/[0.04]">
                     {s.no}
                   </span>
-                  <p className="relative text-xs font-semibold uppercase tracking-[0.2em] text-vabix-gold">Công cụ trọng tâm</p>
+                  <p className="relative text-xs font-semibold uppercase tracking-[0.2em] text-vabix-gold">{en ? "Core tool" : "Công cụ trọng tâm"}</p>
                   <p className="relative mt-2 text-xl font-semibold">{s.tool.name}</p>
                   <ul className="relative mt-5 space-y-2.5">
                     {s.tool.items.map((t) => (
@@ -305,8 +313,12 @@ export function AiWorklabLanding() {
       <section className="bg-vabix-ivory py-16 sm:py-20">
         <Container>
           <div className="flex flex-wrap items-end justify-between gap-6">
-            <Heading eyebrow="05 · Thư viện use case" title="Bài toán doanh nghiệp" gold="theo nhóm công việc" />
-            <p className="max-w-md text-vabix-muted">Use case gợi ý — case thực hành chính thức được tùy biến theo ngành, dữ liệu và quy trình của từng doanh nghiệp.</p>
+            <Heading eyebrow={en ? "05 · Use case library" : "05 · Thư viện use case"} title={en ? "Business problems" : "Bài toán doanh nghiệp"} gold={en ? "by work function" : "theo nhóm công việc"} />
+            <p className="max-w-md text-vabix-muted">
+              {en
+                ? "Suggested use cases — the actual practice cases are tailored to each company's industry, data and processes."
+                : "Use case gợi ý — case thực hành chính thức được tùy biến theo ngành, dữ liệu và quy trình của từng doanh nghiệp."}
+            </p>
           </div>
           <ul className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
             {w.useCases.map((u) => (
@@ -325,7 +337,7 @@ export function AiWorklabLanding() {
         <HeroBackdrop />
         <Container className="relative grid gap-12 lg:grid-cols-2 lg:gap-14">
           <div>
-            <Heading light eyebrow="06 · Bộ công cụ" title="Frameworks & templates" gold="học viên mang về" />
+            <Heading light eyebrow={en ? "06 · Toolkit" : "06 · Bộ công cụ"} title="Frameworks & templates" gold={en ? "participants take home" : "học viên mang về"} />
             <ul className="mt-8 grid gap-3 sm:grid-cols-2">
               {w.toolkit.map((t) => (
                 <li key={t.k} className="rounded-[16px] border border-white/10 bg-white/[0.04] p-4">
@@ -336,7 +348,7 @@ export function AiWorklabLanding() {
             </ul>
           </div>
           <div>
-            <Heading light eyebrow="07 · Deliverables" title="Doanh nghiệp nhận được gì" gold="ngoài 12 giờ đào tạo" />
+            <Heading light eyebrow="07 · Deliverables" title={en ? "What your company gets" : "Doanh nghiệp nhận được gì"} gold={en ? "beyond 12 hours of training" : "ngoài 12 giờ đào tạo"} />
             <ol className="mt-8 grid gap-2 sm:grid-cols-2">
               {w.deliverables.map((d, i) => (
                 <li key={d} className="flex items-center gap-3 rounded-full border border-vabix-gold/30 px-4 py-2.5 text-sm">
@@ -353,7 +365,7 @@ export function AiWorklabLanding() {
       {/* Triển khai */}
       <section className="bg-vabix-warm py-16 sm:py-24">
         <Container>
-          <Heading eyebrow="08 · Triển khai" title="4 buổi trong 2–4 tuần," gold="có khoảng thử nghiệm giữa các buổi" />
+          <Heading eyebrow={en ? "08 · Delivery" : "08 · Triển khai"} title={en ? "4 sessions over 2–4 weeks," : "4 buổi trong 2–4 tuần,"} gold={en ? "with time to experiment between sessions" : "có khoảng thử nghiệm giữa các buổi"} />
           <ol className="mt-10 grid gap-3 md:grid-cols-3 lg:grid-cols-6">
             {w.timeline.map((t, i) => (
               <li key={t.what} className={`rounded-[18px] p-5 ${i === 0 || i === w.timeline.length - 1 ? "border border-dashed border-vabix-gold/60 bg-vabix-ivory" : "bg-vabix-deep-teal text-vabix-warm"}`}>
@@ -366,7 +378,7 @@ export function AiWorklabLanding() {
 
           <div className="mt-12 grid gap-6 lg:grid-cols-3">
             <div className="rounded-[22px] border border-vabix-deep-teal/10 bg-white p-6">
-              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-vabix-gold">Gói tiêu chuẩn</p>
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-vabix-gold">{en ? "Standard package" : "Gói tiêu chuẩn"}</p>
               <ul className="mt-4 space-y-2 text-sm text-vabix-ink">
                 {w.scope.included.map((x) => (
                   <li key={x} className="flex gap-2.5">
@@ -376,12 +388,12 @@ export function AiWorklabLanding() {
                 ))}
               </ul>
               <p className="mt-4 border-t border-vabix-deep-teal/10 pt-3 text-xs leading-relaxed text-vabix-muted">
-                <span className="font-semibold">Không bao gồm: </span>
+                <span className="font-semibold">{en ? "Not included: " : "Không bao gồm: "}</span>
                 {w.scope.excluded}
               </p>
             </div>
             <div className="rounded-[22px] border border-vabix-deep-teal/10 bg-white p-6">
-              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-vabix-gold">Tùy biến theo doanh nghiệp</p>
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-vabix-gold">{en ? "Tailored to your company" : "Tùy biến theo doanh nghiệp"}</p>
               <ul className="mt-4 flex flex-wrap gap-2">
                 {w.customize.map((c) => (
                   <li key={c} className="rounded-full border border-vabix-deep-teal/15 px-3 py-1 text-sm text-vabix-deep-teal">
@@ -391,7 +403,7 @@ export function AiWorklabLanding() {
               </ul>
             </div>
             <div className="rounded-[22px] bg-vabix-deep-teal p-6 text-vabix-warm">
-              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-vabix-gold">Phương án mở rộng</p>
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-vabix-gold">{en ? "Expansion options" : "Phương án mở rộng"}</p>
               <ol className="mt-4 space-y-3">
                 {w.scope.phases.map((p) => (
                   <li key={p.k} className="text-sm leading-relaxed text-white/85">
@@ -413,13 +425,13 @@ export function AiWorklabLanding() {
               <Image src={expert.portrait} alt={expert.name} width={720} height={900} unoptimized className="relative aspect-[4/5] w-full rounded-[26px] border border-vabix-gold/40 object-cover object-top shadow-[0_24px_60px_rgba(22,60,62,0.2)]" />
             </div>
             <div>
-              <p className="eyebrow">Chuyên gia huấn luyện</p>
+              <p className="eyebrow">{en ? "Lead trainer" : "Chuyên gia huấn luyện"}</p>
               <h2 className="mt-3 text-[2rem] font-semibold tracking-[-0.02em] text-vabix-deep-teal sm:text-[2.6rem]">{expert.name}</h2>
               <p className="mt-1 font-semibold text-vabix-gold">{expert.title}</p>
               <p className="mt-5 text-lg leading-relaxed text-vabix-ink">{expert.shortBio}</p>
               <blockquote className="mt-8 border-l-2 border-vabix-gold pl-5 text-lg italic leading-relaxed text-vabix-deep-teal">“{w.message}”</blockquote>
               <Link href={`/mang-luoi/chuyen-gia/${expert.slug}`} className="mt-6 inline-block text-sm font-semibold text-vabix-deep-teal hover:text-vabix-gold">
-                Xem hồ sơ chuyên gia →
+                {en ? "View expert profile →" : "Xem hồ sơ chuyên gia →"}
               </Link>
             </div>
           </Container>
@@ -431,29 +443,31 @@ export function AiWorklabLanding() {
         <Container className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)] lg:gap-16">
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.22em] text-vabix-gold">VABIX AI WorkLab</p>
-            <h2 className="mt-3 text-3xl font-semibold uppercase sm:text-4xl">Triển khai cho doanh nghiệp</h2>
+            <h2 className="mt-3 text-3xl font-semibold uppercase sm:text-4xl">{en ? "Bring it to your company" : "Triển khai cho doanh nghiệp"}</h2>
             <p className="mt-4 max-w-md leading-relaxed text-white/75">
-              Chương trình tổ chức riêng (in-house) cho từng doanh nghiệp. Để lại thông tin để VABIX khảo sát nhu cầu, đề xuất cấu hình lớp và lịch triển khai.
+              {en
+                ? "The programme runs in-house for each company. Leave your details and VABIX will assess your needs and propose a class setup and delivery schedule."
+                : "Chương trình tổ chức riêng (in-house) cho từng doanh nghiệp. Để lại thông tin để VABIX khảo sát nhu cầu, đề xuất cấu hình lớp và lịch triển khai."}
             </p>
             <dl className="mt-8 space-y-4">
               <div>
-                <dt className="text-xs uppercase tracking-[0.18em] text-white/55">Thời lượng</dt>
-                <dd className="mt-1 text-lg">04 buổi × 03 giờ · trong 2–4 tuần</dd>
+                <dt className="text-xs uppercase tracking-[0.18em] text-white/55">{en ? "Duration" : "Thời lượng"}</dt>
+                <dd className="mt-1 text-lg">{en ? "4 sessions × 3 hours · over 2–4 weeks" : "04 buổi × 03 giờ · trong 2–4 tuần"}</dd>
               </div>
               <div>
-                <dt className="text-xs uppercase tracking-[0.18em] text-white/55">Hình thức</dt>
-                <dd className="mt-1 text-lg">Onsite / Hybrid · 25–50 học viên mỗi lớp</dd>
+                <dt className="text-xs uppercase tracking-[0.18em] text-white/55">{en ? "Format" : "Hình thức"}</dt>
+                <dd className="mt-1 text-lg">{en ? "Onsite / Hybrid · 25–50 participants per class" : "Onsite / Hybrid · 25–50 học viên mỗi lớp"}</dd>
               </div>
             </dl>
             <div className="mt-8 border-t border-white/15 pt-6">
-              <p className="text-xs uppercase tracking-[0.18em] text-white/55">Hotline tư vấn</p>
+              <p className="text-xs uppercase tracking-[0.18em] text-white/55">{en ? "Advice hotline" : "Hotline tư vấn"}</p>
               <a href={hotlineHref} className="mt-2 inline-block text-3xl font-semibold text-vabix-warm hover:text-vabix-gold">
                 {hotline}
               </a>
             </div>
           </div>
           <div className="bmdo-form rounded-[22px] bg-white p-5 text-vabix-ink sm:p-8">
-            <LeadForm type="corporate-training" program="ai-worklab" title="Đăng ký tư vấn AI WorkLab" />
+            <LeadForm type="corporate-training" program="ai-worklab" title={en ? "Request an AI WorkLab consultation" : "Đăng ký tư vấn AI WorkLab"} />
           </div>
         </Container>
       </section>

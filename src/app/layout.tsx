@@ -26,7 +26,6 @@ export const metadata: Metadata = {
     "VABIX",
     "BizCar",
     "BMDO",
-    "MBM",
     "B2A",
     "MyBizCar",
     "MTUA",

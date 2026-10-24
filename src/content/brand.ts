@@ -132,7 +132,6 @@ export const glossary = [
   { term: "3T", meaning: "Ba mũi nhọn: Training & Coaching, Transformation, Trustworking." },
   { term: "BizCar", meaning: "Mô hình quản trị 12 khối chức năng giúp nhìn doanh nghiệp như một hệ thống thống nhất." },
   { term: "BMDO", meaning: "Thao trường thiết kế và vận hành doanh nghiệp toàn diện." },
-  { term: "MBM", meaning: "Mastery of the BizCar Model — chương trình chuyên sâu của VABIX, không phải chương trình thạc sĩ." },
   { term: "3W", meaning: "WOW · WELL · WIN — nhận thức có ý nghĩa, thiết kế tốt hơn, tiến bộ trong thực tiễn." },
   { term: "APPLIER", meaning: "Phương pháp đào tạo: Activate, Paradigm, Practice, Lens, Improve, Extract, Resolve." },
   { term: "KAROT", meaning: "Khung xác lập trọng tâm và ưu tiên thay đổi trước khi thiết kế hoặc triển khai." },

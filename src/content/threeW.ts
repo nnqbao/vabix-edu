@@ -7,7 +7,6 @@ export const threeW = {
   distinction: [
     { term: "BizCar", meaning: "Mô hình quản trị — khung 12 khối chức năng nhìn doanh nghiệp như hệ thống thống nhất." },
     { term: "BMDO", meaning: "Chương trình thao trường thiết kế và vận hành doanh nghiệp toàn diện." },
-    { term: "MBM", meaning: "Mastery of the BizCar Model — chương trình chuyên sâu của VABIX, không phải thạc sĩ." },
     { term: "3W", meaning: "Chuẩn thành công của quá trình học tập và thực thi." },
   ],
   pillars: [

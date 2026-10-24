@@ -30,7 +30,6 @@ const en: Record<string, string> = {
   "Chương trình": "Programs",
   "Tổng quan Training & Coaching thực chiến.": "An overview of practical training and coaching.",
   "Chương trình dành cho lãnh đạo": "Programs for leaders",
-  "BMDO, MBM và thao trường doanh chủ.": "BMDO, MBM and the business owner's practice field.",
   "Quản lý & đội ngũ": "Managers & teams",
   "Năng lực quản lý, bán hàng, vận hành và AI.": "Management, sales, operations and AI capability.",
   "Đào tạo theo yêu cầu": "Custom training",

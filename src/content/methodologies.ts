@@ -37,7 +37,7 @@ export const methodologies: Methodology[] = [
       "APPLIER là phương pháp đào tạo và huấn luyện của VABIX: cùng khởi động, nắm mô thức, thực hành thiết kế, soi lăng kính đa chiều, cải tiến, đúc kết và triển khai ra kết quả.",
     description:
       "APPLIER không phải khóa học lý thuyết. Người học làm trên bài toán thật, phản biện đa chiều rồi cam kết ứng dụng. Kết quả được mô tả là hướng đến và được đo lường — không phải cam kết tăng doanh thu hay lợi nhuận.",
-    whoFor: ["Học viên BMDO và MBM", "Lớp đào tạo theo yêu cầu doanh nghiệp", "Huấn luyện 1:1"],
+    whoFor: ["Học viên BMDO", "Lớp đào tạo theo yêu cầu doanh nghiệp", "Huấn luyện 1:1"],
     outcomes: [
       "Người học nhìn rõ bài toán của chính mình",
       "Có sản phẩm thiết kế có thể áp dụng",
@@ -89,8 +89,8 @@ export const methodologies: Methodology[] = [
     summary:
       "3W là khung đánh giá đầu ra của quá trình học tập và thực thi — không phải cam kết kết quả kinh doanh tuyệt đối.",
     description:
-      "WOW: nhận thức có ý nghĩa / nhận thức bừng sáng. WELL: thiết kế và thực hiện tốt hơn. WIN: tiến bộ / kết quả trong thực tiễn. Đầu ra minh họa gồm nhận diện điểm nghẽn, bản thiết kế quản trị, kế hoạch hành động, chỉ số theo dõi và bằng chứng cải tiến. Phân biệt: BizCar là mô hình quản trị; BMDO là chương trình; MBM là chương trình chuyên sâu; 3W là chuẩn thành công.",
-    whoFor: ["Học viên BMDO và MBM", "CEO đang thiết kế lại doanh nghiệp", "Đội ngũ đồng hành chuyển đổi"],
+      "WOW: nhận thức có ý nghĩa / nhận thức bừng sáng. WELL: thiết kế và thực hiện tốt hơn. WIN: tiến bộ / kết quả trong thực tiễn. Đầu ra minh họa gồm nhận diện điểm nghẽn, bản thiết kế quản trị, kế hoạch hành động, chỉ số theo dõi và bằng chứng cải tiến. Phân biệt: BizCar là mô hình quản trị; BMDO là chương trình; 3W là chuẩn thành công.",
+    whoFor: ["Học viên BMDO", "CEO đang thiết kế lại doanh nghiệp", "Đội ngũ đồng hành chuyển đổi"],
     outcomes: [
       "Nhận thức bừng sáng về điểm nghẽn",
       "Sản phẩm quản trị được thiết kế tốt hơn",
@@ -238,7 +238,7 @@ export const methodologies: Methodology[] = [
       "MyBizCar là hồ sơ thiết kế và công cụ giúp lãnh đạo biến khung 12 khối thành bản đánh giá, thiết kế và theo dõi của chính doanh nghiệp.",
     description:
       "Trong BMDO, doanh nghiệp là nơi thực hành; MyBizCar là hồ sơ thiết kế; bằng chứng là căn cứ đánh giá kết quả. MyBizCar không thay thế BizCar hay BMDO. Giao diện có thể được tinh chỉnh theo brand; ý nghĩa chỉ số, dữ liệu demo, đánh giá và quyền truy cập của MyBizCar 3D không thay đổi trong đợt này.",
-    whoFor: ["CEO đang học BMDO / MBM", "Đội ngũ tư vấn dùng chung ngôn ngữ BizCar", "Doanh nghiệp muốn theo dõi 12 khối theo thời gian"],
+    whoFor: ["CEO đang học BMDO", "Đội ngũ tư vấn dùng chung ngôn ngữ BizCar", "Doanh nghiệp muốn theo dõi 12 khối theo thời gian"],
     outcomes: [
       "Có nơi đặt bản đánh giá 12 khối",
       "Theo dõi ưu tiên cải tiến",

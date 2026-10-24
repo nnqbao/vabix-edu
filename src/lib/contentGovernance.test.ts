@@ -38,12 +38,9 @@ test("BABOSO is BA / BO / SO", () => {
   assert.match(baboso.description, /không phải một chữ cái mới/);
 });
 
-test("MBM is not an academic master degree", () => {
-  const mbm = programs.find((p) => p.slug === "mbm");
-  assert.ok(mbm);
-  assert.match(mbm.clarification ?? "", /không phải chương trình thạc sĩ/);
-  assert.match(mbm.certificate ?? "", /Mastery of the BizCar Model/);
-  assert.doesNotMatch(mbm.title, /thạc sĩ/i);
+test("MBM is merged into BMDO and no longer published as a program", () => {
+  assert.equal(programs.some((p) => p.slug === "mbm"), false);
+  assert.equal(programs.some((p) => /thạc sĩ/i.test(p.title)), false);
 });
 
 test("published copy does not include chat metadata or unverified BABOSO-VNPT claim", () => {

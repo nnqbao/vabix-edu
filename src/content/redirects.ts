@@ -6,6 +6,9 @@ import { knowledgeProductRedirects } from "./knowledgeProducts";
  */
 export const iaRedirects: Redirect[] = [
   { source: "/mo-hinh-phuong-phap/bmdo", destination: "/dao-tao/bmdo", permanent: true },
+  // MBM là tên cũ của chương trình BMDO.
+  { source: "/dao-tao/mbm", destination: "/dao-tao/bmdo", permanent: true },
+  { source: "/chuong-trinh/mbm", destination: "/dao-tao/bmdo", permanent: true },
   { source: "/mo-hinh-phuong-phap/kora", destination: "/mo-hinh-phuong-phap/karot", permanent: true },
   { source: "/chuong-trinh", destination: "/dao-tao", permanent: true },
   { source: "/chuong-trinh/:slug", destination: "/dao-tao/:slug", permanent: true },

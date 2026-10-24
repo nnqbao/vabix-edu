@@ -16,7 +16,7 @@ import { eventsEn } from "@/content/en/events";
 import { knowledgeProductsEn } from "@/content/en/knowledgeProducts";
 import { solutionsEn } from "@/content/en/solutions";
 import { consultingServicesEn } from "@/content/en/consulting";
-import { localizeList } from "@/i18n/pick";
+import { enHonorific, localizeList } from "@/i18n/pick";
 import type { Locale } from "@/i18n/locale";
 import { getCms, listPublishedCms, publicPayload, type CmsDocument } from "./service";
 import { parseJson } from "@/platform/sanitize";
@@ -138,7 +138,8 @@ export function publishedMethodology(slug: string, locale: Locale = "vi") {
 }
 
 export function publishedExperts(locale: Locale = "vi"): Expert[] {
-  return localizeList(overlayList("expert", experts, expertPayload), expertsEn, locale);
+  const list = localizeList(overlayList("expert", experts, expertPayload), expertsEn, locale);
+  return locale === "en" ? list.map((e) => ({ ...e, name: enHonorific(e.name) })) : list;
 }
 
 export function publishedExpert(slug: string, locale: Locale = "vi") {

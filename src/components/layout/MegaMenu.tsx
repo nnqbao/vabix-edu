@@ -124,10 +124,11 @@ export function MegaMenu({ items, inverted }: { items: NavItem[]; inverted: bool
 }
 
 function DropdownPanel({ item }: { item: NavItem }) {
+  const multi = (item.groups?.length ?? 0) > 1;
   return (
-    <div className="vabix-nav-panel w-[min(92vw,560px)] rounded-[16px] border border-vabix-deep-teal/10 bg-vabix-warm p-5 shadow-[0_22px_50px_rgba(22,60,62,0.14)]">
+    <div className={`vabix-nav-panel rounded-[16px] border border-vabix-deep-teal/10 bg-vabix-warm p-5 shadow-[0_22px_50px_rgba(22,60,62,0.14)] ${multi ? "w-[min(92vw,560px)]" : "w-[min(92vw,300px)]"}`}>
       {item.groups ? (
-        <div className="grid gap-8 sm:grid-cols-2">
+        <div className={`grid gap-8 ${multi ? "sm:grid-cols-2" : ""}`}>
           {item.groups.map((group) => (
             <div key={group.label}>
               <p className="mb-3 text-[11px] font-semibold tracking-[0.16em] text-vabix-gold uppercase">{group.label}</p>

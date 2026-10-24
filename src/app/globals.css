@@ -5974,3 +5974,85 @@ section[id],
     transition: none;
   }
 }
+
+/* Xem ảnh phóng to (Lightbox) */
+.bmdo-zoomable {
+  display: block;
+  height: 100%;
+  cursor: zoom-in;
+}
+
+.bmdo-zoomable:focus-visible {
+  outline: 2px solid var(--color-vabix-gold);
+  outline-offset: -4px;
+  border-radius: inherit;
+}
+
+.bmdo-lightbox {
+  background: rgba(10, 26, 28, 0.88);
+  backdrop-filter: blur(10px);
+  animation: bmdo-lightbox-in 260ms ease both;
+}
+
+.bmdo-lightbox-img {
+  border: 1px solid rgba(228, 184, 98, 0.5);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.55), 0 0 0 6px rgba(228, 184, 98, 0.08);
+  opacity: 0;
+  transform: scale(0.97);
+  transition:
+    opacity 300ms ease,
+    transform 400ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.bmdo-lightbox-img.is-loaded {
+  opacity: 1;
+  transform: none;
+}
+
+.bmdo-lightbox-spinner {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 36px;
+  height: 36px;
+  margin: -18px 0 0 -18px;
+  border: 2px solid rgba(228, 184, 98, 0.25);
+  border-top-color: #dea443;
+  border-radius: 50%;
+  animation: bmdo-ring-spin 0.8s linear infinite;
+}
+
+.bmdo-lightbox-btn {
+  display: grid;
+  width: 2.9rem;
+  height: 2.9rem;
+  place-items: center;
+  border: 1px solid rgba(228, 184, 98, 0.5);
+  border-radius: 999px;
+  background: rgba(22, 60, 62, 0.75);
+  color: #f4d7a6;
+  transition:
+    background-color 200ms ease,
+    color 200ms ease;
+}
+
+.bmdo-lightbox-btn:hover,
+.bmdo-lightbox-btn:focus-visible {
+  background: #dea443;
+  color: #163c3e;
+  outline: none;
+}
+
+@keyframes bmdo-lightbox-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bmdo-lightbox,
+  .bmdo-lightbox-img {
+    animation: none;
+    transition: none;
+  }
+}

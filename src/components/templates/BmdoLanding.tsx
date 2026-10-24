@@ -3,6 +3,7 @@ import { bmdoClassPhotos, bmdoGraduates as grad, bmdoK4 as k } from "@/content/b
 import { LeadForm } from "@/components/forms/LeadForm";
 import { BmdoTvc } from "@/components/templates/BmdoTvc";
 import { RevealOnView } from "@/components/templates/RevealOnView";
+import { Lightbox } from "@/components/templates/Lightbox";
 import { Breadcrumb } from "@/components/ui/Misc";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Section";
@@ -196,6 +197,21 @@ export function Heading({ eyebrow, title, gold, light = false, center = false }:
   );
 }
 
+// Thuộc tính để Lightbox mở ảnh lớn (`large`, mặc định chính ảnh đó). Bản nhân đôi của dải chạy không nhận focus.
+const lg = (src: string) => src.replace(/\.jpg$/, "-lg.jpg");
+
+function zoomProps(group: string, index: number, src: string, alt: string, duplicate = false, large = src) {
+  return {
+    "data-zoom-group": group,
+    "data-zoom-index": index,
+    "data-zoom-src": large,
+    "data-zoom-fallback": src,
+    "data-zoom-alt": alt,
+    className: "bmdo-zoomable",
+    ...(duplicate ? { tabIndex: -1 } : { tabIndex: 0, role: "button", "aria-label": `Xem lớn: ${alt}` }),
+  };
+}
+
 function ClassGallery() {
   // Chia ảnh thành hai hàng; hàng ngắn thì lặp cho đủ dài, rồi nhân đôi để vòng lặp -50% khớp đúng.
   const half = Math.ceil(bmdoClassPhotos.length / 2);
@@ -210,7 +226,9 @@ function ClassGallery() {
             {[...row, ...row].map((photo, i) => (
               <li key={i} className="mr-4 shrink-0" aria-hidden={i >= row.length || undefined}>
                 <figure className="relative h-48 w-72 overflow-hidden rounded-[18px] sm:h-60 sm:w-[23rem]">
-                  <Image src={photo.src} alt={i >= row.length ? "" : photo.alt} fill unoptimized loading="eager" sizes="368px" className="object-cover" />
+                  <span {...zoomProps("lop", bmdoClassPhotos.indexOf(photo), photo.src, photo.alt, i >= row.length)}>
+                    <Image src={photo.src} alt={i >= row.length ? "" : photo.alt} fill unoptimized loading="eager" sizes="368px" className="object-cover" />
+                  </span>
                 </figure>
               </li>
             ))}
@@ -568,7 +586,9 @@ export function BmdoLanding() {
 
             <div className="mt-10 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4 lg:grid-rows-2">
               <figure className="bmdo-rv bmdo-grad-tile col-span-2 aspect-[4/3] lg:row-span-2 lg:aspect-auto" style={{ ["--rv-i" as string]: 2 }}>
-                <Image src={grad.featured[0].src} alt={grad.featured[0].alt} fill unoptimized sizes="(max-width: 1023px) 100vw, 50vw" className="bmdo-grad-img object-cover" />
+                <span {...zoomProps("tot-nghiep", 0, grad.featured[0].src, grad.featured[0].alt, false, lg(grad.featured[0].src))}>
+                  <Image src={grad.featured[0].src} alt={grad.featured[0].alt} fill unoptimized sizes="(max-width: 1023px) 100vw, 50vw" className="bmdo-grad-img object-cover" />
+                </span>
                 <figcaption className="bmdo-grad-caption">
                   <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-vabix-soft-gold">Graduation ceremony</span>
                   <span className="mt-1 block text-lg font-semibold sm:text-xl">Lễ tốt nghiệp & vinh danh học viên</span>
@@ -593,7 +613,9 @@ export function BmdoLanding() {
               </figure>
               {grad.featured.slice(1).map((ph, i) => (
                 <figure key={ph.src} className="bmdo-rv bmdo-grad-tile aspect-[4/3]" style={{ ["--rv-i" as string]: 4 + i }}>
-                  <Image src={ph.src} alt={ph.alt} fill unoptimized sizes="(max-width: 1023px) 50vw, 25vw" className="bmdo-grad-img object-cover" />
+                  <span {...zoomProps("tot-nghiep", 1 + i, ph.src, ph.alt, false, lg(ph.src))}>
+                    <Image src={ph.src} alt={ph.alt} fill unoptimized sizes="(max-width: 1023px) 50vw, 25vw" className="bmdo-grad-img object-cover" />
+                  </span>
                 </figure>
               ))}
             </div>
@@ -608,6 +630,7 @@ export function BmdoLanding() {
                 <ul className="bmdo-marquee-track" data-reverse={r ? "" : undefined} style={{ ["--bmdo-marquee-duration" as string]: `${row.length * 7}s` }}>
                   {[...row, ...row].map((ph, i) => (
                     <li key={i} className="bmdo-honor mr-4 shrink-0" aria-hidden={i >= row.length || undefined}>
+                      <span {...zoomProps("tot-nghiep", 4 + grad.wall.indexOf(ph), ph.src, "Học viên nhận chứng nhận tốt nghiệp", i >= row.length, lg(ph.src))}>
                       <Image
                         src={ph.src}
                         alt={i >= row.length ? "" : "Học viên nhận chứng nhận tốt nghiệp"}
@@ -617,6 +640,7 @@ export function BmdoLanding() {
                         loading="eager"
                         className="h-56 w-auto rounded-[14px] object-cover sm:h-72"
                       />
+                      </span>
                     </li>
                   ))}
                 </ul>
@@ -714,6 +738,7 @@ export function BmdoLanding() {
           </div>
         </Container>
       </section>
+      <Lightbox />
     </>
   );
 }

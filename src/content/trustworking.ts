@@ -1,5 +1,5 @@
 export const trustworking = {
-  headline: "Kết nối đúng nhà cung cấp với đúng thị trường.",
+  headline: "Kết nối đúng nhà cung cấp đến đúng thị trường.",
   summary:
     "VABIX Trustworking là dịch vụ kết nối kinh doanh có chọn lọc, giúp doanh nghiệp cung cấp sản phẩm, dịch vụ và giải pháp đáng tin cậy tiếp cận nhóm khách hàng, đối tác và thị trường mục tiêu phù hợp.",
   screening:

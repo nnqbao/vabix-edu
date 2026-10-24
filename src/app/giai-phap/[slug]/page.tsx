@@ -3,6 +3,7 @@ import { solutions, getSolution } from "@/content/solutions";
 import { publishedSolution, publishedSolutions } from "@/platform/cms/catalog";
 import { SolutionTemplate } from "@/components/templates/SolutionTemplate";
 import { createMetadata } from "@/lib/seo";
+import { getLocale } from "@/i18n/server";
 
 /** Old solution URLs are 301-redirected. This page remains only as a safety net. */
 export function generateStaticParams() {
@@ -20,14 +21,16 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const s = publishedSolution(slug) ?? getSolution(slug);
+  const locale = await getLocale();
+  const s = publishedSolution(slug, locale) ?? getSolution(slug);
   if (!s) return {};
-  return createMetadata({ title: s.title, description: s.summary, path: `/giai-phap/${s.slug}` });
+  return createMetadata({ title: s.title, description: s.summary, path: `${locale === "en" ? "/en" : ""}/giai-phap/${s.slug}` });
 }
 
 export default async function SolutionPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const s = publishedSolution(slug) ?? getSolution(slug);
+  const locale = await getLocale();
+  const s = publishedSolution(slug, locale) ?? getSolution(slug);
   if (!s) notFound();
-  return <SolutionTemplate solution={s} />;
+  return <SolutionTemplate solution={s} locale={locale} />;
 }

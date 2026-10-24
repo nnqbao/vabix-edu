@@ -1,1 +1,1 @@
-export { default, metadata } from "@/app/dao-tao/page";
+export { default, generateMetadata } from "@/app/dao-tao/page";

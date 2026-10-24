@@ -1,8 +1,11 @@
 import Link from "next/link";
 import { programs } from "@/content/programs";
-import { programGroups } from "@/content/programs";
+import { programGroups as programGroupsVi } from "@/content/programs";
+import { programGroupsEn } from "@/content/en/programs";
 import { publishedProgram, publishedPrograms } from "@/platform/cms/catalog";
-import { topicCategories } from "@/content/training";
+import { topicCategories as topicCategoriesVi } from "@/content/training";
+import { topicCategories as topicCategoriesEn } from "@/content/en/training";
+import { getLocale } from "@/i18n/server";
 import { bmdoLanding } from "@/content/bmdo";
 import { BmdoLanding } from "@/components/templates/BmdoLanding";
 import { BabosoraLanding } from "@/components/templates/BabosoraLanding";
@@ -27,26 +30,34 @@ export function programStaticParams() {
 }
 
 export async function programMetadata(slug: string): Promise<Metadata> {
-  const p = publishedProgram(slug);
+  const locale = await getLocale();
+  const en = locale === "en";
+  const p = publishedProgram(slug, locale);
   if (!p) return {};
   if (slug === "ai-worklab") {
     return createMetadata({
       title: "VABIX AI WorkLab — From Work to Workflow",
-      description: "Chương trình 04 buổi ứng dụng AI vào công việc, quy trình và vận hành doanh nghiệp: C.L.E.A.R, AI Workflow Canvas, Human Gate, use case pilot. Huấn luyện bởi chuyên gia Trần Anh Vũ.",
+      description: en
+        ? "A 4-session programme applying AI to work, processes and business operations: C.L.E.A.R, AI Workflow Canvas, Human Gate, use case pilot. Coached by expert Trần Anh Vũ."
+        : "Chương trình 04 buổi ứng dụng AI vào công việc, quy trình và vận hành doanh nghiệp: C.L.E.A.R, AI Workflow Canvas, Human Gate, use case pilot. Huấn luyện bởi chuyên gia Trần Anh Vũ.",
       path: paths.program(p.slug),
     });
   }
   if (slug === "babosora") {
     return createMetadata({
-      title: "BABOSORA — Vận hành và gia tốc dòng chảy doanh thu",
-      description: "Chương trình thực chiến 02 ngày cho doanh chủ, CEO và đội ngũ kinh doanh: B2A × BABOSORA, săn cơ hội NAP × CAP, hỏi chốt ASKING và sáu trục gia tốc doanh thu BRUCCS.",
+      title: en ? "BABOSORA — Running and accelerating the revenue flow" : "BABOSORA — Vận hành và gia tốc dòng chảy doanh thu",
+      description: en
+        ? "A hands-on 2-day programme for business owners, CEOs and sales teams: B2A × BABOSORA, NAP × CAP opportunity hunting, ASKING closing and the six BRUCCS revenue acceleration levers."
+        : "Chương trình thực chiến 02 ngày cho doanh chủ, CEO và đội ngũ kinh doanh: B2A × BABOSORA, săn cơ hội NAP × CAP, hỏi chốt ASKING và sáu trục gia tốc doanh thu BRUCCS.",
       path: paths.program(p.slug),
     });
   }
   if (slug === "bmdo") {
     return createMetadata({
-      title: "BMDO Khoá 04 — Thiết kế và vận hành doanh nghiệp toàn diện",
-      description: "Chương trình 60 giờ, 12 ngày Thứ Bảy dành cho doanh chủ & CEO: thiết kế 12 miền quản trị theo mô hình BizCar trên MyBizCar. Khai giảng dự kiến 05.12.2026 tại SIHUB, TP.HCM.",
+      title: en ? "BMDO Cohort 04 — Designing and running the whole business" : "BMDO Khoá 04 — Thiết kế và vận hành doanh nghiệp toàn diện",
+      description: en
+        ? "A 60-hour programme over 12 Saturdays for business owners & CEOs: designing 12 management domains with the BizCar model on MyBizCar. Expected to start on 05.12.2026 at SIHUB, Ho Chi Minh City."
+        : "Chương trình 60 giờ, 12 ngày Thứ Bảy dành cho doanh chủ & CEO: thiết kế 12 miền quản trị theo mô hình BizCar trên MyBizCar. Khai giảng dự kiến 05.12.2026 tại SIHUB, TP.HCM.",
       path: paths.program(p.slug),
     });
   }
@@ -68,14 +79,18 @@ function Block({ title, items }: { title: string; items?: string[] }) {
 }
 
 export async function ProgramDetail({ slug }: { slug: string }) {
-  const p = publishedProgram(slug);
+  const locale = await getLocale();
+  const en = locale === "en";
+  const p = publishedProgram(slug, locale);
   if (!p) notFound();
   if (slug === "bmdo") return <BmdoLanding />;
   if (slug === "babosora") return <BabosoraLanding />;
   if (slug === "ai-worklab") return <AiWorklabLanding />;
+  const programGroups = en ? programGroupsEn : programGroupsVi;
+  const topicCategories = en ? topicCategoriesEn : topicCategoriesVi;
   const groupLabel = programGroups.find((g) => g.id === p.group)?.label;
   const topics = (p.topicCategories ?? []).map((id) => topicCategories.find((t) => t.id === id)?.label).filter(Boolean);
-  const related = publishedPrograms().filter((x) => (p.relatedPrograms ?? []).includes(x.slug));
+  const related = publishedPrograms(locale).filter((x) => (p.relatedPrograms ?? []).includes(x.slug));
   const leadType = slug === "bmdo" ? "bmdo" : slug === "mbm" ? "mbm" : slug === "theo-yeu-cau-doanh-nghiep" ? "corporate-training" : "training";
 
   return (
@@ -85,8 +100,8 @@ export async function ProgramDetail({ slug }: { slug: string }) {
         title={p.title}
         description={p.tagline ?? (p.englishName ? `${p.englishName}. ${p.audience}` : p.audience)}
         crumbs={[
-          { name: "Trang chủ", href: paths.home },
-          { name: "Đào tạo & huấn luyện", href: paths.training },
+          { name: en ? "Home" : "Trang chủ", href: paths.home },
+          { name: en ? "Training & coaching" : "Đào tạo & huấn luyện", href: paths.training },
           { name: p.shortTitle },
         ]}
       />
@@ -99,25 +114,25 @@ export async function ProgramDetail({ slug }: { slug: string }) {
           ) : null}
           {p.shortDescription ? <p className="text-lg text-vabix-ink">{p.shortDescription}</p> : <p className="text-lg text-vabix-ink">{p.problem}</p>}
           {p.duration ? (
-            <p className="font-semibold text-vabix-deep-teal">Thời lượng: {p.duration}</p>
+            <p className="font-semibold text-vabix-deep-teal">{en ? "Duration" : "Thời lượng"}: {p.duration}</p>
           ) : (
-            <p className="text-vabix-muted">{p.durationNote ?? "Thời lượng được thiết kế theo nhu cầu"}</p>
+            <p className="text-vabix-muted">{p.durationNote ?? (en ? "Duration tailored to your needs" : "Thời lượng được thiết kế theo nhu cầu")}</p>
           )}
           {p.durationNote && p.duration ? <p className="text-sm text-vabix-muted">{p.durationNote}</p> : null}
-          {topics.length ? <p className="text-sm text-vabix-muted">Lĩnh vực: {topics.join(" · ")}</p> : null}
-          <Block title="Đối tượng" items={p.audienceList} />
+          {topics.length ? <p className="text-sm text-vabix-muted">{en ? "Areas" : "Lĩnh vực"}: {topics.join(" · ")}</p> : null}
+          <Block title={en ? "Who it is for" : "Đối tượng"} items={p.audienceList} />
           <section>
-            <SectionHeading title="Bài toán" />
+            <SectionHeading title={en ? "The challenge" : "Bài toán"} />
             <p className="mt-4 text-vabix-muted">{p.problem}</p>
           </section>
-          <Block title="Mục tiêu" items={p.objectives} />
-          <Block title="Nội dung / chuyên đề" items={p.topics} />
+          <Block title={en ? "Objectives" : "Mục tiêu"} items={p.objectives} />
+          <Block title={en ? "Content / topics" : "Nội dung / chuyên đề"} items={p.topics} />
           <section>
-            <SectionHeading title="Phương pháp" />
+            <SectionHeading title={en ? "Method" : "Phương pháp"} />
             <p className="mt-4 text-vabix-muted">{p.methodology}</p>
           </section>
-          <Block title="Đầu ra" items={p.deliverables} />
-          <Block title="Kết quả hướng đến" items={p.outcomes} />
+          <Block title={en ? "Deliverables" : "Đầu ra"} items={p.deliverables} />
+          <Block title={en ? "Intended outcomes" : "Kết quả hướng đến"} items={p.outcomes} />
           {slug === "bmdo" ? (
             <section className="space-y-6">
               <SectionHeading title="BMDO — các cấu phần then chốt" />
@@ -135,13 +150,13 @@ export async function ProgramDetail({ slug }: { slug: string }) {
           ) : null}
           {p.certificate ? (
             <section>
-              <SectionHeading title="Công nhận hoàn thành" />
+              <SectionHeading title={en ? "Completion recognition" : "Công nhận hoàn thành"} />
               <p className="mt-4 text-vabix-muted">{p.certificate}</p>
             </section>
           ) : null}
           {(p.relatedModels ?? []).length ? (
             <section>
-              <SectionHeading title="Mô hình / phương pháp liên quan" />
+              <SectionHeading title={en ? "Related models / methods" : "Mô hình / phương pháp liên quan"} />
               <div className="mt-4 flex flex-wrap gap-3">
                 {(p.relatedModels ?? []).map((m) => (
                   <Link key={m} href={paths.method(m)} className="border border-vabix-deep-teal/15 px-4 py-2 text-sm font-semibold text-vabix-deep-teal">
@@ -153,7 +168,7 @@ export async function ProgramDetail({ slug }: { slug: string }) {
           ) : null}
           {related.length ? (
             <section>
-              <SectionHeading title="Chương trình liên quan" />
+              <SectionHeading title={en ? "Related programmes" : "Chương trình liên quan"} />
               <ul className="mt-4 space-y-2">
                 {related.map((r) => (
                   <li key={r.slug}>
@@ -168,14 +183,18 @@ export async function ProgramDetail({ slug }: { slug: string }) {
         </div>
         <aside>
           <div className="border border-vabix-deep-teal/10 bg-white p-6 lg:sticky lg:top-28">
-            <LeadForm type={leadType} program={p.slug} title="Liên hệ tư vấn chương trình" />
+            <LeadForm type={leadType} program={p.slug} title={en ? "Programme enquiry" : "Liên hệ tư vấn chương trình"} />
           </div>
         </aside>
       </Container>
       <CTASection
-        title="Thiết kế theo nhu cầu doanh nghiệp."
-        description="Khảo sát hiện trạng trước khi chốt nội dung, thời lượng và đội ngũ chuyên gia."
-        primary={{ label: "Trao đổi cùng VABIX", href: paths.consult }}
+        title={en ? "Designed around your company's needs." : "Thiết kế theo nhu cầu doanh nghiệp."}
+        description={
+          en
+            ? "We assess your current situation before finalising content, duration and the expert team."
+            : "Khảo sát hiện trạng trước khi chốt nội dung, thời lượng và đội ngũ chuyên gia."
+        }
+        primary={{ label: en ? "Talk to VABIX" : "Trao đổi cùng VABIX", href: paths.consult }}
       />
     </>
   );

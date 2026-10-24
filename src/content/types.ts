@@ -80,6 +80,8 @@ export type CaseStudy = {
   /** Các con số / dữ kiện nổi bật. */
   highlights?: { value: string; label: string }[];
   year?: string;
+  /** Chú thích cho từng ảnh trong `gallery` (cùng thứ tự). */
+  galleryAlts?: string[];
 };
 
 export type EventStatus = "upcoming" | "ongoing" | "completed";

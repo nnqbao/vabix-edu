@@ -244,13 +244,16 @@ export function CaseStudyDetail({ c }: { c: CaseStudy }) {
               Khoảnh khắc <span className="text-vabix-gold">tại chương trình.</span>
             </h2>
             <div className="mt-8 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-3">
-              {gallery.map((src, i) => (
+              {gallery.map((src, i) => {
+                const alt = c.galleryAlts?.[c.gallery.indexOf(src)] ?? `${c.organization} — hình ảnh ${i + 1}`;
+                return (
                 <figure key={src} className={`bmdo-grad-tile ${i === 0 ? "col-span-2 aspect-[4/3] lg:row-span-2 lg:aspect-auto" : "aspect-[4/3]"}`}>
-                  <span {...zoomAttrs(1 + i, src, `${c.organization} — hình ảnh ${i + 1}`)} className="bmdo-zoomable">
-                    <Image src={src} alt={`${c.organization} — hình ảnh ${i + 1}`} fill unoptimized sizes="(max-width: 1023px) 50vw, 33vw" className="object-cover transition-transform duration-700 hover:scale-105" />
+                  <span {...zoomAttrs(1 + i, src, alt)} className="bmdo-zoomable">
+                    <Image src={src} alt={alt} fill unoptimized sizes="(max-width: 1023px) 50vw, 33vw" className="object-cover transition-transform duration-700 hover:scale-105" />
                   </span>
                 </figure>
-              ))}
+                );
+              })}
             </div>
           </Container>
         </section>

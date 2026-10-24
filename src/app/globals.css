@@ -6246,3 +6246,230 @@ section[id],
     transition: none;
   }
 }
+
+/* Popup tủ sách gỗ */
+.shelf-overlay {
+  background: radial-gradient(ellipse at 50% 30%, rgba(33, 79, 81, 0.75), rgba(8, 20, 21, 0.94));
+  backdrop-filter: blur(8px);
+  animation: bmdo-lightbox-in 300ms ease both;
+}
+
+.shelf-cabinet {
+  animation: shelf-rise 600ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.shelf-crown {
+  position: relative;
+  height: 3.25rem;
+  border-radius: 14px 14px 0 0;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.08), transparent 40%),
+    repeating-linear-gradient(90deg, rgba(0, 0, 0, 0.05) 0 3px, transparent 3px 11px),
+    linear-gradient(180deg, #6b3f22, #4a2913);
+  box-shadow: inset 0 -6px 10px rgba(0, 0, 0, 0.35);
+}
+
+.shelf-plaque {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  translate: -50% -50%;
+  white-space: nowrap;
+  border: 1px solid rgba(244, 215, 166, 0.7);
+  border-radius: 6px;
+  background: linear-gradient(180deg, #e7c27a, #c99a45);
+  padding: 0.3rem 1rem;
+  color: #3a210f;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+/* Đèn rọi từ nóc tủ xuống từng kệ */
+.shelf-lamp {
+  position: absolute;
+  bottom: -2px;
+  width: 4rem;
+  height: 4px;
+  border-radius: 999px;
+  background: #fff3d6;
+  box-shadow: 0 0 18px 6px rgba(255, 220, 150, 0.55);
+}
+
+.shelf-lamp-l {
+  left: 18%;
+}
+
+.shelf-lamp-r {
+  right: 18%;
+}
+
+.shelf-body {
+  position: relative;
+  padding: 0 1.1rem;
+  background:
+    repeating-linear-gradient(90deg, rgba(0, 0, 0, 0.06) 0 2px, transparent 2px 9px),
+    linear-gradient(90deg, #5a331b, #6e4224 50%, #5a331b);
+}
+
+/* Lòng kệ: vách sau tối + vệt sáng của đèn */
+.shelf-bay {
+  position: relative;
+  padding: 2.6rem 1.25rem 0;
+  background:
+    radial-gradient(ellipse 40% 70% at 22% 0%, rgba(255, 220, 150, 0.22), transparent 70%),
+    radial-gradient(ellipse 40% 70% at 78% 0%, rgba(255, 220, 150, 0.22), transparent 70%),
+    linear-gradient(180deg, #2a170b, #3b2212);
+  box-shadow:
+    inset 0 10px 18px rgba(0, 0, 0, 0.55),
+    inset 10px 0 14px rgba(0, 0, 0, 0.35),
+    inset -10px 0 14px rgba(0, 0, 0, 0.35);
+}
+
+.shelf-bay + .shelf-bay {
+  margin-top: 0;
+}
+
+.shelf-row {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  align-items: end;
+  gap: clamp(0.6rem, 2.2vw, 1.6rem);
+  padding: 0 clamp(0.25rem, 2vw, 1.5rem);
+}
+
+.shelf-plank {
+  display: block;
+  height: 1.1rem;
+  margin: 0 -1.25rem;
+  border-radius: 2px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.18), transparent 35%),
+    repeating-linear-gradient(90deg, rgba(0, 0, 0, 0.07) 0 3px, transparent 3px 13px),
+    linear-gradient(180deg, #8a5630, #5d361c);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.45);
+}
+
+.shelf-base {
+  height: 1.4rem;
+  border-radius: 0 0 14px 14px;
+  background: linear-gradient(180deg, #4a2913, #2e180a);
+}
+
+/* Sách: lần lượt đặt lên kệ, rê chuột thì nhấc ra */
+.shelf-book {
+  position: relative;
+  width: 76%;
+  margin-inline: auto;
+  animation: shelf-drop 700ms cubic-bezier(0.22, 1.2, 0.36, 1) both;
+  animation-delay: calc(250ms + var(--i, 0) * 90ms);
+}
+
+.shelf-book-inner {
+  transform-origin: bottom center;
+  box-shadow:
+    inset 3px 0 5px -2px rgba(255, 255, 255, 0.4),
+    -1px 0 0 rgba(0, 0, 0, 0.3),
+    6px 4px 10px rgba(0, 0, 0, 0.5);
+  border-radius: 3px;
+  transition:
+    transform 450ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 450ms ease;
+}
+
+.shelf-book a:hover .shelf-book-inner,
+.shelf-book a:focus-visible .shelf-book-inner {
+  transform: translateY(-14px) scale(1.06) rotate(-2deg);
+  box-shadow:
+    inset 3px 0 5px -2px rgba(255, 255, 255, 0.4),
+    0 0 0 2px rgba(228, 184, 98, 0.8),
+    10px 18px 26px rgba(0, 0, 0, 0.55);
+}
+
+.shelf-label {
+  position: absolute;
+  left: 50%;
+  bottom: 1.4rem;
+  z-index: 5;
+  width: max-content;
+  max-width: 12rem;
+  translate: -50% 6px;
+  border: 1px solid rgba(228, 184, 98, 0.5);
+  border-radius: 10px;
+  background: rgba(22, 60, 62, 0.95);
+  padding: 0.45rem 0.7rem;
+  color: #fcfbf8;
+  text-align: center;
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    opacity 250ms ease,
+    translate 250ms ease;
+}
+
+.shelf-book a:hover .shelf-label,
+.shelf-book a:focus-visible .shelf-label {
+  opacity: 1;
+  translate: -50% 0;
+}
+
+.shelf-book a:focus-visible {
+  outline: none;
+}
+
+@keyframes shelf-rise {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(0.97);
+  }
+}
+
+@keyframes shelf-drop {
+  from {
+    opacity: 0;
+    transform: translateY(-40px) rotate(-4deg);
+  }
+}
+
+@media (max-width: 639px) {
+  .shelf-row {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.45rem;
+  }
+
+  .shelf-bay {
+    padding: 1.1rem 0.5rem 0;
+  }
+
+  .shelf-body {
+    padding: 0 0.5rem;
+  }
+
+  .shelf-plank {
+    margin: 0 -0.5rem;
+    height: 0.8rem;
+  }
+
+  .shelf-plaque {
+    font-size: 0.62rem;
+    letter-spacing: 0.12em;
+  }
+
+  .shelf-label {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shelf-overlay,
+  .shelf-cabinet,
+  .shelf-book {
+    animation: none;
+  }
+
+  .shelf-book-inner {
+    transition: none;
+  }
+}

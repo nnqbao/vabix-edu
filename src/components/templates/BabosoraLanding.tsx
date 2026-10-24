@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import { babosora as b } from "@/content/babosora";
+import { babosora as babosoraVi } from "@/content/babosora";
+import { babosora as babosoraEn, type Widen } from "@/content/en/babosora";
 import { bmdoK4 } from "@/content/bmdoK4";
 import { LeadForm } from "@/components/forms/LeadForm";
 import { BmdoTvc } from "@/components/templates/BmdoTvc";
@@ -11,6 +12,7 @@ import { HeroBackdrop, Heading } from "@/components/templates/BmdoLanding";
 import { RevealOnView } from "@/components/templates/RevealOnView";
 import { siteConfig } from "@/lib/siteConfig";
 import { paths } from "@/lib/paths";
+import { getLocale } from "@/i18n/server";
 
 const hotline = siteConfig.contact.hotline;
 const hotlineHref = siteConfig.contact.hotlineHref;
@@ -28,7 +30,9 @@ const DROPS = [
   { x: 205, delay: 0.6, dur: 5 },
 ];
 
-function RevenueFunnel({ className = "" }: { className?: string }) {
+type Content = Widen<typeof babosoraVi>;
+
+function RevenueFunnel({ b, en, className = "" }: { b: Content; en: boolean; className?: string }) {
   const bands = b.flow.slice(0, 4).map((f, i) => {
     const y = 16 + i * (BAND_H + BAND_GAP);
     const wt = BAND_W[i];
@@ -37,7 +41,7 @@ function RevenueFunnel({ className = "" }: { className?: string }) {
   });
   const ra = b.flow[4];
   return (
-    <svg viewBox="0 0 400 440" className={`babo-funnel ${className}`} role="img" aria-label={`Dòng chảy doanh thu BABOSORA: ${b.flow.map((f) => `${f.code} ${f.name}`).join(" → ")}`}>
+    <svg viewBox="0 0 400 440" className={`babo-funnel ${className}`} role="img" aria-label={`${en ? "BABOSORA revenue flow" : "Dòng chảy doanh thu BABOSORA"}: ${b.flow.map((f) => `${f.code} ${f.name}`).join(" → ")}`}>
       <defs>
         <linearGradient id="babo-band" x1="0" y1="0" x2="0" y2="1">
           <stop offset="0" stopColor="#214f51" />
@@ -82,16 +86,18 @@ function RevenueFunnel({ className = "" }: { className?: string }) {
         {ra.code}
       </text>
       <text x="200" y="388" textAnchor="middle" fill="#163c3e" fontSize="10" fontWeight="700">
-        Gia tốc
+        {en ? "Revenue" : "Gia tốc"}
       </text>
       <text x="200" y="400" textAnchor="middle" fill="#163c3e" fontSize="10" fontWeight="700">
-        doanh thu
+        {en ? "acceleration" : "doanh thu"}
       </text>
     </svg>
   );
 }
 
-export function BabosoraLanding() {
+export async function BabosoraLanding() {
+  const en = (await getLocale()) === "en";
+  const b: Content = en ? babosoraEn : babosoraVi;
   return (
     <>
       {/* Hero */}
@@ -102,8 +108,8 @@ export function BabosoraLanding() {
             <Breadcrumb
               light
               items={[
-                { name: "Trang chủ", href: paths.home },
-                { name: "Đào tạo & huấn luyện", href: paths.training },
+                { name: en ? "Home" : "Trang chủ", href: paths.home },
+                { name: en ? "Training & coaching" : "Đào tạo & huấn luyện", href: paths.training },
                 { name: "BABOSORA" },
               ]}
             />
@@ -128,15 +134,15 @@ export function BabosoraLanding() {
             <p className="mt-6 max-w-xl text-base leading-relaxed text-white/75 sm:text-lg">{b.lead}</p>
             <div className="mt-8 grid gap-3 sm:flex sm:flex-wrap">
               <Button href="#dang-ky" className="w-full sm:w-auto">
-                Đăng ký tham gia →
+                {en ? "Register now →" : "Đăng ký tham gia →"}
               </Button>
               <Button href={hotlineHref} variant="outline" className="w-full border-white/40 text-white sm:w-auto">
-                Gọi tư vấn {hotline}
+                {en ? "Call us" : "Gọi tư vấn"} {hotline}
               </Button>
             </div>
           </div>
           <div className="relative mx-auto w-full max-w-[30rem]">
-            <RevenueFunnel className="w-full" />
+            <RevenueFunnel b={b} en={en} className="w-full" />
             <ul className="mt-6 grid grid-cols-3 gap-2">
               {b.stats.map((s, i) => (
                 <li
@@ -158,14 +164,14 @@ export function BabosoraLanding() {
         <HeroBackdrop />
         <Container className="relative">
           <div className="mx-auto max-w-2xl text-center">
-            <p className="eyebrow">Phim giới thiệu</p>
+            <p className="eyebrow">{en ? "Introductory film" : "Phim giới thiệu"}</p>
             <h2 id="babo-tvc" className="mt-3 text-balance text-[1.9rem] font-semibold leading-[1.15] tracking-[-0.02em] text-vabix-warm sm:text-[2.4rem]">
-              BABOSORA <span className="text-vabix-gold">trong một phút.</span>
+              BABOSORA <span className="text-vabix-gold">{en ? "in one minute." : "trong một phút."}</span>
             </h2>
           </div>
           <div className="mt-8 sm:mt-10">
             <BmdoTvc
-              title="Phim giới thiệu BABOSORA"
+              title={en ? "BABOSORA introductory film" : "Phim giới thiệu BABOSORA"}
               landscape={{ src: "/videos/babosora/babosora-tvc-16x9.mp4", poster: "/videos/babosora/babosora-tvc-16x9-poster.jpg" }}
               portrait={{ src: "/videos/babosora/babosora-tvc-9x16.mp4", poster: "/videos/babosora/babosora-tvc-9x16-poster.jpg" }}
             />
@@ -179,7 +185,7 @@ export function BabosoraLanding() {
           <RevealOnView>
             <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:items-end">
               <div className="bmdo-rv">
-                <Heading eyebrow="Bài toán doanh thu" title={b.problem.title} gold={b.problem.titleGold} />
+                <Heading eyebrow={en ? "The revenue challenge" : "Bài toán doanh thu"} title={b.problem.title} gold={b.problem.titleGold} />
               </div>
               <p className="bmdo-rv text-lg leading-relaxed text-vabix-muted" style={{ ["--rv-i" as string]: 1 }}>
                 {b.problem.body}
@@ -210,10 +216,12 @@ export function BabosoraLanding() {
         <Container className="relative">
           <RevealOnView>
             <div className="bmdo-rv">
-              <Heading light center eyebrow="Mô thức B2A × BABOSORA" title="Một dòng chảy," gold="năm điểm tác động." />
+              <Heading light center eyebrow={en ? "The B2A × BABOSORA model" : "Mô thức B2A × BABOSORA"} title={en ? "One flow," : "Một dòng chảy,"} gold={en ? "five points of impact." : "năm điểm tác động."} />
             </div>
             <p className="bmdo-rv mx-auto mt-5 max-w-2xl text-center text-lg text-white/75" style={{ ["--rv-i" as string]: 1 }}>
-              Doanh thu hình thành từ khi khách hàng nhận biết thương hiệu, có nhu cầu và đủ điều kiện mua; tiếp tục được tạo ra khi cơ hội được phát hiện, chuyển hóa thành đơn hàng và phát triển trong suốt vòng đời khách hàng.
+              {en
+                ? "Revenue begins when customers become aware of the brand, have a need and are able to buy; it keeps being created as opportunities are uncovered, converted into orders and developed over the whole customer lifetime."
+                : "Doanh thu hình thành từ khi khách hàng nhận biết thương hiệu, có nhu cầu và đủ điều kiện mua; tiếp tục được tạo ra khi cơ hội được phát hiện, chuyển hóa thành đơn hàng và phát triển trong suốt vòng đời khách hàng."}
             </p>
             <ol className="relative mt-12 grid gap-4 md:grid-cols-5">
               <span aria-hidden="true" className="bmdo-applier-line absolute left-[10%] right-[10%] top-7 hidden h-px md:block" />
@@ -237,8 +245,12 @@ export function BabosoraLanding() {
       {/* Nội dung 2 ngày – 4 buổi */}
       <section className="bg-vabix-ivory py-16 sm:py-24" id="noi-dung">
         <Container>
-          <Heading center eyebrow="Nội dung chương trình" title="02 ngày, 04 buổi," gold="04 sản phẩm mang về." />
-          <p className="mx-auto mt-5 max-w-2xl text-center text-lg text-vabix-muted">Mỗi buổi kết thúc bằng một thao trường thực chiến theo nhóm và một sản phẩm dùng được ngay trong công việc.</p>
+          <Heading center eyebrow={en ? "Programme content" : "Nội dung chương trình"} title={en ? "2 days, 4 sessions," : "02 ngày, 04 buổi,"} gold={en ? "4 deliverables to take home." : "04 sản phẩm mang về."} />
+          <p className="mx-auto mt-5 max-w-2xl text-center text-lg text-vabix-muted">
+            {en
+              ? "Every session ends with a hands-on group workshop and a deliverable you can use at work straight away."
+              : "Mỗi buổi kết thúc bằng một thao trường thực chiến theo nhóm và một sản phẩm dùng được ngay trong công việc."}
+          </p>
           <div className="mt-12 space-y-12">
             {b.days.map((d) => (
               <div key={d.day}>
@@ -254,7 +266,7 @@ export function BabosoraLanding() {
                           {s.no}
                         </span>
                         <p className="text-xs font-semibold uppercase tracking-[0.2em] text-vabix-gold">
-                          Buổi {s.no} · {s.codes}
+                          {en ? "Session" : "Buổi"} {s.no} · {s.codes}
                         </p>
                         <h4 className="mt-2 text-balance text-lg font-semibold leading-snug sm:text-xl">{s.title}</h4>
                       </header>
@@ -270,7 +282,7 @@ export function BabosoraLanding() {
                         </ul>
                         <p className="mt-auto pt-5">
                           <span className="block rounded-xl bg-vabix-ivory p-4 text-sm leading-relaxed text-vabix-ink">
-                            <span className="block text-[11px] font-semibold uppercase tracking-[0.16em] text-vabix-gold">Thao trường · Sản phẩm đầu ra</span>
+                            <span className="block text-[11px] font-semibold uppercase tracking-[0.16em] text-vabix-gold">{en ? "Workshop · Deliverable" : "Thao trường · Sản phẩm đầu ra"}</span>
                             <span className="mt-1 block">{s.output}</span>
                           </span>
                         </p>
@@ -290,7 +302,7 @@ export function BabosoraLanding() {
         <Container className="relative">
           <RevealOnView>
             <div className="bmdo-rv">
-              <Heading light eyebrow="Bộ công cụ thực chiến" title="Công cụ mang về," gold="dùng được ngay hôm sau." />
+              <Heading light eyebrow={en ? "Practical toolkit" : "Bộ công cụ thực chiến"} title={en ? "Tools to take home," : "Công cụ mang về,"} gold={en ? "ready to use the next day." : "dùng được ngay hôm sau."} />
             </div>
             <div className="mt-10 grid gap-4 md:grid-cols-3">
               {b.tools.map((t, i) => (
@@ -314,7 +326,7 @@ export function BabosoraLanding() {
             </div>
 
             <p className="bmdo-rv mt-14 text-sm font-semibold uppercase tracking-[0.16em] text-vabix-gold" style={{ ["--rv-i" as string]: 4 }}>
-              Phương pháp dẫn giảng APPLIER — học để làm được và làm hiệu quả
+              {en ? "The APPLIER teaching method — learn to do it, and do it well" : "Phương pháp dẫn giảng APPLIER — học để làm được và làm hiệu quả"}
             </p>
             <ol className="relative mt-8 grid grid-cols-2 gap-x-4 gap-y-6 sm:grid-cols-4 sm:gap-y-8 lg:grid-cols-7">
               <span aria-hidden="true" className="bmdo-applier-line absolute left-6 right-6 top-6 hidden h-px lg:block" />
@@ -338,7 +350,7 @@ export function BabosoraLanding() {
       {/* Kết quả */}
       <section className="bg-vabix-warm py-16 sm:py-24">
         <Container>
-          <Heading eyebrow="Kết quả kỳ vọng" title="Sau hai ngày," gold="đội ngũ có gì trong tay?" />
+          <Heading eyebrow={en ? "Expected outcomes" : "Kết quả kỳ vọng"} title={en ? "After two days," : "Sau hai ngày,"} gold={en ? "what will your team have in hand?" : "đội ngũ có gì trong tay?"} />
           <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
             {b.outcomes.map((o, i) => (
               <article key={o.title} className="rounded-[20px] border border-vabix-deep-teal/10 bg-white p-5 shadow-[0_10px_30px_rgba(22,60,62,0.06)] sm:p-6">
@@ -368,29 +380,32 @@ export function BabosoraLanding() {
         <Container className="relative">
           <div className="grid items-center gap-10 overflow-hidden rounded-[28px] border border-vabix-gold/35 bg-white/[0.03] p-6 backdrop-blur-sm sm:p-10 lg:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)]">
             <div>
-              <p className="eyebrow">Bước tiếp theo sau BABOSORA</p>
+              <p className="eyebrow">{en ? "The next step after BABOSORA" : "Bước tiếp theo sau BABOSORA"}</p>
               <h2 className="mt-3 text-balance text-[1.9rem] font-semibold leading-[1.15] tracking-[-0.02em] sm:text-[2.6rem]">
-                Từ dòng chảy doanh thu <span className="text-vabix-gold">đến toàn bộ chiếc xe doanh nghiệp.</span>
+                {en ? "From the revenue flow" : "Từ dòng chảy doanh thu"}{" "}
+                <span className="text-vabix-gold">{en ? "to the whole business car." : "đến toàn bộ chiếc xe doanh nghiệp."}</span>
               </h2>
               <p className="mt-5 text-lg leading-relaxed text-white/75">
-                BABOSORA tối ưu một miền: thị trường và doanh thu. Doanh thu chỉ bền khi chiến lược, thương hiệu, tổ chức, nhân lực, tài chính và vận hành cùng đồng bộ. BMDO giúp doanh chủ và CEO thiết kế cả 12 miền quản trị trên mô hình BizCar.
+                {en
+                  ? "BABOSORA optimises one domain: market and revenue. Revenue only lasts when strategy, brand, organisation, people, finance and operations work in sync. BMDO helps business owners and CEOs design all 12 management domains on the BizCar model."
+                  : "BABOSORA tối ưu một miền: thị trường và doanh thu. Doanh thu chỉ bền khi chiến lược, thương hiệu, tổ chức, nhân lực, tài chính và vận hành cùng đồng bộ. BMDO giúp doanh chủ và CEO thiết kế cả 12 miền quản trị trên mô hình BizCar."}
               </p>
               <ul className="mt-6 flex flex-wrap gap-2 text-sm">
-                <li className="rounded-full border border-vabix-gold/40 px-3 py-1 text-vabix-soft-gold">{bmdoK4.cohort} · Khai giảng {bmdoK4.enrol.opening}</li>
-                <li className="rounded-full border border-vabix-gold/40 px-3 py-1 text-vabix-soft-gold">60 giờ · 12 ngày Thứ Bảy</li>
-                <li className="rounded-full border border-vabix-gold/40 px-3 py-1 text-vabix-soft-gold">Ưu đãi {bmdoK4.enrol.price}</li>
+                <li className="rounded-full border border-vabix-gold/40 px-3 py-1 text-vabix-soft-gold">{bmdoK4.cohort} · {en ? "Opens" : "Khai giảng"} {bmdoK4.enrol.opening}</li>
+                <li className="rounded-full border border-vabix-gold/40 px-3 py-1 text-vabix-soft-gold">{en ? "60 hours · 12 Saturdays" : "60 giờ · 12 ngày Thứ Bảy"}</li>
+                <li className="rounded-full border border-vabix-gold/40 px-3 py-1 text-vabix-soft-gold">{en ? "Offer" : "Ưu đãi"} {bmdoK4.enrol.price}</li>
               </ul>
               <div className="mt-8 grid gap-3 sm:flex">
                 <Button href={paths.program("bmdo")} className="w-full sm:w-auto">
-                  Khám phá BMDO Khoá 04 →
+                  {en ? "Explore BMDO Cohort 04 →" : "Khám phá BMDO Khoá 04 →"}
                 </Button>
               </div>
             </div>
-            <Link href={paths.program("bmdo")} className="group relative mx-auto block w-56 sm:w-64" aria-label="Xem chương trình BMDO">
+            <Link href={paths.program("bmdo")} className="group relative mx-auto block w-56 sm:w-64" aria-label={en ? "View the BMDO programme" : "Xem chương trình BMDO"}>
               <span aria-hidden="true" className="absolute inset-[-12%] rounded-full bg-[radial-gradient(closest-side,rgba(222,164,67,0.35),transparent)] blur-2xl" />
               <Image
                 src="/images/bmdo/bizcar-logo.webp"
-                alt="Logo BizCar — mô hình nền tảng của BMDO"
+                alt={en ? "BizCar logo — the foundation model of BMDO" : "Logo BizCar — mô hình nền tảng của BMDO"}
                 width={536}
                 height={600}
                 unoptimized
@@ -406,14 +421,14 @@ export function BabosoraLanding() {
         <Container className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)] lg:gap-16">
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.22em] text-vabix-gold">BABOSORA</p>
-            <h2 className="mt-3 text-3xl font-semibold uppercase text-vabix-deep-teal sm:text-4xl">Đăng ký tham gia</h2>
+            <h2 className="mt-3 text-3xl font-semibold uppercase text-vabix-deep-teal sm:text-4xl">{en ? "Register" : "Đăng ký tham gia"}</h2>
             <dl className="mt-8 space-y-5">
               <div>
-                <dt className="text-xs uppercase tracking-[0.18em] text-vabix-muted">Thời lượng</dt>
-                <dd className="mt-1 text-lg text-vabix-ink">12 giờ · 02 ngày · 04 buổi đào tạo và thực hành</dd>
+                <dt className="text-xs uppercase tracking-[0.18em] text-vabix-muted">{en ? "Duration" : "Thời lượng"}</dt>
+                <dd className="mt-1 text-lg text-vabix-ink">{en ? "12 hours · 2 days · 4 training and practice sessions" : "12 giờ · 02 ngày · 04 buổi đào tạo và thực hành"}</dd>
               </div>
               <div>
-                <dt className="text-xs uppercase tracking-[0.18em] text-vabix-muted">Dành cho</dt>
+                <dt className="text-xs uppercase tracking-[0.18em] text-vabix-muted">{en ? "Who it is for" : "Dành cho"}</dt>
                 <dd className="mt-2 flex flex-wrap gap-2">
                   {b.audience.map((a) => (
                     <span key={a} className="rounded-full border border-vabix-deep-teal/15 bg-white px-3 py-1 text-sm text-vabix-deep-teal">
@@ -423,23 +438,23 @@ export function BabosoraLanding() {
                 </dd>
               </div>
               <div>
-                <dt className="text-xs uppercase tracking-[0.18em] text-vabix-muted">Hình thức</dt>
+                <dt className="text-xs uppercase tracking-[0.18em] text-vabix-muted">{en ? "Format" : "Hình thức"}</dt>
                 <dd className="mt-1 text-lg text-vabix-ink">{b.enrol.format}</dd>
               </div>
               <div>
-                <dt className="text-xs uppercase tracking-[0.18em] text-vabix-muted">Lịch học</dt>
+                <dt className="text-xs uppercase tracking-[0.18em] text-vabix-muted">{en ? "Schedule" : "Lịch học"}</dt>
                 <dd className="mt-1 text-lg text-vabix-ink">{b.enrol.schedule}</dd>
               </div>
             </dl>
             <div className="mt-10 border-t border-vabix-deep-teal/15 pt-6">
-              <p className="text-xs uppercase tracking-[0.18em] text-vabix-muted">Hotline tư vấn</p>
+              <p className="text-xs uppercase tracking-[0.18em] text-vabix-muted">{en ? "Advice hotline" : "Hotline tư vấn"}</p>
               <a href={hotlineHref} className="mt-2 inline-block text-3xl font-semibold text-vabix-deep-teal hover:text-vabix-gold">
                 {hotline}
               </a>
             </div>
           </div>
           <div className="bmdo-form rounded-[22px] bg-white p-5 text-vabix-ink shadow-[0_18px_40px_rgba(22,60,62,0.08)] sm:p-8">
-            <LeadForm type="training" program="babosora" title="Đăng ký tham gia BABOSORA" />
+            <LeadForm type="training" program="babosora" title={en ? "Register for BABOSORA" : "Đăng ký tham gia BABOSORA"} />
           </div>
         </Container>
       </section>

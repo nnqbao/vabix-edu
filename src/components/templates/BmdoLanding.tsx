@@ -186,6 +186,40 @@ export function HeroBackdrop() {
   );
 }
 
+// Nền phần vinh danh: vầng sáng trôi, hai luồng đèn sân khấu quét chậm, bụi vàng lấp lánh bay lên.
+const GRAD_DUST = Array.from({ length: 32 }, (_, i) => ({
+  left: (i * 37 + 11) % 100,
+  size: 3 + ((i * 7) % 4),
+  delay: (i * 1.7) % 14,
+  duration: 12 + ((i * 5) % 9),
+  drift: ((i % 5) - 2) * 14,
+}));
+
+function GradBackdrop() {
+  return (
+    <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
+      <span className="bmdo-grad-glow bmdo-grad-glow-a" />
+      <span className="bmdo-grad-glow bmdo-grad-glow-b" />
+      <span className="bmdo-grad-beam bmdo-grad-beam-a" />
+      <span className="bmdo-grad-beam bmdo-grad-beam-b" />
+      {GRAD_DUST.map((d, i) => (
+        <span
+          key={i}
+          className="bmdo-grad-dust"
+          style={{
+            left: `${d.left}%`,
+            width: d.size,
+            height: d.size,
+            animationDelay: `-${d.delay}s`,
+            animationDuration: `${d.duration}s`,
+            ["--dust-drift" as string]: `${d.drift}px`,
+          }}
+        />
+      ))}
+    </div>
+  );
+}
+
 export function Heading({ eyebrow, title, gold, light = false, center = false }: { eyebrow: string; title: string; gold: string; light?: boolean; center?: boolean }) {
   return (
     <div className={center ? "mx-auto max-w-3xl text-center" : "max-w-3xl"}>
@@ -570,6 +604,7 @@ export function BmdoLanding() {
 
       {/* Vinh danh học viên tốt nghiệp */}
       <section className="bmdo-grad relative overflow-hidden py-16 sm:py-24" aria-labelledby="bmdo-grad-title">
+        <GradBackdrop />
         <Container className="relative">
           <RevealOnView>
             <div className="grid gap-6 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)] lg:items-end">

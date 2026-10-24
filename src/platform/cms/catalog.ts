@@ -117,7 +117,8 @@ function mergeFileAndCms<T extends object>(file: T, cms?: Partial<T>): T {
 // Mọi hàm published* nhận `locale`: ở /en, bản dịch trong src/content/en/* được ghép lên theo slug.
 export function publishedPrograms(locale: Locale = "vi"): Program[] {
   const files = programs.filter((item) => item.status === "published");
-  return localizeList(overlayList("program", files).filter((item) => item.status !== "draft"), programsEn, locale);
+  const list = localizeList(overlayList("program", files).filter((item) => item.status !== "draft"), programsEn, locale);
+  return locale === "en" ? list.map((p) => (p.durationNote === "Thời lượng được thiết kế theo nhu cầu" ? { ...p, durationNote: "Duration tailored to your needs" } : p)) : list;
 }
 
 export function publishedProgram(slug: string, locale: Locale = "vi") {

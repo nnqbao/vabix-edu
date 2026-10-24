@@ -1,5 +1,6 @@
 import Image from "next/image";
-import { bmdoClassPhotos, bmdoGraduates as grad, bmdoK4 as k } from "@/content/bmdoK4";
+import * as bmdoVi from "@/content/bmdoK4";
+import * as bmdoEn from "@/content/en/bmdoK4";
 import { LeadForm } from "@/components/forms/LeadForm";
 import { BmdoTvc } from "@/components/templates/BmdoTvc";
 import { RevealOnView } from "@/components/templates/RevealOnView";
@@ -9,6 +10,7 @@ import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Section";
 import { siteConfig } from "@/lib/siteConfig";
 import { paths } from "@/lib/paths";
+import { getLocale } from "@/i18n/server";
 
 const hotline = siteConfig.contact.hotline;
 const hotlineHref = siteConfig.contact.hotlineHref;
@@ -24,12 +26,12 @@ const LABEL_RX = 234;
 const LABEL_RY = 188;
 const WHEEL_SECONDS = 120;
 
-function BizCarRing({ className = "" }: { className?: string }) {
+function BizCarRing({ className = "", domains, en }: { className?: string; domains: readonly string[]; en: boolean }) {
   const nodes = Array.from({ length: 12 }, (_, i) => {
     const a = ((i * 30 - 90) * Math.PI) / 180;
     // Thời điểm đầu vệt sáng chạm nút i — nút loé sáng đúng lúc đó (delay âm để chạy ổn định ngay khi tải).
     const reach = ((((i * RING_C) / 12 - COMET_SEG * COMET_SEGMENTS.length) / RING_C) * COMET_SECONDS + COMET_SECONDS) % COMET_SECONDS;
-    const label = k.domains[i];
+    const label = domains[i];
     return {
       n: i + 1,
       label,
@@ -50,7 +52,7 @@ function BizCarRing({ className = "" }: { className?: string }) {
   });
   const logo = { x: 128, y: 119.5, w: 144, h: 161 };
   return (
-    <svg viewBox="-94 0 588 400" className={`bmdo-ring ${className}`} role="img" aria-label={`Mô hình BizCar — 12 miền quản trị: ${k.domains.join(", ")}`}>
+    <svg viewBox="-94 0 588 400" className={`bmdo-ring ${className}`} role="img" aria-label={en ? `BizCar model — 12 management domains: ${domains.join(", ")}` : `Mô hình BizCar — 12 miền quản trị: ${domains.join(", ")}`}>
       <defs>
         <radialGradient id="bmdo-ring-core" cx="50%" cy="50%" r="50%">
           <stop offset="0%" stopColor="#dea443" stopOpacity="0.4" />
@@ -234,7 +236,7 @@ export function Heading({ eyebrow, title, gold, light = false, center = false }:
 // Thuộc tính để Lightbox mở ảnh lớn (`large`, mặc định chính ảnh đó). Bản nhân đôi của dải chạy không nhận focus.
 const lg = (src: string) => src.replace(/\.jpg$/, "-lg.jpg");
 
-function zoomProps(group: string, index: number, src: string, alt: string, duplicate = false, large = src) {
+function zoomProps(zoom: string, group: string, index: number, src: string, alt: string, duplicate = false, large = src) {
   return {
     "data-zoom-group": group,
     "data-zoom-index": index,
@@ -242,11 +244,11 @@ function zoomProps(group: string, index: number, src: string, alt: string, dupli
     "data-zoom-fallback": src,
     "data-zoom-alt": alt,
     className: "bmdo-zoomable",
-    ...(duplicate ? { tabIndex: -1 } : { tabIndex: 0, role: "button", "aria-label": `Xem lớn: ${alt}` }),
+    ...(duplicate ? { tabIndex: -1 } : { tabIndex: 0, role: "button", "aria-label": `${zoom}: ${alt}` }),
   };
 }
 
-function ClassGallery() {
+function ClassGallery({ photos: bmdoClassPhotos, zoom }: { photos: readonly { src: string; alt: string }[]; zoom: string }) {
   // Chia ảnh thành hai hàng; hàng ngắn thì lặp cho đủ dài, rồi nhân đôi để vòng lặp -50% khớp đúng.
   const half = Math.ceil(bmdoClassPhotos.length / 2);
   const rows = [bmdoClassPhotos.slice(0, half), bmdoClassPhotos.slice(half)]
@@ -260,7 +262,7 @@ function ClassGallery() {
             {[...row, ...row].map((photo, i) => (
               <li key={i} className="mr-4 shrink-0" aria-hidden={i >= row.length || undefined}>
                 <figure className="relative h-48 w-72 overflow-hidden rounded-[18px] sm:h-60 sm:w-[23rem]">
-                  <span {...zoomProps("lop", bmdoClassPhotos.indexOf(photo), photo.src, photo.alt, i >= row.length)}>
+                  <span {...zoomProps(zoom, "lop", bmdoClassPhotos.indexOf(photo), photo.src, photo.alt, i >= row.length)}>
                     <Image src={photo.src} alt={i >= row.length ? "" : photo.alt} fill unoptimized loading="eager" sizes="368px" className="object-cover" />
                   </span>
                 </figure>
@@ -273,11 +275,15 @@ function ClassGallery() {
   );
 }
 
-export function BmdoLanding() {
+export async function BmdoLanding() {
+  const en = (await getLocale()) === "en";
+  const { bmdoK4: k, bmdoClassPhotos, bmdoGraduates: grad } = en ? bmdoEn : bmdoVi;
+  const zoom = en ? "View larger" : "Xem lớn";
+  const wallAlt = en ? "A participant receiving a graduation certificate" : "Học viên nhận chứng nhận tốt nghiệp";
   const facts = [
-    { label: "Khai giảng", value: k.enrol.opening },
-    { label: "Lịch học", value: k.enrol.schedule },
-    { label: "Địa điểm", value: k.enrol.venue },
+    { label: en ? "Opening" : "Khai giảng", value: k.enrol.opening },
+    { label: en ? "Schedule" : "Lịch học", value: k.enrol.schedule },
+    { label: en ? "Venue" : "Địa điểm", value: k.enrol.venue },
   ];
   return (
     <>
@@ -289,14 +295,14 @@ export function BmdoLanding() {
             <Breadcrumb
               light
               items={[
-                { name: "Trang chủ", href: paths.home },
-                { name: "Đào tạo & huấn luyện", href: paths.training },
+                { name: en ? "Home" : "Trang chủ", href: paths.home },
+                { name: en ? "Training & coaching" : "Đào tạo & huấn luyện", href: paths.training },
                 { name: "BMDO" },
               ]}
             />
             <p className="mt-10 inline-flex items-center gap-2 rounded-full border border-vabix-gold/45 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-vabix-soft-gold">
               <span className="h-1.5 w-1.5 rounded-full bg-vabix-gold" aria-hidden="true" />
-              {k.cohort} · Khai giảng {k.enrol.opening}
+              {k.cohort} · {en ? "Opening" : "Khai giảng"} {k.enrol.opening}
             </p>
             <h1 className="mt-6">
               <span className="block text-[4.5rem] font-bold leading-none tracking-[0.04em] text-vabix-warm sm:text-[7rem]">BMDO</span>
@@ -320,15 +326,15 @@ export function BmdoLanding() {
             <p className="mt-3 text-balance text-sm font-medium tracking-wide text-vabix-soft-gold">{k.motto}</p>
             <div className="mt-8 grid gap-3 sm:flex sm:flex-wrap">
               <Button href="#dang-ky" className="w-full sm:w-auto">
-                Đăng ký giữ chỗ →
+                {en ? "Reserve your seat →" : "Đăng ký giữ chỗ →"}
               </Button>
               <Button href={hotlineHref} variant="outline" className="w-full border-white/40 text-white sm:w-auto">
-                Gọi tư vấn {hotline}
+                {en ? "Call us" : "Gọi tư vấn"} {hotline}
               </Button>
             </div>
           </div>
           <div className="relative mx-auto w-full max-w-[38rem]">
-            <BizCarRing className="w-full" />
+            <BizCarRing className="w-full" domains={k.domains} en={en} />
             {/* Điện thoại: nhãn trên vòng quá nhỏ nên ẩn đi và liệt kê 12 miền ở đây. */}
             <ol className="mt-3 grid grid-cols-3 gap-1.5 sm:hidden">
               {k.domains.map((d, i) => (
@@ -375,16 +381,16 @@ export function BmdoLanding() {
               </div>
             ))}
             <div className="col-span-2 flex min-h-[7rem] flex-col items-center justify-center bg-vabix-ivory px-4 py-5 text-center sm:col-span-1 sm:min-h-[8.5rem] sm:px-6 sm:py-6">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-vabix-muted">Học phí ưu đãi</p>
+              <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-vabix-muted">{en ? "Special fee" : "Học phí ưu đãi"}</p>
               <p className="mt-2 flex items-baseline justify-center gap-2">
                 <span className="text-2xl font-semibold text-vabix-deep-teal">{k.enrol.price}</span>
                 <span className="rounded-full bg-vabix-gold/15 px-2 py-0.5 text-[11px] font-semibold text-vabix-gold">−50%</span>
               </p>
               <p className="mt-0.5 text-xs text-vabix-muted">
-                Giá niêm yết <span className="line-through">{k.enrol.listPrice}</span>
+                {en ? "List price" : "Giá niêm yết"} <span className="line-through">{k.enrol.listPrice}</span>
               </p>
               <Button href="#dang-ky" variant="teal" className="mt-3 min-h-10 px-6 py-2">
-                Giữ chỗ →
+                {en ? "Reserve →" : "Giữ chỗ →"}
               </Button>
             </div>
           </div>
@@ -396,14 +402,14 @@ export function BmdoLanding() {
         <HeroBackdrop />
         <Container className="relative">
           <div className="mx-auto max-w-2xl text-center">
-            <p className="eyebrow">Phim giới thiệu</p>
+            <p className="eyebrow">{en ? "Introductory film" : "Phim giới thiệu"}</p>
             <h2 id="bmdo-tvc" className="mt-3 text-balance text-[1.9rem] font-semibold leading-[1.15] tracking-[-0.02em] text-vabix-warm sm:text-[2.4rem]">
-              BMDO Khoá 04 <span className="text-vabix-gold">trong 60 giây.</span>
+              {en ? "BMDO Cohort 04" : "BMDO Khoá 04"} <span className="text-vabix-gold">{en ? "in 60 seconds." : "trong 60 giây."}</span>
             </h2>
           </div>
           <div className="mt-8 sm:mt-10">
             <BmdoTvc
-              title="Phim giới thiệu BMDO Khoá 04"
+              title={en ? "BMDO Cohort 04 introductory film" : "Phim giới thiệu BMDO Khoá 04"}
               landscape={{ src: "/videos/bmdo/bmdo-k4-tvc-16x9.mp4", poster: "/videos/bmdo/bmdo-k4-tvc-16x9-poster.jpg" }}
               portrait={{ src: "/videos/bmdo/bmdo-k4-tvc-9x16.mp4", poster: "/videos/bmdo/bmdo-k4-tvc-9x16-poster.jpg" }}
             />
@@ -415,20 +421,20 @@ export function BmdoLanding() {
       <section className="bg-vabix-warm py-16 sm:py-24">
         <Container className="grid gap-10 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)] lg:gap-16">
           <div>
-            <Heading eyebrow="Tổng quan chương trình" title={k.overview.title} gold={k.overview.titleGold} />
+            <Heading eyebrow={en ? "Programme overview" : "Tổng quan chương trình"} title={k.overview.title} gold={k.overview.titleGold} />
             <p className="mt-6 text-lg leading-relaxed text-vabix-muted">{k.overview.body}</p>
           </div>
           <div className="self-end rounded-[22px] bg-vabix-deep-teal p-7 text-vabix-warm sm:p-9">
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-vabix-gold">Phương pháp tiếp cận</p>
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-vabix-gold">{en ? "Our approach" : "Phương pháp tiếp cận"}</p>
             <p className="mt-3 text-lg leading-relaxed">{k.overview.approach}</p>
             <p className="mt-6 border-t border-white/10 pt-5 text-sm leading-relaxed text-white/70">
-              <span className="font-semibold text-vabix-soft-gold">Nguyên tắc: </span>
+              <span className="font-semibold text-vabix-soft-gold">{en ? "Principle: " : "Nguyên tắc: "}</span>
               {k.overview.principle}
             </p>
           </div>
         </Container>
         <Container className="mt-14">
-          <p className="text-sm font-semibold uppercase tracking-[0.16em] text-vabix-deep-teal">12 miền quản trị / Một bản thiết kế</p>
+          <p className="text-sm font-semibold uppercase tracking-[0.16em] text-vabix-deep-teal">{en ? "12 management domains / One design" : "12 miền quản trị / Một bản thiết kế"}</p>
           <ol className="mt-6 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
             {k.overview.steps.map((s, i) => (
               <li key={s.title} className="relative rounded-[20px] border border-vabix-deep-teal/10 bg-white p-5 sm:p-6">
@@ -446,25 +452,27 @@ export function BmdoLanding() {
         <Container>
           <div className="flex flex-wrap items-end justify-between gap-6">
             <div id="bmdo-gallery">
-              <Heading eyebrow="Hình ảnh lớp học" title="Không khí" gold="thao trường BMDO." />
+              <Heading eyebrow={en ? "In the classroom" : "Hình ảnh lớp học"} title={en ? "Inside the" : "Không khí"} gold={en ? "BMDO training ground." : "thao trường BMDO."} />
             </div>
-            <p className="max-w-md text-vabix-muted">Doanh chủ và CEO cùng thực hành, phản biện và hoàn thiện thiết kế trên chính doanh nghiệp của mình.</p>
+            <p className="max-w-md text-vabix-muted">{en ? "Business owners and CEOs practise, challenge each other and refine designs for their own businesses." : "Doanh chủ và CEO cùng thực hành, phản biện và hoàn thiện thiết kế trên chính doanh nghiệp của mình."}</p>
           </div>
         </Container>
         <div className="mt-10">
-          <ClassGallery />
+          <ClassGallery photos={bmdoClassPhotos} zoom={zoom} />
         </div>
       </section>
 
       {/* Lộ trình 12 ngày */}
       <section className="bg-vabix-warm py-16 sm:py-24" id="lo-trinh">
         <Container>
-          <Heading center eyebrow="Lộ trình 12 ngày học" title="Bốn chặng," gold="mười hai miền quản trị." />
+          <Heading center eyebrow={en ? "12-day learning roadmap" : "Lộ trình 12 ngày học"} title={en ? "Four stages," : "Bốn chặng,"} gold={en ? "twelve management domains." : "mười hai miền quản trị."} />
           <p className="mx-auto mt-5 max-w-2xl text-center text-lg text-vabix-muted">
-            Mỗi ngày học gắn với một bộ phận của Chiếc Xe Doanh Nghiệp và kết thúc bằng một thiết kế đầu ra cụ thể.
+            {en
+              ? "Each learning day is tied to one part of the Business Car and ends with a concrete design output."
+              : "Mỗi ngày học gắn với một bộ phận của Chiếc Xe Doanh Nghiệp và kết thúc bằng một thiết kế đầu ra cụ thể."}
           </p>
           <p className="mt-8 text-center text-sm font-medium text-vabix-muted md:hidden" aria-hidden="true">
-            Vuốt ngang để xem 4 chặng →
+            {en ? "Swipe to see all 4 stages →" : "Vuốt ngang để xem 4 chặng →"}
           </p>
           <div className="-mx-4 mt-4 flex scroll-px-4 snap-x snap-mandatory items-start gap-4 overflow-x-auto px-4 pb-4 [scrollbar-width:none] md:mx-0 md:mt-12 md:grid md:grid-cols-2 md:gap-6 md:overflow-visible md:px-0 md:pb-0 [&::-webkit-scrollbar]:hidden">
             {k.phases.map((phase) => (
@@ -477,7 +485,7 @@ export function BmdoLanding() {
                     {phase.number}
                   </span>
                   <p className="text-xs font-semibold uppercase tracking-[0.2em] text-vabix-gold">
-                    Chặng {phase.number} · {phase.label}
+                    {en ? "Stage" : "Chặng"} {phase.number} · {phase.label}
                   </p>
                   <h3 className="mt-2 text-2xl font-semibold">{phase.title}</h3>
                   <p className="mt-1 text-sm text-white/70">
@@ -493,7 +501,7 @@ export function BmdoLanding() {
                         <p className="mt-0.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-vabix-muted">{d.part}</p>
                         <p className="mt-1.5 text-[15px] leading-relaxed text-vabix-ink">{d.body}</p>
                         <p className="mt-2 text-sm leading-relaxed text-vabix-muted">
-                          <span className="font-semibold text-vabix-gold">Đầu ra → </span>
+                          <span className="font-semibold text-vabix-gold">{en ? "Output → " : "Đầu ra → "}</span>
                           {d.output}
                         </p>
                       </div>
@@ -513,7 +521,7 @@ export function BmdoLanding() {
           <RevealOnView className="bmdo-method">
             <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:items-end">
               <div className="bmdo-rv">
-                <Heading light eyebrow="Phương pháp học và hỗ trợ" title={k.method.title} gold={k.method.titleGold} />
+                <Heading light eyebrow={en ? "Learning method and support" : "Phương pháp học và hỗ trợ"} title={k.method.title} gold={k.method.titleGold} />
               </div>
               <p className="bmdo-rv text-lg leading-relaxed text-white/75" style={{ ["--rv-i" as string]: 1 }}>
                 {k.method.body}
@@ -521,7 +529,7 @@ export function BmdoLanding() {
             </div>
 
             <p className="bmdo-rv mt-14 text-sm font-semibold uppercase tracking-[0.16em] text-vabix-gold" style={{ ["--rv-i" as string]: 2 }}>
-              Chu trình thực hành APPLIER
+              {en ? "The APPLIER practice cycle" : "Chu trình thực hành APPLIER"}
             </p>
             <ol className="relative mt-8 grid grid-cols-2 gap-x-4 gap-y-6 sm:grid-cols-4 sm:gap-y-8 lg:grid-cols-7">
               <span aria-hidden="true" className="bmdo-applier-line absolute left-6 right-6 top-6 hidden h-px bg-vabix-gold/35 lg:block" />
@@ -541,7 +549,7 @@ export function BmdoLanding() {
 
             <div className="mt-16 grid gap-10 lg:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)]">
               <div className="bmdo-rv" style={{ ["--rv-i" as string]: 10 }}>
-                <p className="text-sm font-semibold uppercase tracking-[0.16em] text-vabix-gold">Một ngày học · 300 phút thực hành có hướng dẫn</p>
+                <p className="text-sm font-semibold uppercase tracking-[0.16em] text-vabix-gold">{en ? "One learning day · 300 minutes of guided practice" : "Một ngày học · 300 phút thực hành có hướng dẫn"}</p>
                 <div className="mt-5 flex overflow-hidden rounded-full border border-white/10 text-xs font-semibold sm:text-sm">
                   {k.method.day.map((b, i) => (
                     <div
@@ -562,7 +570,7 @@ export function BmdoLanding() {
                 </ul>
               </div>
               <div className="bmdo-rv" style={{ ["--rv-i" as string]: 12 }}>
-                <p className="text-sm font-semibold uppercase tracking-[0.16em] text-vabix-gold">Ba lớp hỗ trợ cho việc ứng dụng</p>
+                <p className="text-sm font-semibold uppercase tracking-[0.16em] text-vabix-gold">{en ? "Three layers of support for application" : "Ba lớp hỗ trợ cho việc ứng dụng"}</p>
                 <ul className="mt-5 divide-y divide-white/10 overflow-hidden rounded-[20px] border border-vabix-gold/30 bg-vabix-deep-teal/40 backdrop-blur-sm">
                   {k.method.support.map((s, i) => (
                     <li
@@ -587,7 +595,7 @@ export function BmdoLanding() {
       {/* Kết quả */}
       <section className="bg-vabix-warm py-16 sm:py-24">
         <Container>
-          <Heading eyebrow="Kết quả mang về" title={k.outcomes.title} gold={k.outcomes.titleGold} />
+          <Heading eyebrow={en ? "What you take home" : "Kết quả mang về"} title={k.outcomes.title} gold={k.outcomes.titleGold} />
           <p className="mt-6 max-w-3xl text-lg text-vabix-muted">{k.outcomes.body}</p>
           <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {k.outcomes.items.map((o, i) => (
@@ -609,24 +617,26 @@ export function BmdoLanding() {
           <RevealOnView>
             <div className="grid gap-6 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)] lg:items-end">
               <div className="bmdo-rv">
-                <p className="eyebrow">Lễ tốt nghiệp & vinh danh</p>
+                <p className="eyebrow">{en ? "Graduation & honours" : "Lễ tốt nghiệp & vinh danh"}</p>
                 <h2 id="bmdo-grad-title" className="mt-3 text-balance text-[1.9rem] font-semibold leading-[1.15] tracking-[-0.02em] text-vabix-deep-teal sm:text-[2.6rem]">
-                  Vinh danh những doanh chủ <span className="text-vabix-gold">đã đi trọn hành trình.</span>
+                  {en ? "Honouring the business owners" : "Vinh danh những doanh chủ"} <span className="text-vabix-gold">{en ? "who completed the journey." : "đã đi trọn hành trình."}</span>
                 </h2>
               </div>
               <p className="bmdo-rv text-lg leading-relaxed text-vabix-muted" style={{ ["--rv-i" as string]: 1 }}>
-                Mỗi tấm chứng nhận là một bản thiết kế quản trị đã được hoàn thiện, phản biện và mang về triển khai trên chính doanh nghiệp của học viên.
+                {en
+                  ? "Every certificate stands for a management design that has been completed, challenged and taken home to implement in the participant’s own business."
+                  : "Mỗi tấm chứng nhận là một bản thiết kế quản trị đã được hoàn thiện, phản biện và mang về triển khai trên chính doanh nghiệp của học viên."}
               </p>
             </div>
 
             <div className="mt-10 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4 lg:grid-rows-2">
               <figure className="bmdo-rv bmdo-grad-tile col-span-2 aspect-[4/3] lg:row-span-2 lg:aspect-auto" style={{ ["--rv-i" as string]: 2 }}>
-                <span {...zoomProps("tot-nghiep", 0, grad.featured[0].src, grad.featured[0].alt, false, lg(grad.featured[0].src))}>
+                <span {...zoomProps(zoom, "tot-nghiep", 0, grad.featured[0].src, grad.featured[0].alt, false, lg(grad.featured[0].src))}>
                   <Image src={grad.featured[0].src} alt={grad.featured[0].alt} fill unoptimized sizes="(max-width: 1023px) 100vw, 50vw" className="bmdo-grad-img object-cover" />
                 </span>
                 <figcaption className="bmdo-grad-caption">
                   <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-vabix-soft-gold">Graduation ceremony</span>
-                  <span className="mt-1 block text-lg font-semibold sm:text-xl">Lễ tốt nghiệp & vinh danh học viên</span>
+                  <span className="mt-1 block text-lg font-semibold sm:text-xl">{en ? "Graduation & participant honours ceremony" : "Lễ tốt nghiệp & vinh danh học viên"}</span>
                 </figcaption>
               </figure>
               <figure className="bmdo-rv bmdo-grad-tile aspect-[4/3]" style={{ ["--rv-i" as string]: 3 }}>
@@ -639,16 +649,16 @@ export function BmdoLanding() {
                   loop
                   playsInline
                   preload="metadata"
-                  aria-label="Khoảnh khắc lễ tốt nghiệp"
+                  aria-label={en ? "Graduation ceremony moments" : "Khoảnh khắc lễ tốt nghiệp"}
                 />
                 <span className="bmdo-grad-live" aria-hidden="true">
                   <span className="h-1.5 w-1.5 rounded-full bg-vabix-gold" />
-                  Khoảnh khắc
+                  {en ? "Moments" : "Khoảnh khắc"}
                 </span>
               </figure>
               {grad.featured.slice(1).map((ph, i) => (
                 <figure key={ph.src} className="bmdo-rv bmdo-grad-tile aspect-[4/3]" style={{ ["--rv-i" as string]: 4 + i }}>
-                  <span {...zoomProps("tot-nghiep", 1 + i, ph.src, ph.alt, false, lg(ph.src))}>
+                  <span {...zoomProps(zoom, "tot-nghiep", 1 + i, ph.src, ph.alt, false, lg(ph.src))}>
                     <Image src={ph.src} alt={ph.alt} fill unoptimized sizes="(max-width: 1023px) 50vw, 25vw" className="bmdo-grad-img object-cover" />
                   </span>
                 </figure>
@@ -658,17 +668,17 @@ export function BmdoLanding() {
         </Container>
 
         <div className="relative mt-12 sm:mt-14">
-          <p className="mb-5 text-center text-xs font-semibold uppercase tracking-[0.24em] text-vabix-gold">Bức tường vinh danh</p>
+          <p className="mb-5 text-center text-xs font-semibold uppercase tracking-[0.24em] text-vabix-gold">{en ? "Wall of honour" : "Bức tường vinh danh"}</p>
           <div className="space-y-4">
             {[grad.wall.slice(0, Math.ceil(grad.wall.length / 2)), grad.wall.slice(Math.ceil(grad.wall.length / 2))].map((row, r) => (
               <div key={r} className="bmdo-marquee">
                 <ul className="bmdo-marquee-track" data-reverse={r ? "" : undefined} style={{ ["--bmdo-marquee-duration" as string]: `${row.length * 7}s` }}>
                   {[...row, ...row].map((ph, i) => (
                     <li key={i} className="bmdo-honor mr-4 shrink-0" aria-hidden={i >= row.length || undefined}>
-                      <span {...zoomProps("tot-nghiep", 4 + grad.wall.indexOf(ph), ph.src, "Học viên nhận chứng nhận tốt nghiệp", i >= row.length, lg(ph.src))}>
+                      <span {...zoomProps(zoom, "tot-nghiep", 4 + grad.wall.indexOf(ph), ph.src, wallAlt, i >= row.length, lg(ph.src))}>
                       <Image
                         src={ph.src}
-                        alt={i >= row.length ? "" : "Học viên nhận chứng nhận tốt nghiệp"}
+                        alt={i >= row.length ? "" : wallAlt}
                         width={ph.w}
                         height={ph.h}
                         unoptimized
@@ -690,17 +700,19 @@ export function BmdoLanding() {
         <HeroBackdrop />
         <Container className="relative">
           <div className="mx-auto max-w-2xl text-center">
-            <p className="eyebrow">Nhìn lại các khoá BMDO</p>
+            <p className="eyebrow">{en ? "Looking back at BMDO cohorts" : "Nhìn lại các khoá BMDO"}</p>
             <h2 id="bmdo-recap" className="mt-3 text-balance text-[1.9rem] font-semibold leading-[1.15] tracking-[-0.02em] sm:text-[2.4rem]">
-              Những khoá học đã diễn ra, <span className="text-vabix-gold">những bản thiết kế đã thành hình.</span>
+              {en ? "Cohorts that have run," : "Những khoá học đã diễn ra,"} <span className="text-vabix-gold">{en ? "designs that have taken shape." : "những bản thiết kế đã thành hình."}</span>
             </h2>
             <p className="mt-4 text-lg leading-relaxed text-white/75">
-              Doanh chủ và CEO cùng thực hành trên bài toán thật của doanh nghiệp mình, phản biện đa chiều và mang về bản thiết kế quản trị.
+              {en
+                ? "Business owners and CEOs practise on their own companies’ real problems, challenge each other from many angles and take home a management design."
+                : "Doanh chủ và CEO cùng thực hành trên bài toán thật của doanh nghiệp mình, phản biện đa chiều và mang về bản thiết kế quản trị."}
             </p>
           </div>
           <div className="mx-auto mt-8 max-w-5xl sm:mt-10">
             <BmdoTvc
-              title="Video các khoá BMDO đã tổ chức"
+              title={en ? "Video of past BMDO cohorts" : "Video các khoá BMDO đã tổ chức"}
               landscape={{ src: "/videos/bmdo/bmdo-cac-khoa-720p.mp4", poster: "/videos/bmdo/bmdo-cac-khoa-poster.jpg" }}
               small={{ src: "/videos/bmdo/bmdo-cac-khoa-360p.mp4", poster: "/videos/bmdo/bmdo-cac-khoa-poster.jpg" }}
             />
@@ -713,21 +725,21 @@ export function BmdoLanding() {
         <Container className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)] lg:gap-16">
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.22em] text-vabix-gold">BMDO / {k.cohort}</p>
-            <h2 className="mt-3 text-3xl font-semibold uppercase sm:text-4xl">Đăng ký tham gia</h2>
-            <p className="mt-3 font-semibold uppercase tracking-wide text-vabix-gold">Dự kiến khai giảng {k.enrol.opening}</p>
+            <h2 className="mt-3 text-3xl font-semibold uppercase sm:text-4xl">{en ? "Register" : "Đăng ký tham gia"}</h2>
+            <p className="mt-3 font-semibold uppercase tracking-wide text-vabix-gold">{en ? "Expected opening" : "Dự kiến khai giảng"} {k.enrol.opening}</p>
             <dl className="mt-8 space-y-5">
               <div>
-                <dt className="text-xs uppercase tracking-[0.18em] text-white/55">Lịch học</dt>
+                <dt className="text-xs uppercase tracking-[0.18em] text-white/55">{en ? "Schedule" : "Lịch học"}</dt>
                 <dd className="mt-1 text-lg">{k.enrol.schedule}</dd>
               </div>
               <div>
-                <dt className="text-xs uppercase tracking-[0.18em] text-white/55">Địa điểm</dt>
+                <dt className="text-xs uppercase tracking-[0.18em] text-white/55">{en ? "Venue" : "Địa điểm"}</dt>
                 <dd className="mt-1 text-lg">{k.enrol.venue}</dd>
               </div>
               <div>
-                <dt className="text-xs uppercase tracking-[0.18em] text-white/55">Học phí</dt>
+                <dt className="text-xs uppercase tracking-[0.18em] text-white/55">{en ? "Tuition" : "Học phí"}</dt>
                 <dd className="mt-1 text-white/60">
-                  Giá niêm yết: <span className="line-through">{k.enrol.listPrice}</span>
+                  {en ? "List price:" : "Giá niêm yết:"} <span className="line-through">{k.enrol.listPrice}</span>
                 </dd>
                 <dd className="mt-1 flex flex-wrap items-baseline gap-x-4">
                   <span className="text-4xl font-semibold text-vabix-gold">{k.enrol.price}</span>
@@ -736,7 +748,7 @@ export function BmdoLanding() {
               </div>
             </dl>
             <div className="mt-10 border-t border-white/15 pt-6">
-              <p className="text-xs uppercase tracking-[0.18em] text-white/55">Tư vấn / {k.enrol.advisor}</p>
+              <p className="text-xs uppercase tracking-[0.18em] text-white/55">{en ? "Advisor" : "Tư vấn"} / {k.enrol.advisor}</p>
               <a href={hotlineHref} className="mt-2 inline-block text-3xl font-semibold text-vabix-warm hover:text-vabix-gold">
                 {hotline}
               </a>
@@ -747,29 +759,29 @@ export function BmdoLanding() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bmdo-zalo-qr relative shrink-0 rounded-2xl bg-white p-2 shadow-[0_12px_30px_rgba(0,0,0,0.3)]"
-                aria-label={`Tham gia nhóm Zalo ${k.enrol.zaloGroup.name}`}
+                aria-label={en ? `Join the Zalo group ${k.enrol.zaloGroup.name}` : `Tham gia nhóm Zalo ${k.enrol.zaloGroup.name}`}
               >
-                <Image src={k.enrol.zaloGroup.qr} alt={`Mã QR nhóm Zalo ${k.enrol.zaloGroup.name}`} width={608} height={604} unoptimized className="h-40 w-40 sm:h-32 sm:w-32" />
+                <Image src={k.enrol.zaloGroup.qr} alt={en ? `QR code for the Zalo group ${k.enrol.zaloGroup.name}` : `Mã QR nhóm Zalo ${k.enrol.zaloGroup.name}`} width={608} height={604} unoptimized className="h-40 w-40 sm:h-32 sm:w-32" />
                 <span aria-hidden="true" className="bmdo-zalo-scan" />
               </a>
               <div className="min-w-0">
-                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-vabix-gold">Nhóm Zalo lớp học</p>
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-vabix-gold">{en ? "Class Zalo group" : "Nhóm Zalo lớp học"}</p>
                 <p className="mt-1.5 text-balance text-lg font-semibold leading-snug">{k.enrol.zaloGroup.name}</p>
-                <p className="mt-1.5 text-sm leading-relaxed text-white/65">Quét mã bằng Zalo để nhận thông tin lớp, lịch học và tài liệu.</p>
+                <p className="mt-1.5 text-sm leading-relaxed text-white/65">{en ? "Scan the code with Zalo to get class updates, the schedule and materials." : "Quét mã bằng Zalo để nhận thông tin lớp, lịch học và tài liệu."}</p>
                 <a
                   href={k.enrol.zaloGroup.url}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="mt-3 inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-vabix-gold/50 px-4 py-2 text-sm font-semibold text-vabix-soft-gold transition-colors hover:bg-vabix-gold hover:text-vabix-deep-teal"
                 >
-                  Mở Zalo tham gia nhóm →
+                  {en ? "Open Zalo to join the group →" : "Mở Zalo tham gia nhóm →"}
                 </a>
               </div>
             </div>
             <p className="mt-8 text-sm leading-relaxed text-white/60">{k.enrol.note}</p>
           </div>
           <div className="bmdo-form rounded-[22px] bg-white p-5 text-vabix-ink sm:p-8">
-            <LeadForm type="bmdo" program="bmdo" title="Đăng ký giữ chỗ BMDO Khoá 04" />
+            <LeadForm type="bmdo" program="bmdo" title={en ? "Reserve your seat in BMDO Cohort 04" : "Đăng ký giữ chỗ BMDO Khoá 04"} />
           </div>
         </Container>
       </section>

@@ -2,6 +2,8 @@ import { Fragment } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { articles } from "@/content/articles";
+import { articlesEn } from "@/content/en/articles";
+import { localizeList } from "@/i18n/pick";
 import { strategicPartners } from "@/content/strategicPartners";
 import { siteConfig } from "@/lib/siteConfig";
 import { paths } from "@/lib/paths";
@@ -168,7 +170,7 @@ export async function CorporateHome() {
   const steps = en ? transformationStepsEn : transformationSteps;
   const outputs = en ? transformationOutputsEn : transformationOutputs;
   const models = en ? knowledgeModelsEn : knowledgeModels;
-  const featuredArticles = [...articles].sort((a, b) => (b.publishedAt ?? "").localeCompare(a.publishedAt ?? "")).slice(0, 6);
+  const featuredArticles = [...localizeList(articles, articlesEn, locale)].sort((a, b) => (b.publishedAt ?? "").localeCompare(a.publishedAt ?? "")).slice(0, 6);
 
   return (
     <>

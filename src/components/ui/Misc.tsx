@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export function Breadcrumb({ items, light = false }: { items: { name: string; href?: string }[]; light?: boolean }) {
   return (
-    <nav aria-label="Đường dẫn" className={`text-sm ${light ? "text-white/70" : "text-vabix-muted"}`}>
+    <nav aria-label={items[0]?.name === "Home" ? "Breadcrumb" : "Đường dẫn"} className={`text-sm ${light ? "text-white/70" : "text-vabix-muted"}`}>
       <ol className="flex flex-wrap items-center gap-2">
         {items.map((item, i) => (
           <li key={`${item.name}-${i}`} className="flex items-center gap-2">

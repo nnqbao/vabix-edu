@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { localeFromPathname } from "@/i18n/locale";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { isNavItemActive, type NavChild, type NavItem } from "@/content/navigation";
@@ -50,7 +51,7 @@ export function MegaMenu({ items, inverted }: { items: NavItem[]; inverted: bool
     <nav
       ref={navRef}
       className="hidden min-w-0 flex-1 items-center justify-evenly xl:flex"
-      aria-label="Điều hướng chính"
+      aria-label={localeFromPathname(pathname ?? "/") === "en" ? "Main navigation" : "Điều hướng chính"}
       onMouseEnter={() => {
         if (closeTimer.current) window.clearTimeout(closeTimer.current);
       }}

@@ -2,6 +2,8 @@
 
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
+import { usePathname } from "next/navigation";
+import { localeFromPathname } from "@/i18n/locale";
 
 type Source = { src: string; poster: string };
 
@@ -19,6 +21,7 @@ export function BmdoTvc({ landscape, portrait, small, title }: { landscape: Sour
   const [inView, setInView] = useState(false);
   const [started, setStarted] = useState(false);
   const [muted, setMuted] = useState(true);
+  const en = localeFromPathname(usePathname() ?? "/") === "en";
 
   useEffect(() => {
     const mq = window.matchMedia(WIDE_QUERY);
@@ -114,7 +117,7 @@ export function BmdoTvc({ landscape, portrait, small, title }: { landscape: Sour
                 <path d="M11 5 6 9H3v6h3l5 4V5z" />
                 <path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13" />
               </svg>
-              Bật tiếng
+              {en ? "Unmute" : "Bật tiếng"}
             </button>
           ) : null}
         </div>

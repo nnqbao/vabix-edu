@@ -6,16 +6,20 @@ import { LeadForm } from "@/components/forms/LeadForm";
 import { JsonLd } from "@/components/ui/Misc";
 import { breadcrumbJsonLd } from "@/lib/seo";
 import type { Methodology } from "@/content/types";
+import { getLocale } from "@/i18n/server";
+import { withLocale } from "@/i18n/locale";
 
-export function MethodologyTemplate({ method, extra }: { method: Methodology; extra?: ReactNode }) {
+export async function MethodologyTemplate({ method, extra }: { method: Methodology; extra?: ReactNode }) {
+  const locale = await getLocale();
+  const en = locale === "en";
   const crumbs = [
-    { name: "Trang chủ", href: "/" },
-    { name: "Chương trình & Mô hình", href: "/mo-hinh-phuong-phap" },
+    { name: en ? "Home" : "Trang chủ", href: "/" },
+    { name: en ? "Programmes & models" : "Chương trình & Mô hình", href: "/mo-hinh-phuong-phap" },
     { name: method.shortName },
   ];
   return (
     <>
-      <JsonLd data={breadcrumbJsonLd(crumbs.map((c) => ({ name: c.name, path: c.href ?? `/mo-hinh-phuong-phap/${method.slug}` })))} />
+      <JsonLd data={breadcrumbJsonLd(crumbs.map((c) => ({ name: c.name, path: withLocale(c.href ?? `/mo-hinh-phuong-phap/${method.slug}`, locale) })))} />
       <JsonLd
         data={{
           "@context": "https://schema.org",
@@ -32,7 +36,7 @@ export function MethodologyTemplate({ method, extra }: { method: Methodology; ex
           <p className="max-w-2xl text-vabix-muted">{method.description}</p>
           {extra}
           <section>
-            <SectionHeading title="Phù hợp với ai" />
+            <SectionHeading title={en ? "Who it is for" : "Phù hợp với ai"} />
             <ul className="mt-4 list-disc pl-5">
               {(method.whoFor ?? []).map((x) => (
                 <li key={x}>{x}</li>
@@ -40,7 +44,7 @@ export function MethodologyTemplate({ method, extra }: { method: Methodology; ex
             </ul>
           </section>
           <section>
-            <SectionHeading title="Kết quả hướng tới" />
+            <SectionHeading title={en ? "Intended outcomes" : "Kết quả hướng tới"} />
             <ul className="mt-4 grid gap-3 sm:grid-cols-2">
               {(method.outcomes ?? []).map((x) => (
                 <li key={x} className="bg-vabix-ivory p-4 text-sm">
@@ -50,7 +54,7 @@ export function MethodologyTemplate({ method, extra }: { method: Methodology; ex
             </ul>
           </section>
           <section>
-            <SectionHeading title="Hành trình" />
+            <SectionHeading title={en ? "The journey" : "Hành trình"} />
             <ol className="mt-6 grid gap-5 sm:grid-cols-2">
               {(method.process ?? []).map((p) => (
                 <li key={p.step} className="border-t border-vabix-gold pt-4">
@@ -64,11 +68,18 @@ export function MethodologyTemplate({ method, extra }: { method: Methodology; ex
         </div>
         <aside>
           <div className="border border-vabix-deep-teal/10 bg-white p-6 lg:sticky lg:top-28">
-            <LeadForm type="consult" title="Trao đổi về mô hình này" />
+            <LeadForm type="consult" title={en ? "Talk to us about this model" : "Trao đổi về mô hình này"} />
           </div>
         </aside>
       </Container>
-      <CTASection title="Đưa mô hình vào bài toán của bạn." description="VABIX đồng hành từ nhận diện đến chuyển giao năng lực — không dừng ở infographic." />
+      <CTASection
+        title={en ? "Apply the model to your own challenge." : "Đưa mô hình vào bài toán của bạn."}
+        description={
+          en
+            ? "VABIX works alongside you from diagnosis to capability transfer — not stopping at an infographic."
+            : "VABIX đồng hành từ nhận diện đến chuyển giao năng lực — không dừng ở infographic."
+        }
+      />
     </>
   );
 }

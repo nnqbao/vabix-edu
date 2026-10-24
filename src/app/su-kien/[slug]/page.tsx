@@ -7,6 +7,7 @@ import { LeadForm } from "@/components/forms/LeadForm";
 import { JsonLd } from "@/components/ui/Misc";
 import { createMetadata, absUrl } from "@/lib/seo";
 import { siteConfig } from "@/lib/siteConfig";
+import { getLocale } from "@/i18n/server";
 
 export function generateStaticParams() {
   const slugs = new Set(events.map((item) => item.slug));
@@ -20,14 +21,17 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const e = publishedEvent(slug);
+  const locale = await getLocale();
+  const e = publishedEvent(slug, locale);
   if (!e) return {};
-  return createMetadata({ title: e.title, description: e.excerpt, path: `/su-kien/${e.slug}`, image: e.image });
+  return createMetadata({ title: e.title, description: e.excerpt, path: `${locale === "en" ? "/en" : ""}/su-kien/${e.slug}`, image: e.image });
 }
 
 export default async function EventDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const e = publishedEvent(slug);
+  const locale = await getLocale();
+  const en = locale === "en";
+  const e = publishedEvent(slug, locale);
   if (!e) notFound();
   return (
     <>
@@ -55,18 +59,18 @@ export default async function EventDetailPage({ params }: { params: Promise<{ sl
         eyebrow={e.category}
         title={e.title}
         description={e.excerpt}
-        crumbs={[{ name: "Trang chủ", href: "/" }, { name: "Sự kiện", href: "/su-kien" }, { name: e.title }]}
+        crumbs={[{ name: en ? "Home" : "Trang chủ", href: "/" }, { name: en ? "Events" : "Sự kiện", href: "/su-kien" }, { name: e.title }]}
       />
       <Container className="grid gap-12 py-16 lg:grid-cols-3">
         <div className="lg:col-span-2">
           <p className="text-sm text-vabix-gold">
-            {new Date(e.startDate).toLocaleDateString("vi-VN")} · {e.location}
+            {new Date(e.startDate).toLocaleDateString(en ? "en-GB" : "vi-VN")} · {e.location}
           </p>
           <p className="measure mt-6 text-vabix-muted">{e.content}</p>
         </div>
         {e.status !== "completed" ? (
           <div className="border border-vabix-deep-teal/10 p-6">
-            <LeadForm type="event" eventSlug={e.slug} title="Đăng ký sự kiện" />
+            <LeadForm type="event" eventSlug={e.slug} title={en ? "Register for this event" : "Đăng ký sự kiện"} />
           </div>
         ) : null}
       </Container>

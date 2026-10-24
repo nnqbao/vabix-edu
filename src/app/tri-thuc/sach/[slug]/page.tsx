@@ -1,16 +1,33 @@
+import Image from "next/image";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import { books } from "@/content/network";
-import { PageHero } from "@/components/layout/PageHero";
+import { amazonLink, founderAuthor as author, founderBooks } from "@/content/founderBooks";
+import { publishedMethodologies } from "@/platform/cms/catalog";
+import { Breadcrumb } from "@/components/ui/Misc";
+import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Section";
+import { PageHero } from "@/components/layout/PageHero";
 import { CTASection } from "@/components/sections/CTASection";
+import { HeroBackdrop } from "@/components/templates/BmdoLanding";
 import { createMetadata } from "@/lib/seo";
+import { paths } from "@/lib/paths";
 
 export function generateStaticParams() {
-  return books.map((b) => ({ slug: b.slug }));
+  return [...founderBooks, ...books].map((b) => ({ slug: b.slug }));
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
+  const fb = founderBooks.find((x) => x.slug === slug);
+  if (fb) {
+    return createMetadata({
+      title: `${fb.title} — ${author.nameEn}`,
+      description: `${fb.subtitle}. ${fb.summary}`,
+      path: `/tri-thuc/sach/${fb.slug}`,
+      image: fb.cover,
+    });
+  }
   const b = books.find((x) => x.slug === slug);
   if (!b) return {};
   return createMetadata({ title: b.title, description: b.summary, path: `/tri-thuc/sach/${b.slug}` });
@@ -18,6 +35,96 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 export default async function BookPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
+  const fb = founderBooks.find((x) => x.slug === slug);
+
+  if (fb) {
+    const model = fb.relatedModel ? publishedMethodologies().find((m) => m.slug === fb.relatedModel) : null;
+    const others = founderBooks.filter((x) => x.slug !== fb.slug);
+    return (
+      <>
+        <section className="relative overflow-hidden bg-vabix-deep-teal pt-28 text-vabix-warm sm:pt-32">
+          <HeroBackdrop />
+          <Container className="relative grid gap-12 pb-16 pt-8 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:items-center lg:gap-16 lg:pb-20">
+            <div className="relative mx-auto order-2 w-full max-w-[20rem] lg:order-1">
+              <span aria-hidden="true" className="absolute inset-[-14%] rounded-full bg-[radial-gradient(closest-side,rgba(222,164,67,0.35),transparent)] blur-2xl" />
+              <Image src={fb.cover} alt={`Bìa sách ${fb.title}`} width={460} height={660} unoptimized priority className="book-cover relative w-full rounded-[8px]" />
+            </div>
+            <div className="order-1 lg:order-2">
+              <Breadcrumb
+                light
+                items={[
+                  { name: "Trang chủ", href: paths.home },
+                  { name: "Sách", href: "/tri-thuc/sach" },
+                  { name: fb.title },
+                ]}
+              />
+              <p className="mt-8 text-xs font-semibold uppercase tracking-[0.22em] text-vabix-soft-gold">{author.nameEn} · Available on Amazon</p>
+              <h1 className="mt-4 text-balance text-[2.4rem] font-semibold leading-[1.08] tracking-[-0.02em] sm:text-[3.4rem]">{fb.title}</h1>
+              <p className="mt-3 text-lg italic leading-relaxed text-vabix-gold">{fb.subtitle}</p>
+              <p className="mt-6 max-w-xl text-lg leading-relaxed text-white/80">{fb.summary}</p>
+              <div className="mt-8 grid gap-3 sm:flex sm:flex-wrap">
+                <a
+                  href={amazonLink(fb)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex min-h-11 w-full items-center justify-center gap-2 bg-vabix-gold px-6 py-2.5 text-[15px] font-semibold text-vabix-deep-teal transition-colors hover:bg-vabix-soft-gold sm:w-auto"
+                >
+                  Mua trên Amazon ↗
+                </a>
+                <Button href={paths.contact} variant="outline" className="w-full border-white/40 text-white sm:w-auto">
+                  Đặt sách số lượng lớn
+                </Button>
+              </div>
+              {model ? (
+                <p className="mt-6 text-sm text-white/65">
+                  Mô hình trong sách:{" "}
+                  <Link href={paths.method(model.slug)} className="font-semibold text-vabix-soft-gold hover:text-vabix-gold">
+                    {model.name} →
+                  </Link>
+                </p>
+              ) : null}
+            </div>
+          </Container>
+        </section>
+
+        <section className="bg-vabix-warm py-16 sm:py-20">
+          <Container className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.4fr)] lg:items-center">
+            <div className="flex items-center gap-5">
+              <Image src={author.portrait} alt={author.name} width={160} height={160} unoptimized className="h-24 w-24 rounded-full border-2 border-vabix-gold/60 object-cover object-top" />
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-vabix-gold">Về tác giả</p>
+                <p className="mt-1 text-xl font-semibold text-vabix-deep-teal">{author.name}</p>
+                <p className="text-sm text-vabix-muted">{author.role}</p>
+              </div>
+            </div>
+            <blockquote className="rounded-[22px] border border-vabix-gold/35 bg-vabix-ivory px-6 py-6 text-lg italic leading-relaxed text-vabix-deep-teal sm:px-8">“{author.quote}”</blockquote>
+          </Container>
+        </section>
+
+        <section className="bg-vabix-ivory py-16 sm:py-20">
+          <Container>
+            <div className="flex flex-wrap items-end justify-between gap-4">
+              <h2 className="text-[1.9rem] font-semibold tracking-[-0.02em] text-vabix-deep-teal">Các tựa sách khác</h2>
+              <Link href="/tri-thuc/sach#bo-sach" className="text-sm font-semibold text-vabix-deep-teal hover:text-vabix-gold">
+                Xem cả bộ sách →
+              </Link>
+            </div>
+            <ul className="mt-8 grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-5">
+              {others.map((o) => (
+                <li key={o.slug}>
+                  <Link href={`/tri-thuc/sach/${o.slug}`} className="group block">
+                    <Image src={o.cover} alt={`Bìa sách ${o.title}`} width={460} height={660} unoptimized className="book-cover aspect-[7/10] w-full rounded-[6px] object-cover" />
+                    <p className="mt-3 text-sm font-semibold text-vabix-deep-teal group-hover:text-vabix-gold">{o.title}</p>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </Container>
+        </section>
+      </>
+    );
+  }
+
   const b = books.find((x) => x.slug === slug);
   if (!b) notFound();
   return (

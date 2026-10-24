@@ -1,5 +1,6 @@
 import { consultingServices } from "../content/consulting";
 import { programs } from "../content/programs";
+import { founderBooks } from "../content/founderBooks";
 import { methodologies } from "../content/methodologies";
 import { experts } from "../content/experts";
 import { articles } from "../content/articles";
@@ -65,6 +66,7 @@ export function sitemapPaths(): string[] {
     ...events.map((e) => `/su-kien/${e.slug}`),
     ...handbooks.map((h) => `/tri-thuc/cam-nang/${h.slug}`),
     ...books.map((b) => `/tri-thuc/sach/${b.slug}`),
+    ...founderBooks.map((b) => `/tri-thuc/sach/${b.slug}`),
     ...villages.map((v) => `/mang-luoi/lang-nganh/${v.slug}`),
     ...collections.map((c) => `/bo-suu-tap/${c.slug}`),
     ...supportServices.map((s) => `/dich-vu-phu-tro/${s.slug}`),

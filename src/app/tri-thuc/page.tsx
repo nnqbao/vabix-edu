@@ -6,6 +6,8 @@ import { createMetadata } from "@/lib/seo";
 import { paths } from "@/lib/paths";
 import { LeadForm } from "@/components/forms/LeadForm";
 import Link from "next/link";
+import Image from "next/image";
+import { founderBooks } from "@/content/founderBooks";
 
 export const metadata = createMetadata({
   title: "Hệ sinh thái tri thức",
@@ -23,8 +25,23 @@ export default function KnowledgeEcosystemPage() {
       />
       <Container className="py-16">
         <section id="sach">
-          <SectionHeading title="Sách" />
-          <div className="mt-6 grid gap-4 md:grid-cols-2">
+          <div className="flex flex-wrap items-end justify-between gap-4">
+            <SectionHeading title="Sách" />
+            <Link href="/tri-thuc/sach" className="text-sm font-semibold text-vabix-deep-teal hover:text-vabix-gold">
+              Xem tủ sách của Founder Nguyễn Chí Thành →
+            </Link>
+          </div>
+          <ul className="mt-6 grid grid-cols-3 gap-4 sm:grid-cols-6">
+            {founderBooks.map((b) => (
+              <li key={b.slug}>
+                <Link href={`/tri-thuc/sach/${b.slug}`} className="group block">
+                  <Image src={b.cover} alt={`Bìa sách ${b.title}`} width={460} height={660} unoptimized className="book-cover aspect-[7/10] w-full rounded-[6px] object-cover" />
+                  <p className="mt-2 text-xs font-semibold text-vabix-deep-teal group-hover:text-vabix-gold sm:text-sm">{b.title}</p>
+                </Link>
+              </li>
+            ))}
+          </ul>
+          <div className="mt-8 grid gap-4 md:grid-cols-2">
             {books.map((b) => (
               <Link key={b.slug} href={`/tri-thuc/sach/${b.slug}`} className="border border-vabix-deep-teal/10 p-6 hover:border-vabix-gold">
                 <h3 className="font-semibold text-vabix-deep-teal">{b.title}</h3>
@@ -32,7 +49,6 @@ export default function KnowledgeEcosystemPage() {
               </Link>
             ))}
           </div>
-          <p className="mt-4 text-sm text-vabix-muted">Nguyễn Chí Thành có ấn phẩm tiếng Anh trên Amazon. Danh mục 06 tựa chỉ công bố khi có nguồn được duyệt trong CMS.</p>
         </section>
         <section className="mt-16" id="cam-nang">
           <SectionHeading title="Cẩm nang" />

@@ -6199,3 +6199,50 @@ section[id],
     transform: none;
   }
 }
+
+/* Trang Tri thức — 3 bìa sách xòe như quạt ở hero, khẽ bồng bềnh */
+.kn-fan-book {
+  box-shadow: 0 24px 40px -12px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(228, 184, 98, 0.25);
+  transition: transform 600ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.kn-fan-book-0 {
+  transform: translateX(-118%) rotate(-12deg) translateY(8px);
+  animation: kn-float 7s ease-in-out infinite;
+}
+
+.kn-fan-book-1 {
+  z-index: 1;
+  transform: translateX(-50%);
+  animation: kn-float 7s ease-in-out infinite -2.3s;
+}
+
+.kn-fan-book-2 {
+  transform: translateX(18%) rotate(12deg) translateY(8px);
+  animation: kn-float 7s ease-in-out infinite -4.6s;
+}
+
+.kn-fan:hover .kn-fan-book-0 {
+  transform: translateX(-138%) rotate(-16deg) translateY(4px);
+}
+
+.kn-fan:hover .kn-fan-book-1 {
+  transform: translateX(-50%) translateY(-10px);
+}
+
+.kn-fan:hover .kn-fan-book-2 {
+  transform: translateX(38%) rotate(16deg) translateY(4px);
+}
+
+@keyframes kn-float {
+  50% {
+    margin-bottom: 10px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .kn-fan-book {
+    animation: none;
+    transition: none;
+  }
+}

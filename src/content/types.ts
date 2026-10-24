@@ -65,6 +65,21 @@ export type CaseStudy = {
   context: string;
   lesson: string;
   featured: boolean;
+  /** Tiêu đề dài cho trang chi tiết; không có thì dùng `industry`. */
+  headline?: string;
+  /** Tên đầy đủ của đơn vị (vd. "CSED – Sở Công Thương TP.HCM"). */
+  organizationFull?: string;
+  /** Tóm tắt cho thẻ ở trang danh sách; không có thì dùng `challenge`. */
+  summary?: string;
+  /** Kết quả ngắn cho thẻ; không có thì dùng `results`. */
+  resultSummary?: string;
+  /** Các hạng mục giải pháp dạng danh sách, hiển thị dưới `solution`. */
+  solutionItems?: string[];
+  /** Đoạn bổ sung sau danh sách giải pháp. */
+  solutionNote?: string;
+  /** Các con số / dữ kiện nổi bật. */
+  highlights?: { value: string; label: string }[];
+  year?: string;
 };
 
 export type EventStatus = "upcoming" | "ongoing" | "completed";

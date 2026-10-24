@@ -2,6 +2,49 @@ import type { CaseStudy } from "./types";
 
 export const caseStudies: CaseStudy[] = [
   {
+    id: "cs-csed",
+    slug: "csed-so-cong-thuong-tphcm",
+    organization: "CSED",
+    organizationFull: "CSED – Sở Công Thương TP.HCM",
+    industry: "Nâng cao năng lực doanh nghiệp công nghiệp",
+    headline: "Nâng cao năng lực quản trị, phát triển sản phẩm và thị trường cho doanh nghiệp công nghiệp",
+    year: "2026",
+    summary:
+      "Đồng hành cùng CSED trong chương trình hỗ trợ doanh nghiệp thuộc 03 ngành trọng điểm: cơ khí – tự động hóa, cao su – nhựa và chế biến thực phẩm, VABIX triển khai 05 chuyên đề đào tạo thực chiến, từ quản trị công việc, phát triển nhân lực đến thương mại điện tử, phát triển và thương mại hóa sản phẩm.",
+    resultSummary:
+      "05 chuyên đề được triển khai, kết nối kiến thức quản trị với bài toán thực tế của doanh nghiệp, góp phần nâng cao năng lực vận hành, đổi mới sản phẩm và tiếp cận thị trường.",
+    highlights: [
+      { value: "03", label: "Ngành trọng điểm" },
+      { value: "05", label: "Chuyên đề thực chiến" },
+      { value: "2026", label: "Năm triển khai" },
+    ],
+    context:
+      "Trong chương trình hỗ trợ phát triển doanh nghiệp thuộc 03 ngành trọng điểm của TP.HCM gồm cơ khí – tự động hóa, cao su – nhựa và chế biến thực phẩm, CSED triển khai các hoạt động nâng cao năng lực quản trị, cải tiến năng suất, chất lượng và phát triển thị trường cho doanh nghiệp.",
+    challenge:
+      "Doanh nghiệp cần nâng cao hiệu quả vận hành, phát triển nguồn nhân lực, thích ứng với xu hướng kinh doanh số và gia tăng khả năng đưa sản phẩm mới ra thị trường. Thách thức đặt ra là chuyển hóa kiến thức quản trị thành những công cụ thiết thực, phù hợp với điều kiện hoạt động của từng doanh nghiệp.",
+    solution: "VABIX phối hợp cùng CSED triển khai 05 chuyên đề đào tạo:",
+    solutionItems: [
+      "Kỹ năng quản lý công việc hiệu quả.",
+      "Kỹ năng tuyển dụng, đào tạo và phát triển nguồn nhân lực.",
+      "Thương mại điện tử và tiếp thị liên kết hiện đại.",
+      "Quản trị quy trình phát triển sản phẩm mới.",
+      "Thương mại hóa sản phẩm mới.",
+    ],
+    solutionNote:
+      "Chương trình chú trọng phương pháp đào tạo thực chiến, kết hợp kiến thức quản trị, tình huống thực tế và trao đổi kinh nghiệm ứng dụng tại doanh nghiệp.",
+    methodologies: ["applier", "karot"],
+    implementation:
+      "Trong năm 2026, VABIX tổ chức 05 chuyên đề theo kế hoạch phối hợp với CSED, dành cho các doanh nghiệp thuộc nhóm ngành được hỗ trợ. Hoạt động đào tạo kết hợp hướng dẫn chuyên môn, thảo luận tình huống và giải đáp những vấn đề phát sinh trong thực tiễn quản trị, sản xuất, kinh doanh.",
+    results:
+      "05 chuyên đề được triển khai, góp phần trang bị kiến thức và công cụ về quản trị công việc, phát triển nhân lực, kinh doanh số, phát triển và thương mại hóa sản phẩm. Chương trình tạo điều kiện để học viên trao đổi kinh nghiệm, tiếp cận phương pháp quản trị thực tiễn và xác định hướng ứng dụng phù hợp với doanh nghiệp.",
+    lesson:
+      "Nâng cao năng lực cạnh tranh của doanh nghiệp cần bắt đầu từ năng lực quản trị bên trong, kết nối với đổi mới sản phẩm và phát triển thị trường. Đào tạo thực chiến chính là cầu nối giúp doanh nghiệp chuyển hóa tri thức thành hành động và hướng tới phát triển bền vững.",
+    coverImage: "/images/case-studies/csed/csed-01.jpg",
+    gallery: [1, 2, 3, 4, 5, 6].map((n) => `/images/case-studies/csed/csed-0${n}.jpg`),
+    relatedExperts: ["nguyen-chi-thanh"],
+    featured: true,
+  },
+  {
     id: "cs-vnpt-b2a",
     slug: "vnpt-b2a-baboso",
     organization: "VNPT",

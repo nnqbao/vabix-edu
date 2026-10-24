@@ -25,7 +25,8 @@ export function LocaleLinks() {
   useEffect(() => {
     if (!en) return;
     const rewrite = (root: ParentNode) => {
-      root.querySelectorAll<HTMLAnchorElement>("a[href^='/']").forEach((a) => {
+      // Bỏ qua nút chọn ngôn ngữ (có hreflang), nếu không cờ Việt Nam cũng bị đổi sang /en.
+      root.querySelectorAll<HTMLAnchorElement>("a[href^='/']:not([hreflang])").forEach((a) => {
         const next = localize(a.getAttribute("href"));
         if (next) {
           a.setAttribute("href", next);
@@ -42,7 +43,7 @@ export function LocaleLinks() {
     const onClick = (e: MouseEvent) => {
       if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
       const a = (e.target as Element | null)?.closest?.("a");
-      if (!a || a.target === "_blank" || a.hasAttribute("download")) return;
+      if (!a || a.target === "_blank" || a.hasAttribute("download") || a.hasAttribute("hreflang")) return;
       const href = a.getAttribute("href");
       const next = a.dataset.l10n === "1" ? href : localize(href);
       if (!next) return;

@@ -1,22 +1,35 @@
-import { handbooks } from "@/content/network";
+import { handbooks as handbooksVi } from "@/content/network";
+import { handbooks as handbooksEn } from "@/content/en/books";
 import { PageHero } from "@/components/layout/PageHero";
 import { Container } from "@/components/ui/Section";
 import { createMetadata } from "@/lib/seo";
+import { getLocale } from "@/i18n/server";
 import Link from "next/link";
 
-export const metadata = createMetadata({
-  title: "Cẩm nang VABIX",
-  description: "Cẩm nang ngành và kỹ năng — tri thức thực tiễn trong hệ sinh thái VABIX.",
-  path: "/tri-thuc/cam-nang",
-});
+export async function generateMetadata() {
+  const en = (await getLocale()) === "en";
+  return createMetadata({
+    title: en ? "VABIX handbooks" : "Cẩm nang VABIX",
+    description: en
+      ? "Industry and skills handbooks: practical knowledge from the VABIX ecosystem."
+      : "Cẩm nang ngành và kỹ năng — tri thức thực tiễn trong hệ sinh thái VABIX.",
+    path: en ? "/en/tri-thuc/cam-nang" : "/tri-thuc/cam-nang",
+  });
+}
 
-export default function HandbooksPage() {
+export default async function HandbooksPage() {
+  const en = (await getLocale()) === "en";
+  const handbooks = en ? handbooksEn : handbooksVi;
   return (
     <>
       <PageHero
-        title="Cẩm nang"
-        description="Các cẩm nang hiện có trên nền tảng VABIX được giữ lại và sắp xếp lại trong kho tri thức."
-        crumbs={[{ name: "Trang chủ", href: "/" }, { name: "Tri thức", href: "/tri-thuc" }, { name: "Cẩm nang" }]}
+        title={en ? "Handbooks" : "Cẩm nang"}
+        description={
+          en
+            ? "The handbooks already on the VABIX platform have been kept and reorganised in the knowledge library."
+            : "Các cẩm nang hiện có trên nền tảng VABIX được giữ lại và sắp xếp lại trong kho tri thức."
+        }
+        crumbs={[{ name: en ? "Home" : "Trang chủ", href: "/" }, { name: en ? "Knowledge" : "Tri thức", href: "/tri-thuc" }, { name: en ? "Handbooks" : "Cẩm nang" }]}
       />
       <Container className="grid gap-4 py-16 md:grid-cols-2">
         {handbooks.map((h) => (

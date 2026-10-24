@@ -1,7 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
-import { books } from "@/content/network";
-import { amazonAuthorSearch, amazonLink, founderAuthor as author, founderBooks } from "@/content/founderBooks";
+import { books as booksVi } from "@/content/network";
+import { amazonAuthorSearch, amazonLink, founderAuthor as authorVi, founderBooks as founderBooksVi } from "@/content/founderBooks";
+import { founderAuthor as authorEn, founderBooks as founderBooksEn } from "@/content/en/founderBooks";
+import { books as booksEn, type BookEn } from "@/content/en/books";
+import { getLocale } from "@/i18n/server";
 import { Breadcrumb } from "@/components/ui/Misc";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Section";
@@ -11,19 +14,28 @@ import { BookshelfModal } from "@/components/templates/BookshelfModal";
 import { createMetadata } from "@/lib/seo";
 import { paths } from "@/lib/paths";
 
-export const metadata = createMetadata({
-  title: "Sách của Founder Nguyễn Chí Thành",
-  description:
-    "Bộ sách của tác giả Nguyễn Chí Thành — The BizCar, Every Market Has an Address, KAROT, Building What Customers Feel, DGH Transformation, The LifeCar — phát hành trên Amazon, cùng các ấn phẩm tiếng Việt của VABIX.",
-  path: "/tri-thuc/sach",
-});
+export async function generateMetadata() {
+  const en = (await getLocale()) === "en";
+  return createMetadata({
+    title: en ? "Books by Founder Nguyễn Chí Thành" : "Sách của Founder Nguyễn Chí Thành",
+    description: en
+      ? "Books by author Nguyễn Chí Thành (The BizCar, Every Market Has an Address, KAROT, Building What Customers Feel, DGH Transformation, The LifeCar), available on Amazon, together with VABIX's Vietnamese-language publications."
+      : "Bộ sách của tác giả Nguyễn Chí Thành — The BizCar, Every Market Has an Address, KAROT, Building What Customers Feel, DGH Transformation, The LifeCar — phát hành trên Amazon, cùng các ấn phẩm tiếng Việt của VABIX.",
+    path: en ? "/en/tri-thuc/sach" : "/tri-thuc/sach",
+  });
+}
 
-export default function BooksPage() {
+export default async function BooksPage() {
+  const en = (await getLocale()) === "en";
+  const books: BookEn[] = en ? booksEn : booksVi;
+  const author = en ? authorEn : authorVi;
+  const founderBooks = en ? founderBooksEn : founderBooksVi;
+  const coverAlt = en ? "Book cover:" : "Bìa sách";
   const vnPublished = books.filter((b) => b.cover);
   const vnOther = books.filter((b) => !b.cover);
   const shelf = [
     ...founderBooks.map((b) => ({ slug: b.slug, title: b.title, cover: b.cover, tag: "Amazon" })),
-    ...vnPublished.map((b) => ({ slug: b.slug, title: b.title, cover: b.cover!, tag: "Tiếng Việt" })),
+    ...vnPublished.map((b) => ({ slug: b.slug, title: b.title, cover: b.cover!, tag: en ? "Vietnamese" : "Tiếng Việt" })),
   ];
   return (
     <>
@@ -32,18 +44,18 @@ export default function BooksPage() {
         <HeroBackdrop />
         <Container className="relative grid gap-10 pb-16 pt-8 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)] lg:items-center lg:gap-14 lg:pb-20">
           <div>
-            <Breadcrumb light items={[{ name: "Trang chủ", href: paths.home }, { name: "Tri thức", href: paths.knowledge }, { name: "Sách" }]} />
+            <Breadcrumb light items={[{ name: en ? "Home" : "Trang chủ", href: paths.home }, { name: en ? "Knowledge" : "Tri thức", href: paths.knowledge }, { name: en ? "Books" : "Sách" }]} />
             <p className="mt-10 inline-flex items-center gap-2 rounded-full border border-vabix-gold/45 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-vabix-soft-gold">
               <span className="h-1.5 w-1.5 rounded-full bg-vabix-gold" aria-hidden="true" />
-              Tác giả · {author.motto}
+              {en ? "Author" : "Tác giả"} · {author.motto}
             </p>
             <h1 className="mt-6 text-balance text-[2.4rem] font-semibold leading-[1.08] tracking-[-0.02em] sm:text-[3.6rem]">
-              Sách của <span className="text-vabix-gold">{author.name}</span>
+              {en ? "Books by" : "Sách của"} <span className="text-vabix-gold">{author.name}</span>
             </h1>
             <p className="mt-3 text-sm font-semibold uppercase tracking-[0.16em] text-white/60">{author.role}</p>
             <blockquote className="mt-8 border-l-2 border-vabix-gold/80 pl-5">
               <p className="text-balance text-lg italic leading-relaxed text-white/90 sm:text-xl">“{author.quote}”</p>
-              <p className="mt-2 text-sm italic text-white/55">“{author.quoteEn}”</p>
+              {en ? null : <p className="mt-2 text-sm italic text-white/55">“{author.quoteEn}”</p>}
             </blockquote>
             <div className="mt-8 grid gap-3 sm:flex sm:flex-wrap">
               <BookshelfModal
@@ -51,10 +63,10 @@ export default function BooksPage() {
                 className="inline-flex min-h-11 w-full items-center justify-center gap-2 bg-vabix-gold px-5 py-2.5 text-[15px] font-semibold tracking-wide text-vabix-deep-teal transition-colors hover:bg-vabix-soft-gold sm:w-auto"
               />
               <Button href="#bo-sach" variant="outline" className="w-full border-white/40 text-white sm:w-auto">
-                Xem bộ sách
+                {en ? "See the books" : "Xem bộ sách"}
               </Button>
               <Button href={amazonAuthorSearch} variant="outline" className="w-full border-white/40 text-white sm:w-auto">
-                Tìm sách trên Amazon ↗
+                {en ? "Find the books on Amazon ↗" : "Tìm sách trên Amazon ↗"}
               </Button>
             </div>
           </div>
@@ -68,7 +80,8 @@ export default function BooksPage() {
               </div>
             </div>
             <p className="relative mt-4 text-center text-sm font-semibold tracking-wide text-white/70">
-              <span className="text-vabix-gold">{founderBooks.length}</span> tựa sách quốc tế · <span className="text-vabix-gold">{books.filter((b) => b.cover).length}</span> sách tiếng Việt
+              <span className="text-vabix-gold">{founderBooks.length}</span> {en ? "international titles" : "tựa sách quốc tế"} ·{" "}
+              <span className="text-vabix-gold">{books.filter((b) => b.cover).length}</span> {en ? "Vietnamese books" : "sách tiếng Việt"}
             </p>
           </div>
         </Container>
@@ -79,12 +92,24 @@ export default function BooksPage() {
         <Container>
           <div className="flex flex-wrap items-end justify-between gap-6">
             <div className="max-w-3xl">
-              <p className="eyebrow">Bộ sách quốc tế · Available on Amazon</p>
+              <p className="eyebrow">{en ? "International collection · Available on Amazon" : "Bộ sách quốc tế · Available on Amazon"}</p>
               <h2 className="mt-3 text-balance text-[1.9rem] font-semibold leading-[1.15] tracking-[-0.02em] text-vabix-deep-teal sm:text-[2.6rem]">
-                Mô hình quản trị thực chiến, <span className="text-vabix-gold">viết thành sách cho độc giả toàn cầu.</span>
+                {en ? (
+                  <>
+                    Hands-on management models, <span className="text-vabix-gold">written up as books for a global readership.</span>
+                  </>
+                ) : (
+                  <>
+                    Mô hình quản trị thực chiến, <span className="text-vabix-gold">viết thành sách cho độc giả toàn cầu.</span>
+                  </>
+                )}
               </h2>
             </div>
-            <p className="max-w-md text-vabix-muted">Các mô hình VABIX dùng trong đào tạo và tư vấn — BizCar, B2A, KAROT, DGH — được hệ thống hóa thành sách tiếng Anh.</p>
+            <p className="max-w-md text-vabix-muted">
+              {en
+                ? "The models VABIX uses in training and consulting (BizCar, B2A, KAROT, DGH), systematised into English-language books."
+                : "Các mô hình VABIX dùng trong đào tạo và tư vấn — BizCar, B2A, KAROT, DGH — được hệ thống hóa thành sách tiếng Anh."}
+            </p>
           </div>
 
           <RevealOnView>
@@ -94,7 +119,7 @@ export default function BooksPage() {
                   <Link href={`/tri-thuc/sach/${b.slug}`} className="book-shelf relative flex items-end justify-center rounded-[22px] bg-gradient-to-b from-vabix-ivory to-[#efe6d3] px-8 pb-6 pt-8">
                     <Image
                       src={b.cover}
-                      alt={`Bìa sách ${b.title} — ${author.nameEn}`}
+                      alt={`${coverAlt} ${b.title} — ${author.nameEn}`}
                       width={460}
                       height={660}
                       unoptimized
@@ -102,7 +127,7 @@ export default function BooksPage() {
                     />
                     <span aria-hidden="true" className="absolute inset-x-6 bottom-4 h-2 rounded-full bg-vabix-deep-teal/15 blur-md" />
                   </Link>
-                  <p className="mt-5 text-xs font-semibold uppercase tracking-[0.2em] text-vabix-gold">Sách {String(i + 1).padStart(2, "0")}</p>
+                  <p className="mt-5 text-xs font-semibold uppercase tracking-[0.2em] text-vabix-gold">{en ? "Book" : "Sách"} {String(i + 1).padStart(2, "0")}</p>
                   <h3 className="mt-1.5 text-xl font-semibold text-vabix-deep-teal">
                     <Link href={`/tri-thuc/sach/${b.slug}`} className="hover:text-vabix-gold">
                       {b.title}
@@ -117,10 +142,10 @@ export default function BooksPage() {
                       rel="noopener noreferrer"
                       className="inline-flex min-h-11 items-center gap-2 bg-vabix-gold px-5 py-2.5 text-[15px] font-semibold text-vabix-deep-teal transition-colors hover:bg-vabix-soft-gold"
                     >
-                      Mua trên Amazon ↗
+                      {en ? "Buy on Amazon ↗" : "Mua trên Amazon ↗"}
                     </a>
                     <Link href={`/tri-thuc/sach/${b.slug}`} className="text-sm font-semibold text-vabix-deep-teal hover:text-vabix-gold">
-                      Giới thiệu sách →
+                      {en ? "About the book →" : "Giới thiệu sách →"}
                     </Link>
                   </div>
                 </li>
@@ -133,15 +158,23 @@ export default function BooksPage() {
       {/* Sách tiếng Việt */}
       <section className="bg-vabix-ivory py-16 sm:py-20">
         <Container>
-          <p className="eyebrow">Sách tiếng Việt · Đã xuất bản</p>
+          <p className="eyebrow">{en ? "Vietnamese books · Published" : "Sách tiếng Việt · Đã xuất bản"}</p>
           <h2 className="mt-3 text-balance text-[1.9rem] font-semibold tracking-[-0.02em] text-vabix-deep-teal sm:text-[2.2rem]">
-            Sách của {author.name} <span className="text-vabix-gold">tại Việt Nam.</span>
+            {en ? (
+              <>
+                Books by {author.name} <span className="text-vabix-gold">in Vietnam.</span>
+              </>
+            ) : (
+              <>
+                Sách của {author.name} <span className="text-vabix-gold">tại Việt Nam.</span>
+              </>
+            )}
           </h2>
           <div className="mt-10 grid gap-6 md:grid-cols-2">
             {vnPublished.map((b) => (
               <article key={b.slug} className="group grid grid-cols-[8.5rem_minmax(0,1fr)] gap-6 rounded-[24px] border border-vabix-deep-teal/10 bg-white p-5 transition-[border-color,box-shadow] hover:border-vabix-gold/60 hover:shadow-[0_18px_40px_rgba(22,60,62,0.1)] sm:grid-cols-[10rem_minmax(0,1fr)] sm:p-6">
                 <Link href={`/tri-thuc/sach/${b.slug}`} className="block">
-                  <Image src={b.cover!} alt={`Bìa sách ${b.title}`} width={826} height={1166} unoptimized className="book-cover aspect-[7/10] w-full rounded-[5px] object-cover" />
+                  <Image src={b.cover!} alt={`${coverAlt} ${b.title}`} width={826} height={1166} unoptimized className="book-cover aspect-[7/10] w-full rounded-[5px] object-cover" />
                 </Link>
                 <div className="flex flex-col">
                   <p className="text-xs font-semibold uppercase tracking-[0.18em] text-vabix-gold">{b.publisher}</p>
@@ -150,21 +183,22 @@ export default function BooksPage() {
                       {b.title}
                     </Link>
                   </h3>
+                  {en && b.titleEn ? <p className="mt-1 text-sm italic text-vabix-muted">{b.titleEn}</p> : null}
                   <p className="mt-1 text-sm text-vabix-muted">{b.author}</p>
                   <p className="mt-3 text-[15px] leading-relaxed text-vabix-ink">{b.summary}</p>
                   <div className="mt-auto flex flex-wrap gap-x-4 gap-y-2 pt-4 text-sm font-semibold">
                     <Link href={paths.contact} className="text-vabix-deep-teal hover:text-vabix-gold">
-                      Liên hệ đặt sách →
+                      {en ? "Contact us to order →" : "Liên hệ đặt sách →"}
                     </Link>
                     <Link href={`/tri-thuc/sach/${b.slug}`} className="text-vabix-muted hover:text-vabix-gold">
-                      Giới thiệu sách
+                      {en ? "About the book" : "Giới thiệu sách"}
                     </Link>
                   </div>
                 </div>
               </article>
             ))}
           </div>
-          <p className="mt-12 text-xs font-semibold uppercase tracking-[0.2em] text-vabix-muted">Công trình tri thức khác</p>
+          <p className="mt-12 text-xs font-semibold uppercase tracking-[0.2em] text-vabix-muted">{en ? "Other knowledge works" : "Công trình tri thức khác"}</p>
           <div className="mt-4 grid gap-4 md:grid-cols-2">
             {vnOther.map((b) => (
               <Link
@@ -187,15 +221,27 @@ export default function BooksPage() {
       <section className="relative overflow-hidden bg-vabix-deep-teal py-16 text-vabix-warm sm:py-20">
         <HeroBackdrop />
         <Container className="relative text-center">
-          <p className="eyebrow">Đặt sách & hợp tác</p>
+          <p className="eyebrow">{en ? "Orders & collaboration" : "Đặt sách & hợp tác"}</p>
           <h2 className="mx-auto mt-3 max-w-3xl text-balance text-[1.9rem] font-semibold leading-[1.15] tracking-[-0.02em] sm:text-[2.4rem]">
-            Đặt sách số lượng lớn, làm quà tặng doanh nghiệp <span className="text-vabix-gold">hoặc mời tác giả chia sẻ.</span>
+            {en ? (
+              <>
+                Order in bulk, as corporate gifts <span className="text-vabix-gold">or invite the author to speak.</span>
+              </>
+            ) : (
+              <>
+                Đặt sách số lượng lớn, làm quà tặng doanh nghiệp <span className="text-vabix-gold">hoặc mời tác giả chia sẻ.</span>
+              </>
+            )}
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-lg text-white/75">Liên hệ VABIX để đặt sách cho đội ngũ, chương trình đào tạo, sự kiện hoặc hợp tác xuất bản.</p>
+          <p className="mx-auto mt-4 max-w-2xl text-lg text-white/75">
+            {en
+              ? "Contact VABIX to order books for your team, a training programme or an event, or to discuss a publishing collaboration."
+              : "Liên hệ VABIX để đặt sách cho đội ngũ, chương trình đào tạo, sự kiện hoặc hợp tác xuất bản."}
+          </p>
           <div className="mt-8 flex flex-wrap justify-center gap-3">
-            <Button href={paths.contact}>Liên hệ đặt sách →</Button>
+            <Button href={paths.contact}>{en ? "Contact us to order →" : "Liên hệ đặt sách →"}</Button>
             <Button href="/dich-vu-phu-tro/ho-tro-doanh-nhan-viet-sach" variant="outline" className="border-white/40 text-white">
-              Hỗ trợ doanh nhân viết sách
+              {en ? "Helping entrepreneurs write books" : "Hỗ trợ doanh nhân viết sách"}
             </Button>
           </div>
         </Container>

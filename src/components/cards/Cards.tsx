@@ -24,7 +24,7 @@ export function ExpertCard({ expert }: { expert: Expert }) {
   );
 }
 
-export function CaseStudyCard({ item }: { item: CaseStudy }) {
+export function CaseStudyCard({ item, pillar }: { item: CaseStudy; pillar?: number }) {
   const title = item.headline ?? item.industry;
   return (
     <article className="cs-card group relative flex h-full flex-col overflow-hidden rounded-[24px] border border-vabix-deep-teal/10 bg-white shadow-[0_12px_32px_rgba(22,60,62,0.06)] transition-[transform,box-shadow,border-color] duration-500 hover:-translate-y-1.5 hover:border-vabix-gold/50 hover:shadow-[0_22px_48px_rgba(22,60,62,0.14)]">
@@ -43,6 +43,14 @@ export function CaseStudyCard({ item }: { item: CaseStudy }) {
         <span className="absolute left-4 top-4 rounded-full border border-vabix-gold/50 bg-vabix-deep-teal/80 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-vabix-soft-gold backdrop-blur">
           {item.organization}
         </span>
+        {pillar ? (
+          <span className="absolute right-3 top-3 grid h-14 w-14 place-items-center rounded-full border border-vabix-gold/70 bg-vabix-deep-teal/90 text-center leading-none shadow-[0_8px_20px_rgba(0,0,0,0.25)] backdrop-blur">
+            <span>
+              <span className="block text-[9px] font-semibold uppercase tracking-[0.18em] text-vabix-soft-gold">Trụ</span>
+              <span className="mt-0.5 block text-xl font-bold text-vabix-gold">{String(pillar).padStart(2, "0")}</span>
+            </span>
+          </span>
+        ) : null}
         <span className="absolute bottom-3 left-4 right-4 text-xs font-medium text-white/90">{item.industry}</span>
       </div>
       <div className="flex flex-1 flex-col p-6">
@@ -50,7 +58,7 @@ export function CaseStudyCard({ item }: { item: CaseStudy }) {
         <p className="mt-3 line-clamp-3 text-sm leading-relaxed text-vabix-muted">{item.summary ?? item.challenge}</p>
         <p className="mt-4 rounded-xl bg-vabix-ivory p-4 text-sm leading-relaxed text-vabix-ink">
           <span className="block text-[11px] font-semibold uppercase tracking-[0.16em] text-vabix-gold">Kết quả</span>
-          <span className="mt-1 line-clamp-3 block">{item.resultSummary ?? item.results}</span>
+          <span className="mt-1 line-clamp-4">{item.resultSummary ?? item.results}</span>
         </p>
         <Link
           href={`/tri-thuc/case-study/${item.slug}`}

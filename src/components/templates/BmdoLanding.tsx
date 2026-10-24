@@ -494,7 +494,7 @@ export async function BmdoLanding() {
                 </header>
                 <ol className="divide-y divide-vabix-deep-teal/10">
                   {phase.sessions.map((d) => (
-                    <li key={d.day} className="grid grid-cols-[2.25rem_minmax(0,1fr)] gap-3 px-5 py-4 sm:grid-cols-[3rem_minmax(0,1fr)] sm:gap-4 sm:px-7 sm:py-5">
+                    <li key={d.day} className="grid justify-items-center gap-1 px-5 py-4 sm:px-7 sm:py-5 lg:grid-cols-[3rem_minmax(0,1fr)] lg:justify-items-stretch lg:gap-4">
                       <span className="text-2xl font-semibold text-vabix-gold">{d.day}</span>
                       <div>
                         <h4 className="font-semibold text-vabix-deep-teal">{d.title}</h4>
@@ -536,7 +536,7 @@ export async function BmdoLanding() {
               {k.method.applier.map((s, i) => (
                 <li key={s.title} className="bmdo-rv relative" style={{ ["--rv-i" as string]: 3 + i }}>
                   <span
-                    className="bmdo-applier-dot relative grid h-12 w-12 place-items-center rounded-full border border-vabix-gold bg-vabix-deep-teal text-sm font-semibold text-vabix-gold"
+                    className="bmdo-applier-dot relative mx-auto grid h-12 w-12 place-items-center lg:mx-0 rounded-full border border-vabix-gold bg-vabix-deep-teal text-sm font-semibold text-vabix-gold"
                     style={{ animationDelay: `${i}s` }}
                   >
                     {String(i + 1).padStart(2, "0")}

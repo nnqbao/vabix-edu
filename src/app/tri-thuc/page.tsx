@@ -200,8 +200,8 @@ export default async function KnowledgeEcosystemPage() {
           <ul className="mt-4 grid gap-3 md:grid-cols-2">
             {books.filter((b) => !b.cover).map((b) => (
               <li key={b.slug}>
-                <Link href={`/tri-thuc/sach/${b.slug}`} className="group flex h-full gap-4 rounded-[18px] border border-vabix-deep-teal/10 bg-white p-5 transition-[border-color,box-shadow] hover:border-vabix-gold/60 hover:shadow-[0_12px_28px_rgba(22,60,62,0.08)]">
-                  <span aria-hidden="true" className="mt-1 h-10 w-1 shrink-0 rounded-full bg-vabix-gold" />
+                <Link href={`/tri-thuc/sach/${b.slug}`} className="group flex h-full flex-col items-center gap-3 rounded-[18px] lg:flex-row lg:items-start lg:gap-4 border border-vabix-deep-teal/10 bg-white p-5 transition-[border-color,box-shadow] hover:border-vabix-gold/60 hover:shadow-[0_12px_28px_rgba(22,60,62,0.08)]">
+                  <span aria-hidden="true" className="h-1 w-10 shrink-0 rounded-full bg-vabix-gold lg:mt-1 lg:h-10 lg:w-1" />
                   <span>
                     <span className="block font-semibold text-vabix-deep-teal group-hover:text-vabix-gold">{b.title}</span>
                     <span className="mt-1 block text-sm leading-relaxed text-vabix-muted">{b.summary}</span>

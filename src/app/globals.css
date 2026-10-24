@@ -6530,9 +6530,11 @@ section[id],
     footer {
       text-align: center;
     }
-    /* Mọi hộp flex/grid (cả class tự viết) canh giữa; justify-* của Tailwind hoặc CSS riêng vẫn thắng. */
-    main *:not(.flex-col, form *, .overflow-x-auto, [class*="marquee"]),
-    footer *:not(.flex-col) {
+    /* Chỉ hàng ngang (flex row) mới canh giữa — không đụng flex dọc hay lưới, tránh dồn/bóp nội dung.
+       justify-* của Tailwind hoặc CSS riêng vẫn thắng. */
+    main :is(.flex, .inline-flex):not(.flex-col, form *, .overflow-x-auto, [class*="marquee"]),
+    main :is(.vabix-about-cta, .vabix-founder-cta, .vabix-programs-all, .vabix-share-more, .vabix-review-by, .vabix-program-cta, .vabix-program-meta),
+    footer :is(.flex, .inline-flex):not(.flex-col) {
       justify-content: center;
       /* safe: nếu nội dung tràn thì canh đầu, không cắt mất phần bên trái */
       justify-content: safe center;
@@ -6558,5 +6560,51 @@ section[id],
 @media (max-width: 379px) {
   .vabix-hero-line {
     white-space: normal;
+  }
+}
+
+/* Mobile & tablet: danh sách có số thứ tự ở trang chủ — số nằm trên, chữ nằm dưới, tất cả canh giữa
+   (tránh cảnh số dồn trái còn chữ canh giữa trông lệch). */
+@media (max-width: 1023.98px) {
+  .vabix-trust-step,
+  .vabix-twin-row {
+    grid-template-columns: minmax(0, 1fr);
+    justify-items: center;
+    row-gap: 0.35rem;
+  }
+  .vabix-trust-step::before,
+  .vabix-twin-arrow {
+    display: none;
+  }
+  .vabix-know-item {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas:
+      "index"
+      "name"
+      "copy";
+    justify-items: center;
+  }
+  .vabix-know-arrow {
+    display: none;
+  }
+  .vabix-trust-principles {
+    margin-inline: auto;
+  }
+  .vabix-xform-out-list,
+  .vabix-letter-byline {
+    justify-content: center;
+  }
+  .vabix-letter-head {
+    grid-template-columns: minmax(0, 1fr);
+    justify-items: center;
+  }
+  .vabix-about-lead,
+  .vabix-about-note {
+    text-align: center;
+  }
+  .vabix-trust-principles li {
+    display: flex;
+    justify-content: center;
+    gap: 0.6rem;
   }
 }

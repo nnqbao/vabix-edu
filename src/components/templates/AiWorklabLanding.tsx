@@ -277,7 +277,7 @@ export async function AiWorklabLanding() {
                   <p className="mt-2 text-vabix-muted">{s.goal}</p>
                   <ol className="mt-5 space-y-2.5">
                     {s.modules.map((m, i) => (
-                      <li key={m} className="flex gap-3 text-[15px] leading-snug text-vabix-ink">
+                      <li key={m} className="flex flex-col items-center gap-1 text-[15px] leading-snug text-vabix-ink lg:flex-row lg:items-start lg:gap-3">
                         <span className="mt-0.5 text-xs font-semibold text-vabix-gold">{String(i + 1).padStart(2, "0")}</span>
                         {m}
                       </li>
@@ -296,7 +296,7 @@ export async function AiWorklabLanding() {
                   <p className="relative mt-2 text-xl font-semibold">{s.tool.name}</p>
                   <ul className="relative mt-5 space-y-2.5">
                     {s.tool.items.map((t) => (
-                      <li key={t.k + t.v} className="flex items-start gap-3 text-sm text-white/85">
+                      <li key={t.k + t.v} className="flex flex-col items-center gap-1 text-sm text-white/85 lg:flex-row lg:items-start lg:gap-3">
                         <span className="grid h-7 min-w-7 shrink-0 place-items-center rounded-full border border-vabix-gold/50 px-1.5 text-[11px] font-bold text-vabix-gold">{t.k}</span>
                         <span className="pt-1">{t.v}</span>
                       </li>

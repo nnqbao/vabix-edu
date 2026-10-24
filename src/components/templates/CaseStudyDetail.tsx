@@ -168,7 +168,7 @@ export async function CaseStudyDetail({ c }: { c: CaseStudy }) {
               {c.solutionItems?.length ? (
                 <ol className="mt-6 grid gap-3 sm:grid-cols-2">
                   {c.solutionItems.map((item, i) => (
-                    <li key={item} className="flex items-start gap-4 rounded-[18px] border border-vabix-deep-teal/10 bg-white p-5 transition-colors hover:border-vabix-gold/50">
+                    <li key={item} className="flex flex-col items-center gap-3 rounded-[18px] lg:flex-row lg:items-start lg:gap-4 border border-vabix-deep-teal/10 bg-white p-5 transition-colors hover:border-vabix-gold/50">
                       <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-vabix-deep-teal text-sm font-semibold text-vabix-gold">{String(i + 1).padStart(2, "0")}</span>
                       <span className="pt-2 font-medium leading-snug text-vabix-deep-teal">{item.replace(/\.$/, "")}</span>
                     </li>

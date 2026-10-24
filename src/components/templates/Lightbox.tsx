@@ -1,6 +1,8 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import { usePathname } from "next/navigation";
+import { localeFromPathname } from "@/i18n/locale";
 
 type Item = { src: string; fallback: string; alt: string };
 
@@ -22,6 +24,7 @@ export function Lightbox() {
   const touchX = useRef<number | null>(null);
   const lastFocus = useRef<HTMLElement | null>(null);
   const closeRef = useRef<HTMLButtonElement>(null);
+  const en = localeFromPathname(usePathname() ?? "/") === "en";
 
   const open = useCallback((el: HTMLElement) => {
     const group = el.dataset.zoomGroup;
@@ -100,7 +103,7 @@ export function Lightbox() {
       className="bmdo-lightbox fixed inset-0 z-[100] flex items-center justify-center"
       role="dialog"
       aria-modal="true"
-      aria-label="Xem ảnh phóng to"
+      aria-label={en ? "Enlarged image viewer" : "Xem ảnh phóng to"}
       onClick={(e) => {
         if (e.target === e.currentTarget) close();
       }}
@@ -132,19 +135,19 @@ export function Lightbox() {
         {item.alt ? <figcaption className="mt-3 text-center text-sm text-white/75">{item.alt}</figcaption> : null}
       </figure>
 
-      <button ref={closeRef} type="button" onClick={close} className="bmdo-lightbox-btn absolute right-4 top-4 sm:right-6 sm:top-6" aria-label="Đóng">
+      <button ref={closeRef} type="button" onClick={close} className="bmdo-lightbox-btn absolute right-4 top-4 sm:right-6 sm:top-6" aria-label={en ? "Close" : "Đóng"}>
         <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
           <path d="M6 6l12 12M18 6 6 18" />
         </svg>
       </button>
       {items.length > 1 ? (
         <>
-          <button type="button" onClick={() => go(-1)} className="bmdo-lightbox-btn absolute left-3 top-1/2 -translate-y-1/2 sm:left-6" aria-label="Ảnh trước">
+          <button type="button" onClick={() => go(-1)} className="bmdo-lightbox-btn absolute left-3 top-1/2 -translate-y-1/2 sm:left-6" aria-label={en ? "Previous image" : "Ảnh trước"}>
             <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
               <path d="M15 6l-6 6 6 6" />
             </svg>
           </button>
-          <button type="button" onClick={() => go(1)} className="bmdo-lightbox-btn absolute right-3 top-1/2 -translate-y-1/2 sm:right-6" aria-label="Ảnh tiếp theo">
+          <button type="button" onClick={() => go(1)} className="bmdo-lightbox-btn absolute right-3 top-1/2 -translate-y-1/2 sm:right-6" aria-label={en ? "Next image" : "Ảnh tiếp theo"}>
             <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
               <path d="M9 6l6 6-6 6" />
             </svg>

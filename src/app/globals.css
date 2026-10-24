@@ -6509,3 +6509,54 @@ section[id],
     display: none;
   }
 }
+
+/* Từ quá dài (tên sách, thuật ngữ tiếng Anh) xuống dòng thay vì tràn sang ô bên cạnh. */
+@layer base {
+  main,
+  footer {
+    overflow-wrap: break-word;
+  }
+  /* Ô lưới không bị nội dung dài (chữ lớn, từ dài) kéo rộng hơn màn hình. */
+  main .grid > * {
+    min-width: 0;
+  }
+}
+
+/* Mobile & tablet: canh giữa nội dung. Đặt trong @layer base để các class Tailwind (text-left, justify-between, mx-0…)
+   vẫn ghi đè được ở chỗ cần canh trái (form, bài viết dài). */
+@layer base {
+  @media (max-width: 1023.98px) {
+    main,
+    footer {
+      text-align: center;
+    }
+    /* Mọi hộp flex/grid (cả class tự viết) canh giữa; justify-* của Tailwind hoặc CSS riêng vẫn thắng. */
+    main *:not(.flex-col, form *, .overflow-x-auto, [class*="marquee"]),
+    footer *:not(.flex-col) {
+      justify-content: center;
+      /* safe: nếu nội dung tràn thì canh đầu, không cắt mất phần bên trái */
+      justify-content: safe center;
+    }
+    main [class*="max-w-"],
+    footer [class*="max-w-"] {
+      margin-inline: auto;
+    }
+    main :is(form, article .prose, .prose, table, pre, input, textarea, select, details) {
+      text-align: left;
+    }
+  }
+}
+
+/* Hàng "tiêu đề + link" (justify-between, xuống dòng) trên mobile/tablet: canh giữa thay vì dồn hai bên. */
+@media (max-width: 1023.98px) {
+  main .flex-wrap.justify-between {
+    justify-content: center;
+  }
+}
+
+/* Điện thoại rất hẹp (hoặc phóng to chữ): cho tiêu đề hero xuống dòng thay vì tràn màn hình. */
+@media (max-width: 379px) {
+  .vabix-hero-line {
+    white-space: normal;
+  }
+}

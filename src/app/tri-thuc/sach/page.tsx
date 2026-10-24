@@ -172,8 +172,8 @@ export default async function BooksPage() {
           </h2>
           <div className="mt-10 grid gap-6 md:grid-cols-2">
             {vnPublished.map((b) => (
-              <article key={b.slug} className="group grid grid-cols-[8.5rem_minmax(0,1fr)] gap-6 rounded-[24px] border border-vabix-deep-teal/10 bg-white p-5 transition-[border-color,box-shadow] hover:border-vabix-gold/60 hover:shadow-[0_18px_40px_rgba(22,60,62,0.1)] sm:grid-cols-[10rem_minmax(0,1fr)] sm:p-6">
-                <Link href={`/tri-thuc/sach/${b.slug}`} className="block">
+              <article key={b.slug} className="group grid gap-6 rounded-[24px] border border-vabix-deep-teal/10 bg-white p-5 transition-[border-color,box-shadow] hover:border-vabix-gold/60 hover:shadow-[0_18px_40px_rgba(22,60,62,0.1)] sm:grid-cols-[10rem_minmax(0,1fr)] sm:p-6">
+                <Link href={`/tri-thuc/sach/${b.slug}`} className="mx-auto block w-40 sm:w-auto">
                   <Image src={b.cover!} alt={`${coverAlt} ${b.title}`} width={826} height={1166} unoptimized className="book-cover aspect-[7/10] w-full rounded-[5px] object-cover" />
                 </Link>
                 <div className="flex flex-col">

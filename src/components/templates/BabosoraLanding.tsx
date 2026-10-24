@@ -120,7 +120,7 @@ export async function BabosoraLanding() {
               {b.badge}
             </p>
             <h1 className="mt-6">
-              <span className="block text-[3.4rem] font-bold leading-none tracking-[0.03em] text-vabix-warm sm:text-[5.6rem]">{b.title}</span>
+              <span className="block text-[clamp(2.5rem,15vw,3.4rem)] font-bold leading-none tracking-[0.03em] text-vabix-warm sm:text-[5.6rem]">{b.title}</span>
               <span className="mt-5 block text-balance text-2xl font-semibold leading-snug text-vabix-gold sm:text-[2.1rem]">{b.subtitle}</span>
             </h1>
             <p className="mt-6 border-l-2 border-vabix-gold/80 pl-4">

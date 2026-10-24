@@ -168,7 +168,7 @@ export default async function KnowledgeEcosystemPage() {
               </div>
             </div>
             <RevealOnView>
-              <ul className="grid grid-cols-4 gap-4 lg:grid-cols-8">
+              <ul className="grid grid-cols-2 gap-x-4 gap-y-6 sm:grid-cols-4 lg:grid-cols-8">
                 {founderBooks.map((b, i) => (
                   <li key={b.slug} className="bmdo-rv" style={{ ["--rv-i" as string]: i }}>
                     <Link href={`/tri-thuc/sach/${b.slug}`} className="group block">

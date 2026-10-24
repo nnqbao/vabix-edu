@@ -9,7 +9,7 @@ export const caseStudies: CaseStudy[] = [
     industry: "Viễn thông",
     headline: "Huấn luyện đội ngũ kinh doanh thực chiến theo B2A và BABOSO trên nhiều địa bàn",
     summary:
-      "Hơn 15 năm đồng hành cùng VNPT, VABIX huấn luyện chuyển đổi tư duy và năng lực thực chiến cho đội ngũ kinh doanh, tập trung vào mô hình B2A và triết lý bán hàng BABOSO — triển khai tại nhiều đơn vị như VNPT TP.HCM, VNPT Cà Mau, VNPT Thái Bình, VNPT Bình Phước.",
+      "Hơn 15 năm đồng hành cùng VNPT, VABIX huấn luyện chuyển đổi tư duy và năng lực thực chiến cho đội ngũ kinh doanh, tập trung vào mô hình B2A và triết lý bán hàng BABOSO — triển khai tại nhiều đơn vị như VNPT TP.HCM, VNPT Hải Phòng, VNPT Cà Mau, VNPT Thái Bình, VNPT Bình Phước.",
     resultSummary:
       "Đội ngũ có khung phân tích địa bàn thống nhất, hành trình khách hàng được chuẩn hóa và mô hình triển khai được lặp lại trên nhiều địa phương.",
     highlights: [
@@ -30,7 +30,7 @@ export const caseStudies: CaseStudy[] = [
       "Chương trình giúp chuyển tư duy thành quy trình và công cụ áp dụng được tại từng đơn vị, gắn với dữ liệu và địa bàn thật của học viên.",
     methodologies: ["b2a", "baboso"],
     implementation:
-      "Chương trình được triển khai theo đơn vị và địa bàn: các lớp huấn luyện tại VNPT TP.HCM, VNPT Thái Bình, VNPT Bình Phước và nhiều tỉnh thành; tại VNPT Cà Mau, đội ngũ áp dụng ngay vào chương trình ra quân bán hàng & chăm sóc khách hàng tại địa bàn Phước Long và Trần Văn Thời. Học viên làm trên dữ liệu và địa bàn thật, sau đó chuẩn hóa quy trình tiếp cận và chăm sóc khách hàng.",
+      "Chương trình được triển khai theo đơn vị và địa bàn: các lớp huấn luyện tại VNPT TP.HCM, VNPT Hải Phòng (chương trình đào tạo thực chiến địa bàn 2026), VNPT Thái Bình, VNPT Bình Phước và nhiều tỉnh thành; tại VNPT Cà Mau, đội ngũ áp dụng ngay vào các đợt ra quân bán hàng & chăm sóc khách hàng tại địa bàn Phước Long, Trần Văn Thời và Hòa Bình. Học viên làm trên dữ liệu và địa bàn thật, sau đó chuẩn hóa quy trình tiếp cận và chăm sóc khách hàng.",
     results:
       "Đội ngũ có khung phân tích địa bàn thống nhất, hành trình khách hàng được chuẩn hóa từ nhận diện thương hiệu đến dịch vụ và tái mua hàng. Mô hình triển khai được lặp lại trên nhiều địa điểm, gắn với các đợt ra quân bán hàng tại địa bàn.",
     quote: {
@@ -39,13 +39,16 @@ export const caseStudies: CaseStudy[] = [
       role: "Hồ sơ năng lực",
     },
     coverImage: "/images/case-studies/vnpt/vnpt-01.jpg",
-    gallery: [1, 2, 3, 4, 5].map((n) => `/images/case-studies/vnpt/vnpt-0${n}.jpg`).concat("/images/covers/vnpt.jpg"),
+    gallery: [1, 2, 3, 4, 5, 6, 7, 8].map((n) => `/images/case-studies/vnpt/vnpt-0${n}.jpg`).concat("/images/covers/vnpt.jpg"),
     galleryAlts: [
       "Học viên VNPT tại lớp huấn luyện thực chiến",
       "VNPT TP.HCM — chương trình “Chiến binh xanh”",
       "VNPT Cà Mau ra quân bán hàng & chăm sóc khách hàng tại địa bàn Trần Văn Thời",
       "VNPT Cà Mau ra quân bán hàng & chăm sóc khách hàng tại địa bàn Phước Long",
       "Buổi làm việc tại VNPT TP. Hồ Chí Minh",
+      "VNPT Cà Mau ra quân bán hàng & chăm sóc khách hàng tại địa bàn Phước Long",
+      "Lớp đào tạo thực chiến địa bàn VNPT Hải Phòng 2026",
+      "VNPT Cà Mau ra quân tại điểm cung cấp dịch vụ Hòa Bình",
       "Infographic: hơn 15 năm VABIX đồng hành cùng VNPT",
     ],
     relatedExperts: ["nguyen-chi-thanh"],

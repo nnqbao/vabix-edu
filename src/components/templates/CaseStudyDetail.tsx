@@ -10,18 +10,19 @@ import { HeroBackdrop } from "@/components/templates/BmdoLanding";
 import { Lightbox } from "@/components/templates/Lightbox";
 import { RevealOnView } from "@/components/templates/RevealOnView";
 import { paths } from "@/lib/paths";
+import { getLocale } from "@/i18n/server";
 
 const SECTIONS = [
-  { id: "boi-canh", label: "Bối cảnh" },
-  { id: "bai-toan", label: "Bài toán" },
-  { id: "giai-phap", label: "Giải pháp" },
-  { id: "trien-khai", label: "Quá trình triển khai" },
-  { id: "ket-qua", label: "Kết quả" },
-  { id: "bai-hoc", label: "Bài học" },
+  { id: "boi-canh", label: "Bối cảnh", labelEn: "Context" },
+  { id: "bai-toan", label: "Bài toán", labelEn: "Challenge" },
+  { id: "giai-phap", label: "Giải pháp", labelEn: "Solution" },
+  { id: "trien-khai", label: "Quá trình triển khai", labelEn: "Implementation" },
+  { id: "ket-qua", label: "Kết quả", labelEn: "Results" },
+  { id: "bai-hoc", label: "Bài học", labelEn: "Lesson" },
 ] as const;
 
 // Ảnh có bản -lg (1600px) thì Lightbox mở bản lớn, không thì dùng chính ảnh đó.
-function zoomAttrs(index: number, src: string, alt: string) {
+function zoomAttrs(index: number, src: string, alt: string, en = false) {
   return {
     "data-zoom-group": "case-study",
     "data-zoom-index": index,
@@ -30,7 +31,7 @@ function zoomAttrs(index: number, src: string, alt: string) {
     "data-zoom-alt": alt,
     tabIndex: 0,
     role: "button",
-    "aria-label": `Xem lớn: ${alt}`,
+    "aria-label": `${en ? "Enlarge" : "Xem lớn"}: ${alt}`,
   };
 }
 
@@ -45,10 +46,12 @@ function SectionTitle({ n, id, children }: { n: number; id: string; children: st
   );
 }
 
-export function CaseStudyDetail({ c }: { c: CaseStudy }) {
-  const methods = publishedMethodologies().filter((m) => c.methodologies.includes(m.slug));
-  const experts = publishedExperts().filter((e) => c.relatedExperts?.includes(e.slug));
-  const others = publishedCaseStudies().filter((x) => x.slug !== c.slug).slice(0, 3);
+export async function CaseStudyDetail({ c }: { c: CaseStudy }) {
+  const locale = await getLocale();
+  const en = locale === "en";
+  const methods = publishedMethodologies(locale).filter((m) => c.methodologies.includes(m.slug));
+  const experts = publishedExperts(locale).filter((e) => c.relatedExperts?.includes(e.slug));
+  const others = publishedCaseStudies(locale).filter((x) => x.slug !== c.slug).slice(0, 3);
   const gallery = c.gallery.filter((g, i, a) => a.indexOf(g) === i && (a.length > 1 || g !== c.coverImage));
   const title = c.headline ?? c.industry;
 
@@ -62,8 +65,8 @@ export function CaseStudyDetail({ c }: { c: CaseStudy }) {
             <Breadcrumb
               light
               items={[
-                { name: "Trang chủ", href: paths.home },
-                { name: "Case Study", href: "/tri-thuc/case-study" },
+                { name: en ? "Home" : "Trang chủ", href: paths.home },
+                { name: en ? "Case studies" : "Case Study", href: "/tri-thuc/case-study" },
                 { name: c.organization },
               ]}
             />
@@ -93,7 +96,7 @@ export function CaseStudyDetail({ c }: { c: CaseStudy }) {
             <span aria-hidden="true" className="bmdo-tvc-corner bmdo-tvc-corner-tl" />
             <span aria-hidden="true" className="bmdo-tvc-corner bmdo-tvc-corner-br" />
             <div className="relative aspect-[16/10] overflow-hidden rounded-[24px] border border-vabix-gold/40 shadow-[0_30px_70px_rgba(0,0,0,0.4)]">
-              <span {...zoomAttrs(0, c.coverImage, `${c.organization} — ${title}`)} className="bmdo-zoomable">
+              <span {...zoomAttrs(0, c.coverImage, `${c.organization} — ${title}`, en)} className="bmdo-zoomable">
                 <Image src={c.coverImage} alt={`${c.organization} — ${title}`} fill unoptimized priority sizes="(max-width: 1023px) 100vw, 45vw" className="bmdo-grad-img object-cover" />
               </span>
             </div>
@@ -120,15 +123,15 @@ export function CaseStudyDetail({ c }: { c: CaseStudy }) {
       {/* Nội dung */}
       <section className="bg-vabix-warm py-16 sm:py-24">
         <Container className="grid gap-12 lg:grid-cols-[14rem_minmax(0,1fr)] lg:gap-16">
-          <nav aria-label="Mục lục case study" className="hidden lg:block">
+          <nav aria-label={en ? "Case study contents" : "Mục lục case study"} className="hidden lg:block">
             <div className="sticky top-28">
-              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-vabix-gold">Nội dung</p>
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-vabix-gold">{en ? "Contents" : "Nội dung"}</p>
               <ol className="mt-4 space-y-1 border-l border-vabix-deep-teal/10">
                 {SECTIONS.map((s, i) => (
                   <li key={s.id}>
                     <a href={`#${s.id}`} className="-ml-px flex gap-3 border-l-2 border-transparent py-1.5 pl-4 text-sm text-vabix-muted transition-colors hover:border-vabix-gold hover:text-vabix-deep-teal">
                       <span className="text-vabix-gold/80">{String(i + 1).padStart(2, "0")}</span>
-                      {s.label}
+                      {en ? s.labelEn : s.label}
                     </a>
                   </li>
                 ))}
@@ -136,13 +139,13 @@ export function CaseStudyDetail({ c }: { c: CaseStudy }) {
                   <li>
                     <a href="#hinh-anh" className="-ml-px flex gap-3 border-l-2 border-transparent py-1.5 pl-4 text-sm text-vabix-muted transition-colors hover:border-vabix-gold hover:text-vabix-deep-teal">
                       <span className="text-vabix-gold/80">07</span>
-                      Hình ảnh
+                      {en ? "Photos" : "Hình ảnh"}
                     </a>
                   </li>
                 ) : null}
               </ol>
               <Button href={paths.contact} variant="teal" className="mt-8 w-full">
-                Trao đổi cùng VABIX
+                {en ? "Talk to VABIX" : "Trao đổi cùng VABIX"}
               </Button>
             </div>
           </nav>
@@ -150,17 +153,17 @@ export function CaseStudyDetail({ c }: { c: CaseStudy }) {
           <RevealOnView className="min-w-0 space-y-16">
             <div className="grid gap-5 md:grid-cols-2">
               <article className="bmdo-rv rounded-[22px] border border-vabix-deep-teal/10 bg-white p-6 shadow-[0_10px_30px_rgba(22,60,62,0.05)] sm:p-8">
-                <SectionTitle n={1} id="boi-canh">Bối cảnh</SectionTitle>
+                <SectionTitle n={1} id="boi-canh">{en ? "Context" : "Bối cảnh"}</SectionTitle>
                 <p className="mt-4 leading-relaxed text-vabix-ink">{c.context}</p>
               </article>
               <article className="bmdo-rv rounded-[22px] border border-vabix-gold/30 bg-vabix-ivory p-6 sm:p-8" style={{ ["--rv-i" as string]: 1 }}>
-                <SectionTitle n={2} id="bai-toan">Bài toán</SectionTitle>
+                <SectionTitle n={2} id="bai-toan">{en ? "Challenge" : "Bài toán"}</SectionTitle>
                 <p className="mt-4 leading-relaxed text-vabix-ink">{c.challenge}</p>
               </article>
             </div>
 
             <div className="bmdo-rv" style={{ ["--rv-i" as string]: 2 }}>
-              <SectionTitle n={3} id="giai-phap">Giải pháp</SectionTitle>
+              <SectionTitle n={3} id="giai-phap">{en ? "Solution" : "Giải pháp"}</SectionTitle>
               <p className="mt-4 max-w-3xl text-lg leading-relaxed text-vabix-ink">{c.solution}</p>
               {c.solutionItems?.length ? (
                 <ol className="mt-6 grid gap-3 sm:grid-cols-2">
@@ -177,7 +180,7 @@ export function CaseStudyDetail({ c }: { c: CaseStudy }) {
 
             <div className="bmdo-rv grid gap-6 md:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] md:items-start" style={{ ["--rv-i" as string]: 3 }}>
               <div>
-                <SectionTitle n={4} id="trien-khai">Quá trình triển khai</SectionTitle>
+                <SectionTitle n={4} id="trien-khai">{en ? "Implementation" : "Quá trình triển khai"}</SectionTitle>
                 <p className="mt-4 border-l-2 border-vabix-gold/60 pl-5 leading-relaxed text-vabix-ink">{c.implementation}</p>
               </div>
               <article className="relative overflow-hidden rounded-[22px] bg-vabix-deep-teal p-6 text-vabix-warm sm:p-8">
@@ -185,7 +188,7 @@ export function CaseStudyDetail({ c }: { c: CaseStudy }) {
                 <div className="relative flex items-baseline gap-4">
                   <span className="text-sm font-semibold tracking-[0.2em] text-vabix-gold">05</span>
                   <h2 id="ket-qua" className="scroll-mt-28 text-2xl font-semibold sm:text-[1.9rem]">
-                    Kết quả
+                    {en ? "Results" : "Kết quả"}
                   </h2>
                 </div>
                 <p className="relative mt-4 leading-relaxed text-white/85">{c.results}</p>
@@ -199,7 +202,7 @@ export function CaseStudyDetail({ c }: { c: CaseStudy }) {
               <div className="flex items-baseline gap-4">
                 <span className="text-sm font-semibold tracking-[0.2em] text-vabix-gold">06</span>
                 <h2 id="bai-hoc" className="scroll-mt-28 text-sm font-semibold uppercase tracking-[0.2em] text-vabix-deep-teal">
-                  Bài học
+                  {en ? "Lesson" : "Bài học"}
                 </h2>
               </div>
               <blockquote className="mt-4 text-balance text-xl font-medium leading-relaxed text-vabix-deep-teal sm:text-2xl">{c.lesson}</blockquote>
@@ -216,7 +219,7 @@ export function CaseStudyDetail({ c }: { c: CaseStudy }) {
 
             {experts.length ? (
               <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-vabix-gold">Chuyên gia đồng hành</p>
+                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-vabix-gold">{en ? "Experts involved" : "Chuyên gia đồng hành"}</p>
                 <ul className="mt-4 flex flex-wrap gap-3">
                   {experts.map((e) => (
                     <li key={e.slug}>
@@ -239,19 +242,27 @@ export function CaseStudyDetail({ c }: { c: CaseStudy }) {
       {gallery.length ? (
         <section className="bg-vabix-ivory py-16 sm:py-20" aria-labelledby="hinh-anh">
           <Container>
-            <p className="eyebrow">Hình ảnh triển khai</p>
+            <p className="eyebrow">{en ? "On the ground" : "Hình ảnh triển khai"}</p>
             <h2 id="hinh-anh" className="mt-3 scroll-mt-28 text-[1.9rem] font-semibold tracking-[-0.02em] text-vabix-deep-teal sm:text-[2.4rem]">
-              Khoảnh khắc <span className="text-vabix-gold">tại chương trình.</span>
+              {en ? (
+                <>
+                  Moments <span className="text-vabix-gold">from the programme.</span>
+                </>
+              ) : (
+                <>
+                  Khoảnh khắc <span className="text-vabix-gold">tại chương trình.</span>
+                </>
+              )}
             </h2>
             <div className="mt-8 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-3">
               {gallery.map((src, i) => {
-                const alt = c.galleryAlts?.[c.gallery.indexOf(src)] ?? `${c.organization} — hình ảnh ${i + 1}`;
+                const alt = c.galleryAlts?.[c.gallery.indexOf(src)] ?? `${c.organization} — ${en ? "photo" : "hình ảnh"} ${i + 1}`;
                 return (
                 <figure key={src} className={`bmdo-grad-tile ${i === 0 ? "col-span-2 aspect-[4/3] lg:row-span-2 lg:aspect-auto" : "aspect-[4/3]"} ${
                     // Lưới 3 cột: ảnh đầu chiếm 4 ô; nếu hàng cuối còn 2 ảnh thì ảnh cuối trải 2 ô cho kín lưới.
                     i > 0 && i === gallery.length - 1 && (gallery.length + 3) % 3 === 2 ? "lg:col-span-2 lg:aspect-[8/3]" : ""
                   }`}>
-                  <span {...zoomAttrs(1 + i, src, alt)} className="bmdo-zoomable">
+                  <span {...zoomAttrs(1 + i, src, alt, en)} className="bmdo-zoomable">
                     <Image src={src} alt={alt} fill unoptimized sizes="(max-width: 1023px) 50vw, 33vw" className="object-cover transition-transform duration-700 hover:scale-105" />
                   </span>
                 </figure>
@@ -268,11 +279,13 @@ export function CaseStudyDetail({ c }: { c: CaseStudy }) {
           <Container>
             <div className="flex flex-wrap items-end justify-between gap-4">
               <div>
-                <p className="eyebrow">Case study khác</p>
-                <h2 className="mt-3 text-[1.9rem] font-semibold tracking-[-0.02em] text-vabix-deep-teal sm:text-[2.2rem]">Những hành trình đồng hành khác</h2>
+                <p className="eyebrow">{en ? "More case studies" : "Case study khác"}</p>
+                <h2 className="mt-3 text-[1.9rem] font-semibold tracking-[-0.02em] text-vabix-deep-teal sm:text-[2.2rem]">
+                  {en ? "Other partnership journeys" : "Những hành trình đồng hành khác"}
+                </h2>
               </div>
               <Link href="/tri-thuc/case-study" className="text-sm font-semibold text-vabix-deep-teal hover:text-vabix-gold">
-                Xem tất cả case study →
+                {en ? "View all case studies →" : "Xem tất cả case study →"}
               </Link>
             </div>
             <div className="mt-8 grid gap-6 md:grid-cols-3">
@@ -288,15 +301,27 @@ export function CaseStudyDetail({ c }: { c: CaseStudy }) {
       <section className="relative overflow-hidden bg-vabix-deep-teal py-16 text-vabix-warm sm:py-20">
         <HeroBackdrop />
         <Container className="relative text-center">
-          <p className="eyebrow">Đồng hành cùng VABIX</p>
+          <p className="eyebrow">{en ? "Work with VABIX" : "Đồng hành cùng VABIX"}</p>
           <h2 className="mx-auto mt-3 max-w-3xl text-balance text-[1.9rem] font-semibold leading-[1.15] tracking-[-0.02em] sm:text-[2.4rem]">
-            Muốn một chương trình được thiết kế <span className="text-vabix-gold">theo bài toán của bạn?</span>
+            {en ? (
+              <>
+                Want a programme designed <span className="text-vabix-gold">around your challenge?</span>
+              </>
+            ) : (
+              <>
+                Muốn một chương trình được thiết kế <span className="text-vabix-gold">theo bài toán của bạn?</span>
+              </>
+            )}
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-lg text-white/75">VABIX không sao chép giáo trình. Chúng tôi khảo sát hiện trạng và thiết kế theo bối cảnh tổ chức.</p>
+          <p className="mx-auto mt-4 max-w-2xl text-lg text-white/75">
+            {en
+              ? "VABIX does not copy off-the-shelf curricula. We assess your current situation and design around your organisation's context."
+              : "VABIX không sao chép giáo trình. Chúng tôi khảo sát hiện trạng và thiết kế theo bối cảnh tổ chức."}
+          </p>
           <div className="mt-8 flex flex-wrap justify-center gap-3">
-            <Button href={paths.contact}>Trao đổi cùng VABIX →</Button>
+            <Button href={paths.contact}>{en ? "Talk to VABIX →" : "Trao đổi cùng VABIX →"}</Button>
             <Button href={paths.training} variant="outline" className="border-white/40 text-white">
-              Xem chương trình đào tạo
+              {en ? "View training programmes" : "Xem chương trình đào tạo"}
             </Button>
           </div>
         </Container>

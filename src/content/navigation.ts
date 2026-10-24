@@ -109,15 +109,6 @@ export const primaryNav: NavItem[] = [
     activeMatch: ["/dao-tao"],
     groups: [
       {
-        label: "Chương trình",
-        children: [
-          { label: "Đào tạo doanh nghiệp", href: "/dao-tao", description: "Tổng quan Training & Coaching thực chiến." },
-          { label: "Chương trình dành cho lãnh đạo", href: "/dao-tao#doanh-chu", description: "BMDO, MBM và thao trường doanh chủ." },
-          { label: "Quản lý & đội ngũ", href: "/dao-tao#quan-ly", description: "Năng lực quản lý, bán hàng, vận hành và AI." },
-          { label: "Đào tạo theo yêu cầu", href: "/dao-tao/theo-yeu-cau-doanh-nghiep", description: "Thiết kế sau khảo sát hiện trạng." },
-        ],
-      },
-      {
         label: "Đang tuyển sinh",
         children: [
           { label: "Lịch học / lớp đang mở", href: "/dao-tao/lich", description: "Các lớp và lịch đào tạo hiện có." },

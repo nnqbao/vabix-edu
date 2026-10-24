@@ -6056,3 +6056,111 @@ section[id],
     transition: none;
   }
 }
+
+/* BMDO landing — nền chuyển động phần vinh danh (tông sáng) */
+.bmdo-grad-glow {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(80px);
+  will-change: transform;
+}
+
+.bmdo-grad-glow-a {
+  top: -8rem;
+  right: -6rem;
+  width: 38rem;
+  height: 38rem;
+  background: radial-gradient(circle, rgba(222, 164, 67, 0.4), transparent 68%);
+  animation: bmdo-hero-drift-a 24s ease-in-out infinite alternate;
+}
+
+.bmdo-grad-glow-b {
+  bottom: -12rem;
+  left: -8rem;
+  width: 40rem;
+  height: 40rem;
+  background: radial-gradient(circle, rgba(33, 79, 81, 0.16), transparent 70%);
+  animation: bmdo-hero-drift-b 30s ease-in-out infinite alternate;
+}
+
+/* Luồng đèn sân khấu: dải sáng chéo, quét qua lại thật chậm. */
+.bmdo-grad-beam {
+  position: absolute;
+  top: -20%;
+  width: 22rem;
+  height: 140%;
+  background: linear-gradient(90deg, transparent, rgba(228, 184, 98, 0.2) 45%, rgba(255, 246, 225, 0.55) 50%, rgba(228, 184, 98, 0.2) 55%, transparent);
+  filter: blur(14px);
+  transform-origin: top center;
+}
+
+.bmdo-grad-beam-a {
+  left: 18%;
+  animation: bmdo-grad-beam 16s ease-in-out infinite alternate;
+}
+
+.bmdo-grad-beam-b {
+  right: 14%;
+  width: 16rem;
+  animation: bmdo-grad-beam 20s ease-in-out infinite alternate-reverse;
+  animation-delay: -6s;
+}
+
+@keyframes bmdo-grad-beam {
+  from {
+    transform: rotate(-18deg);
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+  to {
+    transform: rotate(14deg);
+    opacity: 0.6;
+  }
+}
+
+/* Bụi vàng lấp lánh bay lên. */
+.bmdo-grad-dust {
+  position: absolute;
+  bottom: -12px;
+  border-radius: 9999px;
+  background: radial-gradient(circle, #f4d7a6, #dea443 60%);
+  box-shadow: 0 0 10px 2px rgba(222, 164, 67, 0.6);
+  opacity: 0;
+  animation-name: bmdo-grad-dust;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes bmdo-grad-dust {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 0, 0) scale(0.6);
+  }
+  15% {
+    opacity: 0.85;
+  }
+  50% {
+    opacity: 0.35;
+    transform: translate3d(var(--dust-drift, 0px), -45vh, 0) scale(1);
+  }
+  65% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(calc(var(--dust-drift, 0px) * -1), -95vh, 0) scale(0.6);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bmdo-grad-glow,
+  .bmdo-grad-beam {
+    animation: none;
+  }
+
+  .bmdo-grad-dust {
+    display: none;
+  }
+}

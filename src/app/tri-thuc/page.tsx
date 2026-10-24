@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { knowledgeProductCategories, workforce } from "@/content/knowledgeProducts";
-import { books, handbooks, supportServices } from "@/content/network";
+import { books, supportServices } from "@/content/network";
 import { amazonLink, founderAuthor as author, founderBooks } from "@/content/founderBooks";
 import { LeadForm } from "@/components/forms/LeadForm";
 import { Breadcrumb } from "@/components/ui/Misc";
@@ -14,24 +14,16 @@ import { paths } from "@/lib/paths";
 
 export const metadata = createMetadata({
   title: "Hệ sinh thái tri thức",
-  description: "Sách, cẩm nang, học liệu số, nhân lực mở, nhân lực số và dịch vụ hỗ trợ của VABIX.",
+  description: "Sách, học liệu số, nhân lực mở, nhân lực số và dịch vụ hỗ trợ của VABIX.",
   path: paths.knowledge,
 });
 
 const SECTIONS = [
   { id: "sach", label: "Sách" },
-  { id: "cam-nang", label: "Cẩm nang" },
   { id: "hoc-lieu", label: "Học liệu & biểu mẫu" },
   { id: "nhan-luc-mo", label: "Nhân lực mở" },
   { id: "nhan-luc-so", label: "Nhân lực số" },
   { id: "dich-vu-ho-tro", label: "Dịch vụ hỗ trợ" },
-];
-
-// Cẩm nang gom theo nhóm nhu cầu để dễ tìm.
-const HANDBOOK_GROUPS = [
-  { label: "Gia đình", title: "Tài chính & trải nghiệm", slugs: ["quan-ly-tai-chinh-ca-nhan", "cam-nang-du-lich"] },
-  { label: "Tiêu dùng", title: "Thực phẩm an toàn", slugs: ["cam-nang-ve-gao", "mua-san-pham-sach"] },
-  { label: "Doanh nghiệp & công trình", title: "Thiết bị, vật liệu, nội thất", slugs: ["lua-chon-thiet-bi-truyen-thong", "cam-nang-ve-gach", "lua-chon-noi-that"] },
 ];
 
 const LEARNING_COPY: Record<string, string> = {
@@ -56,7 +48,7 @@ export default function KnowledgeEcosystemPage() {
   const WORKFORCE = [
     {
       id: "nhan-luc-mo",
-      n: "04",
+      n: "03",
       title: workforce.openTalent.title,
       tagline: workforce.openTalent.tagline,
       summary: "Kết nối doanh nghiệp với chuyên gia, nhân sự dự án và đội ngũ linh hoạt — giao việc theo mục tiêu, nghiệm thu theo kết quả và theo dõi chất lượng.",
@@ -65,7 +57,7 @@ export default function KnowledgeEcosystemPage() {
     },
     {
       id: "nhan-luc-so",
-      n: "05",
+      n: "04",
       title: workforce.digitalTalent.title,
       tagline: workforce.digitalTalent.tagline,
       summary: "Thiết kế, triển khai và vận hành trợ lý AI, AI Agent và tự động hóa quy trình — có con người phê duyệt, phân quyền dữ liệu và giám sát.",
@@ -87,7 +79,7 @@ export default function KnowledgeEcosystemPage() {
               Hệ sinh thái <span className="text-vabix-gold">tri thức.</span>
             </h1>
             <p className="mt-5 max-w-xl text-lg leading-relaxed text-white/75">
-              Sách, cẩm nang, học liệu, nhân lực mở, nhân lực số và dịch vụ hỗ trợ — lớp năng lực xuyên suốt 3T.
+              Sách, học liệu, nhân lực mở, nhân lực số và dịch vụ hỗ trợ — lớp năng lực xuyên suốt 3T.
             </p>
             <nav aria-label="Các phần trên trang" className="mt-8">
               <ul className="flex flex-wrap gap-2">
@@ -176,48 +168,11 @@ export default function KnowledgeEcosystemPage() {
         </Container>
       </section>
 
-      {/* 02 Cẩm nang */}
-      <section id="cam-nang" className="scroll-mt-24 bg-vabix-ivory py-16 sm:py-20">
-        <Container>
-          <div className="flex flex-wrap items-end justify-between gap-6">
-            <Title eyebrow="02 · Cẩm nang" title="Cẩm nang Làng VABIX —" gold="chọn đúng, dùng an tâm." />
-            <p className="max-w-md text-vabix-muted">Hướng dẫn lựa chọn sản phẩm, dịch vụ do các làng ngành và nhà cung cấp trong mạng lưới VABIX biên soạn.</p>
-          </div>
-          <div className="mt-10 grid gap-5 md:grid-cols-3">
-            {HANDBOOK_GROUPS.map((g) => (
-              <article key={g.title} className="flex flex-col rounded-[22px] border border-vabix-deep-teal/10 bg-white p-6">
-                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-vabix-gold">{g.label}</p>
-                <h3 className="mt-2 text-lg font-semibold text-vabix-deep-teal">{g.title}</h3>
-                <ul className="mt-4 divide-y divide-vabix-deep-teal/10">
-                  {g.slugs.map((slug) => {
-                    const h = handbooks.find((x) => x.slug === slug);
-                    if (!h) return null;
-                    return (
-                      <li key={slug}>
-                        <Link href={`/tri-thuc/cam-nang/${h.slug}`} className="group flex items-start justify-between gap-3 py-3.5">
-                          <span>
-                            <span className="block font-semibold leading-snug text-vabix-deep-teal group-hover:text-vabix-gold">{h.title}</span>
-                            <span className="mt-1 block text-sm leading-relaxed text-vabix-muted">{h.summary}</span>
-                          </span>
-                          <span aria-hidden="true" className="mt-0.5 text-vabix-gold transition-transform group-hover:translate-x-1">
-                            →
-                          </span>
-                        </Link>
-                      </li>
-                    );
-                  })}
-                </ul>
-              </article>
-            ))}
-          </div>
-        </Container>
-      </section>
-
-      {/* 03 Học liệu & biểu mẫu */}
+      {/* 02 Học liệu & biểu mẫu */}
       <section id="hoc-lieu" className="scroll-mt-24 bg-vabix-warm py-16 sm:py-20">
         <Container className="grid gap-8 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.6fr)] lg:items-center lg:gap-14">
           <div>
-            <Title eyebrow="03 · Học liệu & biểu mẫu" title="Công cụ để học và làm" gold="— sắp ra mắt." />
+            <Title eyebrow="02 · Học liệu & biểu mẫu" title="Công cụ để học và làm" gold="— sắp ra mắt." />
             <p className="mt-4 text-vabix-muted">Bộ công cụ đi kèm các chương trình đào tạo của VABIX đang được hoàn thiện. Đăng ký để nhận thông báo khi mở.</p>
           </div>
           <ul className="grid gap-4 sm:grid-cols-2">
@@ -236,12 +191,12 @@ export default function KnowledgeEcosystemPage() {
         </Container>
       </section>
 
-      {/* 04–05 Nhân lực */}
+      {/* 03–04 Nhân lực */}
       <section className="relative overflow-hidden bg-vabix-deep-teal py-16 text-vabix-warm sm:py-20">
         <HeroBackdrop />
         <Container className="relative">
           <div className="flex flex-wrap items-end justify-between gap-6">
-            <Title light eyebrow="04 – 05 · Nhân lực" title="Đúng người, đúng công cụ" gold="cho từng dự án." />
+            <Title light eyebrow="03 – 04 · Nhân lực" title="Đúng người, đúng công cụ" gold="cho từng dự án." />
             <p className="max-w-md text-white/70">Khi doanh nghiệp cần thêm năng lực mà chưa cần tuyển dụng cố định: chuyên gia theo dự án và trợ lý AI có kiểm soát.</p>
           </div>
           <div className="mt-10 grid gap-5 lg:grid-cols-2">
@@ -270,11 +225,11 @@ export default function KnowledgeEcosystemPage() {
         </Container>
       </section>
 
-      {/* 06 Dịch vụ hỗ trợ */}
+      {/* 05 Dịch vụ hỗ trợ */}
       <section id="dich-vu-ho-tro" className="scroll-mt-24 bg-vabix-warm py-16 sm:py-20">
         <Container className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-16">
           <div>
-            <Title eyebrow="06 · Dịch vụ hỗ trợ" title="Đồng hành ngoài lớp học," gold="trong từng dự án." />
+            <Title eyebrow="05 · Dịch vụ hỗ trợ" title="Đồng hành ngoài lớp học," gold="trong từng dự án." />
             <ul className="mt-8 divide-y divide-vabix-deep-teal/10 rounded-[20px] border border-vabix-deep-teal/10 bg-white">
               {supportServices.map((s) => (
                 <li key={s.slug}>

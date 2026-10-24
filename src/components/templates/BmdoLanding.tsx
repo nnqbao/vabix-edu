@@ -606,6 +606,31 @@ export function BmdoLanding() {
                 {hotline}
               </a>
             </div>
+            <div className="bmdo-zalo mt-8 flex flex-col items-center gap-5 rounded-[22px] border border-vabix-gold/40 bg-white/[0.04] p-5 text-center backdrop-blur-sm sm:flex-row sm:gap-6 sm:text-left">
+              <a
+                href={k.enrol.zaloGroup.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bmdo-zalo-qr relative shrink-0 rounded-2xl bg-white p-2 shadow-[0_12px_30px_rgba(0,0,0,0.3)]"
+                aria-label={`Tham gia nhóm Zalo ${k.enrol.zaloGroup.name}`}
+              >
+                <Image src={k.enrol.zaloGroup.qr} alt={`Mã QR nhóm Zalo ${k.enrol.zaloGroup.name}`} width={608} height={604} unoptimized className="h-40 w-40 sm:h-32 sm:w-32" />
+                <span aria-hidden="true" className="bmdo-zalo-scan" />
+              </a>
+              <div className="min-w-0">
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-vabix-gold">Nhóm Zalo lớp học</p>
+                <p className="mt-1.5 text-balance text-lg font-semibold leading-snug">{k.enrol.zaloGroup.name}</p>
+                <p className="mt-1.5 text-sm leading-relaxed text-white/65">Quét mã bằng Zalo để nhận thông tin lớp, lịch học và tài liệu.</p>
+                <a
+                  href={k.enrol.zaloGroup.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-3 inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-vabix-gold/50 px-4 py-2 text-sm font-semibold text-vabix-soft-gold transition-colors hover:bg-vabix-gold hover:text-vabix-deep-teal"
+                >
+                  Mở Zalo tham gia nhóm →
+                </a>
+              </div>
+            </div>
             <p className="mt-8 text-sm leading-relaxed text-white/60">{k.enrol.note}</p>
           </div>
           <div className="bmdo-form rounded-[22px] bg-white p-5 text-vabix-ink sm:p-8">

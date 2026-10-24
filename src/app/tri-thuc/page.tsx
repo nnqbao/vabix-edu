@@ -73,7 +73,7 @@ export default function KnowledgeEcosystemPage() {
             <Breadcrumb light items={[{ name: "Trang chủ", href: paths.home }, { name: "Hệ sinh thái tri thức" }]} />
             <p className="mt-10 text-xs font-semibold uppercase tracking-[0.22em] text-vabix-soft-gold">VABIX Knowledge</p>
             <h1 className="mt-4 text-balance text-[2.4rem] font-semibold leading-[1.08] tracking-[-0.02em] sm:text-[3.4rem]">
-              Hệ sinh thái <span className="text-vabix-gold">tri thức.</span>
+              Hệ sinh thái <span className="text-vabix-gold">tri thức</span>
             </h1>
             <p className="mt-5 max-w-xl text-lg leading-relaxed text-white/75">
               Sách, học liệu, nhân lực mở, nhân lực số và dịch vụ hỗ trợ — lớp năng lực xuyên suốt 3T.
@@ -110,7 +110,7 @@ export default function KnowledgeEcosystemPage() {
       <section id="sach" className="scroll-mt-24 bg-vabix-warm py-16 sm:py-20">
         <Container>
           <div className="flex flex-wrap items-end justify-between gap-6">
-            <Title eyebrow="01 · Sách" title="Tủ sách của Founder" gold={author.name + "."} />
+            <Title eyebrow="01 · Sách" title="Tủ sách của Founder" gold={author.name} />
             <Link href="/tri-thuc/sach" className="text-sm font-semibold text-vabix-deep-teal hover:text-vabix-gold">
               Xem tủ sách đầy đủ →
             </Link>
@@ -174,7 +174,7 @@ export default function KnowledgeEcosystemPage() {
       <section id="hoc-lieu" className="scroll-mt-24 bg-vabix-warm py-16 sm:py-20">
         <Container className="grid gap-8 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.6fr)] lg:items-center lg:gap-14">
           <div>
-            <Title eyebrow="02 · Học liệu & biểu mẫu" title="Công cụ để học và làm" gold="— sắp ra mắt." />
+            <Title eyebrow="02 · Học liệu & biểu mẫu" title="Công cụ để học và làm" gold="— sắp ra mắt" />
             <p className="mt-4 text-vabix-muted">Bộ công cụ đi kèm các chương trình đào tạo của VABIX đang được hoàn thiện. Đăng ký để nhận thông báo khi mở.</p>
           </div>
           <ul className="grid gap-4 sm:grid-cols-2">
@@ -198,7 +198,7 @@ export default function KnowledgeEcosystemPage() {
         <HeroBackdrop />
         <Container className="relative">
           <div className="flex flex-wrap items-end justify-between gap-6">
-            <Title light eyebrow="03 – 04 · Nhân lực" title="Đúng người, đúng công cụ" gold="cho từng dự án." />
+            <Title light eyebrow="03 – 04 · Nhân lực" title="Đúng người, đúng công cụ" gold="cho từng dự án" />
             <p className="max-w-md text-white/70">Khi doanh nghiệp cần thêm năng lực mà chưa cần tuyển dụng cố định: chuyên gia theo dự án và trợ lý AI có kiểm soát.</p>
           </div>
           <div className="mt-10 grid gap-5 lg:grid-cols-2">
@@ -231,7 +231,7 @@ export default function KnowledgeEcosystemPage() {
       <section id="dich-vu-ho-tro" className="scroll-mt-24 bg-vabix-warm py-16 sm:py-20">
         <Container className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-16">
           <div>
-            <Title eyebrow="05 · Dịch vụ hỗ trợ" title="Đồng hành ngoài lớp học," gold="trong từng dự án." />
+            <Title eyebrow="05 · Dịch vụ hỗ trợ" title="Đồng hành ngoài lớp học," gold="trong từng dự án" />
             <ul className="mt-8 divide-y divide-vabix-deep-teal/10 rounded-[20px] border border-vabix-deep-teal/10 bg-white">
               {supportServices.map((s) => (
                 <li key={s.slug}>

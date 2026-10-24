@@ -1,6 +1,8 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { usePathname } from "next/navigation";
+import { localeFromPathname } from "@/i18n/locale";
 import { siteConfig } from "@/lib/siteConfig";
 import type { LeadType } from "@/lib/leads";
 import { Button } from "@/components/ui/Button";
@@ -37,6 +39,81 @@ const needByType: Partial<Record<LeadType, string[]>> = {
 
 const sizes = ["Dưới 20 người", "20–50", "51–200", "Trên 200"];
 
+const defaultNeedsEn = [
+  "Training & coaching",
+  "Business transformation consulting",
+  "Trustworking — find suppliers / partners",
+  "Trustworking — present a solution",
+  "Connect with experts",
+  "Program registration",
+  "Open workforce / digital workforce",
+  "Support services",
+  "Partner with VABIX",
+  "Other",
+];
+
+const needByTypeEn: Partial<Record<LeadType, string[]>> = {
+  "trust-buyer": ["Find suppliers", "Find partners", "Find industry solutions", "Other"],
+  "trust-supplier": ["Present products / services", "Expand markets", "Join an industry village", "Other"],
+  "trust-expert": ["Expert advice", "Project partnership", "Teaching / coaching", "Other"],
+  partnership: ["Program partnership", "Media partnership", "Network partnership", "Other"],
+  program: ["Program registration", "Custom program advice", "In-house assessment", "Other"],
+  training: ["Program advice", "Class registration", "In-house assessment", "Other"],
+  "corporate-training": ["Design an in-house program", "Current-state assessment", "Department training", "Other"],
+  bmdo: ["BMDO advice", "Open classes", "Business assessment", "Other"],
+  mbm: ["Program advice", "Schedule", "Who it suits", "Other"],
+  transformation: ["Transformation needs review", "Business diagnosis", "Implementation support", "Other"],
+  trustworking: ["Find suppliers", "Present supply capabilities", "Connect partners", "Other"],
+  "open-workforce": ["Connect experts", "Project staff", "Flexible teams", "Other"],
+  "digital-workforce": ["AI assistants", "AI agents", "Controlled automation", "Other"],
+  "support-service": ["Event staff", "Speaker booking", "KOL", "Book-writing support", "Other"],
+};
+
+const sizesEn = ["Under 20 people", "20–50", "51–200", "Over 200"];
+
+const L = {
+  vi: {
+    ok: "Yêu cầu đã được ghi nhận. VABIX sẽ liên hệ trong thời gian sớm nhất.",
+    fail: "Không gửi được yêu cầu.",
+    name: "Họ tên",
+    company: "Doanh nghiệp",
+    role: "Chức vụ",
+    phone: "Số điện thoại",
+    size: "Quy mô doanh nghiệp",
+    sizePick: "Chọn quy mô",
+    need: "Nhu cầu",
+    needPick: "Chọn nhu cầu",
+    message: "Nội dung cần trao đổi",
+    consentA: "Tôi đã đọc",
+    privacy: "Chính sách quyền riêng tư",
+    consentB: "và đồng ý để VABIX xử lý thông tin tôi cung cấp nhằm tiếp nhận, tư vấn và liên hệ về yêu cầu này.",
+    marketing: "Tôi đồng ý nhận thông tin chương trình, sự kiện và tri thức từ VABIX (không bắt buộc).",
+    orCall: "Hoặc gọi",
+    sending: "Đang gửi...",
+    send: "Gửi yêu cầu",
+  },
+  en: {
+    ok: "Your request has been received. VABIX will contact you shortly.",
+    fail: "We could not send your request.",
+    name: "Full name",
+    company: "Company",
+    role: "Position",
+    phone: "Phone",
+    size: "Company size",
+    sizePick: "Select size",
+    need: "Need",
+    needPick: "Select a need",
+    message: "What would you like to discuss?",
+    consentA: "I have read the",
+    privacy: "Privacy Policy",
+    consentB: "and agree that VABIX may process the information I provide to receive, advise on and follow up this request.",
+    marketing: "I agree to receive program, event and knowledge updates from VABIX (optional).",
+    orCall: "Or call",
+    sending: "Sending...",
+    send: "Send request",
+  },
+};
+
 function readUtm() {
   if (typeof window === "undefined") return {};
   const params = new URLSearchParams(window.location.search);
@@ -62,7 +139,11 @@ export function LeadForm({
   const started = useMemo(() => Date.now(), []);
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [message, setMessage] = useState("");
-  const needs = needByType[type] ?? defaultNeeds;
+  const locale = localeFromPathname(usePathname() ?? "/");
+  const en = locale === "en";
+  const tx = L[locale];
+  const needs = en ? (needByTypeEn[type] ?? defaultNeedsEn) : (needByType[type] ?? defaultNeeds);
+  const sizeOptions = en ? sizesEn : sizes;
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -97,43 +178,43 @@ export function LeadForm({
     const data = (await res.json()) as { ok: boolean; message?: string };
     if (data.ok) {
       setStatus("success");
-      setMessage("Yêu cầu đã được ghi nhận. VABIX sẽ liên hệ trong thời gian sớm nhất.");
+      setMessage(tx.ok);
       e.currentTarget.reset();
       return;
     }
     setStatus("error");
-    setMessage(data.message ?? "Không gửi được yêu cầu.");
+    setMessage(en ? tx.fail : (data.message ?? tx.fail));
   }
 
   return (
     <form onSubmit={onSubmit} className="space-y-4" noValidate>
       {title ? <h3 className="text-xl font-semibold text-vabix-deep-teal">{title}</h3> : null}
       <div className="grid gap-4 sm:grid-cols-2">
-        <Field name="name" label="Họ tên" required autoComplete="name" />
-        <Field name="company" label="Doanh nghiệp" autoComplete="organization" />
-        <Field name="role" label="Chức vụ" autoComplete="organization-title" />
-        <Field name="phone" label="Số điện thoại" type="tel" required autoComplete="tel" />
+        <Field name="name" label={tx.name} required autoComplete="name" />
+        <Field name="company" label={tx.company} autoComplete="organization" />
+        <Field name="role" label={tx.role} autoComplete="organization-title" />
+        <Field name="phone" label={tx.phone} type="tel" required autoComplete="tel" />
         <Field name="email" label="Email" type="email" required autoComplete="email" />
         <label className="block text-sm">
-          <span className="mb-1.5 block font-medium text-vabix-deep-teal">Quy mô doanh nghiệp</span>
+          <span className="mb-1.5 block font-medium text-vabix-deep-teal">{tx.size}</span>
           <select name="companySize" className="input">
-            <option value="">Chọn quy mô</option>
-            {sizes.map((s) => (
+            <option value="">{tx.sizePick}</option>
+            {sizeOptions.map((s) => (
               <option key={s}>{s}</option>
             ))}
           </select>
         </label>
         <label className="block text-sm sm:col-span-2">
-          <span className="mb-1.5 block font-medium text-vabix-deep-teal">Nhu cầu</span>
+          <span className="mb-1.5 block font-medium text-vabix-deep-teal">{tx.need}</span>
           <select name="need" className="input">
-            <option value="">Chọn nhu cầu</option>
+            <option value="">{tx.needPick}</option>
             {needs.map((s) => (
               <option key={s}>{s}</option>
             ))}
           </select>
         </label>
         <label className="block text-sm sm:col-span-2">
-          <span className="mb-1.5 block font-medium text-vabix-deep-teal">Nội dung cần trao đổi</span>
+          <span className="mb-1.5 block font-medium text-vabix-deep-teal">{tx.message}</span>
           <textarea name="message" rows={4} className="input min-h-[120px]" />
         </label>
       </div>
@@ -146,16 +227,16 @@ export function LeadForm({
       <label className="flex items-start gap-2 text-sm text-vabix-muted">
         <input type="checkbox" name="consent" className="mt-1" required />
         <span>
-          Tôi đã đọc{" "}
-          <a className="underline" href="/chinh-sach-quyen-rieng-tu">
-            Chính sách quyền riêng tư
+          {tx.consentA}{" "}
+          <a className="underline" href={en ? "/en/chinh-sach-quyen-rieng-tu" : "/chinh-sach-quyen-rieng-tu"}>
+            {tx.privacy}
           </a>{" "}
-          và đồng ý để VABIX xử lý thông tin tôi cung cấp nhằm tiếp nhận, tư vấn và liên hệ về yêu cầu này.
+          {tx.consentB}
         </span>
       </label>
       <label className="flex items-start gap-2 text-sm text-vabix-muted">
         <input type="checkbox" name="marketingConsent" className="mt-1" />
-        <span>Tôi đồng ý nhận thông tin chương trình, sự kiện và tri thức từ VABIX (không bắt buộc).</span>
+        <span>{tx.marketing}</span>
       </label>
       {message ? (
         <p className={`text-sm ${status === "success" ? "text-vabix-forest" : "text-red-800"}`} role="status">
@@ -164,7 +245,7 @@ export function LeadForm({
       ) : null}
       {status === "error" ? (
         <p className="text-sm text-vabix-muted">
-          Hoặc gọi{" "}
+          {tx.orCall}{" "}
           <a href={siteConfig.contact.hotlineHref} className="font-semibold text-vabix-deep-teal">
             {siteConfig.contact.hotline}
           </a>{" "}
@@ -176,7 +257,7 @@ export function LeadForm({
         </p>
       ) : null}
       <Button type="submit" disabled={status === "loading"}>
-        {status === "loading" ? "Đang gửi..." : "Gửi yêu cầu"}
+        {status === "loading" ? tx.sending : tx.send}
       </Button>
     </form>
   );

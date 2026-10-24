@@ -7,6 +7,17 @@ import { events } from "@/content/events";
 import { knowledgeProducts } from "@/content/knowledgeProducts";
 import { solutions } from "@/content/solutions";
 import { consultingServices } from "@/content/consulting";
+import { programsEn } from "@/content/en/programs";
+import { methodologiesEn } from "@/content/en/methodologies";
+import { expertsEn } from "@/content/en/experts";
+import { articlesEn } from "@/content/en/articles";
+import { caseStudiesEn } from "@/content/en/caseStudies";
+import { eventsEn } from "@/content/en/events";
+import { knowledgeProductsEn } from "@/content/en/knowledgeProducts";
+import { solutionsEn } from "@/content/en/solutions";
+import { consultingServicesEn } from "@/content/en/consulting";
+import { localizeList } from "@/i18n/pick";
+import type { Locale } from "@/i18n/locale";
 import { getCms, listPublishedCms, publicPayload, type CmsDocument } from "./service";
 import { parseJson } from "@/platform/sanitize";
 import { mapExpertCmsPayload } from "./expertPayload";
@@ -103,73 +114,74 @@ function mergeFileAndCms<T extends object>(file: T, cms?: Partial<T>): T {
   return merged;
 }
 
-export function publishedPrograms(): Program[] {
+// Mọi hàm published* nhận `locale`: ở /en, bản dịch trong src/content/en/* được ghép lên theo slug.
+export function publishedPrograms(locale: Locale = "vi"): Program[] {
   const files = programs.filter((item) => item.status === "published");
-  return overlayList("program", files).filter((item) => item.status !== "draft");
+  return localizeList(overlayList("program", files).filter((item) => item.status !== "draft"), programsEn, locale);
 }
 
-export function publishedProgram(slug: string) {
-  return publishedPrograms().find((item) => item.slug === slug) ?? null;
+export function publishedProgram(slug: string, locale: Locale = "vi") {
+  return publishedPrograms(locale).find((item) => item.slug === slug) ?? null;
 }
 
-export function publishedFeaturedPrograms() {
-  return publishedPrograms().filter((item) => item.featured);
+export function publishedFeaturedPrograms(locale: Locale = "vi") {
+  return publishedPrograms(locale).filter((item) => item.featured);
 }
 
-export function publishedMethodologies() {
-  return overlayList("methodology", methodologies);
+export function publishedMethodologies(locale: Locale = "vi") {
+  return localizeList(overlayList("methodology", methodologies), methodologiesEn, locale);
 }
 
-export function publishedMethodology(slug: string) {
-  return publishedMethodologies().find((item) => item.slug === slug) ?? null;
+export function publishedMethodology(slug: string, locale: Locale = "vi") {
+  return publishedMethodologies(locale).find((item) => item.slug === slug) ?? null;
 }
 
-export function publishedExperts(): Expert[] {
-  return overlayList("expert", experts, expertPayload);
+export function publishedExperts(locale: Locale = "vi"): Expert[] {
+  return localizeList(overlayList("expert", experts, expertPayload), expertsEn, locale);
 }
 
-export function publishedExpert(slug: string) {
-  return publishedExperts().find((item) => item.slug === slug) ?? null;
+export function publishedExpert(slug: string, locale: Locale = "vi") {
+  return publishedExperts(locale).find((item) => item.slug === slug) ?? null;
 }
 
-export function publishedFeaturedExperts() {
-  return publishedExperts()
+export function publishedFeaturedExperts(locale: Locale = "vi") {
+  return publishedExperts(locale)
     .filter((item) => item.featured)
     .sort((a, b) => (a.order ?? 0) - (b.order ?? 0));
 }
 
-export function publishedArticles() {
-  return overlayList("article", articles);
+export function publishedArticles(locale: Locale = "vi") {
+  return localizeList(overlayList("article", articles), articlesEn, locale);
 }
 
-export function publishedArticle(slug: string) {
-  return publishedArticles().find((item) => item.slug === slug) ?? null;
+export function publishedArticle(slug: string, locale: Locale = "vi") {
+  return publishedArticles(locale).find((item) => item.slug === slug) ?? null;
 }
 
-export function publishedArticlesByCategory(category?: ArticleCategory) {
-  const list = [...publishedArticles()].sort((a, b) => (b.publishedAt ?? "").localeCompare(a.publishedAt ?? ""));
+export function publishedArticlesByCategory(category?: ArticleCategory, locale: Locale = "vi") {
+  const list = [...publishedArticles(locale)].sort((a, b) => (b.publishedAt ?? "").localeCompare(a.publishedAt ?? ""));
   return category ? list.filter((item) => item.category === category) : list;
 }
 
-export function publishedCaseStudies() {
-  return overlayList("case_study", caseStudies);
+export function publishedCaseStudies(locale: Locale = "vi") {
+  return localizeList(overlayList("case_study", caseStudies), caseStudiesEn, locale);
 }
 
-export function publishedCaseStudy(slug: string) {
-  return publishedCaseStudies().find((item) => item.slug === slug) ?? null;
+export function publishedCaseStudy(slug: string, locale: Locale = "vi") {
+  return publishedCaseStudies(locale).find((item) => item.slug === slug) ?? null;
 }
 
-export function publishedEvents() {
-  return overlayList("event", events);
+export function publishedEvents(locale: Locale = "vi") {
+  return localizeList(overlayList("event", events), eventsEn, locale);
 }
 
-export function publishedEvent(slug: string) {
-  return publishedEvents().find((item) => item.slug === slug) ?? null;
+export function publishedEvent(slug: string, locale: Locale = "vi") {
+  return publishedEvents(locale).find((item) => item.slug === slug) ?? null;
 }
 
-export function publishedUpcomingEvents() {
+export function publishedUpcomingEvents(locale: Locale = "vi") {
   const rank: Record<string, number> = { upcoming: 0, ongoing: 1, completed: 2 };
-  return [...publishedEvents()].sort((a, b) => {
+  return [...publishedEvents(locale)].sort((a, b) => {
     const ra = rank[a.status] ?? 9;
     const rb = rank[b.status] ?? 9;
     if (ra !== rb) return ra - rb;
@@ -177,20 +189,25 @@ export function publishedUpcomingEvents() {
   });
 }
 
-export function publishedKnowledgeProducts() {
-  return overlayList("knowledge_product", knowledgeProducts);
+export function publishedKnowledgeProducts(locale: Locale = "vi") {
+  return localizeList(overlayList("knowledge_product", knowledgeProducts), knowledgeProductsEn, locale);
 }
 
-export function publishedKnowledgeProduct(slug: string) {
-  return publishedKnowledgeProducts().find((item) => item.slug === slug) ?? null;
+export function publishedKnowledgeProduct(slug: string, locale: Locale = "vi") {
+  return publishedKnowledgeProducts(locale).find((item) => item.slug === slug) ?? null;
 }
 
-export function publishedSolutions() {
-  return overlayList("solution", solutions);
+export function publishedSolutions(locale: Locale = "vi") {
+  return localizeList(overlayList("solution", solutions), solutionsEn, locale);
 }
 
-export function publishedSolution(slug: string) {
-  return publishedSolutions().find((item) => item.slug === slug) ?? null;
+export function publishedSolution(slug: string, locale: Locale = "vi") {
+  return publishedSolutions(locale).find((item) => item.slug === slug) ?? null;
+}
+
+/** Dịch vụ tư vấn chuyển đổi (src/content/consulting.ts) theo ngôn ngữ. */
+export function localizedConsultingServices<T extends { slug: string }>(list: T[], locale: Locale = "vi") {
+  return localizeList(list, consultingServicesEn as unknown as (Partial<T> & { slug: string })[], locale);
 }
 
 export function publishedPage(slug: string) {

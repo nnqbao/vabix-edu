@@ -1,17 +1,21 @@
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Section";
+import { getLocale } from "@/i18n/server";
 
-export function CTASection({
+export async function CTASection({
   title,
   description,
-  primary = { label: "Đặt lịch trao đổi", href: "/ket-noi#tu-van" },
-  secondary = { label: "Liên hệ VABIX", href: "/lien-he" },
+  primary,
+  secondary,
 }: {
   title: string;
   description: string;
   primary?: { label: string; href: string };
   secondary?: { label: string; href: string };
 }) {
+  const en = (await getLocale()) === "en";
+  primary ??= { label: en ? "Book a conversation" : "Đặt lịch trao đổi", href: "/ket-noi#tu-van" };
+  secondary ??= { label: en ? "Contact VABIX" : "Liên hệ VABIX", href: "/lien-he" };
   return (
     <section className="relative overflow-hidden bg-vabix-deep-teal py-20 text-white">
       <div className="pointer-events-none absolute inset-0 opacity-40" aria-hidden>

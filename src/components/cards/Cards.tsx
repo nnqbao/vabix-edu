@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import { getLocale } from "@/i18n/server";
 import type { Expert } from "@/content/types";
 import type { CaseStudy } from "@/content/types";
 import type { EventItem } from "@/content/types";
@@ -24,7 +25,8 @@ export function ExpertCard({ expert }: { expert: Expert }) {
   );
 }
 
-export function CaseStudyCard({ item, pillar }: { item: CaseStudy; pillar?: number }) {
+export async function CaseStudyCard({ item, pillar }: { item: CaseStudy; pillar?: number }) {
+  const en = (await getLocale()) === "en";
   const title = item.headline ?? item.industry;
   return (
     <article className="cs-card group relative flex h-full flex-col overflow-hidden rounded-[24px] border border-vabix-deep-teal/10 bg-white shadow-[0_12px_32px_rgba(22,60,62,0.06)] transition-[transform,box-shadow,border-color] duration-500 hover:-translate-y-1.5 hover:border-vabix-gold/50 hover:shadow-[0_22px_48px_rgba(22,60,62,0.14)]">
@@ -46,7 +48,7 @@ export function CaseStudyCard({ item, pillar }: { item: CaseStudy; pillar?: numb
         {pillar ? (
           <span className="absolute right-3 top-3 grid h-14 w-14 place-items-center rounded-full border border-vabix-gold/70 bg-vabix-deep-teal/90 text-center leading-none shadow-[0_8px_20px_rgba(0,0,0,0.25)] backdrop-blur">
             <span>
-              <span className="block text-[9px] font-semibold uppercase tracking-[0.18em] text-vabix-soft-gold">Trụ</span>
+              <span className="block text-[9px] font-semibold uppercase tracking-[0.18em] text-vabix-soft-gold">{en ? "Pillar" : "Trụ"}</span>
               <span className="mt-0.5 block text-xl font-bold text-vabix-gold">{String(pillar).padStart(2, "0")}</span>
             </span>
           </span>
@@ -57,24 +59,26 @@ export function CaseStudyCard({ item, pillar }: { item: CaseStudy; pillar?: numb
         <h3 className="text-balance text-lg font-semibold leading-snug text-vabix-deep-teal">{title}</h3>
         <p className="mt-3 line-clamp-3 text-sm leading-relaxed text-vabix-muted">{item.summary ?? item.challenge}</p>
         <p className="mt-4 rounded-xl bg-vabix-ivory p-4 text-sm leading-relaxed text-vabix-ink">
-          <span className="block text-[11px] font-semibold uppercase tracking-[0.16em] text-vabix-gold">Kết quả</span>
+          <span className="block text-[11px] font-semibold uppercase tracking-[0.16em] text-vabix-gold">{en ? "Result" : "Kết quả"}</span>
           <span className="mt-1 line-clamp-4">{item.resultSummary ?? item.results}</span>
         </p>
         <Link
           href={`/tri-thuc/case-study/${item.slug}`}
           className="mt-auto inline-flex items-center gap-2 pt-5 text-sm font-semibold text-vabix-deep-teal after:absolute after:inset-0 after:content-[''] group-hover:text-vabix-gold"
         >
-          Xem case study <ArrowIcon className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+          {en ? "View case study" : "Xem case study"} <ArrowIcon className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
         </Link>
       </div>
     </article>
   );
 }
 
-export function EventCard({ event }: { event: EventItem }) {
+export async function EventCard({ event }: { event: EventItem }) {
+  const en = (await getLocale()) === "en";
   const date = new Date(event.startDate);
-  const dateLabel = date.toLocaleDateString("vi-VN", { day: "2-digit", month: "2-digit", year: "numeric" });
-  const statusLabel = event.status === "upcoming" ? "Sắp diễn ra" : event.status === "ongoing" ? "Đang diễn ra" : "Đã diễn ra";
+  const dateLabel = date.toLocaleDateString(en ? "en-GB" : "vi-VN", { day: "2-digit", month: "2-digit", year: "numeric" });
+  const statusLabel =
+    event.status === "upcoming" ? (en ? "Upcoming" : "Sắp diễn ra") : event.status === "ongoing" ? (en ? "Ongoing" : "Đang diễn ra") : en ? "Completed" : "Đã diễn ra";
   return (
     <article className="flex h-full flex-col border border-vabix-deep-teal/10 bg-white">
       <div className="relative aspect-[16/10] bg-vabix-teal">
@@ -92,11 +96,11 @@ export function EventCard({ event }: { event: EventItem }) {
         <p className="mt-2 text-sm text-vabix-muted">{event.location}</p>
         <div className="mt-auto flex gap-3 pt-4">
           <Link href={`/su-kien/${event.slug}`} className="text-sm font-semibold text-vabix-deep-teal">
-            Chi tiết
+            {en ? "Details" : "Chi tiết"}
           </Link>
           {event.status !== "completed" && event.registrationUrl ? (
             <Link href={event.registrationUrl} className="text-sm font-semibold text-vabix-gold">
-              Đăng ký
+              {en ? "Register" : "Đăng ký"}
             </Link>
           ) : null}
         </div>
@@ -144,7 +148,7 @@ export function MetricCard({ value, label }: { value: string; label: string }) {
   );
 }
 
-export function SolutionCard({
+export async function SolutionCard({
   number,
   title,
   summary,
@@ -155,13 +159,14 @@ export function SolutionCard({
   summary: string;
   href: string;
 }) {
+  const en = (await getLocale()) === "en";
   return (
     <Link href={href} className="group flex h-full flex-col border border-vabix-deep-teal/10 bg-white p-6 hover:border-vabix-gold">
       <span className="text-sm font-semibold tracking-widest text-vabix-gold">{number}</span>
       <h3 className="mt-3 text-lg font-semibold text-vabix-deep-teal">{title}</h3>
       <p className="mt-3 flex-1 text-sm text-vabix-muted">{summary}</p>
       <span className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-vabix-deep-teal">
-        Tìm hiểu thêm <ArrowIcon />
+        {en ? "Learn more" : "Tìm hiểu thêm"} <ArrowIcon />
       </span>
     </Link>
   );

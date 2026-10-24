@@ -2,6 +2,7 @@ import { headers } from "next/headers";
 import { FloatingContact } from "./FloatingContact";
 import { Footer } from "./Footer";
 import { Header } from "./Header";
+import { LocaleLinks } from "./LocaleLinks";
 import { isBizcarHost, isBizcarPath } from "@/security/routes";
 import { isPlatformProtectedPath, isPlatformPublicPath } from "@/platform/auth/jwt";
 
@@ -22,6 +23,7 @@ export async function ConditionalChrome({ children }: { children: React.ReactNod
       <main id="noi-dung">{children}</main>
       <Footer />
       <FloatingContact />
+      <LocaleLinks />
     </>
   );
 }

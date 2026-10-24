@@ -8,6 +8,7 @@ import { Container } from "@/components/ui/Section";
 import { CTASection } from "@/components/sections/CTASection";
 import { JsonLd } from "@/components/ui/Misc";
 import { createMetadata, absUrl } from "@/lib/seo";
+import { getLocale } from "@/i18n/server";
 
 export function generateStaticParams() {
   const slugs = new Set(experts.map((item) => item.slug));
@@ -21,18 +22,21 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const e = publishedExpert(slug);
+  const locale = await getLocale();
+  const e = publishedExpert(slug, locale);
   if (!e) return {};
-  return createMetadata({ title: e.name, description: e.shortBio, path: `/mang-luoi/chuyen-gia/${e.slug}` });
+  return createMetadata({ title: e.name, description: e.shortBio, path: `${locale === "en" ? "/en" : ""}/mang-luoi/chuyen-gia/${e.slug}` });
 }
 
 export default async function ExpertDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const e = publishedExpert(slug);
+  const locale = await getLocale();
+  const en = locale === "en";
+  const e = publishedExpert(slug, locale);
   if (!e) notFound();
-  const relatedCases = publishedCaseStudies().filter((c) => e.caseStudies?.includes(c.slug));
-  const relatedArticles = publishedArticles().filter((a) => e.articles?.includes(a.slug));
-  const relatedPrograms = publishedMethodologies().filter((m) => e.programs?.includes(m.slug));
+  const relatedCases = publishedCaseStudies(locale).filter((c) => e.caseStudies?.includes(c.slug));
+  const relatedArticles = publishedArticles(locale).filter((a) => e.articles?.includes(a.slug));
+  const relatedPrograms = publishedMethodologies(locale).filter((m) => e.programs?.includes(m.slug));
 
   return (
     <>
@@ -51,8 +55,8 @@ export default async function ExpertDetailPage({ params }: { params: Promise<{ s
         title={e.name}
         description={e.organizationRole}
         crumbs={[
-          { name: "Trang chủ", href: "/" },
-          { name: "Chuyên gia", href: "/mang-luoi/chuyen-gia" },
+          { name: en ? "Home" : "Trang chủ", href: "/" },
+          { name: en ? "Experts" : "Chuyên gia", href: "/mang-luoi/chuyen-gia" },
           { name: e.name },
         ]}
       />
@@ -69,7 +73,7 @@ export default async function ExpertDetailPage({ params }: { params: Promise<{ s
           ) : null}
         </div>
         <div>
-          <h2 className="text-xl font-semibold text-vabix-deep-teal">Lĩnh vực chuyên môn</h2>
+          <h2 className="text-xl font-semibold text-vabix-deep-teal">{en ? "Areas of expertise" : "Lĩnh vực chuyên môn"}</h2>
           <div className="mt-3 flex flex-wrap gap-2">
             {e.expertise.map((x) => (
               <span key={x} className="border border-vabix-deep-teal/15 px-3 py-1 text-sm">
@@ -77,11 +81,11 @@ export default async function ExpertDetailPage({ params }: { params: Promise<{ s
               </span>
             ))}
           </div>
-          <h2 className="mt-10 text-xl font-semibold text-vabix-deep-teal">Tiểu sử</h2>
+          <h2 className="mt-10 text-xl font-semibold text-vabix-deep-teal">{en ? "Biography" : "Tiểu sử"}</h2>
           <p className="measure mt-3 text-vabix-muted">{e.fullBio}</p>
           {relatedPrograms.length ? (
             <>
-              <h2 className="mt-10 text-xl font-semibold text-vabix-deep-teal">Chương trình</h2>
+              <h2 className="mt-10 text-xl font-semibold text-vabix-deep-teal">{en ? "Programmes" : "Chương trình"}</h2>
               <ul className="mt-3 space-y-2">
                 {relatedPrograms.map((p) => (
                   <li key={p.slug}>
@@ -107,7 +111,7 @@ export default async function ExpertDetailPage({ params }: { params: Promise<{ s
           ) : null}
           {relatedArticles.length ? (
             <>
-              <h2 className="mt-10 text-xl font-semibold text-vabix-deep-teal">Bài viết</h2>
+              <h2 className="mt-10 text-xl font-semibold text-vabix-deep-teal">{en ? "Articles" : "Bài viết"}</h2>
               <ul className="mt-3 space-y-2">
                 {relatedArticles.map((a) => (
                   <li key={a.slug}>
@@ -119,7 +123,10 @@ export default async function ExpertDetailPage({ params }: { params: Promise<{ s
           ) : null}
         </div>
       </Container>
-      <CTASection title="Trao đổi cùng chuyên gia VABIX" description="Đặt lịch để xác định bài toán và hướng đồng hành phù hợp." />
+      <CTASection
+        title={en ? "Talk to a VABIX expert" : "Trao đổi cùng chuyên gia VABIX"}
+        description={en ? "Book a session to define your challenge and the right way to work together." : "Đặt lịch để xác định bài toán và hướng đồng hành phù hợp."}
+      />
     </>
   );
 }

@@ -2,6 +2,7 @@ import { Fragment } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { articles } from "@/content/articles";
+import { strategicPartners } from "@/content/strategicPartners";
 import { siteConfig } from "@/lib/siteConfig";
 import { paths } from "@/lib/paths";
 import { Container, SectionHeading } from "@/components/ui/Section";
@@ -498,6 +499,39 @@ export async function CorporateHome() {
             </figure>
           </div>
         </Container>
+      </section>
+
+      <section className="vabix-partners" id="doi-tac-chien-luoc" aria-labelledby="doi-tac-chien-luoc-title">
+        <Container>
+          <div className="vabix-partners-head">
+            <p className="eyebrow">{en ? "Strategic partners" : "Đối tác chiến lược"}</p>
+            <h2 id="doi-tac-chien-luoc-title">
+              {en ? "Trusted by " : "Đồng hành cùng "}
+              <span>{en ? "organisations and businesses" : "các tổ chức và doanh nghiệp"}</span>
+            </h2>
+            <p>
+              {en
+                ? "VABIX is honoured to be a long-term partner of agencies, universities and businesses — many of whom have joined the VABIX business village as members."
+                : "VABIX vinh dự được lựa chọn là đối tác dài lâu của các cơ quan, trường đại học và doanh nghiệp — nhiều đơn vị đã trở thành thành viên của Làng Doanh Nhân VABIX."}
+            </p>
+            <span className="vabix-partners-count">
+              <strong>{strategicPartners.length}+</strong> {en ? "partners & clients" : "khách hàng & đối tác tiêu biểu"}
+            </span>
+          </div>
+        </Container>
+        <div className="vabix-partners-rows">
+          {[strategicPartners.slice(0, Math.ceil(strategicPartners.length / 2)), strategicPartners.slice(Math.ceil(strategicPartners.length / 2))].map((row, r) => (
+            <div key={r} className="bmdo-marquee vabix-partners-marquee">
+              <ul className="bmdo-marquee-track" data-reverse={r ? "" : undefined} style={{ ["--bmdo-marquee-duration" as string]: `${row.length * 4.5}s` }}>
+                {[...row, ...row].map((p, i) => (
+                  <li key={`${p.slug}-${i}`} className="vabix-partner-card" aria-hidden={i >= row.length || undefined}>
+                    <Image src={`/images/partners/${p.slug}.webp`} alt={i >= row.length ? "" : p.name} width={180} height={100} unoptimized loading="eager" className="vabix-partner-logo" />
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
       </section>
 
       <section className="vabix-know" id="mo-hinh">

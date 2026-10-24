@@ -1,0 +1,28 @@
+// Khách hàng & đối tác tiêu biểu (theo slide "Khách hàng & đối tác tiêu biểu" của VABIX).
+// Logo nằm ở public/images/partners/<slug>.webp.
+export const strategicPartners = [
+  { slug: "vnpt", name: "VNPT" },
+  { slug: "sihub", name: "SIHUB — Trung tâm Khởi nghiệp Sáng tạo TP.HCM" },
+  { slug: "ussh", name: "Trường ĐH Khoa học Xã hội và Nhân văn — ĐHQG TP.HCM" },
+  { slug: "uef", name: "Trường Đại học Kinh tế Tài chính TP.HCM (UEF)" },
+  { slug: "dhv", name: "Trường Đại học Hùng Vương TP.HCM" },
+  { slug: "csed", name: "CSED" },
+  { slug: "wk-group", name: "WK Group" },
+  { slug: "smef", name: "SMEF" },
+  { slug: "brc", name: "BRC" },
+  { slug: "explorascience-quy-nhon", name: "Explorascience Quy Nhơn" },
+  { slug: "vipa", name: "Viện Việt Nam Bách nghệ Thực hành (VIPA)" },
+  { slug: "hce", name: "HCE" },
+  { slug: "asl", name: "Amerasian Shipping Logistics" },
+  { slug: "btlt-thu-duc-1", name: "Bê tông ly tâm Thủ Đức 1" },
+  { slug: "pe", name: "PE" },
+  { slug: "ontech", name: "Ontech" },
+  { slug: "minh-huy-group", name: "Minh Huy Group" },
+  { slug: "mk", name: "MK — Văn phòng phẩm" },
+  { slug: "homeq", name: "HomeQ" },
+  { slug: "valenta", name: "Valenta" },
+  { slug: "the-cil-coffee", name: "The Cil Coffee" },
+  { slug: "nhan-sam-den", name: "Nhân Sâm Đen" },
+  { slug: "iot", name: "IoT — Internet of Things" },
+  { slug: "khanh-le", name: "Khánh Lê" },
+] as const;

@@ -5626,3 +5626,164 @@ section[id],
     display: none;
   }
 }
+
+/* Trang chủ — Đối tác chiến lược: hai dải logo chạy ngược chiều */
+.vabix-partners {
+  position: relative;
+  overflow: hidden;
+  padding-block: 4.5rem 5rem;
+  background:
+    radial-gradient(ellipse 60% 70% at 50% 0%, rgba(222, 164, 67, 0.12), transparent 70%),
+    linear-gradient(180deg, var(--color-vabix-ivory), var(--color-vabix-warm));
+}
+
+.vabix-partners::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(222, 164, 67, 0.55), transparent);
+}
+
+.vabix-partners-head {
+  max-width: 44rem;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.vabix-partners-head h2 {
+  margin-top: 0.7rem;
+  color: var(--color-vabix-deep-teal);
+  font-size: clamp(1.85rem, 2.6vw, 2.5rem);
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+.vabix-partners-head h2 span {
+  color: var(--color-vabix-gold);
+}
+
+.vabix-partners-head > p:not(.eyebrow) {
+  margin-top: 0.9rem;
+  color: var(--color-vabix-muted);
+  font-size: 1.02rem;
+  line-height: 1.65;
+}
+
+.vabix-partners-count {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.45rem;
+  margin-top: 1.4rem;
+  border: 1px solid rgba(222, 164, 67, 0.4);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.7);
+  padding: 0.4rem 1rem;
+  color: var(--color-vabix-deep-teal);
+  font-size: 0.9rem;
+}
+
+.vabix-partners-count strong {
+  color: var(--color-vabix-gold);
+  font-size: 1.15rem;
+}
+
+.vabix-partners-rows {
+  display: grid;
+  gap: 1.1rem;
+  margin-top: 2.75rem;
+}
+
+.vabix-partners-marquee {
+  padding-block: 0.6rem;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+}
+
+.vabix-partner-card {
+  position: relative;
+  display: grid;
+  width: 13rem;
+  height: 7rem;
+  flex-shrink: 0;
+  margin-right: 1.1rem;
+  place-items: center;
+  overflow: hidden;
+  border: 1px solid rgba(22, 60, 62, 0.08);
+  border-radius: 20px;
+  background: #fff;
+  padding: 1rem 1.4rem;
+  box-shadow: 0 10px 28px rgba(22, 60, 62, 0.06);
+  transition:
+    transform 400ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 400ms ease,
+    box-shadow 400ms ease;
+}
+
+/* Vệt sáng vàng lướt qua thẻ khi rê chuột. */
+.vabix-partner-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(105deg, transparent 35%, rgba(244, 215, 166, 0.45) 50%, transparent 65%);
+  transform: translateX(-120%);
+  transition: transform 800ms ease;
+  pointer-events: none;
+}
+
+.vabix-partner-logo {
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: 4.5rem;
+  object-fit: contain;
+  filter: grayscale(0.35) saturate(0.85);
+  opacity: 0.88;
+  transition:
+    filter 400ms ease,
+    opacity 400ms ease,
+    transform 400ms ease;
+}
+
+.vabix-partner-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(222, 164, 67, 0.55);
+  box-shadow: 0 16px 36px rgba(22, 60, 62, 0.12), 0 0 0 1px rgba(222, 164, 67, 0.15);
+}
+
+.vabix-partner-card:hover::after {
+  transform: translateX(120%);
+}
+
+.vabix-partner-card:hover .vabix-partner-logo {
+  filter: none;
+  opacity: 1;
+  transform: scale(1.04);
+}
+
+@media (max-width: 639px) {
+  .vabix-partners {
+    padding-block: 3.5rem 3.75rem;
+  }
+
+  .vabix-partner-card {
+    width: 10rem;
+    height: 5.75rem;
+    margin-right: 0.8rem;
+    padding: 0.8rem 1rem;
+  }
+
+  .vabix-partner-logo {
+    max-height: 3.6rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vabix-partner-card,
+  .vabix-partner-card::after,
+  .vabix-partner-logo {
+    transition: none;
+  }
+}

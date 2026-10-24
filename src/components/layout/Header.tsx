@@ -6,12 +6,10 @@ import { useEffect, useId, useState } from "react";
 import { siteConfig } from "@/lib/siteConfig";
 import { chrome, navFor } from "@/i18n/nav";
 import { localeFromPathname, stripLocale, withLocale } from "@/i18n/locale";
-import { Button } from "@/components/ui/Button";
 import { LanguageSwitch } from "./LanguageSwitch";
 import { MegaMenu } from "@/components/layout/MegaMenu";
 import { MobileMenu } from "@/components/layout/MobileMenu";
 import { BrandLockup } from "@/components/brand/Logo";
-import { ArrowIcon } from "@/components/ui/Misc";
 
 function hasDarkHero(pathname: string | null) {
   const path = pathname ? stripLocale(pathname) : pathname;
@@ -94,29 +92,6 @@ export function Header() {
                 <path d="M16 16.5 20 20.5" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" />
               </svg>
             </Link>
-            <Link
-              href={withLocale(siteConfig.cta.learner.href, locale)}
-              className={`hidden items-center gap-1 px-2.5 py-2 text-[13px] font-medium xl:inline-flex ${
-                solid ? "text-vabix-deep-teal/80 hover:text-vabix-deep-teal" : "text-[#f4efe4]/80 hover:text-vabix-gold"
-              }`}
-            >
-              {ui.learner}
-              <span aria-hidden className="text-[11px] opacity-70">
-                ↗
-              </span>
-            </Link>
-            <div className="hidden xl:block">
-              <Button
-                href={withLocale(siteConfig.cta.register.href, locale)}
-                variant="gold"
-                className="group min-h-10 rounded-md px-4 text-[13px] font-semibold tracking-[0.02em] transition-[transform,box-shadow,background-color] duration-200 hover:-translate-y-0.5 hover:bg-vabix-soft-gold hover:shadow-[0_10px_22px_rgba(222,164,67,0.22)]"
-              >
-                {ui.register}
-                <span className="inline-flex transition-transform duration-200 group-hover:translate-x-[3px]">
-                  <ArrowIcon className="h-3.5 w-3.5" />
-                </span>
-              </Button>
-            </div>
             <LanguageSwitch inverted={inverted} />
             <button
               type="button"

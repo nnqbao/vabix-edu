@@ -6,9 +6,7 @@ import { type NavItem } from "@/content/navigation";
 import { siteConfig } from "@/lib/siteConfig";
 import { chrome, navFor } from "@/i18n/nav";
 import { withLocale, type Locale } from "@/i18n/locale";
-import { Button } from "@/components/ui/Button";
 import { LanguageSwitch } from "./LanguageSwitch";
-import { ArrowIcon } from "@/components/ui/Misc";
 
 export function MobileMenu({ id, open, onClose, locale }: { id: string; open: boolean; onClose: () => void; locale: Locale }) {
   const [expanded, setExpanded] = useState<string | null>(null);
@@ -42,26 +40,6 @@ export function MobileMenu({ id, open, onClose, locale }: { id: string; open: bo
           >
             {ui.search}
           </Link>
-          <Link
-            href={withLocale(siteConfig.cta.learner.href, locale)}
-            onClick={onClose}
-            className="flex min-h-11 items-center text-[15px] font-medium text-vabix-deep-teal"
-          >
-            {ui.learner}
-            <span aria-hidden className="ml-1 text-[12px] opacity-60">
-              ↗
-            </span>
-          </Link>
-          <Button
-            href={withLocale(siteConfig.cta.register.href, locale)}
-            onClick={onClose}
-            className="group mt-4 min-h-12 w-full rounded-md text-[15px] font-semibold"
-          >
-            {ui.register}
-            <span className="inline-flex transition-transform duration-200 group-hover:translate-x-[3px]">
-              <ArrowIcon />
-            </span>
-          </Button>
           <div className="mt-5">
             <LanguageSwitch />
           </div>

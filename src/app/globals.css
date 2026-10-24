@@ -5787,3 +5787,64 @@ section[id],
     transition: none;
   }
 }
+
+/* BMDO landing — mã QR nhóm Zalo: tia quét vàng chạy dọc mã */
+.bmdo-zalo-qr {
+  overflow: hidden;
+  outline: 1px solid rgba(228, 184, 98, 0.6);
+  outline-offset: 4px;
+  transition: transform 300ms ease;
+}
+
+.bmdo-zalo-qr:hover {
+  transform: scale(1.03);
+}
+
+.bmdo-zalo-scan {
+  position: absolute;
+  inset-inline: 0.5rem;
+  top: 0.5rem;
+  height: 2px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, transparent, #dea443, transparent);
+  box-shadow: 0 0 12px 2px rgba(222, 164, 67, 0.55);
+  animation: bmdo-zalo-scan 3.2s ease-in-out infinite;
+}
+
+@keyframes bmdo-zalo-scan {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  10%,
+  90% {
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(9.5rem);
+  }
+}
+
+@media (min-width: 640px) {
+  @keyframes bmdo-zalo-scan {
+    0%,
+    100% {
+      transform: translateY(0);
+      opacity: 0;
+    }
+    10%,
+    90% {
+      opacity: 1;
+    }
+    50% {
+      transform: translateY(8.5rem);
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bmdo-zalo-scan {
+    display: none;
+  }
+}

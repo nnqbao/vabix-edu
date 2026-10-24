@@ -196,6 +196,7 @@ export const bmdoK4 = {
     price: "10.000.000đ",
     discount: "Giảm 50% • Tiết kiệm 10 triệu",
     advisor: "ThS. Thanh Thuỳ",
+    zaloGroup: { name: "Khoá Giám đốc điều hành BMDO K4", url: "https://zaloapp.com/qr/g/d0kpihdzmlptu6dewwaw?src=qr", qr: "/images/bmdo/zalo-bmdo-k4-qr.png" },
     note: "Học viên chuẩn bị máy tính, một bài toán ưu tiên và dữ liệu quản trị cơ bản. Thông tin kỳ học có thể được cập nhật khi Ban tổ chức xác nhận.",
   },
 } as const;

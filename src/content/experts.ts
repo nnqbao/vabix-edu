@@ -215,7 +215,7 @@ export const experts: Expert[] = [
     portrait: "/images/portraits/tran-anh-vu.webp",
     featured: true,
     order: 12,
-    programs: ["ung-dung-ai-hieu-suat"],
+    programs: ["ai-worklab", "ung-dung-ai-hieu-suat"],
     caseStudies: [],
     articles: [],
   },

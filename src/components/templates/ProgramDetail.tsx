@@ -6,6 +6,7 @@ import { topicCategories } from "@/content/training";
 import { bmdoLanding } from "@/content/bmdo";
 import { BmdoLanding } from "@/components/templates/BmdoLanding";
 import { BabosoraLanding } from "@/components/templates/BabosoraLanding";
+import { AiWorklabLanding } from "@/components/templates/AiWorklabLanding";
 import { PageHero } from "@/components/layout/PageHero";
 import { Container, SectionHeading } from "@/components/ui/Section";
 import { CTASection } from "@/components/sections/CTASection";
@@ -28,6 +29,13 @@ export function programStaticParams() {
 export async function programMetadata(slug: string): Promise<Metadata> {
   const p = publishedProgram(slug);
   if (!p) return {};
+  if (slug === "ai-worklab") {
+    return createMetadata({
+      title: "VABIX AI WorkLab — From Work to Workflow",
+      description: "Chương trình 04 buổi ứng dụng AI vào công việc, quy trình và vận hành doanh nghiệp: C.L.E.A.R, AI Workflow Canvas, Human Gate, use case pilot. Huấn luyện bởi chuyên gia Trần Anh Vũ.",
+      path: paths.program(p.slug),
+    });
+  }
   if (slug === "babosora") {
     return createMetadata({
       title: "BABOSORA — Vận hành và gia tốc dòng chảy doanh thu",
@@ -64,6 +72,7 @@ export async function ProgramDetail({ slug }: { slug: string }) {
   if (!p) notFound();
   if (slug === "bmdo") return <BmdoLanding />;
   if (slug === "babosora") return <BabosoraLanding />;
+  if (slug === "ai-worklab") return <AiWorklabLanding />;
   const groupLabel = programGroups.find((g) => g.id === p.group)?.label;
   const topics = (p.topicCategories ?? []).map((id) => topicCategories.find((t) => t.id === id)?.label).filter(Boolean);
   const related = publishedPrograms().filter((x) => (p.relatedPrograms ?? []).includes(x.slug));

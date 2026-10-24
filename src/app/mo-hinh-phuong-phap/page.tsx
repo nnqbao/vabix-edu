@@ -17,7 +17,7 @@ export default function MethodsIndexPage() {
     <>
       <PageHero
         title="Mô hình, chương trình và chuẩn thành công"
-        description="Phân biệt rõ: BizCar = mô hình quản trị. BMDO = chương trình đào tạo CEO thực chiến. MBM = chương trình làm chủ mô hình. 3W = chuẩn thành công WOW–WELL–WIN."
+        description="Phân biệt rõ: BizCar = mô hình quản trị. BMDO = chương trình đào tạo CEO thực chiến. 3W = chuẩn thành công WOW–WELL–WIN."
         crumbs={[{ name: "Trang chủ", href: "/" }, { name: "Mô hình & phương pháp" }]}
       />
       <Container className="py-10">

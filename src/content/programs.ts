@@ -115,44 +115,6 @@ export const programs: TrainingProgram[] = [
       "Quản trị chiến lược trong thời đại DIGAI: giúp CEO nhìn rõ bối cảnh, xác định ưu tiên và chuyển chiến lược thành phương án hành động.",
   },
   {
-    id: "mbm",
-    slug: "mbm",
-    title: "MBM — Mastery of the BizCar Model",
-    shortTitle: "MBM",
-    englishName: "Mastery of the BizCar Model",
-    programCode: "MBM",
-    group: "ceo",
-    tagline: "Chương trình chuyên sâu làm chủ mô hình The BizCar.",
-    shortDescription:
-      "MBM là chương trình chuyên sâu của VABIX, giúp người học phân tích, thiết kế, phản biện và đồng hành cải tiến doanh nghiệp trên cấu trúc BizCar.",
-    audience: "CEO, chuyên gia tư vấn, giảng viên, nhà quản lý và người muốn nghiên cứu, ứng dụng chuyên sâu BizCar.",
-    audienceList: ["CEO", "Chuyên gia tư vấn", "Giảng viên", "Nhà quản lý", "Người nghiên cứu ứng dụng BizCar"],
-    problem:
-      "Nhiều người đã tiếp xúc BizCar nhưng chưa đủ độ sâu để phân tích, thiết kế, phản biện và đồng hành cải tiến doanh nghiệp trên một cấu trúc thống nhất.",
-    objectives: [
-      "Nghiên cứu, thiết kế, đo lường và chuẩn hóa mô hình BizCar.",
-      "Ứng dụng toàn diện mô hình vào phân tích và đồng hành doanh nghiệp.",
-    ],
-    topics: ["Cấu trúc 12 khối", "Thiết kế và đo lường", "Phản biện mô hình", "Đồng hành cải tiến doanh nghiệp"],
-    topicCategories: ["lanh-dao-quan-tri", "chien-luoc-mo-hinh"],
-    methodology: defaultMethod,
-    deliverables: ["Khả lực phân tích và thiết kế trên BizCar", "Khả lực phản biện và đồng hành cải tiến"],
-    outcomes: [
-      "Hướng đến khả năng phân tích, thiết kế, phản biện và đồng hành cải tiến doanh nghiệp trên một cấu trúc quản trị thống nhất.",
-    ],
-    duration: "12 tháng",
-    certificate: "Chứng nhận hoàn thành chương trình MBM — Mastery of the BizCar Model",
-    clarification:
-      "MBM là tên chương trình chuyên sâu của VABIX, không phải chương trình thạc sĩ; chứng nhận hoàn thành không phải văn bằng học vị.",
-    featured: true,
-    registrationOpen: true,
-    status: "published",
-    relatedPrograms: ["bmdo"],
-    relatedModels: ["bizcar", "3w", "applier"],
-    seoDescription:
-      "MBM — Mastery of the BizCar Model: chương trình chuyên sâu 12 tháng của VABIX. Không phải chương trình thạc sĩ hay văn bằng học vị.",
-  },
-  {
     id: "thao-truong-khoi-nghiep",
     slug: "thao-truong-khoi-nghiep",
     title: "Thao trường dành cho chiến binh khởi nghiệp",

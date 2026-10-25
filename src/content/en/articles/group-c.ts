@@ -76,7 +76,7 @@ The lesson running through it all: **without In-trust, there is no Ex-trust**. T
     excerpt:
       "Many SMEs, start-ups and household businesses are still “repairing the car while driving it”. BMDO offers an execution framework that aligns the whole operating machine, from strategy to measurable action.",
     categoryLabel: "Management",
-    content: `The nation’s era of rising is opening the door to growth: vibrant markets and breakthrough technology. Yet amid this opportunity, many businesses — from SMEs and start-ups to household businesses — are still “repairing the car while driving it”: fragmented products, unfocused markets, patchwork teams, thin finances and slow decisions. What they need is not just more knowledge but **an execution framework** that aligns the whole operating machine, from strategy to measurable action.
+    content: `In the spirit General Secretary Tô Lâm has emphasised of a new era of national rise, the door to growth is opening: vibrant markets and breakthrough technology. Yet amid this opportunity, many businesses — from SMEs and start-ups to household businesses — are still “repairing the car while driving it”: fragmented products, unfocused markets, patchwork teams, thin finances and slow decisions. What they need is not just more knowledge but **an execution framework** that aligns the whole operating machine, from strategy to measurable action.
 
 ## BMDO – designing and operating a business as a whole
 
@@ -115,16 +115,15 @@ Facilitation instead of one-way theory: participants present their current situa
 
 > That is how we drive through a landscape of many bends, plenty of potholes and no shortage of fierce races — keeping our speed, keeping risk under control, and still reaching the finish.
 
-## Learning by doing: 50 sessions, each one an adjustment
+## Learning by doing: 12 days, one design output each day
 
-The programme’s philosophy is clear: **we do not learn in order to know; we learn in order to do**. Over 50 sessions, each one is a step in adjusting the participant’s own business vehicle, combining concise foundations, guided discussion, application workshops and action checklists. Participants move continuously through the cycle **diagnose → redesign → implement immediately → measure and improve**. The output is not just knowledge, but:
+The programme’s philosophy is clear: **we do not learn in order to know; we learn in order to do**. In Cohort 04, BMDO runs over 12 Saturdays (60 hours) in four phases: laying the foundation, building the system, building capability, and leading and integrating. Each day covers one management domain of the vehicle and ends with a design output on MyBizCar. Participants move continuously through the cycle **diagnose → redesign → implement immediately → measure and improve**, supported by MyBizCar, an AI Agent and 1:1 mentoring. The output is not just knowledge, but:
 
-- **A complete MyBizCar**, assessed and issued with an Inspection Certificate confirming it is fit to operate.
-- **Fundraising opportunities**: presenting MyBizCar to partner investors.
-- **Trade connections**: joining the VABIX Business Connection Village to take products nationwide.
-- **“BizCar Driver” certification** by business class (Start-up/SME/Corp/Group).
-- **Quarterly servicing** of MyBizCar (as needed).
-- **Access to ongoing advisory support** from VABIX experts when needed.
+- **A 12-domain profile** on MyBizCar: goals, current state, plans and the links between domains.
+- **A bottleneck list** of what to tackle, by priority and resources.
+- **A 90-day roadmap**: tasks, owners, resources, deadlines and tracking metrics.
+- **A verification mechanism** based on conversion, processing time, cost, cash flow or productivity.
+- **Business connections** through the VABIX Business Connection Village.
 
 ## Why it suits Vietnamese businesses
 
@@ -140,76 +139,72 @@ The programme is led by experts with many years of management and consulting exp
 
 BMDO’s concepts and tools have been, or are being, registered for copyright protection. The programme is designed to **complement** international frameworks, serving as an execution toolkit for the Vietnamese context rather than claiming to replace them.
 
-In an age of acceleration, a business needs more than an inspiring speech. It needs a complete vehicle: an engine that knows “why it exists”, wheels in balance, a smooth drivetrain, a steady driver and a measurable route map. BMDO does not promise an easy ride; it puts into leaders’ hands a toolkit to **drive straight away** — starting with your own business, right in the classroom, one small but solid step each day. The VABIX training board commits: if it does not work, your tuition fee is refunded.`,
+In an age of acceleration, a business needs more than an inspiring speech. It needs a complete vehicle: an engine that knows “why it exists”, wheels in balance, a smooth drivetrain, a steady driver and a measurable route map. BMDO does not promise an easy ride; it puts into leaders’ hands a toolkit to **drive straight away** — starting with your own business, right in the classroom, one small but solid step each day. The Cohort 04 schedule and registration are on the BMDO page under VABIX Training.`,
     galleryAlts: ["BMDO class", "BMDO class", "BMDO class"],
   },
   {
     slug: "thiet-ke-va-van-hanh-doanh-nghiep-toan-dien",
     title: "Designing and operating a business as a whole",
     excerpt:
-      "A 30-evening hands-on programme at SIHUB for CEOs and founders: diagnose, redesign and immediately rebuild your business vehicle using Nguyễn Chí Thành’s BMDO model.",
+      "BMDO Cohort 04: 12 Saturday sessions at SIHUB, 60 hours of hands-on training for business owners and CEOs. Design and run your business as a BizCar and complete a 12-domain design on MyBizCar.",
     categoryLabel: "BizCar",
-    content: `Building on Nguyễn Chí Thành’s philosophy, the VABIX Practical Consulting & Training Village has created the programme **“Designing and operating a business as a whole”** — a 30-evening hands-on journey for leaders who will not settle for empty theory and want to move from “doing” to “leading strategy”.
+    content: `Building on Nguyễn Chí Thành’s philosophy, VABIX created **BMDO – Designing and operating the whole business**: a 12-day, 60-hour hands-on journey for business owners and CEOs who want to move from “doing” to “leading and running the business as a system”. Cohort 04 opens on 5 December 2026 at SIHUB.
 
 > A business is not a random collection of departments; it is a car with a driver, wheels, an engine and fuel. If one wheel turns out of true, the whole journey goes off course. The leader’s job is to design, adjust and keep that car running reliably, running fast and reaching its destination.
 > — Nguyễn Chí Thành, author of the BMDO, MTA Engine and B2A models, founder of the VABIX Business Connection Village
 
 ## Why this programme?
 
-In the world of SMEs and start-ups, many CEOs and founders are still “repairing the car while it is moving”: doing everything themselves, lacking a people system, running finances in a fragmented way and having no map for turning thinking into operations. They know they need to grow but not where to start, and they are often held back by wheels that are out of sync.
+Strategy that is hard to execute, teams that do not work together, tight cash flow and leaders buried in day-to-day issues are not separate problems. Many owners are still “repairing the car while driving it”: they know they need to grow but are not sure where to start, and they are held back by wheels that are out of sync.
 
-Nguyễn Chí Thành’s **BMDO** model is not only a new approach to business models but a way of seeing a business as a system that can be adjusted:
+BMDO helps owners and CEOs see their business **as a system**. Through the BizCar business-vehicle model, participants connect 12 management domains with systems thinking, set priorities and design an operating plan that fits the reality of their own business.
 
-- **The business vehicle (BizCar)**: the CEO is the driver; the four key wheels (Product – Market – People – Finance) must work together; the engine is the vision and the operating culture.
-- **Business to Address & Area (B2A)**: understanding “who is where” to personalise interactions.
+## Four phases, twelve management domains
 
-That is why a programme is needed that goes beyond lecturing and draws CEOs and founders into a process: **diagnose → redesign → implement immediately → commit to results**.
+Each day is linked to one part of the business vehicle and ends with a concrete design output:
 
-## The difference: structured practice, tracked commitments
+1. **Laying the foundation (Days 01 – 03) – Destination and value**: strategic direction, business environment, value management.
+2. **Building the system (Days 04 – 06) – Market and organisation**: market, brand and organisation management.
+3. **Building capability (Days 07 – 09) – Resources and execution**: people, finance and operations management.
+4. **Leading and integrating (Days 10 – 12) – Running the business to grow**: leadership and management, company culture, core-resource management.
 
-This is not a traditional course but a transformation programme built on three pillars:
+## Learn on real problems, take home a real design
 
-- **Deep frameworks you can apply at once**: KLASS (staff capability), KORA (performance breakdown), EXP (employee experience), BABOSO, RE.CYCLE, B2A… are built into every session so participants understand, act and measure at the same time.
-- **Real actions and tools**: every session includes real business exercises, a people map, a personalised project and a structured, followed-up 21-day commitment. Participants leave not just with “knowledge” but with a plan to improve their people wheel and an implementation roadmap.
-- **A support system that lasts beyond the course**: mentors who keep challenging; template tools (KORA worksheet, KLASS scorecard, team charter, employee experience audit); an alumni network for sharing results and continuing to fine-tune after the 30 sessions.
+The **APPLIER** cycle puts participants in the role of business designer: getting started, recognising the model, designing directly on MyBizCar, sharing perspectives, improving, consolidating and committing to apply between sessions. Each day includes 300 minutes of guided practice.
 
-## Programme details
+Three layers of support go with every participant:
 
-- **Duration**: 30 evenings, 3 hours each.
-- **Venue**: in person at SIHUB – Ho Chi Minh City Innovation Centre.
-- **Audience**: CEOs, founders, operations directors and HR managers — the people responsible for keeping the business vehicle running smoothly and at speed.
-- **Method**: concise teaching, analysis of each business’s situation, group and individual workshops, peer challenge, expert coaching and personal action commitments.
-- **Fee**: 120,000 VND per session.
-- **Outcome**: a “My company’s people wheel” project, a 21-day commitment and a certificate.
+- **MyBizCar**: complete the 12-domain design on the system.
+- **AI Agent**: structure the work and prompt reviews.
+- **1:1 mentoring**: unblock each business’s priority problem.
 
-## Core content
+## Cohort 04 at a glance
 
-Participants go through a clear sequence of transformation:
+- **Opening**: 5 December 2026.
+- **Schedule**: every Saturday, 12 days, 60 hours of hands-on training.
+- **Venue**: SIHUB building, 123 Trương Định, Hồ Chí Minh City.
+- **For**: business owners, CEOs and leadership teams.
+- **Early-bird fee**: 10,000,000 VND (list price 20,000,000 VND, 50% off).
+- **Bring**: a laptop, one priority problem and basic management data.
 
-1. Understanding the nature of people within the BizCar system and how it links to the other pillars.
-2. Assessing real capability with the KLASS Pyramid and identifying the gaps to close.
-3. Managing performance systematically: classifying, coaching and communicating effectively through 4P and KORA.
-4. Designing the employee experience to build deep engagement and a self-running culture.
-5. Building self-managing teams tied to internal mentoring and clear delegation.
-6. Pulling it together into a people project: participants present their plan to improve their own company’s people wheel and commit to implementing it.
+## What does the business take away?
 
-## Value for the business
+The output is not just understanding but management designs the business can keep refining:
 
-- **From chaos to system**: instead of “patching up” staffing, the business gains a people map, an improvement roadmap and a new operating mechanism.
-- **Faster decisions**: the performance system and mentoring set off rapid feedback loops.
-- **Lower risk of losing key people**: better employee experience, engagement and internal development.
-- **Lean use of resources**: the team knows its roles and criteria and runs itself within clear guard-rails.
-- **Commitment to execution**: a 21-day action package with monitoring and support to turn the project into results.
-
-At 120,000 VND per session, this is a small investment in return for an operating map, an improvement project, mentoring and a commitment to transformation — far less than the hidden costs of ineffective staff, slow decisions or staff turnover. Places are limited so that every participant receives in-depth coaching.
+- **A 12-domain profile**: goals, current state, plans and the links between domains on MyBizCar.
+- **A bottleneck list**: what to tackle, by priority and available resources.
+- **A 90-day roadmap**: tasks, owners, resources, deadlines and tracking metrics.
+- **A verification mechanism**: assessment by conversion, processing time, cost, cash flow or productivity.
 
 ## Practical significance
 
-The programme does more than help individual businesses improve internally; it creates a ripple effect:
+The programme does more than improve each business internally; its impact spreads:
 
-- It develops leaders who **know how to design systems** — who lead, not just “do”.
-- It connects members of the business community who share an operating language and a commitment to growth.
-- It nurtures a cohort of **“BizCar implementers”** who can spread the model through their own networks.`,
+- It develops leaders who **know how to design systems**, who lead rather than just “do”.
+- It connects owners who share an operating language and a commitment to growth.
+- It grows a group of **“BizCar practitioners”** who can spread the model through their own networks.
+
+See the full programme and reserve a place on the **BMDO Cohort 04** page under VABIX Training.`,
     galleryAlts: ["BMDO class", "BMDO class", "BMDO class", "BMDO class"],
   },
   {

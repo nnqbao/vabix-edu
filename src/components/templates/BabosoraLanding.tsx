@@ -123,8 +123,8 @@ export async function BabosoraLanding() {
               <span className="block text-[clamp(2.5rem,15vw,3.4rem)] font-bold leading-none tracking-[0.03em] text-vabix-warm sm:text-[5.6rem]">{b.title}</span>
               <span className="mt-5 block text-balance text-2xl font-semibold leading-snug text-vabix-gold sm:text-[2.1rem]">{b.subtitle}</span>
             </h1>
-            <p className="mt-6 border-l-2 border-vabix-gold/80 pl-4">
-              <span className="flex flex-col gap-1 text-sm font-semibold uppercase tracking-[0.1em] sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-3 sm:text-base">
+            <p className="mt-6 lg:border-l-2 lg:border-vabix-gold/80 lg:pl-4">
+              <span className="flex flex-col items-center gap-1 text-sm font-semibold uppercase tracking-[0.1em] sm:flex-row sm:flex-wrap sm:justify-center sm:gap-x-3 sm:text-base lg:items-center lg:justify-start">
                 {b.tagline.map((t, i) => (
                   <span key={t} className="inline-flex items-center gap-3">
                     <span aria-hidden="true" className={`h-1.5 w-1.5 rotate-45 bg-vabix-gold ${i === 0 ? "sm:hidden" : ""}`} />
@@ -133,8 +133,8 @@ export async function BabosoraLanding() {
                 ))}
               </span>
             </p>
-            <p className="mt-6 max-w-xl text-base leading-relaxed text-white/75 sm:text-lg">{b.lead}</p>
-            <div className="mt-8 grid gap-3 sm:flex sm:flex-wrap">
+            <p className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-white/75 sm:text-lg lg:mx-0">{b.lead}</p>
+            <div className="mt-8 grid gap-3 sm:flex sm:flex-wrap sm:justify-center lg:justify-start">
               <Button href="#dang-ky" className="w-full sm:w-auto">
                 {en ? "Register now →" : "Đăng ký tham gia →"}
               </Button>

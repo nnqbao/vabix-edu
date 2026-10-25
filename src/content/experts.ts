@@ -207,11 +207,28 @@ export const experts: Expert[] = [
     name: "ThS. NCS. Trần Anh Vũ",
     title: "Founder & CEO VSC GROUP\nCo-Founder & CAIO VABIX\nGiảng viên – Diễn giả – Chuyên gia AI Marketing",
     organizationRole: "Co-Founder & CAIO VABIX",
-    expertise: ["AI Marketing", "AI hệ thống"],
+    expertise: [
+      "AI Marketing & Chiến lược thương hiệu",
+      "Trí tuệ nhân tạo ứng dụng trong doanh nghiệp",
+      "Chuyển đổi số & Tự động hóa vận hành",
+      "Chiến lược truyền thông & Sáng tạo nội dung",
+      "Đào tạo và phát triển năng lực AI",
+    ],
+    tags: ["AI Marketing", "AI ứng dụng"],
     shortBio:
-      "Founder & CEO VSC GROUP, Co-Founder & CAIO VABIX. Giảng viên, diễn giả và chuyên gia AI Marketing, đồng hành cùng doanh nghiệp đưa AI vào vận hành có kiểm soát.",
-    fullBio:
-      "Thạc sĩ, nghiên cứu sinh Trần Anh Vũ là Founder & CEO VSC GROUP và Co-Founder & CAIO (Giám đốc AI) của VABIX. Là giảng viên, diễn giả và chuyên gia AI Marketing, ông đồng hành cùng VABIX trong các chương trình giúp doanh nghiệp thiết kế năng lực số, ứng dụng AI có kiểm soát và chuẩn hóa hoạt động marketing trên một hệ thống thống nhất. AI hỗ trợ thực hiện; con người giữ quyền quyết định và trách nhiệm quản trị.",
+      "Chuyên gia AI Marketing, chiến lược thương hiệu và ứng dụng trí tuệ nhân tạo vào quản trị doanh nghiệp; Founder & CEO VSC GROUP, Co-Founder & CAIO VABIX.",
+    fullBio: `ThS. NCS. Trần Anh Vũ là chuyên gia trong lĩnh vực AI Marketing, chiến lược thương hiệu và ứng dụng trí tuệ nhân tạo vào hoạt động quản trị doanh nghiệp. Anh hiện là Nhà sáng lập kiêm Tổng Giám đốc VSC GROUP, đồng thời giữ vai trò Đồng sáng lập và Giám đốc Trí tuệ nhân tạo (CAIO) tại VABIX.
+
+Với nền tảng liên ngành về Marketing, quản trị kinh doanh, truyền thông đa phương tiện và công nghệ, anh theo đuổi hướng tiếp cận kết hợp giữa tư duy chiến lược, năng lực sáng tạo và ứng dụng AI để giải quyết các bài toán thực tiễn của doanh nghiệp.
+
+Trong vai trò lãnh đạo và tư vấn, anh tập trung nghiên cứu, phát triển các giải pháp AI ứng dụng, hệ thống AI Agent và mô hình tự động hóa nhằm hỗ trợ doanh nghiệp tối ưu quy trình vận hành, nâng cao năng lực ra quyết định và phát triển hoạt động Marketing một cách bền vững.
+
+Song song với hoạt động doanh nghiệp, anh tham gia giảng dạy, đào tạo và chia sẻ kiến thức về Marketing, truyền thông và trí tuệ nhân tạo. Anh chú trọng chuyển hóa những khái niệm công nghệ phức tạp thành phương pháp, công cụ và năng lực thực hành phù hợp với từng đối tượng học viên và tổ chức.
+
+Tại VABIX, anh tham gia phát triển năng lực AI, kết nối tri thức với công nghệ và đồng hành cùng doanh nghiệp trong quá trình chuyển đổi từ tư duy quản trị truyền thống sang các mô hình vận hành có sự hỗ trợ của trí tuệ nhân tạo.`,
+    philosophy:
+      "Anh theo đuổi quan điểm rằng giá trị của AI không chỉ nằm ở khả năng tự động hóa, mà ở cách con người thiết kế, định hướng và kiểm soát công nghệ để tạo ra giá trị thực tiễn.",
+    quote: "AI hỗ trợ thực thi. Con người định hướng, quyết định và chịu trách nhiệm về giá trị được tạo ra.",
     portrait: "/images/portraits/tran-anh-vu.webp",
     featured: true,
     order: 12,

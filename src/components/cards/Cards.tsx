@@ -20,7 +20,7 @@ export function ExpertCard({ expert }: { expert: Expert }) {
       </div>
       <h3 className="mt-4 text-center text-base font-semibold text-vabix-deep-teal">{expert.name}</h3>
       <p className="mt-1 whitespace-pre-line text-center text-sm text-vabix-muted">{expert.title}</p>
-      <p className="mt-2 text-center text-xs tracking-wide text-vabix-gold">{(expert.expertise ?? []).slice(0, 2).join(" · ")}</p>
+      <p className="mt-2 text-center text-xs tracking-wide text-vabix-gold">{(expert.tags ?? expert.expertise ?? []).slice(0, 2).join(" · ")}</p>
     </Link>
   );
 }

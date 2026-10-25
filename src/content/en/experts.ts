@@ -116,10 +116,27 @@ export const expertsEn: (Partial<Expert> & { slug: string })[] = [
     slug: "tran-anh-vu",
     title: "Founder & CEO, VSC GROUP\nCo-Founder & CAIO, VABIX\nLecturer – Speaker – AI Marketing expert",
     organizationRole: "Co-Founder & CAIO, VABIX",
-    expertise: ["AI Marketing", "AI systems"],
+    expertise: [
+      "AI Marketing & brand strategy",
+      "Applied artificial intelligence in business",
+      "Digital transformation & operations automation",
+      "Communications strategy & content creation",
+      "AI capability training and development",
+    ],
+    tags: ["AI Marketing", "Applied AI"],
     shortBio:
-      "Founder & CEO of VSC GROUP and Co-Founder & CAIO of VABIX. A lecturer, speaker and AI Marketing expert who helps businesses bring AI into operations in a controlled way.",
-    fullBio:
-      "Trần Anh Vũ (MA, PhD candidate) is Founder & CEO of VSC GROUP and Co-Founder & Chief AI Officer (CAIO) of VABIX. A lecturer, speaker and AI Marketing expert, he works with VABIX on programmes that help businesses design digital capabilities, apply AI in a controlled way and standardise marketing on one integrated system. AI supports the work; people keep the decisions and the management responsibility.",
+      "An expert in AI Marketing, brand strategy and applying artificial intelligence to business management; Founder & CEO of VSC GROUP and Co-Founder & CAIO of VABIX.",
+    fullBio: `Trần Anh Vũ (MA, PhD candidate) is an expert in AI Marketing, brand strategy and the application of artificial intelligence to business management. He is the Founder and CEO of VSC GROUP and also serves as Co-Founder and Chief AI Officer (CAIO) of VABIX.
+
+With an interdisciplinary background in marketing, business management, multimedia communications and technology, he combines strategic thinking, creativity and applied AI to solve real business problems.
+
+As a leader and adviser, he focuses on researching and developing applied AI solutions, AI Agent systems and automation models that help businesses streamline operations, make better decisions and grow their marketing sustainably.
+
+Alongside his business work, he teaches, trains and shares knowledge on marketing, communications and artificial intelligence. He concentrates on turning complex technology concepts into methods, tools and practical skills that fit each group of learners and each organisation.
+
+At VABIX, he helps build AI capability, connects knowledge with technology and works with businesses as they move from traditional management thinking to operating models supported by artificial intelligence.`,
+    philosophy:
+      "He believes the value of AI lies not only in what it can automate, but in how people design, direct and control the technology to create real value.",
+    quote: "AI supports the work. People set the direction, make the decisions and take responsibility for the value created.",
   },
 ];

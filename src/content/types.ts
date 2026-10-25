@@ -46,6 +46,10 @@ export type Article = {
   publishedAt: string;
   featured: boolean;
   legacyPaths?: string[];
+  /** Ảnh thêm ở cuối bài (album hoạt động). */
+  gallery?: string[];
+  /** Chú thích cho từng ảnh trong `gallery`. */
+  galleryAlts?: string[];
 };
 
 export type CaseStudy = {

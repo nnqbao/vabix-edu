@@ -109,20 +109,26 @@ export async function EventCard({ event }: { event: EventItem }) {
   );
 }
 
-export function ArticleCard({ article, hrefPrefix = "" }: { article: Article; hrefPrefix?: string }) {
+export async function ArticleCard({ article, hrefPrefix = "" }: { article: Article; hrefPrefix?: string }) {
+  const href = `${hrefPrefix}/tri-thuc/${article.slug}`;
+  const en = (await getLocale()) === "en";
+  const date = article.publishedAt ? new Date(article.publishedAt).toLocaleDateString(en ? "en-GB" : "vi-VN") : "";
   return (
-    <article className="flex h-full flex-col border border-vabix-deep-teal/10 bg-white">
-      <div className="relative aspect-[16/10] bg-vabix-ivory">
+    <article className="group flex h-full flex-col overflow-hidden rounded-[22px] border border-vabix-deep-teal/10 bg-white transition-[border-color,box-shadow,transform] duration-300 hover:-translate-y-1 hover:border-vabix-gold/50 hover:shadow-[0_18px_40px_rgba(22,60,62,0.12)]">
+      <Link href={href} className="relative block aspect-[16/10] overflow-hidden bg-vabix-ivory" tabIndex={-1} aria-hidden="true">
         {article.coverImage ? (
-          <Image src={article.coverImage} alt="" fill className="object-cover" sizes="(max-width: 768px) 100vw, 33vw" />
+          <Image src={article.coverImage} alt="" fill unoptimized className="object-cover transition-transform duration-500 group-hover:scale-[1.04]" sizes="(max-width: 768px) 100vw, 33vw" />
         ) : null}
-      </div>
-      <div className="flex flex-1 flex-col p-5">
-        <p className="eyebrow">{article.categoryLabel}</p>
-        <h3 className="mt-2 text-lg font-semibold text-vabix-deep-teal">
-          <Link href={`${hrefPrefix}/tri-thuc/${article.slug}`}>{article.title}</Link>
+      </Link>
+      <div className="flex flex-1 flex-col p-5 sm:p-6">
+        <p className="flex flex-wrap items-center gap-x-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-vabix-gold">
+          <span>{article.categoryLabel}</span>
+          {date ? <span className="font-medium normal-case tracking-normal text-vabix-muted">· {date}</span> : null}
+        </p>
+        <h3 className="mt-2 text-lg font-semibold leading-snug text-vabix-deep-teal group-hover:text-vabix-gold">
+          <Link href={href}>{article.title}</Link>
         </h3>
-        <p className="mt-2 line-clamp-3 text-sm text-vabix-muted">{article.excerpt}</p>
+        <p className="mt-2 line-clamp-3 text-sm leading-relaxed text-vabix-muted">{article.excerpt}</p>
       </div>
     </article>
   );

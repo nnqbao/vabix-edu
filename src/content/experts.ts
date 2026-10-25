@@ -204,14 +204,14 @@ export const experts: Expert[] = [
   {
     id: "exp-14",
     slug: "tran-anh-vu",
-    name: "NCS Trần Anh Vũ",
-    title: "Chuyên gia AI Marketing & Đạo diễn",
-    organizationRole: "Chuyên gia VABIX",
-    expertise: ["AI hệ thống", "Marketing"],
+    name: "ThS. NCS. Trần Anh Vũ",
+    title: "Founder & CEO VSC GROUP\nCo-Founder & CAIO VABIX\nGiảng viên – Diễn giả – Chuyên gia AI Marketing",
+    organizationRole: "Co-Founder & CAIO VABIX",
+    expertise: ["AI Marketing", "AI hệ thống"],
     shortBio:
-      "Chuyên gia AI Marketing và đạo diễn, đồng hành cùng doanh nghiệp đưa AI vào vận hành có kiểm soát, gắn marketing với hệ thống thay vì công cụ rời rạc.",
+      "Founder & CEO VSC GROUP, Co-Founder & CAIO VABIX. Giảng viên, diễn giả và chuyên gia AI Marketing, đồng hành cùng doanh nghiệp đưa AI vào vận hành có kiểm soát.",
     fullBio:
-      "Nghiên cứu sinh Trần Anh Vũ là chuyên gia AI Marketing và đạo diễn. Ông đồng hành cùng VABIX trong các chương trình giúp doanh nghiệp thiết kế năng lực số, ứng dụng AI có kiểm soát và chuẩn hóa hoạt động marketing trên một hệ thống thống nhất. AI hỗ trợ thực hiện; con người giữ quyền quyết định và trách nhiệm quản trị.",
+      "Thạc sĩ, nghiên cứu sinh Trần Anh Vũ là Founder & CEO VSC GROUP và Co-Founder & CAIO (Giám đốc AI) của VABIX. Là giảng viên, diễn giả và chuyên gia AI Marketing, ông đồng hành cùng VABIX trong các chương trình giúp doanh nghiệp thiết kế năng lực số, ứng dụng AI có kiểm soát và chuẩn hóa hoạt động marketing trên một hệ thống thống nhất. AI hỗ trợ thực hiện; con người giữ quyền quyết định và trách nhiệm quản trị.",
     portrait: "/images/portraits/tran-anh-vu.webp",
     featured: true,
     order: 12,

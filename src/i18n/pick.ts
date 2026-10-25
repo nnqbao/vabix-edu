@@ -25,13 +25,21 @@ export function localizeItem<T extends WithSlug>(item: T | null | undefined, en:
   return localizeList([item], en, locale)[0];
 }
 
-// Học hàm trong tên chuyên gia cho bản tiếng Anh: "ThS. A" → "A, MA", "TS. A" → "Dr A".
+// Học hàm trong tên chuyên gia cho bản tiếng Anh: "ThS. A" → "A, MA", "TS. A" → "Dr A", "ThS. NCS. A" → "A, MA, PhD candidate".
 export function enHonorific(name: string): string {
-  const m = name.match(/^(ThS\.|TS\.|NCS\.?|Luật sư)\s+(.+)$/);
-  if (!m) return name;
-  const [, h, rest] = m;
-  if (h === "ThS.") return `${rest}, MA`;
-  if (h === "TS.") return `Dr ${rest}`;
-  if (h === "Luật sư") return `Lawyer ${rest}`;
-  return `${rest}, PhD candidate`;
+  let rest = name.trim();
+  let dr = false;
+  let lawyer = false;
+  const after: string[] = [];
+  for (;;) {
+    const m = rest.match(/^(ThS\.|TS\.|NCS\.?|Luật sư)\s+(.+)$/);
+    if (!m) break;
+    if (m[1] === "ThS.") after.push("MA");
+    else if (m[1] === "TS.") dr = true;
+    else if (m[1] === "Luật sư") lawyer = true;
+    else after.push("PhD candidate");
+    rest = m[2];
+  }
+  const prefix = dr ? "Dr " : lawyer ? "Lawyer " : "";
+  return `${prefix}${rest}${after.length ? `, ${after.join(", ")}` : ""}`;
 }

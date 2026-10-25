@@ -114,12 +114,12 @@ export const expertsEn: (Partial<Expert> & { slug: string })[] = [
   },
   {
     slug: "tran-anh-vu",
-    title: "AI Marketing expert and director",
-    organizationRole: "VABIX expert",
-    expertise: ["AI systems", "Marketing"],
+    title: "Founder & CEO, VSC GROUP\nCo-Founder & CAIO, VABIX\nLecturer – Speaker – AI Marketing expert",
+    organizationRole: "Co-Founder & CAIO, VABIX",
+    expertise: ["AI Marketing", "AI systems"],
     shortBio:
-      "AI Marketing expert and director who helps businesses bring AI into operations in a controlled way, tying marketing to a system rather than to scattered tools.",
+      "Founder & CEO of VSC GROUP and Co-Founder & CAIO of VABIX. A lecturer, speaker and AI Marketing expert who helps businesses bring AI into operations in a controlled way.",
     fullBio:
-      "PhD candidate Trần Anh Vũ is an AI Marketing expert and director. He works with VABIX on programmes that help businesses design digital capabilities, apply AI in a controlled way and standardise marketing on one integrated system. AI supports the work; people keep the decisions and the management responsibility.",
+      "Trần Anh Vũ (MA, PhD candidate) is Founder & CEO of VSC GROUP and Co-Founder & Chief AI Officer (CAIO) of VABIX. A lecturer, speaker and AI Marketing expert, he works with VABIX on programmes that help businesses design digital capabilities, apply AI in a controlled way and standardise marketing on one integrated system. AI supports the work; people keep the decisions and the management responsibility.",
   },
 ];

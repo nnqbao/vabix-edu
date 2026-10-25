@@ -14,6 +14,11 @@ export type Expert = {
   fullBio: string;
   portrait: string;
   linkedin?: string;
+  /** Nhãn ngắn trên thẻ chuyên gia (mặc định lấy 2 mục đầu của `expertise`). */
+  tags?: string[];
+  /** Mục "Định hướng chuyên môn" trên trang chi tiết. */
+  philosophy?: string;
+  quote?: string;
   featured: boolean;
   order: number;
   programs: string[];

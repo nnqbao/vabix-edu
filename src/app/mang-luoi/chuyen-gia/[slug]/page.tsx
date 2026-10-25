@@ -53,7 +53,7 @@ export default async function ExpertDetailPage({ params }: { params: Promise<{ s
       />
       <PageHero
         title={e.name}
-        description={e.organizationRole}
+        description={e.title}
         crumbs={[
           { name: en ? "Home" : "Trang chủ", href: "/" },
           { name: en ? "Experts" : "Chuyên gia", href: "/mang-luoi/chuyen-gia" },
@@ -65,7 +65,7 @@ export default async function ExpertDetailPage({ params }: { params: Promise<{ s
           <div className="relative aspect-square overflow-hidden rounded-full bg-vabix-deep-teal">
             <Image src={e.portrait} alt={e.name} fill className="object-cover object-top" sizes="280px" />
           </div>
-          <p className="mt-4 whitespace-pre-line font-semibold text-vabix-deep-teal">{e.title}</p>
+          <p className="mt-4 text-center text-sm font-semibold uppercase tracking-[0.14em] text-vabix-gold lg:text-left">{e.organizationRole}</p>
           {e.linkedin ? (
             <a href={e.linkedin} className="mt-2 inline-block text-sm text-vabix-gold">
               LinkedIn
@@ -74,15 +74,31 @@ export default async function ExpertDetailPage({ params }: { params: Promise<{ s
         </div>
         <div>
           <h2 className="text-xl font-semibold text-vabix-deep-teal">{en ? "Areas of expertise" : "Lĩnh vực chuyên môn"}</h2>
-          <div className="mt-3 flex flex-wrap gap-2">
+          <ul className="mt-4 grid gap-2 sm:grid-cols-2">
             {e.expertise.map((x) => (
-              <span key={x} className="border border-vabix-deep-teal/15 px-3 py-1 text-sm">
+              <li key={x} className="flex items-start gap-2.5 rounded-xl border border-vabix-deep-teal/10 bg-white px-4 py-3 text-sm font-medium text-vabix-deep-teal">
+                <span aria-hidden="true" className="mt-0.5 text-vabix-gold">◆</span>
                 {x}
-              </span>
+              </li>
+            ))}
+          </ul>
+          <h2 className="mt-10 text-xl font-semibold text-vabix-deep-teal">{en ? "Biography" : "Tiểu sử"}</h2>
+          <div className="measure mt-3 space-y-4 leading-relaxed text-vabix-muted">
+            {e.fullBio.split(/\n\s*\n/).map((para) => (
+              <p key={para.slice(0, 40)}>{para}</p>
             ))}
           </div>
-          <h2 className="mt-10 text-xl font-semibold text-vabix-deep-teal">{en ? "Biography" : "Tiểu sử"}</h2>
-          <p className="measure mt-3 text-vabix-muted">{e.fullBio}</p>
+          {e.philosophy || e.quote ? (
+            <>
+              <h2 className="mt-10 text-xl font-semibold text-vabix-deep-teal">{en ? "Professional outlook" : "Định hướng chuyên môn"}</h2>
+              {e.philosophy ? <p className="measure mt-3 leading-relaxed text-vabix-muted">{e.philosophy}</p> : null}
+              {e.quote ? (
+                <blockquote className="mt-6 max-w-2xl rounded-[22px] border-l-4 border-vabix-gold bg-vabix-ivory px-6 py-5 text-lg font-medium italic leading-relaxed text-vabix-deep-teal">
+                  “{e.quote}”
+                </blockquote>
+              ) : null}
+            </>
+          ) : null}
           {relatedPrograms.length ? (
             <>
               <h2 className="mt-10 text-xl font-semibold text-vabix-deep-teal">{en ? "Programmes" : "Chương trình"}</h2>

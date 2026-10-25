@@ -24,7 +24,7 @@ export function PageHero({
           {title}
         </h1>
         {description ? (
-          <p className={`measure mt-5 text-base sm:text-lg ${dark ? "text-white/80" : "text-vabix-muted"}`}>{description}</p>
+          <p className={`measure mt-5 whitespace-pre-line text-base sm:text-lg ${dark ? "text-white/80" : "text-vabix-muted"}`}>{description}</p>
         ) : null}
       </Container>
     </section>

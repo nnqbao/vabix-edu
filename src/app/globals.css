@@ -6608,3 +6608,18 @@ section[id],
     gap: 0.6rem;
   }
 }
+
+/* Về VABIX: vòng quỹ đạo nét đứt quay chậm quanh biểu tượng Dual Core. */
+.about-orbit {
+  animation: about-orbit 40s linear infinite;
+}
+@keyframes about-orbit {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .about-orbit {
+    animation: none;
+  }
+}

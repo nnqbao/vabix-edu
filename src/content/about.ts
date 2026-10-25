@@ -53,8 +53,8 @@ export const principles = [
 export const journey = [
   { year: "Trước 2025", title: "Nghiên cứu và thực chiến", body: "Nguyễn Chí Thành cùng cộng sự nghiên cứu, tư vấn, đào tạo và triển khai cùng doanh nghiệp Việt, hình thành các khung BizCar, B2A, BMDO." },
   { year: "2025", title: "Thành lập Công ty Cổ phần VABIX", body: "Ra mắt pháp nhân và nền tảng Làng kết nối VABIX cho cư dân, nhà cung cấp và khách hàng." },
-  { year: "2025–2026", title: "Lan tỏa cùng tổ chức và cộng đồng", body: "Đồng hành các chương trình thực chiến, mạng lưới chuyên gia và làng ngành. Phạm vi hợp tác cụ thể được ghi nhận theo từng hồ sơ, không suy diễn thành thành tích pháp nhân." },
-  { year: "Tới 2031", title: "Khát vọng hệ sinh thái tri thức thực chiến", body: "Trở thành hệ sinh thái tri thức thực chiến có nguồn gốc Việt Nam được tin cậy trong nước và quốc tế — đây là định hướng, chưa phải thành tích đã đạt." },
+  { year: "2025–2026", title: "Lan tỏa cùng tổ chức và cộng đồng", body: "Đồng hành các chương trình thực chiến, mạng lưới chuyên gia và làng ngành." },
+  { year: "Tới 2031", title: "Khát vọng hệ sinh thái tri thức thực chiến", body: "Trở thành hệ sinh thái tri thức thực chiến có nguồn gốc Việt Nam được tin cậy trong nước và quốc tế." },
 ];
 
 export const painPoints = [

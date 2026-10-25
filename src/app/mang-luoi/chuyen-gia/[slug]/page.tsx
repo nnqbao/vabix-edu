@@ -83,7 +83,7 @@ export default async function ExpertDetailPage({ params }: { params: Promise<{ s
             ))}
           </ul>
           <h2 className="mt-10 text-xl font-semibold text-vabix-deep-teal">{en ? "Biography" : "Tiểu sử"}</h2>
-          <div className="measure mt-3 space-y-4 leading-relaxed text-vabix-muted">
+          <div className="measure mt-3 space-y-4 leading-relaxed text-vabix-muted text-justify [text-align-last:center] lg:[text-align-last:left]">
             {e.fullBio.split(/\n\s*\n/).map((para) => (
               <p key={para.slice(0, 40)}>{para}</p>
             ))}
@@ -91,7 +91,7 @@ export default async function ExpertDetailPage({ params }: { params: Promise<{ s
           {e.philosophy || e.quote ? (
             <>
               <h2 className="mt-10 text-xl font-semibold text-vabix-deep-teal">{en ? "Professional outlook" : "Định hướng chuyên môn"}</h2>
-              {e.philosophy ? <p className="measure mt-3 leading-relaxed text-vabix-muted">{e.philosophy}</p> : null}
+              {e.philosophy ? <p className="measure mt-3 leading-relaxed text-vabix-muted text-justify [text-align-last:center] lg:[text-align-last:left]">{e.philosophy}</p> : null}
               {e.quote ? (
                 <blockquote className="mt-6 max-w-2xl rounded-[22px] border-l-4 border-vabix-gold bg-vabix-ivory px-6 py-5 text-lg font-medium italic leading-relaxed text-vabix-deep-teal">
                   “{e.quote}”

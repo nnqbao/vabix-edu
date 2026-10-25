@@ -55,7 +55,7 @@ export function BrandLockup({
         <span className={`block font-semibold tracking-[0.16em] whitespace-nowrap ${tagline ? "text-[15px] sm:text-[17px]" : "text-[18px] sm:text-[20px]"} ${name}`}>
           VABIX
         </span>
-        {tagline ? <span className={`mt-1 block text-[10px] sm:text-[11px] ${tag}`}>{taglineText}</span> : null}
+        {tagline ? <span className={`mt-1 hidden text-[10px] min-[380px]:block sm:text-[11px] ${tag}`}>{taglineText}</span> : null}
       </span>
     </span>
   );

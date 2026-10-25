@@ -55,6 +55,6 @@ export const principles: typeof import("../about").principles = [
 export const journey: typeof import("../about").journey = [
   { year: "Before 2025", title: "Research and practice", body: "Nguyễn Chí Thành and his colleagues researched, consulted, trained and implemented alongside Vietnamese businesses, shaping the BizCar, B2A and BMDO frameworks." },
   { year: "2025", title: "VABIX Joint Stock Company founded", body: "Launch of the legal entity and the VABIX Connection Village platform for residents, suppliers and clients." },
-  { year: "2025–2026", title: "Reaching organisations and communities", body: "Supporting practical programmes, the expert network and industry villages. The specific scope of each collaboration is recorded case by case and is not presented as an achievement of the company." },
-  { year: "By 2031", title: "Aspiring to a practical knowledge ecosystem", body: "To become a practical knowledge ecosystem of Vietnamese origin, trusted at home and abroad — this is a direction, not an achievement yet." },
+  { year: "2025–2026", title: "Reaching organisations and communities", body: "Supporting practical programmes, the expert network and industry villages." },
+  { year: "By 2031", title: "Aspiring to a practical knowledge ecosystem", body: "To become a practical knowledge ecosystem of Vietnamese origin, trusted at home and abroad." },
 ];

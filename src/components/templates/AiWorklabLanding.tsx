@@ -427,7 +427,7 @@ export async function AiWorklabLanding() {
             <div>
               <p className="eyebrow">{en ? "Lead trainer" : "Chuyên gia huấn luyện"}</p>
               <h2 className="mt-3 text-[2rem] font-semibold tracking-[-0.02em] text-vabix-deep-teal sm:text-[2.6rem]">{expert.name}</h2>
-              <p className="mt-1 font-semibold text-vabix-gold">{expert.title}</p>
+              <p className="mt-1 whitespace-pre-line font-semibold text-vabix-gold">{expert.title}</p>
               <p className="mt-5 text-lg leading-relaxed text-vabix-ink">{expert.shortBio}</p>
               <blockquote className="mt-8 border-l-2 border-vabix-gold pl-5 text-lg italic leading-relaxed text-vabix-deep-teal">“{w.message}”</blockquote>
               <Link href={`/mang-luoi/chuyen-gia/${expert.slug}`} className="mt-6 inline-block text-sm font-semibold text-vabix-deep-teal hover:text-vabix-gold">

@@ -65,7 +65,7 @@ export default async function ExpertDetailPage({ params }: { params: Promise<{ s
           <div className="relative aspect-square overflow-hidden rounded-full bg-vabix-deep-teal">
             <Image src={e.portrait} alt={e.name} fill className="object-cover object-top" sizes="280px" />
           </div>
-          <p className="mt-4 font-semibold text-vabix-deep-teal">{e.title}</p>
+          <p className="mt-4 whitespace-pre-line font-semibold text-vabix-deep-teal">{e.title}</p>
           {e.linkedin ? (
             <a href={e.linkedin} className="mt-2 inline-block text-sm text-vabix-gold">
               LinkedIn

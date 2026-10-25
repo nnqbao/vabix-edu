@@ -85,7 +85,7 @@ Bài học xuyên suốt: **không có In-trust, sẽ không có Ex-trust**. Vì
     title: "Doanh nghiệp tinh gọn – Doanh chủ khai phóng",
     excerpt:
       "Nhiều SME, startup và hộ kinh doanh vẫn “vừa chạy vừa sửa xe”. BMDO mang đến một khung thực thi để đồng bộ cỗ máy vận hành, từ chiến lược đến hành động đo lường được.",
-    content: `Kỷ nguyên vươn mình của dân tộc đang mở ra cánh cửa tăng trưởng: thị trường sôi động, công nghệ bứt phá. Nhưng giữa vận hội ấy, nhiều doanh nghiệp từ SME, startup đến hộ kinh doanh vẫn “vừa chạy vừa sửa xe”: sản phẩm rời rạc, thị trường thiếu tập trung, nhân lực chắp vá, tài lực mỏng, quyết định chậm. Điều họ cần không chỉ là thêm kiến thức, mà là **một khung thực thi** để đồng bộ toàn bộ cỗ máy vận hành, từ chiến lược đến hành động đo lường được.
+    content: `Cùng với tinh thần mà Tổng Bí thư Tô Lâm nhấn mạnh về kỷ nguyên vươn mình của dân tộc, cánh cửa tăng trưởng đang mở ra: thị trường sôi động, công nghệ bứt phá. Nhưng giữa vận hội ấy, nhiều doanh nghiệp từ SME, startup đến hộ kinh doanh vẫn “vừa chạy vừa sửa xe”: sản phẩm rời rạc, thị trường thiếu tập trung, nhân lực chắp vá, tài lực mỏng, quyết định chậm. Điều họ cần không chỉ là thêm kiến thức, mà là **một khung thực thi** để đồng bộ toàn bộ cỗ máy vận hành, từ chiến lược đến hành động đo lường được.
 
 ## BMDO – Thiết kế và vận hành doanh nghiệp toàn diện
 
@@ -124,16 +124,15 @@ Dẫn giảng (facilitation) thay vì một chiều lý thuyết: học viên tr
 
 > Đó là cách chúng ta lái xe giữa bối cảnh nhiều khúc cua, lắm ổ gà và không thiếu đường đua khốc liệt — vẫn giữ tốc độ, vẫn kiểm soát rủi ro, vẫn đến đích.
 
-## Học bằng làm: 50 buổi, mỗi buổi một bước điều chỉnh
+## Học bằng làm: 12 ngày, mỗi ngày một thiết kế đầu ra
 
-Triết lý của chương trình rất rõ: **không học để biết, học để làm**. Với thời lượng 50 buổi, mỗi buổi là một bước điều chỉnh chiếc xe của chính doanh nghiệp học viên, gồm nền tảng cô đọng, thảo luận định hướng, workshop áp dụng và checklist hành động. Học viên đi liên tục theo vòng **chẩn đoán → thiết kế lại → triển khai ngay → đo lường và cải tiến**. Đầu ra không chỉ là kiến thức, mà là:
+Triết lý của chương trình rất rõ: **không học để biết, học để làm**. Ở Khoá 04, BMDO gồm 12 ngày học Thứ Bảy (60 giờ) chia thành bốn chặng — Thiết lập nền tảng, Kiến tạo hệ thống, Nâng cao năng lực, Dẫn dắt & tích hợp. Mỗi ngày gắn với một miền quản trị của chiếc xe và kết thúc bằng một thiết kế đầu ra trên MyBizCar. Học viên đi liên tục theo vòng **chẩn đoán → thiết kế lại → triển khai ngay → đo lường và cải tiến**, có MyBizCar, AI Agent và mentoring 1:1 hỗ trợ. Đầu ra không chỉ là kiến thức, mà là:
 
-- **MyBizCar hoàn chỉnh**, được thẩm định và cấp Giấy Kiểm Định đủ điều kiện vận hành.
-- **Cơ hội gọi vốn**: trình bày MyBizCar trước nhà đầu tư đối tác.
-- **Kết nối thương mại**: gia nhập Làng Kết Nối Kinh Doanh VABIX để đưa sản phẩm ra toàn quốc.
-- **Chứng nhận “Tài xế BizCar”** theo hạng doanh nghiệp (Startup/SME/Corp/Tập đoàn).
-- **Bảo dưỡng định kỳ hàng quý** cho MyBizCar (theo nhu cầu).
-- **Quyền tiếp cận tư vấn đồng hành** của chuyên gia VABIX khi cần.
+- **Hồ sơ 12 miền** trên MyBizCar: mục tiêu, hiện trạng, phương án và mối liên hệ giữa các miền.
+- **Danh sách điểm nghẽn** cần xử lý theo mức độ ưu tiên và nguồn lực.
+- **Lộ trình 90 ngày**: công việc, người chịu trách nhiệm, nguồn lực, thời hạn và chỉ số theo dõi.
+- **Cơ chế kiểm chứng** theo chuyển đổi, thời gian xử lý, chi phí, dòng tiền hoặc năng suất.
+- **Kết nối thương mại** cùng Làng Kết Nối Kinh Doanh VABIX.
 
 ## Vì sao phù hợp với doanh nghiệp Việt?
 
@@ -149,10 +148,10 @@ Chương trình được dẫn dắt bởi các chuyên gia nhiều năm điều
 
 Các học thuật và công cụ thuộc BMDO đã và đang được đăng ký bảo hộ quyền tác giả. Chương trình tiếp cận theo hướng **bổ sung** cho các khung quốc tế, dùng như bộ công cụ thực thi trong bối cảnh Việt Nam, thay vì khẳng định thay thế.
 
-Trong kỷ nguyên tăng tốc, doanh nghiệp cần hơn một bài nói truyền cảm hứng. Doanh nghiệp cần một chiếc xe hoàn chỉnh: động cơ rõ “vì sao tồn tại”, bánh xe cân đúng nhịp, truyền động trơn tru, tài xế vững tay và một bản đồ hành trình có thể đo lường. BMDO không hứa hẹn điều dễ dàng; BMDO đưa vào tay nhà lãnh đạo bộ công cụ để **lái được ngay** — bắt đầu từ chính doanh nghiệp của bạn, ngay trong lớp học, mỗi ngày một bước nhỏ nhưng chắc chắn. Ban đào tạo VABIX cam kết: nếu không hiệu quả, hoàn trả học phí.`,
+Trong kỷ nguyên tăng tốc, doanh nghiệp cần hơn một bài nói truyền cảm hứng. Doanh nghiệp cần một chiếc xe hoàn chỉnh: động cơ rõ “vì sao tồn tại”, bánh xe cân đúng nhịp, truyền động trơn tru, tài xế vững tay và một bản đồ hành trình có thể đo lường. BMDO không hứa hẹn điều dễ dàng; BMDO đưa vào tay nhà lãnh đạo bộ công cụ để **lái được ngay** — bắt đầu từ chính doanh nghiệp của bạn, ngay trong lớp học, mỗi ngày một bước nhỏ nhưng chắc chắn. Lịch học và đăng ký Khoá 04 có tại trang BMDO trong mục Đào tạo của VABIX.`,
     category: "quan-tri",
     categoryLabel: "Quản trị",
-    coverImage: "/images/articles/doanh-nghiep-tinh-gon-doanh-chu-khai-phong/01.webp",
+    coverImage: "/images/bmdo/lop/bmdo-lop-03.jpg",
     author: "VABIX",
     publishedAt: "2025-09-18",
     featured: false,
@@ -165,71 +164,67 @@ Trong kỷ nguyên tăng tốc, doanh nghiệp cần hơn một bài nói truy�
     slug: "thiet-ke-va-van-hanh-doanh-nghiep-toan-dien",
     title: "Thiết kế và vận hành doanh nghiệp toàn diện",
     excerpt:
-      "Chương trình 30 buổi tối thực chiến tại SIHUB dành cho CEO/Founder: chẩn đoán, thiết kế lại và triển khai ngay chiếc xe doanh nghiệp theo mô hình BMDO của Nguyễn Chí Thành.",
-    content: `Từ triết nghiệm của Nguyễn Chí Thành, Làng Tư vấn & Đào tạo Thực chiến VABIX kiến tạo chương trình **“Thiết kế và vận hành doanh nghiệp toàn diện”** — hành trình 30 buổi tối thực chiến dành cho những người lãnh đạo không chấp nhận lý thuyết suông, muốn chuyển từ “làm” sang “dẫn dắt chiến lược”.
+      "BMDO Khoá 04 — 12 ngày học Thứ Bảy tại SIHUB, 60 giờ thực chiến cho doanh chủ & CEO: thiết kế và vận hành doanh nghiệp như một chiếc xe BizCar, hoàn thiện bản thiết kế 12 miền trên MyBizCar.",
+    content: `Từ triết nghiệm của Nguyễn Chí Thành, VABIX kiến tạo chương trình **BMDO – Thiết kế và vận hành doanh nghiệp toàn diện**: hành trình 12 ngày học, 60 giờ thực chiến dành cho doanh chủ và CEO muốn chuyển từ “làm” sang “dẫn dắt và điều hành bằng hệ thống”. Khoá 04 khai giảng ngày 05.12.2026 tại SIHUB.
 
 > Doanh nghiệp không phải là một tập hợp ngẫu nhiên các bộ phận, mà là một chiếc xe có tài xế, bánh xe, động cơ và nhiên liệu. Nếu một bánh quay lệch, cả hành trình sẽ chệch hướng. Nhiệm vụ của người dẫn dắt là thiết kế, điều chỉnh và giữ cho chiếc xe đó chạy bền, chạy nhanh và đến đích.
 > — Nguyễn Chí Thành, tác giả mô hình BMDO, MTA Engine, B2A, nhà sáng lập Làng Kết nối Kinh doanh VABIX
 
 ## Vì sao cần chương trình này?
 
-Trong thế giới SME và startup, nhiều CEO/Founder vẫn đang “tự tay sửa xe khi xe đang chạy”: tự làm mọi việc, thiếu hệ thống nhân lực, vận hành tài chính rời rạc và không có bản đồ chuyển hóa từ tư duy sang vận hành. Họ biết mình cần phát triển nhưng không rõ bắt đầu từ đâu, và thường bị kéo lùi bởi những bánh xe chưa đồng bộ.
+Chiến lược khó triển khai, đội ngũ thiếu phối hợp, dòng tiền căng và người đứng đầu phải xử lý quá nhiều sự vụ — đó không phải những bài toán tách rời. Nhiều doanh chủ vẫn đang “tự tay sửa xe khi xe đang chạy”: biết mình cần phát triển nhưng không rõ bắt đầu từ đâu, và thường bị kéo lùi bởi những bánh xe chưa đồng bộ.
 
-Mô hình **BMDO** của tác giả Nguyễn Chí Thành không chỉ là một cách tiếp cận mô hình doanh nghiệp mới, mà còn là cách nhìn lại doanh nghiệp như một hệ thống có thể điều chỉnh:
+BMDO giúp doanh chủ và CEO nhìn doanh nghiệp **như một hệ thống**: thông qua mô hình Chiếc Xe Doanh Nghiệp – BizCar, học viên kết nối 12 miền quản trị bằng tư duy hệ thống, xác định ưu tiên và thiết kế một phương án điều hành phù hợp với thực tế doanh nghiệp.
 
-- **Chiếc xe doanh nghiệp (BizCar)**: CEO là tài xế; bốn bánh xe then chốt (Sản phẩm – Thị trường – Nhân lực – Tài lực) phải phối hợp; động cơ là tầm nhìn và văn hóa vận hành.
-- **Business to Address & Area (B2A)**: hiểu “ai ở đâu” để cá nhân hóa tương tác.
+## Bốn chặng, mười hai miền quản trị
 
-Vì vậy, cần một chương trình không dừng ở giảng giải, mà kéo CEO/Founder vào một quá trình: **chẩn đoán → thiết kế lại → triển khai ngay → cam kết kết quả**.
+Mỗi ngày học gắn với một bộ phận của Chiếc Xe Doanh Nghiệp và kết thúc bằng một thiết kế đầu ra cụ thể:
 
-## Khác biệt: thực chiến có cấu trúc, cam kết có theo dõi
+1. **Thiết lập nền tảng (Ngày 01 – 03) – Đích đến và giá trị**: định hướng chiến lược, môi trường kinh doanh, quản trị giá trị.
+2. **Kiến tạo hệ thống (Ngày 04 – 06) – Thị trường và bộ máy**: quản trị thị trường, thương hiệu, tổ chức.
+3. **Nâng cao năng lực (Ngày 07 – 09) – Nguồn lực và thực thi**: quản trị nhân lực, tài chính, vận hành.
+4. **Dẫn dắt & tích hợp (Ngày 10 – 12) – Điều hành để phát triển**: lãnh đạo và điều hành, văn hóa doanh nghiệp, quản trị nguồn lực lõi.
 
-Đây không phải khóa học truyền thống, mà là chương trình chuyển hóa dựng trên ba trụ cột:
+## Học trên bài toán thật, mang về bản thiết kế thật
 
-- **Framework có chiều sâu nhưng áp dụng được ngay**: KLASS (năng lực nhân sự), KORA (phân rã hiệu suất), EXP (trải nghiệm nhân viên), BABOSO, RE.CYCLE, B2A… được đưa vào từng buổi để học viên vừa hiểu, vừa làm, vừa đo.
-- **Hành động và công cụ thực tế**: mỗi buổi gồm bài tập doanh nghiệp thật, bản đồ nhân lực, đề án cá nhân hóa, cam kết 21 ngày có cấu trúc và theo dõi. Học viên không ra về chỉ với “tri thức” mà có đề án cải tiến bánh xe nhân lực và lộ trình thực thi.
-- **Hệ thống hỗ trợ duy trì sau khóa**: mentor cùng phản biện; bộ công cụ mẫu (KORA worksheet, KLASS scorecard, team charter, employee experience audit); mạng lưới alumni để chia sẻ kết quả và tiếp tục hiệu chỉnh sau 30 buổi.
+Chu trình **APPLIER** đặt học viên vào vai trò người thiết kế doanh nghiệp: khởi động, nhận diện mô thức, thiết kế trực tiếp trên MyBizCar, chia sẻ góc nhìn đa chiều, cải tiến, đúc kết và cam kết áp dụng giữa hai buổi. Mỗi ngày học gồm 300 phút thực hành có hướng dẫn.
 
-## Thông tin chương trình
+Ba lớp hỗ trợ đi cùng học viên:
 
-- **Thời lượng**: 30 buổi tối, mỗi buổi 3 giờ.
-- **Địa điểm**: học trực tiếp tại SIHUB – Trung tâm Đổi mới Sáng tạo Thành phố Hồ Chí Minh.
-- **Đối tượng**: CEO, Founder, Giám đốc vận hành, Quản lý nhân sự — những người chịu trách nhiệm giữ cho chiếc xe doanh nghiệp chạy mượt và có tốc độ.
-- **Phương pháp**: giảng giải cô đọng, phân tích thực trạng từng doanh nghiệp, workshop nhóm và cá nhân, phản biện đồng đội, coaching chuyên gia, cam kết hành động cá nhân.
-- **Học phí**: 120.000 đồng mỗi buổi.
-- **Kết thúc**: đề án “Bánh xe nhân lực doanh nghiệp tôi”, cam kết 21 ngày và chứng nhận.
+- **MyBizCar**: hoàn thiện bản thiết kế 12 miền trên hệ thống.
+- **AI Agent**: hệ thống hóa và gợi mở rà soát.
+- **Mentoring 1:1**: tháo gỡ bài toán ưu tiên của từng doanh nghiệp.
 
-## Nội dung trọng tâm
+## Thông tin Khoá 04
 
-Học viên đi qua một chuỗi chuyển hóa rõ ràng:
+- **Khai giảng**: 05.12.2026.
+- **Lịch học**: Thứ Bảy hằng tuần, 12 ngày, 60 giờ đào tạo thực chiến.
+- **Địa điểm**: Tòa nhà SIHUB, 123 Trương Định, TP.HCM.
+- **Đối tượng**: doanh chủ, CEO và đội ngũ điều hành.
+- **Học phí ưu đãi**: 10.000.000đ (giá niêm yết 20.000.000đ, giảm 50%).
+- **Chuẩn bị**: máy tính, một bài toán ưu tiên và dữ liệu quản trị cơ bản.
 
-1. Hiểu bản chất nhân lực trong hệ thống BizCar và mối liên kết với các trụ cột khác.
-2. Đánh giá năng lực thực tế bằng KLASS Pyramid và xác định khoảng cách cần lấp.
-3. Quản trị hiệu suất có hệ thống: phân loại, huấn luyện, trao đổi hiệu quả qua 4P và KORA.
-4. Thiết kế trải nghiệm nhân viên để tạo gắn kết sâu và văn hóa tự vận hành.
-5. Xây đội ngũ tự quản gắn với mentoring nội sinh và phân quyền rõ ràng.
-6. Tổng kết thành đề án nhân lực: học viên trình bày đề án cải tiến bánh xe nhân lực của chính doanh nghiệp và cam kết thực thi.
+## Học xong, doanh nghiệp có gì?
 
-## Giá trị mang lại cho doanh nghiệp
+Đầu ra của chương trình không dừng ở hiểu biết, mà là những bản thiết kế quản trị có thể tiếp tục hoàn thiện trong doanh nghiệp:
 
-- **Từ hỗn loạn đến hệ thống**: thay vì “vá víu” nhân sự, doanh nghiệp có bản đồ nhân lực, lộ trình cải tiến và cơ chế vận hành mới.
-- **Tăng tốc ra quyết định**: hệ thống hiệu suất và mentoring giúp khởi động vòng phản hồi nhanh.
-- **Giảm rủi ro mất nhân sự chủ chốt**: cải thiện trải nghiệm nhân viên, gắn kết, phát triển nội bộ.
-- **Tối ưu nguồn lực tinh gọn**: đội ngũ biết rõ vai trò, tiêu chí và tự vận hành theo các thanh chắn hiệu quả.
-- **Cam kết thực thi**: gói hành động 21 ngày kèm cơ chế giám sát và hỗ trợ để biến đề án thành kết quả.
-
-Với mức 120.000 đồng mỗi buổi, đây là khoản đầu tư thấp để nhận lại bản đồ vận hành, đề án cải tiến, mentoring và cam kết chuyển hóa — nhỏ hơn nhiều so với chi phí gián tiếp của nhân lực kém hiệu quả, quyết định chậm hay nhân sự nghỉ việc. Số lượng học viên được giới hạn để mỗi người được coaching sâu.
+- **Hồ sơ 12 miền**: mục tiêu, hiện trạng, phương án và mối liên hệ giữa các miền trên MyBizCar.
+- **Danh sách điểm nghẽn**: những việc cần xử lý theo mức độ ưu tiên và nguồn lực.
+- **Lộ trình 90 ngày**: công việc, người chịu trách nhiệm, nguồn lực, thời hạn và chỉ số theo dõi.
+- **Cơ chế kiểm chứng**: đánh giá theo chuyển đổi, thời gian xử lý, chi phí, dòng tiền hoặc năng suất.
 
 ## Ý nghĩa thực tiễn
 
 Chương trình không chỉ giúp từng doanh nghiệp cải thiện nội bộ, mà còn tạo ảnh hưởng lan tỏa:
 
 - Tạo ra những lãnh đạo **biết thiết kế hệ thống**, không chỉ “làm” mà “dẫn dắt”.
-- Kết nối các thành viên trong cộng đồng doanh nghiệp có chung ngôn ngữ vận hành và cam kết phát triển.
-- Nuôi dưỡng một lớp **“Nhà thực thi BizCar”**, những người có thể nhân rộng mô hình trong mạng lưới của mình.`,
+- Kết nối các doanh chủ có chung ngôn ngữ vận hành và cam kết phát triển.
+- Nuôi dưỡng lớp **“Nhà thực thi BizCar”**, những người có thể nhân rộng mô hình trong mạng lưới của mình.
+
+Xem chi tiết chương trình và đăng ký giữ chỗ tại trang **BMDO Khoá 04** trong mục Đào tạo của VABIX.`,
     category: "bizcar",
     categoryLabel: "BizCar",
-    coverImage: "/images/articles/thiet-ke-va-van-hanh-doanh-nghiep-toan-dien/01.webp",
+    coverImage: "/images/bmdo/lop/bmdo-lop-01.jpg",
     author: "VABIX",
     publishedAt: "2025-08-12",
     featured: true,

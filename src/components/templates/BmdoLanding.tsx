@@ -308,9 +308,9 @@ export async function BmdoLanding() {
               <span className="block text-[4.5rem] font-bold leading-none tracking-[0.04em] text-vabix-warm sm:text-[7rem]">BMDO</span>
               <span className="mt-5 block text-balance text-2xl font-semibold leading-snug text-vabix-gold sm:text-[2.1rem]">{k.titleGold}</span>
             </h1>
-            <p className="mt-6 border-l-2 border-vabix-gold/80 pl-4">
+            <p className="mt-6 lg:border-l-2 lg:border-vabix-gold/80 lg:pl-4">
               <span className="block text-xs font-semibold uppercase tracking-[0.24em] text-vabix-gold sm:text-sm">{k.slogan.lead}</span>
-              <span className="bmdo-slogan mt-1.5 flex flex-col gap-1 text-base font-semibold uppercase tracking-[0.1em] sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-3 sm:text-lg">
+              <span className="bmdo-slogan mt-1.5 flex flex-col gap-1 text-base font-semibold uppercase tracking-[0.1em] sm:flex-row sm:flex-wrap sm:items-center sm:justify-center sm:gap-x-3 sm:text-lg lg:justify-start">
                 {k.slogan.points.map((pt, i) => (
                   <span key={pt} className="inline-flex items-center gap-3">
                     <span aria-hidden="true" className={`h-1.5 w-1.5 rotate-45 bg-vabix-gold ${i === 0 ? "sm:hidden" : ""}`} />
@@ -324,7 +324,7 @@ export async function BmdoLanding() {
               {k.eyebrow}. {k.promise}
             </p>
             <p className="mt-3 text-balance text-sm font-medium tracking-wide text-vabix-soft-gold">{k.motto}</p>
-            <div className="mt-8 grid gap-3 sm:flex sm:flex-wrap">
+            <div className="mt-8 grid gap-3 sm:flex sm:flex-wrap sm:justify-center lg:justify-start">
               <Button href="#dang-ky" className="w-full sm:w-auto">
                 {en ? "Reserve your seat →" : "Đăng ký giữ chỗ →"}
               </Button>

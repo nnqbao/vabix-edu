@@ -103,7 +103,7 @@ export async function AiWorklabLanding() {
                 </span>
               </Link>
             ) : null}
-            <div className="mt-8 grid gap-3 sm:flex sm:flex-wrap">
+            <div className="mt-8 grid gap-3 sm:flex sm:flex-wrap sm:justify-center lg:justify-start">
               <Button href="#dang-ky" className="w-full sm:w-auto">
                 {en ? "Request a programme consultation →" : "Đăng ký tư vấn chương trình →"}
               </Button>

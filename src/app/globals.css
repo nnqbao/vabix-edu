@@ -6623,3 +6623,60 @@ section[id],
     animation: none;
   }
 }
+
+/* Canh đều hai bên cho đoạn văn trong nội dung trang. Dòng cuối giữ kiểu canh của ngữ cảnh
+   (--ta-last): giữa ở khối canh giữa, trái ở khối canh trái — để bố cục không đổi, chỉ bỏ mép lởm chởm.
+   Đặt trong @layer base nên class text-* đặt trực tiếp trên phần tử vẫn thắng. */
+@layer base {
+  main :is(p, li, dd, blockquote) {
+    text-align: justify;
+    text-align-last: var(--ta-last, start);
+  }
+  .text-center,
+  .vabix-partners-head,
+  .vabix-close {
+    --ta-last: center;
+  }
+  .text-left,
+  .text-start {
+    --ta-last: start;
+  }
+  .text-right,
+  .text-end {
+    --ta-last: end;
+  }
+  @media (min-width: 640px) {
+    [class~="sm:text-center"] {
+      --ta-last: center;
+    }
+    [class~="sm:text-left"] {
+      --ta-last: start;
+    }
+  }
+  @media (min-width: 768px) {
+    [class~="md:text-center"] {
+      --ta-last: center;
+    }
+    [class~="md:text-left"] {
+      --ta-last: start;
+    }
+  }
+  @media (min-width: 1024px) {
+    [class~="lg:text-center"] {
+      --ta-last: center;
+    }
+    [class~="lg:text-left"] {
+      --ta-last: start;
+    }
+  }
+  /* Mobile & tablet: nội dung canh giữa → dòng cuối cũng giữa; form và bài viết dài giữ canh trái. */
+  @media (max-width: 1023.98px) {
+    main,
+    footer {
+      --ta-last: center;
+    }
+    main :is(form, article .prose, .prose, .article-body, table, pre, details) {
+      --ta-last: start;
+    }
+  }
+}

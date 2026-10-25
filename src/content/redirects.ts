@@ -1,5 +1,6 @@
 import type { Redirect } from "next/dist/lib/load-custom-routes";
 import { knowledgeProductRedirects } from "./knowledgeProducts";
+import { articles } from "./articles";
 
 /**
  * Canonical IA (2026 reconciliation) plus ShopXanh / vabix.vn legacy URLs.
@@ -24,10 +25,16 @@ export const iaRedirects: Redirect[] = [
   ...knowledgeProductRedirects(),
 ];
 
+// Link bài viết cũ trên vabix.vn (…_bm.html) → bài tương ứng trong Tri thức.
+const articleRedirects: Redirect[] = articles.flatMap((a) =>
+  (a.legacyPaths ?? []).map((source) => ({ source, destination: `/tri-thuc/${a.slug}`, permanent: true })),
+);
+
 export const legacyRedirects: Redirect[] = [
   ...iaRedirects,
-  { source: "/tin-tuc-trong-ngay", destination: "/tri-thuc", permanent: true },
-  { source: "/tin-tuc-trong-ngay.html", destination: "/tri-thuc", permanent: true },
+  ...articleRedirects,
+  { source: "/tin-tuc-trong-ngay", destination: "/goc-chia-se", permanent: true },
+  { source: "/tin-tuc-trong-ngay.html", destination: "/goc-chia-se", permanent: true },
   { source: "/gioi-thieu-vabix", destination: "/ve-vabix", permanent: true },
   { source: "/gioi-thieu-vabix.html", destination: "/ve-vabix", permanent: true },
   { source: "/doi-net-tu-gioi-thieu-ve-lang-vabix_bm.html", destination: "/ve-vabix", permanent: true },

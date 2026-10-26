@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Section";
 import { HeroBackdrop, Heading } from "@/components/templates/BmdoLanding";
 import { RevealOnView } from "@/components/templates/RevealOnView";
+import { BmdoTvc } from "@/components/templates/BmdoTvc";
 import { siteConfig } from "@/lib/siteConfig";
 import { paths } from "@/lib/paths";
 import { getLocale } from "@/i18n/server";
@@ -126,6 +127,26 @@ export async function AiWorklabLanding() {
                 </li>
               ))}
             </ul>
+          </div>
+        </Container>
+      </section>
+
+      {/* Phim giới thiệu (TVC): ngang trên máy tính, dọc trên tablet và điện thoại */}
+      <section className="relative overflow-hidden bg-vabix-deep-teal pb-20 pt-4 sm:pb-24" aria-labelledby="wl-tvc">
+        <HeroBackdrop />
+        <Container className="relative">
+          <div className="mx-auto max-w-2xl text-center">
+            <p className="eyebrow">{en ? "Introductory film" : "Phim giới thiệu"}</p>
+            <h2 id="wl-tvc" className="mt-3 text-balance text-[1.9rem] font-semibold leading-[1.15] tracking-[-0.02em] text-vabix-warm sm:text-[2.4rem]">
+              AI WorkLab <span className="text-vabix-gold">{en ? "in one minute." : "trong một phút."}</span>
+            </h2>
+          </div>
+          <div className="mt-8 sm:mt-10">
+            <BmdoTvc
+              title={en ? "VABIX AI WorkLab introductory film" : "Phim giới thiệu VABIX AI WorkLab"}
+              landscape={{ src: "/videos/ai-worklab/ai-worklab-tvc-16x9.mp4", poster: "/videos/ai-worklab/ai-worklab-tvc-16x9-poster.jpg" }}
+              portrait={{ src: "/videos/ai-worklab/ai-worklab-tvc-9x16.mp4", poster: "/videos/ai-worklab/ai-worklab-tvc-9x16-poster.jpg" }}
+            />
           </div>
         </Container>
       </section>

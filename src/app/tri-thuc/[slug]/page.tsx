@@ -86,8 +86,8 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
           >
             {a.categoryLabel}
           </Link>
-          <h1 className="mt-5 max-w-4xl text-balance text-[30px] font-semibold leading-tight sm:text-5xl sm:leading-[1.15]">{a.title}</h1>
-          <p className="mt-5 max-w-3xl text-base leading-relaxed text-white/75 sm:text-lg">{a.excerpt}</p>
+          <h1 className="mt-5 max-w-4xl text-[30px] font-semibold leading-tight sm:text-5xl sm:leading-[1.15]">{a.title}</h1>
+          <p className="mt-5 max-w-3xl text-justify text-base leading-relaxed text-white/75 [text-align-last:center] sm:text-lg lg:[text-align-last:left]">{a.excerpt}</p>
           <p className="mt-6 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-white/60">
             <span className="font-semibold text-white/85">{a.author}</span>
             <span aria-hidden="true">·</span>
@@ -149,7 +149,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
               <section className="relative mt-14 overflow-hidden rounded-[28px] bg-vabix-deep-teal p-8 text-center text-white sm:p-10">
                 <span aria-hidden="true" className="pointer-events-none absolute -left-16 -top-20 h-56 w-56 rounded-full border border-vabix-gold/25" />
                 <span aria-hidden="true" className="pointer-events-none absolute -bottom-24 -right-10 h-64 w-64 rounded-full bg-[radial-gradient(circle,rgba(222,164,67,0.22),transparent_70%)]" />
-                {a.cta.title ? <p className="relative text-balance text-2xl font-semibold leading-snug sm:text-[1.7rem]">{a.cta.title}</p> : null}
+                {a.cta.title ? <p className="relative text-2xl font-semibold leading-snug sm:text-[1.7rem]">{a.cta.title}</p> : null}
                 <a
                   href={a.cta.href}
                   {...(/^https?:/.test(a.cta.href) ? { target: "_blank", rel: "noopener noreferrer" } : {})}

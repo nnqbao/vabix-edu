@@ -78,12 +78,12 @@ export function ArticleBody({ content }: { content: string }) {
   const blocks = parseArticle(content);
   let imgIndex = 0;
   return (
-    <div className="article-body text-[17px] leading-[1.8] text-vabix-ink">
+    <div className="article-body text-[17px] leading-[1.8] text-vabix-ink [&_li]:text-justify [&_p]:text-justify [&_td]:text-left [&_th]:text-left">
       {blocks.map((b, i) => {
         switch (b.kind) {
           case "h2":
             return (
-              <h2 key={i} id={headingId(b.text)} className="mt-12 scroll-mt-28 text-balance text-2xl font-semibold leading-snug text-vabix-deep-teal first:mt-0 sm:text-[1.7rem]">
+              <h2 key={i} id={headingId(b.text)} className="mt-12 scroll-mt-28 text-2xl font-semibold leading-snug text-vabix-deep-teal first:mt-0 sm:text-[1.7rem]">
                 {b.text}
               </h2>
             );

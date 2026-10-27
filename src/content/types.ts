@@ -51,6 +51,8 @@ export type Article = {
   publishedAt: string;
   featured: boolean;
   legacyPaths?: string[];
+  /** Nút kêu gọi riêng của bài (cuối bài và cột bên), thay cho nút liên hệ chung. */
+  cta?: { label: string; href: string; title?: string; note?: string };
   /** Ảnh thêm ở cuối bài (album hoạt động). */
   gallery?: string[];
   /** Chú thích cho từng ảnh trong `gallery`. */

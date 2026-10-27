@@ -175,7 +175,7 @@ export function ArticleBody({ content }: { content: string }) {
                   width={1600}
                   height={1000}
                   unoptimized
-                  className="mx-auto h-auto max-h-[36rem] w-auto max-w-full cursor-zoom-in rounded-[22px] object-contain"
+                  className="mx-auto h-auto max-h-[36rem] w-auto max-w-full cursor-zoom-in sm:max-h-[50rem] rounded-[22px] object-contain"
                   tabIndex={0}
                   data-zoom-group="article"
                   data-zoom-index={zoom}

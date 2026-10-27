@@ -236,6 +236,24 @@ Tại VABIX, anh tham gia phát triển năng lực AI, kết nối tri thức v
     caseStudies: [],
     articles: [],
   },
+  {
+    id: "exp-15",
+    slug: "nguyen-nang-quoc-bao",
+    name: "ThS. Nguyễn Năng Quốc Bảo",
+    title: "Chuyên gia Chuyển đổi số AI Marketing",
+    organizationRole: "Chuyên gia VABIX",
+    expertise: ["Chuyển đổi số", "AI Marketing"],
+    shortBio:
+      "Chuyên gia Chuyển đổi số AI Marketing, đồng hành cùng doanh nghiệp ứng dụng AI và công nghệ số vào hoạt động marketing.",
+    fullBio:
+      "ThS. Nguyễn Năng Quốc Bảo là chuyên gia Chuyển đổi số AI Marketing trong mạng lưới chuyên gia VABIX. Anh đồng hành cùng doanh nghiệp trong việc ứng dụng trí tuệ nhân tạo và công nghệ số vào hoạt động marketing, hướng đến cách làm có hệ thống, đo lường được và phù hợp với thực tế từng doanh nghiệp.",
+    portrait: "/images/portraits/nguyen-nang-quoc-bao.webp",
+    featured: true,
+    order: 13,
+    programs: [],
+    caseStudies: [],
+    articles: [],
+  },
 ];
 
 export const featuredExperts = experts.filter((e) => e.featured).sort((a, b) => a.order - b.order);

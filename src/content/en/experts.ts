@@ -139,4 +139,14 @@ At VABIX, he helps build AI capability, connects knowledge with technology and w
       "He believes the value of AI lies not only in what it can automate, but in how people design, direct and control the technology to create real value.",
     quote: "AI supports the work. People set the direction, make the decisions and take responsibility for the value created.",
   },
+  {
+    slug: "nguyen-nang-quoc-bao",
+    title: "Digital transformation & AI Marketing expert",
+    organizationRole: "VABIX expert",
+    expertise: ["Digital transformation", "AI Marketing"],
+    shortBio:
+      "A digital transformation and AI Marketing expert who helps businesses apply AI and digital technology to their marketing.",
+    fullBio:
+      "Nguyễn Năng Quốc Bảo (MA) is a digital transformation and AI Marketing expert in the VABIX expert network. He works with businesses to apply artificial intelligence and digital technology to their marketing, with an approach that is systematic, measurable and fitted to each business's reality.",
+  },
 ];

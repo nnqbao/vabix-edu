@@ -90,7 +90,7 @@ Nhằm tạo điều kiện cho các doanh nghiệp Việt Nam tiếp cận và 
 
 Đây là mức phí giới thiệu đặc biệt trong năm đầu tiên, không phải mức giá mặc định cho các năm tiếp theo.
 
-![Poster chương trình BizCar Management dành cho doanh nghiệp tiên phong](/images/articles/thu-moi-doanh-nghiep-tien-phong-bizcar-management/02.webp)
+![Thư mời chương trình BizCar Management dành cho doanh nghiệp tiên phong](/images/articles/thu-moi-doanh-nghiep-tien-phong-bizcar-management/02.webp)
 
 ## MyBizCar phù hợp với ai?
 

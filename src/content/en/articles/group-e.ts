@@ -89,7 +89,7 @@ To help Vietnamese businesses access and experience MyBizCar, VABIX is running a
 
 This is a special introductory rate for the first year, not the standard price for later years.
 
-![BizCar Management programme poster for pioneer businesses](/images/articles/thu-moi-doanh-nghiep-tien-phong-bizcar-management/02.webp)
+![BizCar Management programme invitation for pioneer businesses](/images/articles/thu-moi-doanh-nghiep-tien-phong-bizcar-management/02.webp)
 
 ## Who is MyBizCar for?
 

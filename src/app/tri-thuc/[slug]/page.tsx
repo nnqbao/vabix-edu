@@ -145,6 +145,22 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
               </section>
             ) : null}
 
+            {a.cta ? (
+              <section className="relative mt-14 overflow-hidden rounded-[28px] bg-vabix-deep-teal p-8 text-center text-white sm:p-10">
+                <span aria-hidden="true" className="pointer-events-none absolute -left-16 -top-20 h-56 w-56 rounded-full border border-vabix-gold/25" />
+                <span aria-hidden="true" className="pointer-events-none absolute -bottom-24 -right-10 h-64 w-64 rounded-full bg-[radial-gradient(circle,rgba(222,164,67,0.22),transparent_70%)]" />
+                {a.cta.title ? <p className="relative text-balance text-2xl font-semibold leading-snug sm:text-[1.7rem]">{a.cta.title}</p> : null}
+                <a
+                  href={a.cta.href}
+                  {...(/^https?:/.test(a.cta.href) ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                  className="relative mt-6 inline-flex min-h-12 items-center gap-2 rounded-full bg-vabix-gold px-7 text-sm font-semibold uppercase tracking-[0.12em] text-vabix-deep-teal shadow-[0_12px_30px_rgba(222,164,67,0.35)] transition-colors hover:bg-vabix-soft-gold"
+                >
+                  {a.cta.label} →
+                </a>
+                {a.cta.note ? <p className="relative mt-4 text-sm text-white/65">{a.cta.note}</p> : null}
+              </section>
+            ) : null}
+
             <div className="mt-14 flex flex-wrap items-center justify-between gap-4 border-t border-vabix-deep-teal/10 pt-6 text-sm">
               <Link href={paths.insights} className="font-semibold text-vabix-deep-teal hover:text-vabix-gold">
                 ← {en ? "All articles" : "Tất cả bài viết"}
@@ -173,10 +189,18 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
               ) : null}
               <div className="rounded-[22px] bg-vabix-deep-teal p-5 text-white">
                 <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-vabix-gold">VABIX</p>
-                <p className="mt-2 font-semibold leading-snug">{en ? "Turn this knowledge into results in your business." : "Biến tri thức này thành kết quả trong doanh nghiệp của bạn."}</p>
-                <Link href={paths.contact} className="mt-4 inline-flex rounded-full bg-vabix-gold px-4 py-2 text-sm font-semibold text-vabix-deep-teal hover:bg-vabix-soft-gold">
-                  {en ? "Talk to VABIX →" : "Trao đổi cùng VABIX →"}
-                </Link>
+                <p className="mt-2 font-semibold leading-snug">
+                  {a.cta?.title ?? (en ? "Turn this knowledge into results in your business." : "Biến tri thức này thành kết quả trong doanh nghiệp của bạn.")}
+                </p>
+                {a.cta ? (
+                  <a href={a.cta.href} {...(/^https?:/.test(a.cta.href) ? { target: "_blank", rel: "noopener noreferrer" } : {})} className="mt-4 inline-flex rounded-full bg-vabix-gold px-4 py-2 text-sm font-semibold text-vabix-deep-teal hover:bg-vabix-soft-gold">
+                    {a.cta.label} →
+                  </a>
+                ) : (
+                  <Link href={paths.contact} className="mt-4 inline-flex rounded-full bg-vabix-gold px-4 py-2 text-sm font-semibold text-vabix-deep-teal hover:bg-vabix-soft-gold">
+                    {en ? "Talk to VABIX →" : "Trao đổi cùng VABIX →"}
+                  </Link>
+                )}
               </div>
             </div>
           </aside>

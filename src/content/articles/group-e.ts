@@ -28,7 +28,7 @@ Nhiều CEO có báo cáo tài chính, báo cáo kinh doanh và các công cụ 
 2. Đâu là điểm nghẽn thực sự?
 3. Cần ưu tiên thay đổi điều gì để phát triển bền vững?
 
-Đó là lý do VABIX phát triển **Business BizCar Management (MyBizCar)** – nền tảng số hóa hoạt động đánh giá, thiết kế và cải tiến năng lực quản trị doanh nghiệp theo mô hình The BizCar.
+Đó là lý do VABIX phát triển **MyBizCar – Comprehensive Enterprise Management Platform (Nền tảng Quản trị Doanh nghiệp Toàn diện)**, ứng dụng mô hình The BizCar nhằm giúp doanh nghiệp đánh giá, thiết kế, vận hành và liên tục cải tiến toàn diện hệ thống quản trị doanh nghiệp.
 
 ## MyBizCar là gì?
 

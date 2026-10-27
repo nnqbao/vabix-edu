@@ -27,7 +27,7 @@ Many CEOs have financial reports, sales reports and separate management tools, y
 2. Where is the real bottleneck?
 3. What should change first for sustainable growth?
 
-That is why VABIX built **Business BizCar Management (MyBizCar)** – a platform that digitises how a business's management capability is assessed, designed and improved using The BizCar model.
+That is why VABIX built **MyBizCar – Comprehensive Enterprise Management Platform**, which applies The BizCar model to help businesses assess, design, operate and continuously improve their entire management system.
 
 ## What is MyBizCar?
 

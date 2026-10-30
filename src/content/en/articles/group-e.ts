@@ -2,6 +2,59 @@ import type { Article } from "../../types";
 
 export const articlesEEn: (Partial<Article> & { slug: string })[] = [
   {
+    slug: "khoi-dong-dao-tao-khoi-nghiep-sang-tao-sihub-ussh",
+    title: "More than 50 participants launch the innovative startup project development training programme",
+    excerpt:
+      "The “Skills for building and developing innovative startup projects” programme, led by SIHUB with the University of Social Sciences and Humanities – VNU-HCM and VABIX, has officially launched with more than 50 participants.",
+    categoryLabel: "VABIX activities",
+    content: `The training programme **“Skills for building and developing innovative startup projects”** has officially launched with **more than 50 participants**, opening a journey to build a startup mindset, develop ideas and turn them, step by step, into projects with real-world value.
+
+## Three organisations working together
+
+The programme is led by the **Saigon Innovation Hub (SIHUB)**, in partnership with the **University of Social Sciences and Humanities – Vietnam National University Ho Chi Minh City** and the **VABIX Practical Consulting & Training Village**.
+
+## The first session: from real-world observation to a startup mindset
+
+Led by **Nguyễn Thị Thanh Thùy (MA), Co-Founder of VABIX**, the first session was lively, open and highly interactive. Rather than approaching startups purely through theory, participants were encouraged to observe the real world, identify problems, explore opportunities and build a mindset for developing innovative startup projects.
+
+![Nguyễn Thị Thanh Thùy (MA) leading the first session](/images/articles/khoi-dong-dao-tao-khoi-nghiep-sang-tao-sihub-ussh/02.webp)
+
+## Group work, pitching and constructive challenge
+
+The highlight of the first day was group work: discussing and pitching startup ideas. Each group presented its idea, exchanged views, challenged others and received practical perspectives from the lecturer. In doing so, participants began to see the gap between an attractive idea and a business opportunity that can actually be delivered.
+
+![A participant presents and discusses a startup idea](/images/articles/khoi-dong-dao-tao-khoi-nghiep-sang-tao-sihub-ussh/03.webp)
+
+![Groups discuss and develop their project ideas](/images/articles/khoi-dong-dao-tao-khoi-nghiep-sang-tao-sihub-ussh/04.webp)
+
+## Learning from practice, working on real projects
+
+> Learn from practice – Work on real projects – Build the capacity to act.
+
+With this approach, the programme not only provides startup knowledge and tools but also builds problem-solving thinking, teamwork, constructive challenge and the ability to adapt to the market.
+
+![Participants working in groups on their startup projects](/images/articles/khoi-dong-dao-tao-khoi-nghiep-sang-tao-sihub-ussh/05.webp)
+
+## Connecting knowledge with practice
+
+Through the programme, VABIX continues to connect knowledge with practice, working alongside organisations in the innovation and startup ecosystem to help young people build capability, nurture a spirit of innovation and gradually bring promising ideas to life.
+
+![The innovative startup project development class](/images/articles/khoi-dong-dao-tao-khoi-nghiep-sang-tao-sihub-ussh/06.webp)
+
+## The start of the journey
+
+The first day closed with many ideas shared, many questions raised and a readiness to experiment. It marks the start of a journey **from idea to opportunity, from knowledge to action**, and from real problems to solutions that create value for the community.
+
+> VABIX – Connect knowledge. Create value.`,
+    galleryAlts: [
+      "Participants pose for a group photo at the University of Social Sciences and Humanities",
+      "A certificate moment at the programme",
+      "Participants receiving certificates at the programme",
+      "Participants receiving certificates at the programme",
+      "The B2A and LifeCar books in class",
+    ],
+  },
+  {
     slug: "thu-moi-doanh-nghiep-tien-phong-bizcar-management",
     title: "An invitation to pioneer businesses: experience BizCar Management, the whole-business management platform",
     excerpt:

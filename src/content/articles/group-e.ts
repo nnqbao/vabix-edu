@@ -1,7 +1,67 @@
 import type { Article } from "../types";
 
-// Bài ra mắt sản phẩm (2026-10): thư mời doanh nghiệp tiên phong trải nghiệm BizCar Management (MyBizCar).
+// Bài mới (2026-10): khởi động lớp khởi nghiệp sáng tạo SIHUB · USSH · VABIX; thư mời doanh nghiệp tiên phong BizCar Management.
 export const articlesE: Article[] = [
+  {
+    id: "a22",
+    slug: "khoi-dong-dao-tao-khoi-nghiep-sang-tao-sihub-ussh",
+    title: "Hơn 50 học viên khởi động chương trình đào tạo kỹ năng lập và phát triển dự án khởi nghiệp sáng tạo",
+    excerpt:
+      "Chương trình “Kỹ năng lập và phát triển dự án khởi nghiệp sáng tạo” do SIHUB chủ trì, phối hợp cùng Trường ĐH Khoa học Xã hội và Nhân văn – ĐHQG TP.HCM và VABIX, đã chính thức khởi động với hơn 50 học viên.",
+    content: `Chương trình đào tạo **“Kỹ năng lập và phát triển dự án khởi nghiệp sáng tạo”** đã chính thức khởi động với sự tham gia của **hơn 50 học viên**, mở ra hành trình trang bị tư duy khởi nghiệp, phát triển ý tưởng và từng bước chuyển hóa thành những dự án có giá trị thực tiễn.
+
+## Ba đơn vị cùng đồng hành
+
+Chương trình được triển khai với sự chủ trì của **Trung tâm Khởi nghiệp Sáng tạo TP.HCM (SIHUB)**, phối hợp cùng **Trường Đại học Khoa học Xã hội và Nhân văn – Đại học Quốc gia TP.HCM** và **Làng Tư vấn Đào tạo Thực chiến VABIX**.
+
+## Buổi học đầu tiên: từ quan sát thực tế đến tư duy khởi nghiệp
+
+Dưới sự dẫn giảng của **ThS. Nguyễn Thị Thanh Thùy – Đồng sáng lập VABIX**, buổi học đầu tiên diễn ra trong không khí sôi nổi, cởi mở và giàu tính tương tác. Thay vì tiếp cận khởi nghiệp thuần túy qua lý thuyết, học viên được khuyến khích quan sát thực tế, nhận diện vấn đề, khám phá cơ hội và hình thành tư duy phát triển dự án khởi nghiệp sáng tạo.
+
+![ThS. Nguyễn Thị Thanh Thùy dẫn giảng buổi học đầu tiên](/images/articles/khoi-dong-dao-tao-khoi-nghiep-sang-tao-sihub-ussh/02.webp)
+
+## Phân nhóm, thuyết trình và phản biện ý tưởng
+
+Điểm nhấn của ngày học đầu tiên là hoạt động phân nhóm, thảo luận và thuyết trình ý tưởng khởi nghiệp. Các nhóm học viên trực tiếp trình bày ý tưởng, trao đổi, phản biện và tiếp nhận những góc nhìn thực tiễn từ giảng viên. Qua đó, học viên bước đầu nhận diện khoảng cách giữa một ý tưởng hấp dẫn và một cơ hội kinh doanh có khả năng triển khai.
+
+![Học viên trình bày và trao đổi ý tưởng khởi nghiệp](/images/articles/khoi-dong-dao-tao-khoi-nghiep-sang-tao-sihub-ussh/03.webp)
+
+![Các nhóm thảo luận, phát triển ý tưởng dự án](/images/articles/khoi-dong-dao-tao-khoi-nghiep-sang-tao-sihub-ussh/04.webp)
+
+## Học từ thực tiễn, thực hành trên dự án
+
+> Học từ thực tiễn – Thực hành trên dự án – Phát triển năng lực hành động.
+
+Với định hướng này, chương trình không chỉ cung cấp kiến thức và công cụ khởi nghiệp mà còn chú trọng hình thành tư duy giải quyết vấn đề, năng lực làm việc nhóm, phản biện và khả năng thích ứng với thị trường.
+
+![Học viên làm việc nhóm trên dự án khởi nghiệp](/images/articles/khoi-dong-dao-tao-khoi-nghiep-sang-tao-sihub-ussh/05.webp)
+
+## Kết nối tri thức với thực tiễn
+
+Thông qua chương trình, VABIX tiếp tục phát huy vai trò kết nối tri thức với thực tiễn, đồng hành cùng các đơn vị trong hệ sinh thái khởi nghiệp sáng tạo nhằm hỗ trợ thế hệ trẻ phát triển năng lực, nuôi dưỡng tinh thần đổi mới và từng bước hiện thực hóa những ý tưởng có tiềm năng.
+
+![Không khí lớp học kỹ năng lập và phát triển dự án khởi nghiệp sáng tạo](/images/articles/khoi-dong-dao-tao-khoi-nghiep-sang-tao-sihub-ussh/06.webp)
+
+## Bước khởi đầu của hành trình
+
+Ngày học đầu tiên khép lại với nhiều ý tưởng được chia sẻ, những câu hỏi được đặt ra và tinh thần sẵn sàng thử nghiệm. Đây là bước khởi đầu cho hành trình chuyển hóa **từ ý tưởng đến cơ hội, từ tri thức đến hành động** và từ những vấn đề thực tế đến các giải pháp tạo giá trị cho cộng đồng.
+
+> VABIX – Kết tri thức. Nối giá trị.`,
+    category: "hoat-dong",
+    categoryLabel: "Hoạt động VABIX",
+    coverImage: "/images/articles/khoi-dong-dao-tao-khoi-nghiep-sang-tao-sihub-ussh/01.webp",
+    author: "VABIX",
+    publishedAt: "2026-10-30",
+    featured: true,
+    gallery: ["/images/articles/khoi-dong-dao-tao-khoi-nghiep-sang-tao-sihub-ussh/07.webp", "/images/articles/khoi-dong-dao-tao-khoi-nghiep-sang-tao-sihub-ussh/08.webp", "/images/articles/khoi-dong-dao-tao-khoi-nghiep-sang-tao-sihub-ussh/09.webp", "/images/articles/khoi-dong-dao-tao-khoi-nghiep-sang-tao-sihub-ussh/10.webp", "/images/articles/khoi-dong-dao-tao-khoi-nghiep-sang-tao-sihub-ussh/11.webp"],
+    galleryAlts: [
+      "Học viên chụp ảnh lưu niệm tại Trường Đại học Khoa học Xã hội và Nhân văn",
+      "Khoảnh khắc nhận chứng nhận tại chương trình",
+      "Học viên nhận chứng nhận tại chương trình",
+      "Học viên nhận chứng nhận tại chương trình",
+      "Sách B2A và LifeCar tại lớp học",
+    ],
+  },
   {
     id: "a21",
     slug: "thu-moi-doanh-nghiep-tien-phong-bizcar-management",

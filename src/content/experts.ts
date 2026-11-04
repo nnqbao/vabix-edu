@@ -25,7 +25,7 @@ export const experts: Expert[] = [
     id: "exp-04",
     slug: "nguyen-thi-thanh-thuy",
     name: "ThS. Nguyễn Thị Thanh Thùy",
-    title: "Co-Founder & COO VABIX, Chuyên gia quan hệ và đối ngoại; phụ trách Partnership.",
+    title: "Co-Founder & COO VABIX\nChuyên gia quan hệ và đối ngoại; phụ trách Partnership",
     organizationRole: "Co-Founder & COO VABIX",
     expertise: ["Đối ngoại", "Hợp tác đối tác", "Kết nối mạng lưới"],
     shortBio:

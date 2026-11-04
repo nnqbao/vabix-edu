@@ -25,7 +25,7 @@ export const expertsEn: (Partial<Expert> & { slug: string })[] = [
   },
   {
     slug: "nguyen-thi-thanh-thuy",
-    title: "Co-Founder & COO of VABIX; external relations expert who leads Partnership.",
+    title: "Co-Founder & COO, VABIX\nExternal relations expert; leads Partnership",
     organizationRole: "Co-Founder & COO of VABIX",
     expertise: ["External relations", "Partnerships", "Network building"],
     shortBio:

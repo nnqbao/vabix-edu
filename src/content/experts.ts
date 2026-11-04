@@ -25,13 +25,13 @@ export const experts: Expert[] = [
     id: "exp-04",
     slug: "nguyen-thi-thanh-thuy",
     name: "ThS. Nguyễn Thị Thanh Thùy",
-    title: "Chuyên gia quan hệ và đối ngoại; phụ trách Partnership.",
-    organizationRole: "Chuyên gia VABIX",
+    title: "Co-Founder & COO VABIX, Chuyên gia quan hệ và đối ngoại; phụ trách Partnership.",
+    organizationRole: "Co-Founder & COO VABIX",
     expertise: ["Đối ngoại", "Hợp tác đối tác", "Kết nối mạng lưới"],
     shortBio:
-      "Chuyên gia quan hệ và đối ngoại, phụ trách Partnership — kết nối VABIX với các tổ chức, hiệp hội và cộng đồng doanh nghiệp.",
+      "Co-Founder & COO VABIX, chuyên gia quan hệ và đối ngoại, phụ trách Partnership — kết nối VABIX với các tổ chức, hiệp hội và cộng đồng doanh nghiệp.",
     fullBio:
-      "Thạc sĩ Nguyễn Thị Thanh Thùy là chuyên gia quan hệ và đối ngoại, phụ trách Partnership tại mạng lưới VABIX. Bà hỗ trợ thiết kế các mô hình hợp tác với doanh nghiệp, trường đại học, viện đào tạo và tổ chức hỗ trợ doanh nghiệp.",
+      "Thạc sĩ Nguyễn Thị Thanh Thùy là Co-Founder & COO VABIX, chuyên gia quan hệ và đối ngoại, phụ trách Partnership tại mạng lưới VABIX. Bà hỗ trợ thiết kế các mô hình hợp tác với doanh nghiệp, trường đại học, viện đào tạo và tổ chức hỗ trợ doanh nghiệp.",
     portrait: "/images/portraits/nguyen-thi-thanh-thuy.webp",
     featured: true,
     order: 2,

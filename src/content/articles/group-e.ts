@@ -16,7 +16,7 @@ Chương trình được triển khai với sự chủ trì của **Trung tâm K
 
 ## Buổi học đầu tiên: từ quan sát thực tế đến tư duy khởi nghiệp
 
-Dưới sự dẫn giảng của **ThS. Nguyễn Thị Thanh Thùy – Đồng sáng lập VABIX**, buổi học đầu tiên diễn ra trong không khí sôi nổi, cởi mở và giàu tính tương tác. Thay vì tiếp cận khởi nghiệp thuần túy qua lý thuyết, học viên được khuyến khích quan sát thực tế, nhận diện vấn đề, khám phá cơ hội và hình thành tư duy phát triển dự án khởi nghiệp sáng tạo.
+Dưới sự dẫn giảng của **ThS. Nguyễn Thị Thanh Thùy – Co-Founder & COO VABIX**, buổi học đầu tiên diễn ra trong không khí sôi nổi, cởi mở và giàu tính tương tác. Thay vì tiếp cận khởi nghiệp thuần túy qua lý thuyết, học viên được khuyến khích quan sát thực tế, nhận diện vấn đề, khám phá cơ hội và hình thành tư duy phát triển dự án khởi nghiệp sáng tạo.
 
 ![ThS. Nguyễn Thị Thanh Thùy dẫn giảng buổi học đầu tiên](/images/articles/khoi-dong-dao-tao-khoi-nghiep-sang-tao-sihub-ussh/02.webp)
 

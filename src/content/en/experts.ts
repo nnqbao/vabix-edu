@@ -25,13 +25,13 @@ export const expertsEn: (Partial<Expert> & { slug: string })[] = [
   },
   {
     slug: "nguyen-thi-thanh-thuy",
-    title: "External relations expert; leads Partnership.",
-    organizationRole: "VABIX expert",
+    title: "Co-Founder & COO of VABIX; external relations expert who leads Partnership.",
+    organizationRole: "Co-Founder & COO of VABIX",
     expertise: ["External relations", "Partnerships", "Network building"],
     shortBio:
-      "External relations expert who leads Partnership, connecting VABIX with organisations, associations and the business community.",
+      "Co-Founder & COO of VABIX and an external relations expert who leads Partnership, connecting VABIX with organisations, associations and the business community.",
     fullBio:
-      "Nguyễn Thị Thanh Thùy (MA) is an external relations expert who leads Partnership across the VABIX network. She helps design cooperation models with businesses, universities, training institutes and business support organisations.",
+      "Nguyễn Thị Thanh Thùy (MA) is Co-Founder & COO of VABIX and an external relations expert who leads Partnership across the VABIX network. She helps design cooperation models with businesses, universities, training institutes and business support organisations.",
   },
   {
     slug: "ho-xuan-vinh",

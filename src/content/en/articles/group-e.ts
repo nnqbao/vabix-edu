@@ -15,7 +15,7 @@ The programme is led by the **Saigon Innovation Hub (SIHUB)**, in partnership wi
 
 ## The first session: from real-world observation to a startup mindset
 
-Led by **Nguyễn Thị Thanh Thùy (MA), Co-Founder of VABIX**, the first session was lively, open and highly interactive. Rather than approaching startups purely through theory, participants were encouraged to observe the real world, identify problems, explore opportunities and build a mindset for developing innovative startup projects.
+Led by **Nguyễn Thị Thanh Thùy (MA), Co-Founder & COO of VABIX**, the first session was lively, open and highly interactive. Rather than approaching startups purely through theory, participants were encouraged to observe the real world, identify problems, explore opportunities and build a mindset for developing innovative startup projects.
 
 ![Nguyễn Thị Thanh Thùy (MA) leading the first session](/images/articles/khoi-dong-dao-tao-khoi-nghiep-sang-tao-sihub-ussh/02.webp)
 

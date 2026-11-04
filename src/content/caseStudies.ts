@@ -71,7 +71,7 @@ export const caseStudies: CaseStudy[] = [
       "Founder và quản lý được tiếp cận công cụ quản trị thực chiến, kết nối chuyên gia và cộng đồng học – chia sẻ – đồng hành. Phạm vi và số lượng cụ thể được ghi nhận theo từng chương trình, không suy diễn thành thành tích pháp nhân.",
     coverImage: "/images/covers/sihub.jpg",
     gallery: ["/images/covers/sihub.jpg"],
-    relatedExperts: ["nguyen-chi-thanh", "tran-van-lieng"],
+    relatedExperts: ["nguyen-chi-thanh"],
     context:
       "SIHUB là Trung tâm Khởi nghiệp Sáng tạo TP.HCM. Việc đưa tri thức quản trị sát thực tiễn giúp startup và SME rút ngắn khoảng cách từ ý tưởng đến vận hành.",
     lesson:

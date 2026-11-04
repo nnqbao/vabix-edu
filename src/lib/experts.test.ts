@@ -4,22 +4,20 @@ import path from "node:path";
 import { test } from "node:test";
 import { experts, featuredExperts } from "../content/experts";
 
-// Owner reference layout (2026-10-08): left column top→bottom, then right column top→bottom.
-// 2026-10-27: owner added Nguyễn Năng Quốc Bảo at the end.
-// 2026-11-04: owner removed TS. Trần Văn Liêng.
+// Owner (2026-11-04): co-founders first, then the rest alphabetically by given name.
 const REFERENCE_ORDER = [
   "nguyen-chi-thanh",
-  "dang-minh-nguyen",
   "nguyen-thi-thanh-thuy",
-  "ho-xuan-vinh",
-  "kieu-tan-vu",
-  "le-anh-tu",
-  "pham-kim-phuong",
-  "vu-thi-huyen",
-  "nguyen-tran-doan-khoa",
-  "nguyen-van-quyet",
   "tran-anh-vu",
   "nguyen-nang-quoc-bao",
+  "vu-thi-huyen",
+  "nguyen-tran-doan-khoa",
+  "dang-minh-nguyen",
+  "pham-kim-phuong",
+  "nguyen-van-quyet",
+  "le-anh-tu",
+  "ho-xuan-vinh",
+  "kieu-tan-vu",
 ];
 
 test("experts follow the reference order and order fields match array position", () => {

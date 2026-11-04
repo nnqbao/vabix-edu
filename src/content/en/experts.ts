@@ -5,7 +5,7 @@ import type { Expert } from "../types";
 export const expertsEn: (Partial<Expert> & { slug: string })[] = [
   {
     slug: "nguyen-chi-thanh",
-    title: "Founder of VABIX and creator of Vietnamese management doctrines and knowledge models.",
+    title: "Co-Founder & CEO, VABIX\nCreator of Vietnamese management doctrines and knowledge models",
     organizationRole: "Founder of VABIX · Chairman and CEO",
     expertise: ["BizCar", "BMDO", "B2A", "Strategy", "Operating design"],
     shortBio:

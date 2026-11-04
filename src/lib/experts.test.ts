@@ -6,9 +6,9 @@ import { experts, featuredExperts } from "../content/experts";
 
 // Owner reference layout (2026-10-08): left column top→bottom, then right column top→bottom.
 // 2026-10-27: owner added Nguyễn Năng Quốc Bảo at the end.
+// 2026-11-04: owner removed TS. Trần Văn Liêng.
 const REFERENCE_ORDER = [
   "nguyen-chi-thanh",
-  "tran-van-lieng",
   "dang-minh-nguyen",
   "nguyen-thi-thanh-thuy",
   "ho-xuan-vinh",

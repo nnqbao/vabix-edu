@@ -14,16 +14,6 @@ export const expertsEn: (Partial<Expert> & { slug: string })[] = [
       "Mr Nguyễn Chí Thành is the Founder of VABIX and Chairman and CEO of VABIX Joint Stock Company, as well as the author of the BizCar model. He has researched and applied practical management frameworks, including BMDO, MTA Engine and B2A, to help leaders see their business as one integrated system, identify bottlenecks and redesign operating capabilities to fit each stage of growth. He accompanies the Vietnamese business community on its journey to build inner strength and widen its connections.",
   },
   {
-    slug: "tran-van-lieng",
-    title: "Senior advisor; Chairman of the Ho Chi Minh City Quality Association; strategic management expert",
-    organizationRole: "Senior advisor · Chairman of the Ho Chi Minh City Quality Association",
-    expertise: ["Strategic management", "Quality", "Management systems"],
-    shortBio:
-      "Senior advisor to VABIX, Chairman of the Ho Chi Minh City Quality Association and a strategic management expert with experience supporting Vietnamese businesses.",
-    fullBio:
-      "Dr Trần Văn Liêng is a senior advisor to VABIX, Chairman of the Ho Chi Minh City Quality Association and a strategic management expert. He brings systems thinking and quality standards to VABIX consulting and training programmes, helping businesses link strategy to operations and measure real results.",
-  },
-  {
     slug: "dang-minh-nguyen",
     title: "Marketing and TOT facilitation expert",
     organizationRole: "VABIX expert",

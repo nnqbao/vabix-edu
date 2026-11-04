@@ -7,7 +7,7 @@ export const experts: Expert[] = [
     id: "exp-01",
     slug: "nguyen-chi-thanh",
     name: "Triết Nghiệm Gia Nguyễn Chí Thành",
-    title: "Co-Founder & CEO VABIX\nNgười kiến tạo các học thuyết và mô hình tri thức Việt",
+    title: "Co-Founder & CEO VABIX\nNgười kiến tạo các học thuyết\nvà mô hình tri thức Việt",
     organizationRole: "Nhà sáng lập VABIX · Chủ tịch HĐQT kiêm Tổng Giám đốc",
     expertise: ["BizCar", "BMDO", "B2A", "Chiến lược", "Thiết kế vận hành"],
     shortBio:

@@ -32,12 +32,13 @@ export function enHonorific(name: string): string {
   let lawyer = false;
   const after: string[] = [];
   for (;;) {
-    const m = rest.match(/^(ThS\.|TS\.|NCS\.?|Luật sư)\s+(.+)$/);
+    const m = rest.match(/^(ThS\.|TS\.|NCS\.?|Luật sư|Triết Nghiệm Gia)\s+(.+)$/);
     if (!m) break;
     if (m[1] === "ThS.") after.push("MA");
     else if (m[1] === "TS.") dr = true;
     else if (m[1] === "Luật sư") lawyer = true;
-    else after.push("PhD candidate");
+    else if (m[1] === "NCS" || m[1] === "NCS.") after.push("PhD candidate");
+    // "Triết Nghiệm Gia" is a Vietnamese-only honorific: dropped on /en.
     rest = m[2];
   }
   const prefix = dr ? "Dr " : lawyer ? "Lawyer " : "";

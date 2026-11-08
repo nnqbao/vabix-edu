@@ -29,19 +29,21 @@ Led by **Nguyễn Chí Thành, Co-Founder & CEO of VABIX**, this part focused on
 - More effective delegation, feedback and cross-department coordination.
 - Spotting operational bottlenecks and finding the right way to resolve them.
 
-![Nguyễn Chí Thành presenting the 3E model – Passion · Reason · Strength](/images/articles/vabix-dong-hanh-be-tong-ly-tam-thu-duc-1/03.webp)
+![Nguyễn Chí Thành presenting the 3E model – Passion · Reason · Strength](/images/articles/vabix-dong-hanh-be-tong-ly-tam-thu-duc-1/02.webp)
 
 Participants were encouraged to rethink their role: not only managing work, but leading people, building coordination and driving the organisation's shared performance.
 
-![The lecturer working directly with participants during a practice session](/images/articles/vabix-dong-hanh-be-tong-ly-tam-thu-duc-1/02.webp)
+![The 6M model: every person has a different motivation](/images/articles/vabix-dong-hanh-be-tong-ly-tam-thu-duc-1/03.webp)
 
-![Teams discussing and analysing operating situations on flip charts](/images/articles/vabix-dong-hanh-be-tong-ly-tam-thu-duc-1/04.webp)
+![The lecturer working directly with participants during a practice session](/images/articles/vabix-dong-hanh-be-tong-ly-tam-thu-duc-1/04.webp)
+
+![Teams discussing and analysing operating situations on flip charts](/images/articles/vabix-dong-hanh-be-tong-ly-tam-thu-duc-1/05.webp)
 
 ### Part 2: Digital tools and AI in management and operations
 
 The programme was co-delivered by **Trần Anh Vũ (MA, PhD candidate), Founder & CEO of VSC GROUP and Co-Founder & CAIO of VABIX**, who focused on bringing technology and artificial intelligence closer to day-to-day management.
 
-![Trần Anh Vũ opening the session on digital tools and AI](/images/articles/vabix-dong-hanh-be-tong-ly-tam-thu-duc-1/08.webp)
+![Trần Anh Vũ opening the session on digital tools and AI](/images/articles/vabix-dong-hanh-be-tong-ly-tam-thu-duc-1/07.webp)
 
 Rather than treating AI as a distant technology trend, the sessions worked through situations managers meet every day:
 
@@ -53,7 +55,7 @@ Rather than treating AI as a distant technology trend, the sessions worked throu
 >> Key message
 >> AI does not replace the leader, but it can become a **supporting tool** that helps leaders work more effectively, analyse better and make better decisions.
 
-![“AI does not replace management experience” – a message that ran through the session](/images/articles/vabix-dong-hanh-be-tong-ly-tam-thu-duc-1/09.webp)
+![“AI does not replace management experience” – a message that ran through the session](/images/articles/vabix-dong-hanh-be-tong-ly-tam-thu-duc-1/08.webp)
 
 ## Learning from real problems, practising on real work
 
@@ -61,13 +63,15 @@ A hallmark of VABIX training is linking knowledge with business reality.
 
 The programme did more than add knowledge: it gave participants room to look again at the problems in their work, discuss management situations and gradually shape plans they can put in place in their own units.
 
-![Participants following the lecture closely](/images/articles/vabix-dong-hanh-be-tong-ly-tam-thu-duc-1/05.webp)
+![Participants following the lecture closely](/images/articles/vabix-dong-hanh-be-tong-ly-tam-thu-duc-1/09.webp)
 
-![From thinking to execution: teams working on their own units' challenges](/images/articles/vabix-dong-hanh-be-tong-ly-tam-thu-duc-1/06.webp)
+![From thinking to execution: teams working on their own units' challenges](/images/articles/vabix-dong-hanh-be-tong-ly-tam-thu-duc-1/10.webp)
 
 Business transformation does not have to start with complex technology systems. Sometimes it starts with a manager who asks the right question, a process that gets improved, or a tool applied at the right time to the right task.
 
-![One solution per team: presenting, challenging and refining each plan](/images/articles/vabix-dong-hanh-be-tong-ly-tam-thu-duc-1/07.webp)
+![The lecturer giving feedback as a team presents its 3E × 3S matrix](/images/articles/vabix-dong-hanh-be-tong-ly-tam-thu-duc-1/06.webp)
+
+![One solution per team: presenting, challenging and refining each plan](/images/articles/vabix-dong-hanh-be-tong-ly-tam-thu-duc-1/11.webp)
 
 ## VABIX: supporting businesses as they build capability
 
@@ -75,13 +79,21 @@ Through this programme with Thu Duc 1 Centrifugal Concrete JSC, VABIX continues 
 
 VABIX believes the value of a training programme lies not only in what is taught in the classroom, but in how well that knowledge turns into action, improvement and results at work.
 
-![Participants receiving their programme completion certificates](/images/articles/vabix-dong-hanh-be-tong-ly-tam-thu-duc-1/10.webp)
+![Participants receiving their programme completion certificates](/images/articles/vabix-dong-hanh-be-tong-ly-tam-thu-duc-1/12.webp)
 
 > Knowledge only creates real value when it is put into action.
 
 We sincerely thank the Board of Directors of Thu Duc 1 Centrifugal Concrete JSC for their trust and for partnering with VABIX on this programme.
 
+![A company representative sharing reflections to close the programme](/images/articles/vabix-dong-hanh-be-tong-ly-tam-thu-duc-1/13.webp)
+
 **VABIX – Knowledge · Connection · Growth.** Connecting knowledge, building capability, standing alongside businesses.`,
+    galleryAlts: [
+      "Energy in the room during team work",
+      "The lecturer presenting a gift to a participant for an outstanding contribution",
+      "A team presenting its discussion on stage",
+      "The programme completion certificate ceremony",
+    ],
   },
   {
     slug: "khoi-dong-dao-tao-khoi-nghiep-sang-tao-sihub-ussh",

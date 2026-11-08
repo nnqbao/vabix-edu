@@ -18,7 +18,7 @@ Trong bối cảnh doanh nghiệp sản xuất đang đứng trước yêu cầu
 
 Đó cũng chính là tinh thần xuyên suốt chương trình đào tạo lần này.
 
-![Đội ngũ giảng viên VABIX cùng đại diện doanh nghiệp tại lễ khai giảng](/images/articles/vabix-dong-hanh-be-tong-ly-tam-thu-duc-1/01.webp)
+![Đội ngũ giảng viên VABIX cùng đại diện doanh nghiệp tại buổi khai giảng](/images/articles/vabix-dong-hanh-be-tong-ly-tam-thu-duc-1/01.webp)
 
 ## Hai trụ cột – một mục tiêu chuyển đổi
 
@@ -30,19 +30,21 @@ Dưới sự dẫn dắt của **Triết Nghiệm Gia Nguyễn Chí Thành – C
 - Nâng cao hiệu quả giao việc, phản hồi và phối hợp giữa các bộ phận.
 - Nhận diện những điểm nghẽn trong vận hành, từ đó tìm kiếm phương án xử lý phù hợp.
 
-![Triết Nghiệm Gia Nguyễn Chí Thành giảng giải mô thức 3E – Lửa · Lý · Lực](/images/articles/vabix-dong-hanh-be-tong-ly-tam-thu-duc-1/03.webp)
+![Triết Nghiệm Gia Nguyễn Chí Thành giảng giải mô thức 3E – Lửa · Lý · Lực](/images/articles/vabix-dong-hanh-be-tong-ly-tam-thu-duc-1/02.webp)
 
 Chương trình khuyến khích người học nhìn lại vai trò của mình, không chỉ ở góc độ quản lý công việc, mà còn ở khả năng dẫn dắt con người, kiến tạo sự phối hợp và thúc đẩy hiệu quả chung của tổ chức.
 
-![Giảng viên trao đổi trực tiếp với học viên trong giờ thực hành](/images/articles/vabix-dong-hanh-be-tong-ly-tam-thu-duc-1/02.webp)
+![Mô hình 6M – Động lực khác nhau: mỗi người một động lực](/images/articles/vabix-dong-hanh-be-tong-ly-tam-thu-duc-1/03.webp)
 
-![Các nhóm thảo luận, phân tích tình huống vận hành trên giấy khổ lớn](/images/articles/vabix-dong-hanh-be-tong-ly-tam-thu-duc-1/04.webp)
+![Giảng viên trao đổi trực tiếp với học viên trong giờ thực hành](/images/articles/vabix-dong-hanh-be-tong-ly-tam-thu-duc-1/04.webp)
+
+![Các nhóm thảo luận, phân tích tình huống vận hành trên giấy khổ lớn](/images/articles/vabix-dong-hanh-be-tong-ly-tam-thu-duc-1/05.webp)
 
 ### Phần 2: Ứng dụng số và AI trong quản trị và vận hành
 
 Đồng hành cùng chương trình là **ThS. NCS. Trần Anh Vũ – Founder & CEO VSC GROUP, Co-Founder & CAIO VABIX**, với nội dung tập trung vào việc đưa công nghệ và trí tuệ nhân tạo đến gần hơn với hoạt động quản trị thực tiễn.
 
-![ThS. NCS. Trần Anh Vũ mở đầu buổi học ứng dụng số và AI](/images/articles/vabix-dong-hanh-be-tong-ly-tam-thu-duc-1/08.webp)
+![ThS. NCS. Trần Anh Vũ mở đầu buổi học ứng dụng số và AI](/images/articles/vabix-dong-hanh-be-tong-ly-tam-thu-duc-1/07.webp)
 
 Thay vì tiếp cận AI như một xu hướng công nghệ xa vời, chương trình hướng đến những tình huống gần gũi với công việc hằng ngày của đội ngũ quản lý:
 
@@ -54,7 +56,7 @@ Thay vì tiếp cận AI như một xu hướng công nghệ xa vời, chương 
 >> Thông điệp
 >> AI không thay thế vai trò của người lãnh đạo, nhưng có thể trở thành **công cụ hỗ trợ** để người lãnh đạo làm việc hiệu quả hơn, có thêm cơ sở phân tích và đưa ra quyết định tốt hơn.
 
-![“AI không thay thế kinh nghiệm quản lý” – một thông điệp xuyên suốt buổi học](/images/articles/vabix-dong-hanh-be-tong-ly-tam-thu-duc-1/09.webp)
+![“AI không thay thế kinh nghiệm quản lý” – thông điệp xuyên suốt buổi học](/images/articles/vabix-dong-hanh-be-tong-ly-tam-thu-duc-1/08.webp)
 
 ## Học từ vấn đề thật – thực hành trên công việc thật
 
@@ -62,13 +64,15 @@ Thay vì tiếp cận AI như một xu hướng công nghệ xa vời, chương 
 
 Chương trình không chỉ hướng đến việc bổ sung kiến thức, mà còn tạo điều kiện để học viên nhìn nhận lại những vấn đề trong công việc, trao đổi các tình huống quản trị và từng bước hình thành những phương án có thể triển khai tại đơn vị.
 
-![Học viên tập trung theo dõi bài giảng](/images/articles/vabix-dong-hanh-be-tong-ly-tam-thu-duc-1/05.webp)
+![Học viên tập trung theo dõi bài giảng](/images/articles/vabix-dong-hanh-be-tong-ly-tam-thu-duc-1/09.webp)
 
-![Từ tư duy đến giải pháp thực thi: các nhóm làm việc trên bài toán của chính đơn vị](/images/articles/vabix-dong-hanh-be-tong-ly-tam-thu-duc-1/06.webp)
+![Từ tư duy đến giải pháp thực thi: các nhóm làm việc trên bài toán của chính đơn vị](/images/articles/vabix-dong-hanh-be-tong-ly-tam-thu-duc-1/10.webp)
 
 Bởi chuyển đổi doanh nghiệp không nhất thiết phải bắt đầu bằng những hệ thống công nghệ phức tạp. Đôi khi, sự chuyển đổi bắt đầu từ một người quản lý biết đặt câu hỏi đúng, một quy trình được cải tiến hoặc một công cụ được ứng dụng đúng lúc, đúng việc.
 
-![Mỗi nhóm một lời giải: trình bày, phản biện và hoàn thiện phương án](/images/articles/vabix-dong-hanh-be-tong-ly-tam-thu-duc-1/07.webp)
+![Giảng viên góp ý trực tiếp khi nhóm trình bày Ma trận 3E × 3S](/images/articles/vabix-dong-hanh-be-tong-ly-tam-thu-duc-1/06.webp)
+
+![Mỗi nhóm một lời giải: trình bày, phản biện và hoàn thiện phương án](/images/articles/vabix-dong-hanh-be-tong-ly-tam-thu-duc-1/11.webp)
 
 ## VABIX – đồng hành cùng doanh nghiệp trên hành trình phát triển năng lực
 
@@ -76,11 +80,13 @@ Thông qua chương trình phối hợp cùng Công ty Cổ phần Bê tông Ly 
 
 VABIX tin rằng, giá trị của một chương trình đào tạo không chỉ nằm ở những điều được truyền đạt trong lớp học, mà còn ở khả năng chuyển hóa kiến thức thành hành động, cải tiến và kết quả trong công việc.
 
-![Học viên nhận chứng nhận hoàn thành chương trình](/images/articles/vabix-dong-hanh-be-tong-ly-tam-thu-duc-1/10.webp)
+![Học viên nhận chứng nhận hoàn thành chương trình](/images/articles/vabix-dong-hanh-be-tong-ly-tam-thu-duc-1/12.webp)
 
 > Tri thức chỉ thực sự tạo ra giá trị khi được đưa vào hành động.
 
 Trân trọng cảm ơn Ban Lãnh đạo Công ty Cổ phần Bê tông Ly tâm Thủ Đức 1 đã tin tưởng và đồng hành cùng VABIX trong chương trình đào tạo lần này.
+
+![Đại diện doanh nghiệp chia sẻ cảm nghĩ khép lại chương trình](/images/articles/vabix-dong-hanh-be-tong-ly-tam-thu-duc-1/13.webp)
 
 **VABIX – Tri thức · Kết nối · Phát triển.** Kết nối tri thức – Kiến tạo năng lực – Đồng hành cùng doanh nghiệp.`,
     category: "hoat-dong",
@@ -89,6 +95,13 @@ Trân trọng cảm ơn Ban Lãnh đạo Công ty Cổ phần Bê tông Ly tâm 
     author: "VABIX",
     publishedAt: "2026-11-08",
     featured: true,
+    gallery: ["/images/articles/vabix-dong-hanh-be-tong-ly-tam-thu-duc-1/g1.webp", "/images/articles/vabix-dong-hanh-be-tong-ly-tam-thu-duc-1/g2.webp", "/images/articles/vabix-dong-hanh-be-tong-ly-tam-thu-duc-1/g3.webp", "/images/articles/vabix-dong-hanh-be-tong-ly-tam-thu-duc-1/g4.webp"],
+    galleryAlts: [
+      "Không khí hào hứng trong giờ làm việc nhóm",
+      "Giảng viên trao quà cho học viên có đóng góp nổi bật",
+      "Nhóm học viên trình bày phần thảo luận trên sân khấu",
+      "Lễ trao chứng nhận hoàn thành chương trình",
+    ],
   },
   {
     id: "a22",

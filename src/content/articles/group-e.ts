@@ -1,7 +1,95 @@
 import type { Article } from "../types";
 
-// Bài mới (2026-10): khởi động lớp khởi nghiệp sáng tạo SIHUB · USSH · VABIX; thư mời doanh nghiệp tiên phong BizCar Management.
+// Bài mới (2026-11): đào tạo lãnh đạo & AI cho Bê tông Ly tâm Thủ Đức 1. (2026-10): khởi động lớp khởi nghiệp sáng tạo SIHUB · USSH · VABIX; thư mời doanh nghiệp tiên phong BizCar Management.
 export const articlesE: Article[] = [
+  {
+    id: "a23",
+    slug: "vabix-dong-hanh-be-tong-ly-tam-thu-duc-1",
+    title: "VABIX đồng hành cùng Bê tông Ly tâm Thủ Đức 1: nâng cao năng lực lãnh đạo và ứng dụng AI trong quản trị doanh nghiệp",
+    excerpt:
+      "Trong hai ngày 06–07/11/2026, VABIX triển khai chương trình đào tạo chuyên sâu “Nâng cao năng lực lãnh đạo và ứng dụng số cùng AI trong quản trị và vận hành doanh nghiệp” cho đội ngũ quản lý của Công ty Cổ phần Bê tông Ly tâm Thủ Đức 1.",
+    content: `**Trong hai ngày 06–07/11/2026**, VABIX triển khai chương trình đào tạo chuyên sâu **“Nâng cao năng lực lãnh đạo và ứng dụng số cùng AI trong quản trị và vận hành doanh nghiệp”** dành cho đội ngũ quản lý của **Công ty Cổ phần Bê tông Ly tâm Thủ Đức 1**.
+
+Chương trình được thiết kế với thời lượng **02 ngày – 04 buổi**, hướng đến đội ngũ quản lý cấp trung, trưởng/phó bộ phận, quản đốc, cán bộ phụ trách sản xuất và các vị trí quản lý liên quan.
+
+!video[Video tổng hợp 04 buổi đào tạo tại Công ty Cổ phần Bê tông Ly tâm Thủ Đức 1](/videos/btlt-thu-duc-1/vabix-btlt-thu-duc-1-4-buoi-720p.mp4|/videos/btlt-thu-duc-1/vabix-btlt-thu-duc-1-4-buoi-poster.jpg)
+
+Trong bối cảnh doanh nghiệp sản xuất đang đứng trước yêu cầu nâng cao hiệu suất, tối ưu nguồn lực và thích ứng với chuyển đổi số, năng lực cạnh tranh không chỉ đến từ công nghệ hay quy mô sản xuất, mà còn phụ thuộc vào **tư duy lãnh đạo, năng lực điều hành và khả năng ứng dụng công nghệ vào những vấn đề thực tế**.
+
+Đó cũng chính là tinh thần xuyên suốt chương trình đào tạo lần này.
+
+![Đội ngũ giảng viên VABIX cùng đại diện doanh nghiệp tại lễ khai giảng](/images/articles/vabix-dong-hanh-be-tong-ly-tam-thu-duc-1/01.webp)
+
+## Hai trụ cột – một mục tiêu chuyển đổi
+
+### Phần 1: Lãnh đạo tỉnh thức – Kiến tạo và điều hướng
+
+Dưới sự dẫn dắt của **Triết Nghiệm Gia Nguyễn Chí Thành – Co-Founder & CEO VABIX**, nội dung tập trung vào những năng lực cốt lõi của người quản lý trong môi trường doanh nghiệp sản xuất:
+
+- Làm chủ bản thân và duy trì năng lực ra quyết định dưới áp lực.
+- Nâng cao hiệu quả giao việc, phản hồi và phối hợp giữa các bộ phận.
+- Nhận diện những điểm nghẽn trong vận hành, từ đó tìm kiếm phương án xử lý phù hợp.
+
+![Triết Nghiệm Gia Nguyễn Chí Thành giảng giải mô thức 3E – Lửa · Lý · Lực](/images/articles/vabix-dong-hanh-be-tong-ly-tam-thu-duc-1/03.webp)
+
+Chương trình khuyến khích người học nhìn lại vai trò của mình, không chỉ ở góc độ quản lý công việc, mà còn ở khả năng dẫn dắt con người, kiến tạo sự phối hợp và thúc đẩy hiệu quả chung của tổ chức.
+
+![Giảng viên trao đổi trực tiếp với học viên trong giờ thực hành](/images/articles/vabix-dong-hanh-be-tong-ly-tam-thu-duc-1/02.webp)
+
+![Các nhóm thảo luận, phân tích tình huống vận hành trên giấy khổ lớn](/images/articles/vabix-dong-hanh-be-tong-ly-tam-thu-duc-1/04.webp)
+
+### Phần 2: Ứng dụng số và AI trong quản trị và vận hành
+
+Đồng hành cùng chương trình là **ThS. NCS. Trần Anh Vũ – Founder & CEO VSC GROUP, Co-Founder & CAIO VABIX**, với nội dung tập trung vào việc đưa công nghệ và trí tuệ nhân tạo đến gần hơn với hoạt động quản trị thực tiễn.
+
+![ThS. NCS. Trần Anh Vũ mở đầu buổi học ứng dụng số và AI](/images/articles/vabix-dong-hanh-be-tong-ly-tam-thu-duc-1/08.webp)
+
+Thay vì tiếp cận AI như một xu hướng công nghệ xa vời, chương trình hướng đến những tình huống gần gũi với công việc hằng ngày của đội ngũ quản lý:
+
+- Xây dựng tư duy ứng dụng số và AI phù hợp với môi trường doanh nghiệp sản xuất.
+- Thực hành sử dụng AI hỗ trợ tổng hợp báo cáo, phân tích thông tin và công tác điều hành.
+- Nhận diện các công việc có khả năng tối ưu bằng công nghệ.
+- Từng bước thiết kế phương án ứng dụng số và AI tại chính đơn vị đang quản lý.
+
+>> Thông điệp
+>> AI không thay thế vai trò của người lãnh đạo, nhưng có thể trở thành **công cụ hỗ trợ** để người lãnh đạo làm việc hiệu quả hơn, có thêm cơ sở phân tích và đưa ra quyết định tốt hơn.
+
+![“AI không thay thế kinh nghiệm quản lý” – một thông điệp xuyên suốt buổi học](/images/articles/vabix-dong-hanh-be-tong-ly-tam-thu-duc-1/09.webp)
+
+## Học từ vấn đề thật – thực hành trên công việc thật
+
+Điểm nhấn trong phương pháp đào tạo của VABIX là kết nối tri thức với thực tiễn doanh nghiệp.
+
+Chương trình không chỉ hướng đến việc bổ sung kiến thức, mà còn tạo điều kiện để học viên nhìn nhận lại những vấn đề trong công việc, trao đổi các tình huống quản trị và từng bước hình thành những phương án có thể triển khai tại đơn vị.
+
+![Học viên tập trung theo dõi bài giảng](/images/articles/vabix-dong-hanh-be-tong-ly-tam-thu-duc-1/05.webp)
+
+![Từ tư duy đến giải pháp thực thi: các nhóm làm việc trên bài toán của chính đơn vị](/images/articles/vabix-dong-hanh-be-tong-ly-tam-thu-duc-1/06.webp)
+
+Bởi chuyển đổi doanh nghiệp không nhất thiết phải bắt đầu bằng những hệ thống công nghệ phức tạp. Đôi khi, sự chuyển đổi bắt đầu từ một người quản lý biết đặt câu hỏi đúng, một quy trình được cải tiến hoặc một công cụ được ứng dụng đúng lúc, đúng việc.
+
+![Mỗi nhóm một lời giải: trình bày, phản biện và hoàn thiện phương án](/images/articles/vabix-dong-hanh-be-tong-ly-tam-thu-duc-1/07.webp)
+
+## VABIX – đồng hành cùng doanh nghiệp trên hành trình phát triển năng lực
+
+Thông qua chương trình phối hợp cùng Công ty Cổ phần Bê tông Ly tâm Thủ Đức 1, VABIX tiếp tục cụ thể hóa định hướng **kết nối tri thức thực chiến với nhu cầu phát triển năng lực quản trị và chuyển đổi doanh nghiệp Việt Nam**.
+
+VABIX tin rằng, giá trị của một chương trình đào tạo không chỉ nằm ở những điều được truyền đạt trong lớp học, mà còn ở khả năng chuyển hóa kiến thức thành hành động, cải tiến và kết quả trong công việc.
+
+![Học viên nhận chứng nhận hoàn thành chương trình](/images/articles/vabix-dong-hanh-be-tong-ly-tam-thu-duc-1/10.webp)
+
+> Tri thức chỉ thực sự tạo ra giá trị khi được đưa vào hành động.
+
+Trân trọng cảm ơn Ban Lãnh đạo Công ty Cổ phần Bê tông Ly tâm Thủ Đức 1 đã tin tưởng và đồng hành cùng VABIX trong chương trình đào tạo lần này.
+
+**VABIX – Tri thức · Kết nối · Phát triển.** Kết nối tri thức – Kiến tạo năng lực – Đồng hành cùng doanh nghiệp.`,
+    category: "hoat-dong",
+    categoryLabel: "Hoạt động VABIX",
+    coverImage: "/images/articles/vabix-dong-hanh-be-tong-ly-tam-thu-duc-1/cover.webp",
+    author: "VABIX",
+    publishedAt: "2026-11-08",
+    featured: true,
+  },
   {
     id: "a22",
     slug: "khoi-dong-dao-tao-khoi-nghiep-sang-tao-sihub-ussh",

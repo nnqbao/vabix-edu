@@ -5,6 +5,7 @@ import type { ReactNode } from "react";
  * Nội dung bài viết dạng "markdown nhẹ":
  *   đoạn văn cách nhau 1 dòng trống · "## Tiêu đề" · "### Tiêu đề phụ" · "- mục" / "1. mục"
  *   "> trích dẫn" (dòng cuối "> — Tác giả" là nguồn) · "![chú thích](/images/...)" · "**đậm**" · "[chữ](url)"
+ *   video: "!video[chú thích](/videos/....mp4|/videos/...-poster.jpg)"
  *   bảng: các dòng "| a | b |" (dòng thứ 2 là "|---|---|") · khung nổi bật: các dòng bắt đầu bằng ">> "
  */
 type Block =
@@ -14,7 +15,8 @@ type Block =
   | { kind: "quote"; text: string; cite?: string }
   | { kind: "callout"; lines: string[] }
   | { kind: "table"; head: string[]; rows: string[][] }
-  | { kind: "img"; src: string; caption: string };
+  | { kind: "img"; src: string; caption: string }
+  | { kind: "video"; src: string; poster?: string; caption: string };
 
 export function parseArticle(content: string): Block[] {
   const blocks: Block[] = [];
@@ -22,8 +24,10 @@ export function parseArticle(content: string): Block[] {
     const lines = chunk.split("\n").map((l) => l.trim()).filter(Boolean);
     if (!lines.length) continue;
     const first = lines[0];
+    const video = first.match(/^!video\[(.*)\]\(([^|)]+)(?:\|([^)]+))?\)$/);
     const img = first.match(/^!\[(.*)\]\((.+)\)$/);
-    if (img) blocks.push({ kind: "img", caption: img[1], src: img[2] });
+    if (video) blocks.push({ kind: "video", caption: video[1], src: video[2], poster: video[3] });
+    else if (img) blocks.push({ kind: "img", caption: img[1], src: img[2] });
     else if (first.startsWith("### ")) blocks.push({ kind: "h3", text: first.slice(4) });
     else if (first.startsWith("## ")) blocks.push({ kind: "h2", text: first.slice(3) });
     else if (lines.every((l) => l.startsWith("- "))) blocks.push({ kind: "ul", items: lines.map((l) => l.slice(2)) });
@@ -186,6 +190,21 @@ export function ArticleBody({ content }: { content: string }) {
               </figure>
             );
           }
+          case "video":
+            return (
+              <figure key={i} className="my-10">
+                <video
+                  src={b.src}
+                  poster={b.poster}
+                  controls
+                  playsInline
+                  preload="metadata"
+                  aria-label={b.caption}
+                  className="aspect-video w-full rounded-[22px] bg-vabix-deep-teal"
+                />
+                {b.caption ? <figcaption className="mt-3 text-center text-sm text-vabix-muted">{b.caption}</figcaption> : null}
+              </figure>
+            );
           default:
             return (
               <p key={i} className="mt-5 first:mt-0">

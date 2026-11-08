@@ -2,6 +2,88 @@ import type { Article } from "../../types";
 
 export const articlesEEn: (Partial<Article> & { slug: string })[] = [
   {
+    slug: "vabix-dong-hanh-be-tong-ly-tam-thu-duc-1",
+    title: "VABIX partners with Thu Duc 1 Centrifugal Concrete to strengthen leadership and apply AI in business management",
+    excerpt:
+      "On 6–7 November 2026, VABIX delivered the in-depth programme “Strengthening leadership and applying digital tools and AI in business management and operations” for the management team of Thu Duc 1 Centrifugal Concrete JSC.",
+    categoryLabel: "VABIX activities",
+    content: `**On 6–7 November 2026**, VABIX delivered the in-depth training programme **“Strengthening leadership and applying digital tools and AI in business management and operations”** for the management team of **Thu Duc 1 Centrifugal Concrete Joint Stock Company**.
+
+The programme ran over **2 days and 4 sessions** and was designed for middle managers, heads and deputy heads of departments, foremen, production officers and other managers.
+
+!video[Highlights from the four training sessions at Thu Duc 1 Centrifugal Concrete JSC](/videos/btlt-thu-duc-1/vabix-btlt-thu-duc-1-4-buoi-720p.mp4|/videos/btlt-thu-duc-1/vabix-btlt-thu-duc-1-4-buoi-poster.jpg)
+
+As manufacturers face growing pressure to raise productivity, make better use of resources and adapt to digital transformation, competitiveness no longer comes only from technology or production scale. It also depends on **leadership thinking, management capability and the ability to apply technology to real problems**.
+
+That idea ran through the whole programme.
+
+![VABIX lecturers with company representatives at the opening session](/images/articles/vabix-dong-hanh-be-tong-ly-tam-thu-duc-1/01.webp)
+
+## Two pillars, one transformation goal
+
+### Part 1: Mindful leadership – creating and steering
+
+Led by **Nguyễn Chí Thành, Co-Founder & CEO of VABIX**, this part focused on the core capabilities of a manager in a manufacturing business:
+
+- Self-mastery and sound decision-making under pressure.
+- More effective delegation, feedback and cross-department coordination.
+- Spotting operational bottlenecks and finding the right way to resolve them.
+
+![Nguyễn Chí Thành presenting the 3E model – Passion · Reason · Strength](/images/articles/vabix-dong-hanh-be-tong-ly-tam-thu-duc-1/03.webp)
+
+Participants were encouraged to rethink their role: not only managing work, but leading people, building coordination and driving the organisation's shared performance.
+
+![The lecturer working directly with participants during a practice session](/images/articles/vabix-dong-hanh-be-tong-ly-tam-thu-duc-1/02.webp)
+
+![Teams discussing and analysing operating situations on flip charts](/images/articles/vabix-dong-hanh-be-tong-ly-tam-thu-duc-1/04.webp)
+
+### Part 2: Digital tools and AI in management and operations
+
+The programme was co-delivered by **Trần Anh Vũ (MA, PhD candidate), Founder & CEO of VSC GROUP and Co-Founder & CAIO of VABIX**, who focused on bringing technology and artificial intelligence closer to day-to-day management.
+
+![Trần Anh Vũ opening the session on digital tools and AI](/images/articles/vabix-dong-hanh-be-tong-ly-tam-thu-duc-1/08.webp)
+
+Rather than treating AI as a distant technology trend, the sessions worked through situations managers meet every day:
+
+- Building a digital and AI mindset suited to a manufacturing business.
+- Hands-on practice using AI to compile reports, analyse information and support management.
+- Identifying tasks that technology can streamline.
+- Designing, step by step, a digital and AI plan for the unit each participant manages.
+
+>> Key message
+>> AI does not replace the leader, but it can become a **supporting tool** that helps leaders work more effectively, analyse better and make better decisions.
+
+![“AI does not replace management experience” – a message that ran through the session](/images/articles/vabix-dong-hanh-be-tong-ly-tam-thu-duc-1/09.webp)
+
+## Learning from real problems, practising on real work
+
+A hallmark of VABIX training is linking knowledge with business reality.
+
+The programme did more than add knowledge: it gave participants room to look again at the problems in their work, discuss management situations and gradually shape plans they can put in place in their own units.
+
+![Participants following the lecture closely](/images/articles/vabix-dong-hanh-be-tong-ly-tam-thu-duc-1/05.webp)
+
+![From thinking to execution: teams working on their own units' challenges](/images/articles/vabix-dong-hanh-be-tong-ly-tam-thu-duc-1/06.webp)
+
+Business transformation does not have to start with complex technology systems. Sometimes it starts with a manager who asks the right question, a process that gets improved, or a tool applied at the right time to the right task.
+
+![One solution per team: presenting, challenging and refining each plan](/images/articles/vabix-dong-hanh-be-tong-ly-tam-thu-duc-1/07.webp)
+
+## VABIX: supporting businesses as they build capability
+
+Through this programme with Thu Duc 1 Centrifugal Concrete JSC, VABIX continues to put into practice its aim of **connecting practical knowledge with the need of Vietnamese businesses to build management capability and transform**.
+
+VABIX believes the value of a training programme lies not only in what is taught in the classroom, but in how well that knowledge turns into action, improvement and results at work.
+
+![Participants receiving their programme completion certificates](/images/articles/vabix-dong-hanh-be-tong-ly-tam-thu-duc-1/10.webp)
+
+> Knowledge only creates real value when it is put into action.
+
+We sincerely thank the Board of Directors of Thu Duc 1 Centrifugal Concrete JSC for their trust and for partnering with VABIX on this programme.
+
+**VABIX – Knowledge · Connection · Growth.** Connecting knowledge, building capability, standing alongside businesses.`,
+  },
+  {
     slug: "khoi-dong-dao-tao-khoi-nghiep-sang-tao-sihub-ussh",
     title: "More than 50 participants launch the innovative startup project development training programme",
     excerpt:

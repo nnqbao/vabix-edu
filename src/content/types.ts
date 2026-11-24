@@ -263,8 +263,9 @@ export type TrainingProgram = {
   ogImage?: string;
   /** Nguyên lý thiết kế của chương trình (thẻ tiêu đề + mô tả). */
   principles?: { title: string; body: string }[];
-  /** Lộ trình theo ngày: chặng phát triển, các buổi và sản phẩm đầu ra bắt buộc. */
-  roadmap?: { day: string; stage: string; sessions: string[]; output: string }[];
+  /** Lộ trình theo ngày (hoặc theo buổi khi `roadmapUnit` là "session"): chủ điểm, nội dung và sản phẩm đầu ra. */
+  roadmap?: { day: string; stage: string; sessions: string[]; output?: string }[];
+  roadmapUnit?: "day" | "session";
   /** Thang đánh giá dự án (tiêu chí – điểm tối đa) và ghi chú cách hiểu điểm số. */
   scorecard?: { criteria: string; points: number }[];
   scorecardNote?: string;

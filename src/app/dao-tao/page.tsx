@@ -12,6 +12,7 @@ import { threeW } from "@/content/threeW";
 import { createMetadata } from "@/lib/seo";
 import { Button } from "@/components/ui/Button";
 import { paths } from "@/lib/paths";
+import Image from "next/image";
 import Link from "next/link";
 import { getLocale } from "@/i18n/server";
 
@@ -134,14 +135,19 @@ export default async function TrainingHubPage() {
 function ProgramList({
   programs,
 }: {
-  programs: { slug: string; title: string; duration?: string; durationNote?: string; tagline?: string }[];
+  programs: { slug: string; title: string; duration?: string; durationNote?: string; tagline?: string; thumbnail?: string }[];
 }) {
   return (
     <div className="mt-6 grid gap-3">
       {programs.map((p) => (
-        <Link key={p.slug} href={paths.program(p.slug)} className="border border-vabix-deep-teal/10 p-5 hover:border-vabix-gold">
-          <h3 className="font-semibold text-vabix-deep-teal">{p.title}</h3>
-          <p className="mt-1 text-sm text-vabix-muted">{p.tagline ?? p.duration ?? p.durationNote}</p>
+        <Link key={p.slug} href={paths.program(p.slug)} className="flex items-center gap-5 border border-vabix-deep-teal/10 p-5 hover:border-vabix-gold">
+          {p.thumbnail ? (
+            <Image src={p.thumbnail} alt={p.title} width={800} height={500} className="hidden h-auto w-40 shrink-0 sm:block" />
+          ) : null}
+          <div className="min-w-0">
+            <h3 className="font-semibold text-vabix-deep-teal">{p.title}</h3>
+            <p className="mt-1 text-sm text-vabix-muted">{p.tagline ?? p.duration ?? p.durationNote}</p>
+          </div>
         </Link>
       ))}
     </div>

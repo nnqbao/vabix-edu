@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { programs } from "@/content/programs";
 import { programGroups as programGroupsVi } from "@/content/programs";
@@ -61,7 +62,7 @@ export async function programMetadata(slug: string): Promise<Metadata> {
       path: `${en ? "/en" : ""}${paths.program(p.slug)}`,
     });
   }
-  return createMetadata({ title: p.title, description: p.seoDescription, path: `${en ? "/en" : ""}${paths.program(p.slug)}` });
+  return createMetadata({ title: p.title, description: p.seoDescription, path: `${en ? "/en" : ""}${paths.program(p.slug)}`, ...(p.ogImage ? { image: p.ogImage } : {}) });
 }
 
 function Block({ title, items }: { title: string; items?: string[] }) {
@@ -107,6 +108,9 @@ export async function ProgramDetail({ slug }: { slug: string }) {
       />
       <Container className="grid gap-12 py-16 lg:grid-cols-3">
         <div className="space-y-10 lg:col-span-2">
+          {p.image ? (
+            <Image src={p.image} alt={p.title} width={1586} height={992} priority className="h-auto w-full rounded-[22px] border border-vabix-deep-teal/10" />
+          ) : null}
           {p.clarification ? (
             <p className="border-l-2 border-vabix-gold bg-vabix-ivory p-4 text-sm text-vabix-ink" role="note">
               {p.clarification}

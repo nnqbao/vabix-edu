@@ -243,6 +243,9 @@ export const programs: TrainingProgram[] = [
     status: "published",
     relatedPrograms: ["thao-truong-khoi-nghiep", "bmdo", "babosora"],
     relatedModels: ["bizcar", "baboso", "karot", "applier"],
+    image: "/images/programs/smc-2027-banner.webp",
+    thumbnail: "/images/programs/smc-2027-thumb.webp",
+    ogImage: "/images/programs/smc-2027-og.jpg",
     seoDescription:
       "SMC – Startup Master Class: khung đào tạo khởi nghiệp sáng tạo 08 ngày, 16 buổi (48 giờ) của VABIX. Một dự án xuyên suốt qua 8 chặng phát triển, bộ hồ sơ dự án và Demo Day.",
   },

@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { localeFromPathname } from "@/i18n/locale";
@@ -70,6 +71,9 @@ export function ProgramCatalog({ programs = filePrograms }: { programs?: Trainin
       <div className="mt-6 grid gap-4 md:grid-cols-2">
         {list.map((p) => (
           <Link key={p.slug} href={`/dao-tao/${p.slug}`} className="flex h-full flex-col border border-vabix-deep-teal/10 bg-white p-6 hover:border-vabix-gold">
+            {p.thumbnail ? (
+              <Image src={p.thumbnail} alt={p.title} width={800} height={500} className="-mx-6 -mt-6 mb-5 h-auto w-[calc(100%+3rem)] max-w-none" />
+            ) : null}
             <p className="eyebrow">{groups.find((g) => g.id === p.group)?.label}</p>
             <h2 className="mt-2 text-lg font-semibold text-vabix-deep-teal">{p.title}</h2>
             <p className="mt-3 flex-1 text-sm text-vabix-muted">{p.audience}</p>

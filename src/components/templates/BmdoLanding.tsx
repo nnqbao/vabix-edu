@@ -381,14 +381,8 @@ export async function BmdoLanding() {
               </div>
             ))}
             <div className="col-span-2 flex min-h-[7rem] flex-col items-center justify-center bg-vabix-ivory px-4 py-5 text-center sm:col-span-1 sm:min-h-[8.5rem] sm:px-6 sm:py-6">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-vabix-muted">{en ? "Special fee" : "Học phí ưu đãi"}</p>
-              <p className="mt-2 flex items-baseline justify-center gap-2">
-                <span className="text-2xl font-semibold text-vabix-deep-teal">{k.enrol.price}</span>
-                <span className="rounded-full bg-vabix-gold/15 px-2 py-0.5 text-[11px] font-semibold text-vabix-gold">−50%</span>
-              </p>
-              <p className="mt-0.5 text-xs text-vabix-muted">
-                {en ? "List price" : "Giá niêm yết"} <span className="line-through">{k.enrol.listPrice}</span>
-              </p>
+              <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-vabix-muted">{en ? "Tuition" : "Học phí"}</p>
+              <p className="mt-2 text-[17px] font-semibold leading-snug text-vabix-deep-teal">{en ? "Contact us for details" : "Liên hệ để được tư vấn"}</p>
               <Button href="#dang-ky" variant="teal" className="mt-3 min-h-10 px-6 py-2">
                 {en ? "Reserve →" : "Giữ chỗ →"}
               </Button>
@@ -735,16 +729,6 @@ export async function BmdoLanding() {
               <div>
                 <dt className="text-xs uppercase tracking-[0.18em] text-white/55">{en ? "Venue" : "Địa điểm"}</dt>
                 <dd className="mt-1 text-lg">{k.enrol.venue}</dd>
-              </div>
-              <div>
-                <dt className="text-xs uppercase tracking-[0.18em] text-white/55">{en ? "Tuition" : "Học phí"}</dt>
-                <dd className="mt-1 text-white/60">
-                  {en ? "List price:" : "Giá niêm yết:"} <span className="line-through">{k.enrol.listPrice}</span>
-                </dd>
-                <dd className="mt-1 flex flex-wrap items-baseline gap-x-4">
-                  <span className="text-4xl font-semibold text-vabix-gold">{k.enrol.price}</span>
-                  <span className="text-xs font-semibold uppercase tracking-[0.12em]">{k.enrol.discount}</span>
-                </dd>
               </div>
             </dl>
             <div className="mt-10 border-t border-white/15 pt-6">

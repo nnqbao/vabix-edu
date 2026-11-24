@@ -1,4 +1,4 @@
-// Nội dung landing BMDO Khoá 04 — theo brochure "VABIX_BMDO_K4_Brochure_2026" (giá ưu đãi 10 triệu).
+// Nội dung landing BMDO Khoá 04 — theo brochure "VABIX_BMDO_K4_Brochure_2026". Không công bố học phí trên website (chủ sở hữu, 2026-11-24).
 export const bmdoK4 = {
   cohort: "Khoá 04",
   eyebrow: "Chương trình dành cho doanh chủ & CEO",
@@ -192,9 +192,6 @@ export const bmdoK4 = {
     opening: "05.12.2026",
     schedule: "Thứ Bảy hằng tuần • 12 ngày",
     venue: "Tòa nhà SIHUB, 123 Trương Định, TP.HCM",
-    listPrice: "20.000.000đ",
-    price: "10.000.000đ",
-    discount: "Giảm 50% • Tiết kiệm 10 triệu",
     advisor: "ThS. Thanh Thuỳ",
     zaloGroup: { name: "Khoá Giám đốc điều hành BMDO K4", url: "https://zaloapp.com/qr/g/d0kpihdzmlptu6dewwaw?src=qr", qr: "/images/bmdo/zalo-bmdo-k4-qr.png" },
     note: "Học viên chuẩn bị máy tính, một bài toán ưu tiên và dữ liệu quản trị cơ bản. Thông tin kỳ học có thể được cập nhật khi Ban tổ chức xác nhận.",

@@ -152,14 +152,14 @@ The first day closed with many ideas shared, many questions raised and a readine
     slug: "thu-moi-doanh-nghiep-tien-phong-bizcar-management",
     title: "An invitation to pioneer businesses: experience BizCar Management, the whole-business management platform",
     excerpt:
-      "10 pioneer businesses – a special offer of just 200 USD for the first 12 months. VABIX invites your business to experience MyBizCar, the platform that digitises how management capability is assessed, designed and improved using The BizCar model.",
+      "10 pioneer businesses – a special offer for the first 12 months; contact VABIX for details. VABIX invites your business to experience MyBizCar, the platform that digitises how management capability is assessed, designed and improved using The BizCar model.",
     categoryLabel: "BizCar",
     content: `To business owners, CEOs and leadership teams,
 
 VABIX – the Knowledge Connection & Business Connection ecosystem – is pleased to introduce **Business BizCar Management (MyBizCar)** and to invite your business to become one of **10 pioneer businesses** to experience the platform at a special first-year rate.
 
 >> Limited offer
->> **10 pioneer businesses** – just **200 USD** for the first 12 months
+>> **10 pioneer businesses** – a special offer for the first 12 months; **contact VABIX** for details
 >> - A whole-business management platform built on The BizCar model
 >> - Developed by VABIX – the Knowledge Connection & Business Connection ecosystem
 >> - Try it at [mybizcar.com](https://mybizcar.com/)
@@ -227,16 +227,16 @@ To help Vietnamese businesses access and experience MyBizCar, VABIX is running a
 
 | Benefit | Details |
 |---|---|
-| Introductory fee | **200 USD per business** for the first year |
+| Introductory fee | **Contact VABIX** for the pioneer rate |
 | Term | 12 months from activation |
 | Scope | 1 business – 1 admin account |
 | Platform | Assessment, analysis, Studio and reporting tools in the version provided |
 | Method | The BizCar 12-domain framework applied to your own business |
 | Community | Join the pioneer group that tests the platform and helps shape it |
 
-This is a special introductory rate for the first year, not the standard price for later years.
+The introductory rate applies only to the first year for the pioneer group. Please contact VABIX for details.
 
-![BizCar Management programme invitation for pioneer businesses](/images/articles/thu-moi-doanh-nghiep-tien-phong-bizcar-management/02.webp)
+![BizCar Management programme invitation for pioneer businesses](/images/articles/thu-moi-doanh-nghiep-tien-phong-bizcar-management/02-lien-he.webp)
 
 ## Who is MyBizCar for?
 
@@ -249,7 +249,7 @@ You do not need to complete all 12 domains at the start. The value of MyBizCar i
 
 VABIX believes that a business grows sustainably only when its management capability keeps pace with its revenue. With MyBizCar, we want to bring systematic management methods closer to Vietnamese businesses through a digital platform that works in practice.
 
-**We warmly invite your business to become one of the 10 pioneers to experience Business BizCar Management at the special rate of 200 USD for the first year.**
+**We warmly invite your business to become one of the 10 pioneers to experience Business BizCar Management at a special first-year rate. Contact VABIX for details.**
 
 It is an opportunity to build a more complete picture of how your business is managed, see clearly what needs to improve and lay the foundation for long-term growth.
 
@@ -259,7 +259,7 @@ It is an opportunity to build a more complete picture of how your business is ma
       title: "Become one of 10 pioneer businesses to experience BizCar Management",
       label: "Try it at mybizcar.com",
       href: "https://mybizcar.com/",
-      note: "200 USD for the first 12 months · 1 business – 1 admin account",
+      note: "Special offer for the first 12 months – contact VABIX for details · 1 business – 1 admin account",
     },
   },
 ];

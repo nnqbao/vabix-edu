@@ -168,13 +168,13 @@ Ngày học đầu tiên khép lại với nhiều ý tưởng được chia s�
     slug: "thu-moi-doanh-nghiep-tien-phong-bizcar-management",
     title: "Thư mời doanh nghiệp tiên phong trải nghiệm nền tảng quản trị doanh nghiệp toàn diện BizCar Management",
     excerpt:
-      "10 doanh nghiệp tiên phong – ưu đãi đặc biệt chỉ 200 USD cho 12 tháng đầu tiên. VABIX trân trọng mời Quý Doanh nghiệp trải nghiệm MyBizCar, nền tảng số hóa đánh giá, thiết kế và cải tiến năng lực quản trị theo mô hình The BizCar.",
+      "10 doanh nghiệp tiên phong – ưu đãi đặc biệt cho 12 tháng đầu tiên, liên hệ VABIX để được tư vấn. VABIX trân trọng mời Quý Doanh nghiệp trải nghiệm MyBizCar, nền tảng số hóa đánh giá, thiết kế và cải tiến năng lực quản trị theo mô hình The BizCar.",
     content: `Trân trọng kính gửi Quý Doanh chủ, CEO và Ban lãnh đạo doanh nghiệp,
 
 VABIX – Hệ sinh thái Kết nối Tri thức & Kết nối Kinh doanh trân trọng giới thiệu **Business BizCar Management (MyBizCar)** và gửi lời mời Quý Doanh nghiệp trở thành một trong **10 doanh nghiệp tiên phong** trải nghiệm nền tảng với mức ưu đãi đặc biệt cho năm đầu tiên.
 
 >> Ưu đãi giới hạn
->> **10 doanh nghiệp tiên phong** – chỉ **200 USD** cho 12 tháng đầu tiên
+>> **10 doanh nghiệp tiên phong** – ưu đãi đặc biệt cho 12 tháng đầu tiên, **liên hệ VABIX** để nhận thông tin chi tiết
 >> - Nền tảng quản trị doanh nghiệp toàn diện theo mô hình The BizCar
 >> - Đơn vị phát triển: VABIX – Hệ sinh thái Kết nối Tri thức & Kết nối Kinh doanh
 >> - Website trải nghiệm: [mybizcar.com](https://mybizcar.com/)
@@ -242,16 +242,16 @@ Nhằm tạo điều kiện cho các doanh nghiệp Việt Nam tiếp cận và 
 
 | Quyền lợi | Chi tiết |
 |---|---|
-| Mức phí ưu đãi | **200 USD/doanh nghiệp** cho năm đầu tiên |
+| Mức phí ưu đãi | **Liên hệ VABIX** để nhận mức phí dành cho doanh nghiệp tiên phong |
 | Thời hạn sử dụng | 12 tháng kể từ khi kích hoạt |
 | Phạm vi đăng ký | 01 doanh nghiệp – 01 tài khoản quản trị |
 | Nền tảng | Công cụ đánh giá, phân tích, Studio và báo cáo theo phiên bản được cung cấp |
 | Phương pháp | Bộ khung quản trị 12 miền The BizCar trên chính doanh nghiệp của mình |
 | Cộng đồng | Nhóm doanh nghiệp tiên phong trải nghiệm và đóng góp ý kiến hoàn thiện nền tảng |
 
-Đây là mức phí giới thiệu đặc biệt trong năm đầu tiên, không phải mức giá mặc định cho các năm tiếp theo.
+Mức phí ưu đãi chỉ áp dụng trong năm đầu tiên cho nhóm doanh nghiệp tiên phong. Vui lòng liên hệ VABIX để được tư vấn chi tiết.
 
-![Thư mời chương trình BizCar Management dành cho doanh nghiệp tiên phong](/images/articles/thu-moi-doanh-nghiep-tien-phong-bizcar-management/02.webp)
+![Thư mời chương trình BizCar Management dành cho doanh nghiệp tiên phong](/images/articles/thu-moi-doanh-nghiep-tien-phong-bizcar-management/02-lien-he.webp)
 
 ## MyBizCar phù hợp với ai?
 
@@ -264,7 +264,7 @@ Doanh nghiệp không cần phải hoàn thiện tất cả 12 miền ngay từ 
 
 VABIX tin rằng một doanh nghiệp phát triển bền vững không chỉ cần doanh thu tốt mà còn cần năng lực quản trị tương xứng. Với MyBizCar, chúng tôi mong muốn đưa những phương pháp quản trị có hệ thống đến gần hơn với doanh nghiệp Việt Nam thông qua một nền tảng số có thể ứng dụng trên thực tế.
 
-**Chúng tôi trân trọng mời Quý Doanh nghiệp trở thành một trong 10 đơn vị tiên phong trải nghiệm Business BizCar Management với mức phí đặc biệt 200 USD cho năm đầu tiên.**
+**Chúng tôi trân trọng mời Quý Doanh nghiệp trở thành một trong 10 đơn vị tiên phong trải nghiệm Business BizCar Management với mức phí ưu đãi đặc biệt cho năm đầu tiên. Liên hệ VABIX để được tư vấn chi tiết.**
 
 Đây là cơ hội để doanh nghiệp từng bước xây dựng một bức tranh quản trị toàn diện hơn, nhìn rõ những vấn đề cần cải tiến và chuẩn bị nền tảng phát triển dài hạn.
 
@@ -272,7 +272,7 @@ VABIX tin rằng một doanh nghiệp phát triển bền vững không chỉ c�
 > — BizCar Management · VABIX`,
     category: "bizcar",
     categoryLabel: "BizCar",
-    coverImage: "/images/articles/thu-moi-doanh-nghiep-tien-phong-bizcar-management/01.webp",
+    coverImage: "/images/articles/thu-moi-doanh-nghiep-tien-phong-bizcar-management/01-lien-he.webp",
     author: "VABIX",
     publishedAt: "2026-10-27",
     featured: true,
@@ -280,7 +280,7 @@ VABIX tin rằng một doanh nghiệp phát triển bền vững không chỉ c�
       title: "Trở thành 1 trong 10 doanh nghiệp tiên phong trải nghiệm BizCar Management",
       label: "Trải nghiệm tại mybizcar.com",
       href: "https://mybizcar.com/",
-      note: "Ưu đãi 200 USD cho 12 tháng đầu tiên · 01 doanh nghiệp – 01 tài khoản quản trị",
+      note: "Ưu đãi đặc biệt cho 12 tháng đầu tiên – liên hệ VABIX để được tư vấn · 01 doanh nghiệp – 01 tài khoản quản trị",
     },
   },
 ];

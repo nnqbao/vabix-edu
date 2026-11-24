@@ -151,17 +151,19 @@ export async function ProgramDetail({ slug }: { slug: string }) {
                 {p.roadmap.map((d) => (
                   <li key={d.day} className="border border-vabix-deep-teal/10 bg-white p-5">
                     <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-vabix-gold">
-                      {en ? "Day" : "Ngày"} {d.day} · {d.stage}
+                      {p.roadmapUnit === "session" ? (en ? "Session" : "Buổi") : en ? "Day" : "Ngày"} {d.day} · {d.stage}
                     </p>
                     <ul className="mt-3 space-y-2 text-vabix-ink">
                       {d.sessions.map((x) => (
                         <li key={x}>{x}</li>
                       ))}
                     </ul>
-                    <p className="mt-3 border-l-2 border-vabix-gold bg-vabix-ivory px-4 py-2 text-sm text-vabix-deep-teal">
-                      <span className="font-semibold">{en ? "Output: " : "Sản phẩm đầu ra: "}</span>
-                      {d.output}
-                    </p>
+                    {d.output ? (
+                      <p className="mt-3 border-l-2 border-vabix-gold bg-vabix-ivory px-4 py-2 text-sm text-vabix-deep-teal">
+                        <span className="font-semibold">{en ? "Output: " : "Sản phẩm đầu ra: "}</span>
+                        {d.output}
+                      </p>
+                    ) : null}
                   </li>
                 ))}
               </ol>

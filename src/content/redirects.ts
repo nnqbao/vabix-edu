@@ -19,6 +19,8 @@ export const iaRedirects: Redirect[] = [
   { source: "/giai-phap/trustworking", destination: "/trustworking", permanent: true },
   { source: "/dao-tao/dao-tao-theo-yeu-cau", destination: "/dao-tao/theo-yeu-cau-doanh-nghiep", permanent: true },
   { source: "/dao-tao/ung-dung-ai-nang-cao-hieu-suat", destination: "/dao-tao/ung-dung-ai-hieu-suat", permanent: true },
+  { source: "/dao-tao/nang-luc-so-ai-lanh-dao", destination: "/dao-tao/nhan-luc-so-ai", permanent: true },
+  { source: "/en/dao-tao/nang-luc-so-ai-lanh-dao", destination: "/en/dao-tao/nhan-luc-so-ai", permanent: true },
   { source: "/sach/:slug", destination: "/tri-thuc/sach/:slug", permanent: true },
   { source: "/cam-nang/:slug", destination: "/tri-thuc/cam-nang/:slug", permanent: true },
   { source: "/goc-chia-se/:slug", destination: "/tri-thuc/:slug", permanent: true },

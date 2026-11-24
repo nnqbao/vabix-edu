@@ -257,6 +257,10 @@ export type TrainingProgram = {
   relatedPrograms: string[];
   relatedModels: string[];
   seoDescription: string;
+  /** Ảnh banner trên trang chương trình; `thumbnail` cho thẻ danh sách; `ogImage` cho ảnh chia sẻ mạng xã hội. */
+  image?: string;
+  thumbnail?: string;
+  ogImage?: string;
   /** Nguyên lý thiết kế của chương trình (thẻ tiêu đề + mô tả). */
   principles?: { title: string; body: string }[];
   /** Lộ trình theo ngày: chặng phát triển, các buổi và sản phẩm đầu ra bắt buộc. */

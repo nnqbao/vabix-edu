@@ -201,7 +201,6 @@ Ba lớp hỗ trợ đi cùng học viên:
 - **Lịch học**: Thứ Bảy hằng tuần, 12 ngày, 60 giờ đào tạo thực chiến.
 - **Địa điểm**: Tòa nhà SIHUB, 123 Trương Định, TP.HCM.
 - **Đối tượng**: doanh chủ, CEO và đội ngũ điều hành.
-- **Học phí ưu đãi**: 10.000.000đ (giá niêm yết 20.000.000đ, giảm 50%).
 - **Chuẩn bị**: máy tính, một bài toán ưu tiên và dữ liệu quản trị cơ bản.
 
 ## Học xong, doanh nghiệp có gì?

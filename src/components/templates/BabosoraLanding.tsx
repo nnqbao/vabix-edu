@@ -395,7 +395,6 @@ export async function BabosoraLanding() {
               <ul className="mt-6 flex flex-wrap gap-2 text-sm">
                 <li className="rounded-full border border-vabix-gold/40 px-3 py-1 text-vabix-soft-gold">{bmdoK4.cohort} · {en ? "Opens" : "Khai giảng"} {bmdoK4.enrol.opening}</li>
                 <li className="rounded-full border border-vabix-gold/40 px-3 py-1 text-vabix-soft-gold">{en ? "60 hours · 12 Saturdays" : "60 giờ · 12 ngày Thứ Bảy"}</li>
-                <li className="rounded-full border border-vabix-gold/40 px-3 py-1 text-vabix-soft-gold">{en ? "Offer" : "Ưu đãi"} {bmdoK4.enrol.price}</li>
               </ul>
               <div className="mt-8 grid gap-3 sm:flex">
                 <Button href={paths.program("bmdo")} className="w-full sm:w-auto">

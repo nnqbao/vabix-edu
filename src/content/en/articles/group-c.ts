@@ -184,7 +184,6 @@ Three layers of support go with every participant:
 - **Schedule**: every Saturday, 12 days, 60 hours of hands-on training.
 - **Venue**: SIHUB building, 123 Trương Định, Hồ Chí Minh City.
 - **For**: business owners, CEOs and leadership teams.
-- **Early-bird fee**: 10,000,000 VND (list price 20,000,000 VND, 50% off).
 - **Bring**: a laptop, one priority problem and basic management data.
 
 ## What does the business take away?

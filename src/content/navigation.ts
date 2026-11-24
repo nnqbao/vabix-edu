@@ -117,6 +117,16 @@ export const primaryNav: NavItem[] = [
           { label: "AI WorkLab", href: "/dao-tao/ai-worklab", description: "Đưa AI vào công việc và quy trình doanh nghiệp — 04 buổi." },
         ],
       },
+      {
+        label: "Khởi nghiệp sáng tạo",
+        children: [
+          {
+            label: "SMC – Startup Master Class",
+            href: "/dao-tao/smc-startup-master-class",
+            description: "Khung đào tạo năng lực khởi nghiệp sáng tạo — 08 ngày, 16 buổi.",
+          },
+        ],
+      },
     ],
   },
   {
@@ -180,6 +190,7 @@ export const footerColumns: { title: string; href: string; links: { label: strin
       { label: "BMDO", href: "/dao-tao/bmdo" },
       { label: "BABOSORA", href: "/dao-tao/babosora" },
       { label: "AI WorkLab", href: "/dao-tao/ai-worklab" },
+      { label: "SMC – Startup Master Class", href: "/dao-tao/smc-startup-master-class" },
       { label: "Lịch học / lớp đang mở", href: "/dao-tao/lich" },
     ],
   },

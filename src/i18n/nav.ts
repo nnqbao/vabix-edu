@@ -35,6 +35,8 @@ const en: Record<string, string> = {
   "Đào tạo theo yêu cầu": "Custom training",
   "Thiết kế sau khảo sát hiện trạng.": "Designed after a review of the current state.",
   "Đang tuyển sinh": "Now enrolling",
+  "Khởi nghiệp sáng tạo": "Innovative startups",
+  "Khung đào tạo năng lực khởi nghiệp sáng tạo — 08 ngày, 16 buổi.": "An innovative-startup training framework — 8 days, 16 sessions.",
   "Lịch học / lớp đang mở": "Schedule / open classes",
   "Các lớp và lịch đào tạo hiện có.": "Current classes and training dates.",
   "Thao trường thiết kế và vận hành doanh nghiệp toàn diện.": "A practice field for designing and running the whole business.",

@@ -80,6 +80,155 @@ export const programsEn: (Partial<TrainingProgram> & { slug: string })[] = [
       "BABOSORA — running and accelerating the revenue flow: 2 hands-on days on B2A × BA × BO × SO × RA, ASKING closing and the six BRUCCS acceleration levers.",
   },
   {
+    slug: "smc-startup-master-class",
+    title: "SMC — Startup Master Class: building innovative startup capability",
+    shortTitle: "SMC – Startup Master Class",
+    tagline: "One project all the way through · 8 days · 16 sessions · 48 hours — from an idea to a project portfolio ready for review.",
+    shortDescription:
+      "SMC is an innovative-startup training framework designed by VABIX for local authorities, startup support organisations and training providers. The growth of each project is the common thread: every team moves through eight development stages, from spotting the opportunity and validating customers to designing the solution and business model, finance, commercialisation, execution and Demo Day.",
+    audience: "Early-stage founders, teams and startups, and research or technology teams that want to commercialise their solutions.",
+    audienceList: [
+      "Individuals / teams shaping a startup idea",
+      "Projects validating product–market fit",
+      "Early-stage startups",
+      "Research and technology teams commercialising a solution",
+    ],
+    problem:
+      "Many startup programmes teach separate, unconnected topics: participants finish the exercises, yet their projects still lack market evidence, the business model and finances remain untested, and local authorities lack the data to choose projects for further support.",
+    objectives: [
+      "Turn more ideas into structured project files with clearly stated assumptions to test.",
+      "Raise the quality of the solution, business model, financial capability, market access and execution.",
+      "Build founder capability and apply science, technology, innovation, digital transformation and AI as fits each project stage.",
+      "Produce output data for assessing and classifying projects, choosing post-programme support and tracking results over time.",
+    ],
+    topics: [
+      "Spotting opportunities and customers",
+      "Creating value and the MVP",
+      "Designing the market and business model",
+      "Strategic, technology and IP choices",
+      "Validating the finances",
+      "Commercialisation and go-to-market",
+      "Organising execution",
+      "Persuasion and assessment – Demo Day",
+    ],
+    methodology:
+      "Around 30% foundations and 70% case analysis, workshops, practice, critique and refining project outputs, using the APPLIER facilitation process. One academic architect keeps terminology, templates and the hand-over of outputs consistent across all 16 sessions; each expert leads one stage of the project's development.",
+    principles: [
+      { title: "One project throughout", body: "Each participant / team works on one real project from start to finish; each session's output is reused and refined in the next." },
+      { title: "One knowledge architecture", body: "Builds on the BMDO training-ground method, selects tools from The BizCar and applies them at the right startup stage — no overlap or jargon pile-up." },
+      { title: "One validation mechanism", body: "Every assumption about the problem, customers, solution, price, revenue and resources is tagged with its level of evidence; a finished exercise is not the same as market confirmation." },
+      { title: "One end-of-programme portfolio", body: "All 16 sessions build a single project portfolio used for assessment, incubation selection and connecting resources." },
+      { title: "One tracking system", body: "Learning is scored against clear criteria; project progress is tracked after the programme with its own indicators." },
+    ],
+    roadmap: [
+      {
+        day: "01",
+        stage: "Discover",
+        sessions: [
+          "S01. Local context and advantages, innovative startup opportunities and problems worth solving.",
+          "S02. Target customers; problem hypotheses; interviews, observation and validating demand.",
+        ],
+        output: "Startup opportunity sheet; customer–problem profile; evidence-gathering plan.",
+      },
+      {
+        day: "02",
+        stage: "Create value",
+        sessions: [
+          "S03. Designing customer value and a differentiated solution with the Value Wheel.",
+          "S04. Designing the solution, the minimum viable product (MVP), evaluation criteria and the test plan.",
+        ],
+        output: "Value proposition; solution / MVP description; customer test plan.",
+      },
+      {
+        day: "03",
+        stage: "Design the market",
+        sessions: [
+          "S05. Segments, priority markets, customer journey and channels with the Market Wheel.",
+          "S06. Business model, value flows, revenue streams and key assumptions.",
+        ],
+        output: "Market map; Business Model 1.0; list of assumptions to test.",
+      },
+      {
+        day: "04",
+        stage: "Choose the path",
+        sessions: [
+          "S07. Mission, goals, competitive choices, resources and early-stage strategy with MTUA and 6FT.",
+          "S08. Technology roadmap; intellectual property, standards and quality, and the legal requirements to check for each project.",
+        ],
+        output: "Strategic direction map; risk list and technology – legal – IP checklist.",
+      },
+      {
+        day: "05",
+        stage: "Validate the finances",
+        sessions: [
+          "S09. Costs, pricing, unit economics, margins and break-even.",
+          "S10. Cash flow, funding needs, financial scenarios and liquidity risk.",
+        ],
+        output: "Financial Model 1.0; 12-month cash-flow forecast; funding plan.",
+      },
+      {
+        day: "06",
+        stage: "Commercialise",
+        sessions: [
+          "S11. Go-to-market strategy, digital marketing, data and AI.",
+          "S12. Organising sales, creating opportunities, conversion and revenue growth with BABOSORA at the right stage.",
+        ],
+        output: "90-day go-to-market plan; sales opportunity funnel and conversion metrics.",
+      },
+      {
+        day: "07",
+        stage: "Organise execution",
+        sessions: [
+          "S13. Designing the organisation, people, processes and operating platform to fit the scale; The BizCar mindset.",
+          "S14. Turning goals into tasks, metrics and improvement with KAROT; responsible use of AI.",
+        ],
+        output: "Lean operating map; 90-day action plan and control metrics.",
+      },
+      {
+        day: "08",
+        stage: "Persuade & assess",
+        sessions: [
+          "S15. Finalising the project portfolio; presenting and defending it with P4I – Pitch for Investment.",
+          "S16. Demo Day: presentation, critique, quality scoring, readiness classification and next steps.",
+        ],
+        output: "Final project portfolio; pitch deck; assessment sheet; post-review improvement plan.",
+      },
+    ],
+    deliverables: [
+      "Opportunity, customers, problem and evidence",
+      "Solution, differentiated value and test plan",
+      "Market and business model",
+      "Strategic, technology, IP and legal choices to note",
+      "Financial model and funding needs",
+      "Go-to-market and revenue development plan",
+      "Organisation, execution and 90-day action model",
+      "Pitch deck, review report and improvement plan",
+    ],
+    scorecard: [
+      { criteria: "Evidence of the problem and market demand", points: 25 },
+      { criteria: "Solution, innovation, testability and protecting the value", points: 20 },
+      { criteria: "Business model, finance and commercial potential", points: 25 },
+      { criteria: "Resources, organisational capability and execution plan", points: 15 },
+      { criteria: "Portfolio quality, response to critique and ability to adapt", points: 15 },
+    ],
+    scorecardNote:
+      "Scores are used to classify readiness and recommend further support; they are not a certification as an innovative startup, a confirmation that the project will succeed or a guarantee of funding.",
+    outcomes: [
+      "Level 1 – Training completed: participants enrolled / completed, projects with a final portfolio, projects assessed on the common scale.",
+      "Level 2 – Project readiness: projects with customer evidence, an MVP or test plan, a financial plan, a market plan and a 90-day action plan; projects eligible to be considered for incubation.",
+      "Level 3 – Change after the programme: voluntary follow-up at around 30, 90 and 180 days on testing, customers, revenue, mentor / investor connections and companies founded.",
+      "Founding a company or raising funds is an expected impact to track, not a result promised after 8 days of training.",
+    ],
+    duration: "48 hours · 8 days · 16 sessions (3 hours each)",
+    durationNote:
+      "Suggested size: 25–45 participants per class, organised into 8–12 projects or practice teams. Ideally the 8 days are spread over 2–4 weeks so participants can test assumptions between stages.",
+    format: "In-person training combined with workshops, field research, project practice, critique and Demo Day.",
+    clarification:
+      "SMC is a framework that can be tailored to the goals, priority sectors, scale and conditions of each locality or host organisation; a pilot class is recommended before scaling up. Legal, IP and technology content is practical orientation; cases that need specialist advice are referred to the right experts.",
+    seoDescription:
+      "SMC – Startup Master Class: VABIX's 8-day, 16-session (48-hour) innovative startup training framework. One project through 8 development stages, a project portfolio and Demo Day.",
+  },
+  {
     slug: "ai-worklab",
     tagline: "Applying AI to work, processes and business operations.",
     shortDescription:

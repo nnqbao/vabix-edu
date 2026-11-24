@@ -89,6 +89,164 @@ export const programs: TrainingProgram[] = [
       "BABOSORA — vận hành và gia tốc dòng chảy doanh thu: 02 ngày thực chiến B2A × BA × BO × SO × RA, hỏi chốt ASKING và sáu trục gia tốc BRUCCS.",
   },
   {
+    id: "smc-startup-master-class",
+    slug: "smc-startup-master-class",
+    title: "SMC — Startup Master Class: Đào tạo và phát triển năng lực khởi nghiệp sáng tạo",
+    shortTitle: "SMC – Startup Master Class",
+    englishName: "Startup Master Class",
+    programCode: "SMC",
+    group: "ceo",
+    tagline: "Một dự án xuyên suốt · 08 ngày · 16 buổi · 48 giờ — từ ý tưởng đến bộ hồ sơ dự án sẵn sàng phản biện.",
+    shortDescription:
+      "SMC là khung chương trình đào tạo khởi nghiệp sáng tạo do VABIX thiết kế cho các địa phương, đơn vị hỗ trợ khởi nghiệp và tổ chức đào tạo. Chương trình lấy sự trưởng thành của từng dự án làm trục xuyên suốt: mỗi nhóm học viên đi qua tám chặng phát triển, từ nhận diện cơ hội, kiểm chứng khách hàng, thiết kế giải pháp và mô hình kinh doanh đến tài chính, thương mại hóa, tổ chức thực thi và Demo Day.",
+    audience: "Cá nhân, nhóm và doanh nghiệp khởi nghiệp giai đoạn đầu; chủ thể nghiên cứu, phát triển công nghệ có nhu cầu thương mại hóa giải pháp.",
+    audienceList: [
+      "Cá nhân / nhóm đang hình thành ý tưởng khởi nghiệp",
+      "Dự án đang kiểm chứng sản phẩm – thị trường",
+      "Doanh nghiệp khởi nghiệp giai đoạn đầu",
+      "Chủ thể nghiên cứu, phát triển công nghệ cần thương mại hóa giải pháp",
+    ],
+    problem:
+      "Nhiều chương trình khởi nghiệp truyền đạt kiến thức theo các chuyên đề rời rạc: học viên hoàn thành bài tập nhưng dự án chưa có bằng chứng thị trường, mô hình kinh doanh và tài chính chưa được kiểm chứng, và địa phương thiếu dữ liệu để chọn dự án cho các bước hỗ trợ tiếp theo.",
+    objectives: [
+      "Gia tăng số ý tưởng được chuyển hóa thành hồ sơ dự án có cấu trúc và các giả định cần kiểm chứng rõ ràng.",
+      "Nâng cao chất lượng giải pháp, mô hình kinh doanh, năng lực tài chính, tiếp cận thị trường và tổ chức thực thi.",
+      "Phát triển năng lực sáng lập; ứng dụng khoa học, công nghệ, đổi mới sáng tạo, chuyển đổi số và AI phù hợp giai đoạn dự án.",
+      "Tạo dữ liệu đầu ra phục vụ đánh giá, phân loại dự án, lựa chọn hỗ trợ sau đào tạo và theo dõi kết quả theo thời gian.",
+    ],
+    topics: [
+      "Nhận diện cơ hội và khách hàng",
+      "Kiến tạo giá trị và MVP",
+      "Thiết kế thị trường và mô hình kinh doanh",
+      "Lựa chọn chiến lược, công nghệ, sở hữu trí tuệ",
+      "Kiểm chứng tài chính",
+      "Thương mại hóa và Go-to-Market",
+      "Tổ chức thực thi",
+      "Thuyết phục và đánh giá – Demo Day",
+    ],
+    topicCategories: ["chien-luoc-mo-hinh", "thi-truong-khach-hang", "tai-chinh", "to-chuc-van-hanh", "cong-nghe-ai"],
+    methodology:
+      "Khoảng 30% truyền đạt nền tảng và 70% phân tích tình huống, workshop, thực hành, phản biện và hoàn thiện sản phẩm dự án; vận dụng quy trình dẫn giảng APPLIER. Một kiến trúc sư học thuật xuyên suốt chuẩn hóa thuật ngữ, biểu mẫu và việc kế thừa đầu ra giữa 16 buổi; mỗi chuyên gia phụ trách một chặng phát triển của dự án.",
+    principles: [
+      { title: "Một dự án xuyên suốt", body: "Mỗi học viên / nhóm dùng một dự án thực tế từ đầu đến cuối; sản phẩm của buổi trước được dùng và hiệu chỉnh ở buổi sau." },
+      { title: "Một kiến trúc tri thức thống nhất", body: "Kế thừa phương pháp Thao trường BMDO, chọn lọc công cụ The BizCar và thực hành đúng giai đoạn phát triển của startup — tránh trùng lặp, chồng lấn thuật ngữ." },
+      { title: "Một cơ chế kiểm chứng", body: "Mọi giả định về vấn đề, khách hàng, giải pháp, giá, doanh thu và nguồn lực đều ghi rõ mức độ bằng chứng; bài tập hoàn thành không đồng nghĩa với kết quả đã được thị trường xác nhận." },
+      { title: "Một bộ hồ sơ cuối khóa", body: "16 buổi cùng hoàn thiện một bộ hồ sơ dự án thống nhất, phục vụ đánh giá, lựa chọn ươm tạo và kết nối nguồn lực." },
+      { title: "Một hệ thống theo dõi", body: "Kết quả học tập được chấm theo tiêu chí rõ ràng; sự phát triển của dự án được theo dõi sau đào tạo bằng các chỉ số riêng." },
+    ],
+    roadmap: [
+      {
+        day: "01",
+        stage: "Nhận diện",
+        sessions: [
+          "B01. Nhận diện bối cảnh, lợi thế địa phương, cơ hội khởi nghiệp sáng tạo và vấn đề đáng giải quyết.",
+          "B02. Khách hàng mục tiêu; giả thuyết vấn đề; phỏng vấn, quan sát và kiểm chứng nhu cầu.",
+        ],
+        output: "Phiếu cơ hội khởi nghiệp; bản mô tả khách hàng – vấn đề; kế hoạch thu thập bằng chứng.",
+      },
+      {
+        day: "02",
+        stage: "Kiến tạo giá trị",
+        sessions: [
+          "B03. Thiết kế giá trị khách hàng và giải pháp khác biệt; ứng dụng Value Wheel.",
+          "B04. Thiết kế giải pháp, sản phẩm thử nghiệm (MVP), tiêu chí đánh giá và kế hoạch thử nghiệm.",
+        ],
+        output: "Bản đề xuất giá trị; mô tả giải pháp / MVP; kế hoạch thử nghiệm với khách hàng.",
+      },
+      {
+        day: "03",
+        stage: "Thiết kế thị trường",
+        sessions: [
+          "B05. Phân khúc, thị trường ưu tiên, hành trình khách hàng và kênh tiếp cận; vận dụng Market Wheel.",
+          "B06. Mô hình kinh doanh, dòng giá trị, dòng doanh thu và các giả định trọng yếu.",
+        ],
+        output: "Bản đồ thị trường; Business Model 1.0; danh mục giả định cần kiểm chứng.",
+      },
+      {
+        day: "04",
+        stage: "Lựa chọn con đường",
+        sessions: [
+          "B07. Sứ mệnh, mục tiêu, lựa chọn cạnh tranh, nguồn lực và chiến lược giai đoạn đầu; vận dụng MTUA, 6FT.",
+          "B08. Lộ trình công nghệ; sở hữu trí tuệ, tiêu chuẩn – chất lượng và các yêu cầu pháp lý cần rà soát theo từng dự án.",
+        ],
+        output: "Bản đồ định hướng chiến lược; danh mục rủi ro và checklist công nghệ – pháp lý – sở hữu trí tuệ.",
+      },
+      {
+        day: "05",
+        stage: "Kiểm chứng tài chính",
+        sessions: [
+          "B09. Chi phí, định giá, kinh tế đơn vị, biên lợi nhuận và điểm hòa vốn.",
+          "B10. Dòng tiền, nhu cầu vốn, kịch bản tài chính và rủi ro thanh khoản.",
+        ],
+        output: "Financial Model 1.0; dự báo dòng tiền 12 tháng; phương án nhu cầu vốn.",
+      },
+      {
+        day: "06",
+        stage: "Thương mại hóa",
+        sessions: [
+          "B11. Chiến lược đưa sản phẩm ra thị trường (Go-to-Market), marketing số, dữ liệu và AI.",
+          "B12. Tổ chức bán hàng, tạo cơ hội, chuyển đổi và tăng trưởng doanh thu; vận dụng BABOSORA đúng giai đoạn.",
+        ],
+        output: "Kế hoạch Go-to-Market 90 ngày; phễu cơ hội bán hàng và chỉ số chuyển đổi.",
+      },
+      {
+        day: "07",
+        stage: "Tổ chức thực thi",
+        sessions: [
+          "B13. Thiết kế tổ chức, nhân lực, quy trình và nền tảng vận hành phù hợp quy mô; tư duy The BizCar.",
+          "B14. Chuyển mục tiêu thành công việc, chỉ số và cải tiến bằng KAROT; ứng dụng AI có trách nhiệm.",
+        ],
+        output: "Sơ đồ vận hành tinh gọn; kế hoạch hành động 90 ngày và chỉ số kiểm soát.",
+      },
+      {
+        day: "08",
+        stage: "Thuyết phục & đánh giá",
+        sessions: [
+          "B15. Hoàn thiện hồ sơ dự án và kỹ năng thuyết trình, phản biện theo P4I – Pitch for Investment.",
+          "B16. Demo Day: trình bày, phản biện, chấm chất lượng, phân loại mức độ sẵn sàng và xác định bước tiếp theo.",
+        ],
+        output: "Bộ hồ sơ dự án cuối khóa; Pitch Deck; phiếu đánh giá; kế hoạch hoàn thiện sau phản biện.",
+      },
+    ],
+    deliverables: [
+      "Cơ hội, khách hàng, vấn đề và bằng chứng",
+      "Giải pháp, giá trị khác biệt và kế hoạch thử nghiệm",
+      "Thị trường và mô hình kinh doanh",
+      "Lựa chọn chiến lược, công nghệ, sở hữu trí tuệ và pháp lý cần lưu ý",
+      "Mô hình tài chính và nhu cầu vốn",
+      "Kế hoạch đưa sản phẩm ra thị trường và phát triển doanh thu",
+      "Mô hình tổ chức, thực thi và hành động 90 ngày",
+      "Pitch Deck, báo cáo phản biện và kế hoạch hoàn thiện",
+    ],
+    scorecard: [
+      { criteria: "Bằng chứng vấn đề và nhu cầu thị trường", points: 25 },
+      { criteria: "Giải pháp, tính đổi mới sáng tạo, khả năng thử nghiệm và bảo vệ giá trị", points: 20 },
+      { criteria: "Mô hình kinh doanh, tài chính và khả năng thương mại hóa", points: 25 },
+      { criteria: "Nguồn lực, năng lực tổ chức và kế hoạch thực thi", points: 15 },
+      { criteria: "Chất lượng hồ sơ, phản biện và năng lực điều chỉnh dự án", points: 15 },
+    ],
+    scorecardNote:
+      "Điểm số phục vụ phân loại mức độ sẵn sàng và đề xuất hỗ trợ tiếp theo; không phải chứng nhận doanh nghiệp khởi nghiệp sáng tạo, xác nhận dự án thành công hay bảo đảm khả năng gọi vốn.",
+    outcomes: [
+      "Cấp độ 1 – Hoàn thành đào tạo: số học viên tham gia / hoàn thành, số dự án có hồ sơ đầu ra và được đánh giá theo thang thống nhất.",
+      "Cấp độ 2 – Mức độ sẵn sàng: số dự án có bằng chứng khách hàng, MVP hoặc kế hoạch thử nghiệm, phương án tài chính, kế hoạch thị trường và hành động 90 ngày; số dự án đủ điều kiện đề nghị xem xét ươm tạo.",
+      "Cấp độ 3 – Chuyển biến sau chương trình: theo dõi tự nguyện tại các mốc khoảng 30, 90 và 180 ngày về thử nghiệm, khách hàng, doanh thu, kết nối cố vấn / đầu tư và doanh nghiệp được thành lập.",
+      "Thành lập doanh nghiệp hoặc gọi vốn là tác động kỳ vọng cần theo dõi, không phải kết quả được cam kết chỉ sau 08 ngày đào tạo.",
+    ],
+    duration: "48 giờ · 08 ngày · 16 buổi (03 giờ / buổi)",
+    durationNote:
+      "Quy mô gợi ý 25–45 học viên / lớp, tổ chức theo 8–12 dự án hoặc nhóm thực hành. Ưu tiên bố trí 8 ngày trong 2–4 tuần để học viên có thời gian kiểm chứng giả định giữa các chặng.",
+    format: "Đào tạo tập trung kết hợp workshop, khảo sát thực tế, thực hành trên dự án, phản biện và Demo Day.",
+    clarification:
+      "SMC là khung chương trình có thể tùy biến theo mục tiêu, ngành ưu tiên, quy mô và điều kiện của từng địa phương hoặc đơn vị chủ trì; khuyến nghị tổ chức một khóa thí điểm trước khi nhân rộng. Nội dung pháp lý, sở hữu trí tuệ và công nghệ mang tính định hướng thực hành; các tình huống cần ý kiến chuyên sâu được chuyển đến chuyên gia phù hợp.",
+    featured: false,
+    status: "published",
+    relatedPrograms: ["thao-truong-khoi-nghiep", "bmdo", "babosora"],
+    relatedModels: ["bizcar", "baboso", "karot", "applier"],
+    seoDescription:
+      "SMC – Startup Master Class: khung đào tạo khởi nghiệp sáng tạo 08 ngày, 16 buổi (48 giờ) của VABIX. Một dự án xuyên suốt qua 8 chặng phát triển, bộ hồ sơ dự án và Demo Day.",
+  },
+  {
     id: "ai-worklab",
     slug: "ai-worklab",
     title: "VABIX AI WorkLab — From Work to Workflow",

@@ -119,6 +119,7 @@ export async function ProgramDetail({ slug }: { slug: string }) {
             <p className="text-vabix-muted">{p.durationNote ?? (en ? "Duration tailored to your needs" : "Thời lượng được thiết kế theo nhu cầu")}</p>
           )}
           {p.durationNote && p.duration ? <p className="text-sm text-vabix-muted">{p.durationNote}</p> : null}
+          {p.format ? <p className="text-sm text-vabix-muted">{en ? "Format" : "Hình thức"}: {p.format}</p> : null}
           {topics.length ? <p className="text-sm text-vabix-muted">{en ? "Areas" : "Lĩnh vực"}: {topics.join(" · ")}</p> : null}
           <Block title={en ? "Who it is for" : "Đối tượng"} items={p.audienceList} />
           <section>
@@ -126,12 +127,75 @@ export async function ProgramDetail({ slug }: { slug: string }) {
             <p className="mt-4 text-vabix-muted">{p.problem}</p>
           </section>
           <Block title={en ? "Objectives" : "Mục tiêu"} items={p.objectives} />
-          <Block title={en ? "Content / topics" : "Nội dung / chuyên đề"} items={p.topics} />
+          {p.principles?.length ? (
+            <section>
+              <SectionHeading title={en ? "Design principles" : "Nguyên lý thiết kế"} />
+              <div className="mt-4 grid gap-4 sm:grid-cols-2">
+                {p.principles.map((x) => (
+                  <article key={x.title} className="border border-vabix-deep-teal/10 bg-white p-5">
+                    <h3 className="font-semibold text-vabix-deep-teal">{x.title}</h3>
+                    <p className="mt-2 text-sm text-vabix-muted">{x.body}</p>
+                  </article>
+                ))}
+              </div>
+            </section>
+          ) : null}
+          {p.roadmap?.length ? (
+            <section>
+              <SectionHeading title={en ? "Programme roadmap" : "Lộ trình chương trình"} />
+              <ol className="mt-4 space-y-4">
+                {p.roadmap.map((d) => (
+                  <li key={d.day} className="border border-vabix-deep-teal/10 bg-white p-5">
+                    <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-vabix-gold">
+                      {en ? "Day" : "Ngày"} {d.day} · {d.stage}
+                    </p>
+                    <ul className="mt-3 space-y-2 text-vabix-ink">
+                      {d.sessions.map((x) => (
+                        <li key={x}>{x}</li>
+                      ))}
+                    </ul>
+                    <p className="mt-3 border-l-2 border-vabix-gold bg-vabix-ivory px-4 py-2 text-sm text-vabix-deep-teal">
+                      <span className="font-semibold">{en ? "Output: " : "Sản phẩm đầu ra: "}</span>
+                      {d.output}
+                    </p>
+                  </li>
+                ))}
+              </ol>
+            </section>
+          ) : (
+            <Block title={en ? "Content / topics" : "Nội dung / chuyên đề"} items={p.topics} />
+          )}
           <section>
             <SectionHeading title={en ? "Method" : "Phương pháp"} />
             <p className="mt-4 text-vabix-muted">{p.methodology}</p>
           </section>
           <Block title={en ? "Deliverables" : "Đầu ra"} items={p.deliverables} />
+          {p.scorecard?.length ? (
+            <section>
+              <SectionHeading title={en ? "Project assessment (100 points)" : "Thang đánh giá dự án (100 điểm)"} />
+              <table className="mt-4 w-full border-collapse text-left text-sm">
+                <thead>
+                  <tr className="bg-vabix-deep-teal text-white">
+                    <th className="px-4 py-3 font-semibold">{en ? "Criteria" : "Nhóm tiêu chí"}</th>
+                    <th className="px-4 py-3 text-right font-semibold">{en ? "Max" : "Điểm tối đa"}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {p.scorecard.map((x) => (
+                    <tr key={x.criteria} className="border-b border-vabix-deep-teal/10">
+                      <td className="px-4 py-3 text-vabix-ink">{x.criteria}</td>
+                      <td className="px-4 py-3 text-right font-semibold text-vabix-deep-teal">{x.points}</td>
+                    </tr>
+                  ))}
+                  <tr>
+                    <td className="px-4 py-3 font-semibold text-vabix-deep-teal">{en ? "Total" : "Tổng cộng"}</td>
+                    <td className="px-4 py-3 text-right font-semibold text-vabix-deep-teal">{p.scorecard.reduce((n, x) => n + x.points, 0)}</td>
+                  </tr>
+                </tbody>
+              </table>
+              {p.scorecardNote ? <p className="mt-3 text-sm text-vabix-muted">{p.scorecardNote}</p> : null}
+            </section>
+          ) : null}
           <Block title={en ? "Intended outcomes" : "Kết quả hướng đến"} items={p.outcomes} />
           {slug === "bmdo" ? (
             <section className="space-y-6">
